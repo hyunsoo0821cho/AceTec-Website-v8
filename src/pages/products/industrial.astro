@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="Industrial Automation Products - AceTec">
+  <section class="section pt-page">
+    <div class="container">
+      <h1 class="heading-page">Industrial Automation</h1>
+      <p class="heading-sub color-muted">Fanless industrial PCs, network appliances, and IoT platforms for factory automation, process control, semiconductor manufacturing, and quality inspection.</p>
+      <div class="products-grid">
+        <div class="p-card"><div class="p-img"><img src="/images/products/fanless-pc.png" alt="Industrial Fanless PCs" loading="lazy"></div><div class="p-name">Industrial PCs &amp; Fanless Industrial PCs</div><div class="p-price">Boxtype · Rackmount · Server · Desktop · Wallmount · Panel</div></div>
+        <div class="p-card"><div class="p-img"></div><div class="p-name">Device Cloud &amp; IoT — Wind River</div><div class="p-price">Helix Virtualization · Simics · Software Defined Infrastructure</div></div>
+        <div class="p-card"><div class="p-img"><img src="/images/products/hima-railway.png" alt="RTOS" loading="lazy"></div><div class="p-name">RTOS — Wind River</div><div class="p-price">VxWorks · Wind River Linux · ISaGRAF</div></div>
+        <div class="p-card"><div class="p-img"><span class="new-badge">NEW</span><img src="/images/products/ram-module.png" alt="RAM Module" loading="lazy"></div><div class="p-name">RAM Module</div><div class="p-price">Industrial-grade memory for embedded systems</div></div>
+        <div class="p-card"><div class="p-img"><span class="new-badge">NEW</span><img src="/images/products/cpu-processor.png" alt="CPU Processor" loading="lazy"></div><div class="p-name">CPU Processor</div><div class="p-price">Intel &amp; AMD processors for industrial platforms</div></div>
+        <div class="p-card"><div class="p-img"><span class="new-badge">NEW</span><img src="/images/products/hdd-2tb.png" alt="HDD Storage" loading="lazy"></div><div class="p-name">HDD &amp; Storage</div><div class="p-price">Industrial-grade HDDs and SSDs</div></div>
+        <div class="p-card"><div class="p-img"><span class="new-badge">NEW</span><img src="/images/products/motherboard.png" alt="Motherboard" loading="lazy"></div><div class="p-name">Motherboard</div><div class="p-price">Industrial &amp; embedded motherboards</div></div>
+      </div>
+      <div class="mt-xl"><a href="/solutions" class="btn-secondary">&larr; BACK TO ALL SOLUTIONS</a></div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .products-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--spacing-lg); align-items: start; }
+  .p-card { position: relative; cursor: pointer; transition: transform var(--transition-slow); }
+  .p-img { position: relative; overflow: hidden; background: var(--color-gray-200); padding-bottom: 75%; }
+  .p-img img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity var(--transition-slow); }
+  .new-badge { position: absolute; top: 10px; left: 10px; background: #2563eb; color: var(--color-white); font-size: var(--font-size-xs); padding: var(--spacing-xs) 10px; font-weight: 500; border-radius: 2px; z-index: 1; }
+  .sale-badge { position: absolute; top: 10px; right: 10px; background: var(--color-badge-bg); color: var(--color-white); font-size: var(--font-size-xs); padding: var(--spacing-xs) 10px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; z-index: 1; }
+  @media (hover: hover) { .p-card:hover { transform: translateY(-4px); } .p-card:hover img { opacity: 0.85; } }
+  .p-card:active { transform: translateY(0) scale(0.98); transition: all var(--transition-fast); }
+  .p-card .p-name { font-size: var(--font-size-lg); margin-top: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .p-card .p-price { font-size: var(--font-size-md); margin-top: var(--spacing-xs); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  @media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 768px) {
+    .products-grid { gap: var(--spacing-md); }
+    .p-card .p-name { font-size: 13px; white-space: normal; line-height: 1.3; }
+    .p-card .p-price { font-size: 11px; white-space: normal; line-height: 1.3; }
+  }
+</style>

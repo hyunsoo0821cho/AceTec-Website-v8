@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Base title="Contact Us - AceTec">
+  <section class="section pt-page">
+    <div class="container">
+      <div class="contact-page-grid">
+        <div>
+          <h1 class="heading-page">Contact Us</h1>
+          <p class="heading-sub-sm">For product inquiries, technical consultation, or partnership opportunities — our team is here to help.</p>
+          <div class="contact-offices">
+            <div class="contact-office">
+              <h3>Seoul HQ</h3>
+              <p>Rm. 1604, Acehighend Tower 2nd, 61, Digital-ro 26-gil, Guro-gu, Seoul, Republic of Korea</p>
+              <ul class="contact-info-list">
+                <li><a href="mailto:acetec@acetec-korea.co.kr" class="link-underline">acetec@acetec-korea.co.kr</a></li>
+                <li><a href="tel:+8224202343" class="link-underline">TEL: +82-2-420-2343</a></li>
+                <li>FAX: +82-2-420-2757</li>
+              </ul>
+              <div class="contact-directions">
+                <h4>Directions</h4>
+                <p><strong>Subway:</strong> Namguro Station Exit 2 (approx. 200m) or Guro Digital Complex Station Exit 3 (approx. 450m)</p>
+                <p><strong>By car:</strong> Navigate to Manmin Jungang Church or Korea Testing Laboratory — Acehighend Tower 2nd is adjacent.</p>
+              </div>
+            </div>
+            <div class="contact-office">
+              <h3>Daejeon Branch</h3>
+              <p>Rm. 205, Migeon Techno World, 199, Techno 2-ro, Yuseong-gu, Daejeon, Republic of Korea</p>
+              <ul class="contact-info-list">
+                <li><a href="tel:+82424712343" class="link-underline">TEL: +82-42-471-2343</a></li>
+                <li>FAX: +82-42-933-2642</li>
+              </ul>
+            </div>
+          </div>
+          <ContactForm prefix="ct" />
+        </div>
+        <div class="overflow-hidden"><img src="/images/plans/plan-premium.png" alt="Contact us" class="img-cover" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact-page-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: start;
+  }
+
+  .contact-offices {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3xl);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .contact-office h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .contact-office > p {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-700);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .contact-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-lg) 0;
+  }
+
+  .contact-info-list li {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-700);
+    padding: 6px 0;
+  }
+
+  .contact-directions {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: var(--color-gray-100);
+    border-radius: var(--radius-md);
+  }
+
+  .contact-directions h4 {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .contact-directions p {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-700);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .contact-directions p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    h1 { font-size: var(--font-size-5xl); }
+    .contact-page-grid {
+      grid-template-columns: 1fr;
+    }
+    .contact-page-grid .overflow-hidden {
+      order: -1;
+    }
+  }
+</style>

@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="Military & Aerospace Products - AceTec">
+  <section class="section pt-page">
+    <div class="container">
+      <h1 class="heading-page">Military &amp; Aerospace</h1>
+      <p class="heading-sub color-muted">Rugged VPX/VME boards and signal processing platforms purpose-built for precision strike, C2, surveillance, and unmanned systems in the most demanding operational environments.</p>
+      <div class="products-grid">
+        <div class="p-card"><div class="p-img"><img src="/images/products/form-factor.png" alt="Form Factor Boards" loading="lazy"></div><div class="p-name">Form Factor — Abaco Systems</div><div class="p-price">VME · VPX 3U/6U · CompactPCI · PMC · XMC · FMC/FMC+</div></div>
+        <div class="p-card"><div class="p-img"><img src="/images/products/hpc-servers.png" alt="Embedded DSP" loading="lazy"></div><div class="p-name">Embedded Board Signal Processing</div><div class="p-price">Jade · Cobalt · Onyx · Talon · Flexor · Spark</div></div>
+        <div class="p-card"><div class="p-img"><img src="/images/products/hima-railway.png" alt="RTOS" loading="lazy"></div><div class="p-name">RTOS — Wind River</div><div class="p-price">VxWorks · Wind River Linux · VxWorks 653 Cert</div></div>
+        <div class="p-card"><div class="p-img"></div><div class="p-name">Middleware — RTI Connext DDS</div><div class="p-price">Professional · Secure WAN · Micro · Cert</div></div>
+        <div class="p-card"><div class="p-img"></div><div class="p-name">Radar Processing — Cambridge Pixel</div><div class="p-price">SPx Server · HPx High Performance Radar Processing</div></div>
+        <div class="p-card"><div class="p-img"></div><div class="p-name">Sensor Modeling &amp; Simulation — OKTAL-SE</div><div class="p-price">EO/IR · RF · Active EO · GNSS · 3D Terrain · APIs</div></div>
+      </div>
+      <div class="mt-xl"><a href="/solutions" class="btn-secondary">&larr; BACK TO ALL SOLUTIONS</a></div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .products-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--spacing-lg); align-items: start; }
+  .p-card { position: relative; cursor: pointer; transition: transform var(--transition-slow); }
+  .p-card:active { transform: translateY(0) scale(0.98); transition: all var(--transition-fast); }
+  .p-img { position: relative; overflow: hidden; background: var(--color-gray-200); padding-bottom: 75%; }
+  .p-img img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity var(--transition-slow); }
+  @media (hover: hover) { .p-card:hover { transform: translateY(-4px); } .p-card:hover img { opacity: 0.85; } }
+  .p-card .p-name { font-size: var(--font-size-lg); margin-top: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .p-card .p-price { font-size: var(--font-size-md); margin-top: var(--spacing-xs); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  @media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 768px) { .products-grid { gap: var(--spacing-md); } .p-card .p-name { font-size: 13px; white-space: normal; line-height: 1.3; } .p-card .p-price { font-size: 11px; white-space: normal; line-height: 1.3; } }
+</style>

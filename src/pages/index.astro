@@ -1,0 +1,290 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Base title="AceTec - Embedded & Industrial Technology Solutions">
+  <section class="hero section">
+    <h1>Mission-Critical Embedded Computing &amp; Industrial Solutions</h1>
+    <div class="hero-buttons"><a href="/solutions" class="btn-primary mr-sm">EXPLORE SOLUTIONS</a><a href="/contact" class="btn-secondary">REQUEST A QUOTE</a></div>
+    <div class="hero-img-wrap">
+      <img src="/images/hero/hero-main.png" alt="AceTec embedded computing and industrial solutions" fetchpriority="high">
+      <div class="hero-overlay">Over 30 years of expertise delivering embedded computing, industrial PCs, and safety-critical systems for defense, aerospace, railway, and industrial applications.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="featured-top">
+        <h2>Solutions</h2>
+        <a href="/solutions" class="btn-secondary">VIEW ALL SOLUTIONS</a>
+      </div>
+      <div class="svc-cards">
+        <a href="/products/military" class="s-card"><img src="/images/services/military-aerospace.png" alt="Military and Aerospace" loading="lazy"><h3>Military &amp; Aerospace</h3><div class="s-price">Defense-Grade Computing</div></a>
+        <a href="/products/railway" class="s-card"><img src="/images/services/railway.png" alt="Rail Transportation" loading="lazy"><h3>Rail Transportation</h3><div class="s-price">SIL4 Safety Systems</div></a>
+        <a href="/products/industrial" class="s-card"><img src="/images/services/industrial.png" alt="Industrial Automation" loading="lazy"><h3>Industrial Automation</h3><div class="s-price">Industrial-Grade Platforms</div></a>
+        <a href="/products/telecom" class="s-card"><img src="/images/services/industrial.png" alt="Telecom and Networking" loading="lazy"><h3>Telecom &amp; Networking</h3><div class="s-price">Network Infrastructure</div></a>
+        <a href="/products/sensor" class="s-card"><img src="/images/services/military-aerospace.png" alt="Sensor Modeling and Simulation" loading="lazy"><h3>Sensor Modeling &amp; Simulation</h3><div class="s-price">OKTAL-SE Solutions</div></a>
+        <a href="/products/hpc" class="s-card"><img src="/images/services/military-aerospace.png" alt="High Performance Computing" loading="lazy"><h3>High Performance Computing</h3><div class="s-price">GPU &amp; Compute Platforms</div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured section">
+    <div class="container">
+      <div class="featured-top"><h2>Featured Products</h2></div>
+      <div class="products-grid">
+        <a href="/products/industrial" class="p-card" aria-label="Industrial PCs and Fanless Industrial PCs"><div class="p-img"><img src="/images/products/fanless-pc.png" alt="Industrial PCs and Fanless Industrial PCs" loading="lazy"></div><div class="p-name">Industrial PCs &amp; Fanless Industrial PCs</div><div class="p-price">Boxtype · Rackmount · Server · Desktop · Wallmount · Panel</div></a>
+        <a href="/products/military" class="p-card" aria-label="Form Factor Abaco Systems"><div class="p-img"><img src="/images/products/form-factor.png" alt="Form Factor Abaco Systems" loading="lazy"></div><div class="p-name">Form Factor — Abaco Systems</div><div class="p-price">VME · VPX 3U/6U · CompactPCI · PMC · XMC · FMC/FMC+</div></a>
+        <a href="/products/hpc" class="p-card" aria-label="High Performance Computing"><div class="p-img"><img src="/images/products/hpc-servers.png" alt="High Performance Computing" loading="lazy"></div><div class="p-name">High Performance Computing</div><div class="p-price">Servers · Desktop · GPU Appliances · GPU Expansion · Video Acceleration</div></a>
+        <a href="/products/railway" class="p-card" aria-label="HIMA Railway Safety System"><div class="p-img"><span class="sale-badge">SIL4</span><img src="/images/products/hima-railway.png" alt="HIMA Railway Safety System" loading="lazy"></div><div class="p-name">HIMA Railway Safety System</div><div class="p-price">HiMax · HiMatrix · ControlSafe™ Platform · SIL3/SIL4</div></a>
+        <a href="/products/industrial" class="p-card" aria-label="RAM Module"><div class="p-img"><span class="new-badge">NEW</span><img src="/images/products/ram-module.png" alt="RAM Module 16GB" loading="lazy"></div><div class="p-name">RAM Module 16GB</div><div class="p-price">₩85,000</div></a>
+        <a href="/products/industrial" class="p-card" aria-label="CPU Processor"><div class="p-img"><span class="new-badge">NEW</span><img src="/images/products/cpu-processor.png" alt="CPU Processor" loading="lazy"></div><div class="p-name">CPU Processor</div><div class="p-price">₩320,000</div></a>
+        <a href="/products/industrial" class="p-card" aria-label="HDD 2TB"><div class="p-img"><span class="new-badge">NEW</span><img src="/images/products/hdd-2tb.png" alt="HDD 2TB" loading="lazy"></div><div class="p-name">HDD 2TB</div><div class="p-price">₩95,000</div></a>
+        <a href="/products/industrial" class="p-card" aria-label="Motherboard"><div class="p-img"><span class="new-badge">NEW</span><img src="/images/products/motherboard.png" alt="Motherboard" loading="lazy"></div><div class="p-name">Motherboard</div><div class="p-price">₩280,000</div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="our-services section">
+    <div class="container">
+      <div class="svc-layout">
+        <div class="svc-text">
+          <h2>Our Solutions</h2>
+          <p class="desc">Backed by our in-house R&D center and decades of domain expertise, AceTec delivers tailored technology solutions for defense, aerospace, railway, and industrial automation — all KC certified and ISO 9001 compliant.</p>
+          <div class="acc" role="region" aria-label="Solution details">
+            <div class="acc-item"><div class="acc-title" id="acc-basic" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-basic-body">Embedded Computing <span class="icon" aria-hidden="true">+</span></div><div class="acc-body" id="acc-basic-body" role="region" aria-labelledby="acc-basic">Board-level signal processing systems — including Jade, Cobalt, Onyx, Talon, Flexor, and Spark platforms — engineered for demanding defense and aerospace environments.</div></div>
+            <div class="acc-item"><div class="acc-title" id="acc-inter" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-inter-body">Industrial &amp; Networking <span class="icon" aria-hidden="true">+</span></div><div class="acc-body" id="acc-inter-body" role="region" aria-labelledby="acc-inter">KC certified, ISO 9001 compliant fanless PCs, rackmount servers, and network appliances built for continuous 24/7 operation in demanding industrial environments.</div></div>
+            <div class="acc-item open"><div class="acc-title" id="acc-adv" role="button" tabindex="0" aria-expanded="true" aria-controls="acc-adv-body">Safety-Critical Systems <span class="icon" aria-hidden="true">+</span></div><div class="acc-body" id="acc-adv-body" role="region" aria-labelledby="acc-adv">TÜV SÜD SIL4 certified HIMA ControlSafe™ platforms for railway signaling and train control — fail-safe, fault-tolerant architecture ensuring the highest level of operational safety.</div></div>
+            <div class="acc-item"><div class="acc-title" id="acc-telecom" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-telecom-body">Telecom &amp; Networking <span class="icon" aria-hidden="true">+</span></div><div class="acc-body" id="acc-telecom-body" role="region" aria-labelledby="acc-telecom">Intel/AMD-based network appliances for firewall, VPN, UTM, and load balancing — paired with high-performance NICs for data center and telecom infrastructure.</div></div>
+            <div class="acc-item"><div class="acc-title" id="acc-sensor" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-sensor-body">Sensor Modeling &amp; Simulation <span class="icon" aria-hidden="true">+</span></div><div class="acc-body" id="acc-sensor-body" role="region" aria-labelledby="acc-sensor">OKTAL-SE high-fidelity EO/IR/RF sensor simulation for Hardware-In-the-Loop, Man-In-the-Loop, and training simulation environments.</div></div>
+            <div class="acc-item"><div class="acc-title" id="acc-hpc" role="button" tabindex="0" aria-expanded="false" aria-controls="acc-hpc-body">High Performance Computing <span class="icon" aria-hidden="true">+</span></div><div class="acc-body" id="acc-hpc-body" role="region" aria-labelledby="acc-hpc">High-density GPU servers and PCIe expansion systems for machine learning, financial analysis, military applications, medical imaging, and scientific research.</div></div>
+          </div>
+          <div class="mt-xl"><a href="/solutions" class="btn-primary">VIEW ALL SOLUTIONS</a></div>
+        </div>
+        <div class="svc-img"><img src="/images/services/services-main.png" alt="Our technology services" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="consult">
+    <div class="consult-bg"><img src="/images/misc/consult-bg.png" alt="" loading="lazy"></div>
+    <div class="consult-inner">
+      <h2>Need a customized solution?</h2>
+      <p>Our engineers provide end-to-end consulting — from platform selection and system design to deployment and ongoing support — for your mission-critical applications.</p>
+      <a href="/contact" class="btn-light">REQUEST CONSULTATION</a>
+    </div>
+  </section>
+
+  <section class="choose-plan section">
+    <div class="container">
+      <h2>Total Service Solution</h2>
+      <p class="heading-sub color-muted">We support every stage of your project — from initial system consulting through to final delivery — providing development and technical services tailored to the products and solutions deployed in your environment.</p>
+      <div class="plans-grid">
+        <div class="plan-card"><img src="/images/plans/plan-standard.png" alt="Consulting and Design" loading="lazy"><div class="plan-body"><h3>Consulting &amp; Design</h3><div class="price">Step 1–2</div><div class="period">Customer Consulting · Design Consulting</div><p class="plan-desc">We assess your project requirements and architect a tailored system design — ensuring the optimal hardware, software, and integration approach from day one.</p><a href="/contact" class="btn-primary">INQUIRE</a></div></div>
+        <div class="plan-card"><img src="/images/plans/plan-premium.png" alt="System Construction and Support" loading="lazy"><div class="plan-body"><h3>Construction &amp; Support</h3><div class="price">Step 3–4</div><div class="period">System Construction · Technical Support</div><p class="plan-desc">We guide procurement and system build-out, then provide hands-on technical support for the deployed solution throughout your project lifecycle.</p><a href="/contact" class="btn-primary">INQUIRE</a></div></div>
+        <div class="plan-card"><img src="/images/plans/plan-enterprise.png" alt="Verification and Inspection" loading="lazy"><div class="plan-body"><h3>Verification &amp; Inspection</h3><div class="price">Step 5</div><div class="period">Product Evaluation · Quality Assurance</div><p class="plan-desc">Rigorous testing and evaluation to verify that every delivered system meets your project specifications, industry standards, and performance benchmarks.</p><a href="/contact" class="btn-primary">INQUIRE</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-co section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img"><img src="/images/about/about-company.png" alt="About our company" loading="lazy"></div>
+        <div class="about-txt">
+          <h2>About AceTec</h2>
+          <p>Since 1994, AceTec has been at the forefront of Korea's embedded computing and industrial technology market. With our own R&D center and strategic partnerships with Abaco Systems, HIMA, Wind River, RTI, OKTAL-SE, and OSS, we deliver mission-critical solutions for defense, aerospace, railway, and industrial automation — backed by 30+ years of deep engineering expertise.</p>
+          <div class="mt-xl"><a href="/about" class="btn-primary">OUR STORY</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="social section">
+    <div class="container">
+      <h2>Our Technology Partners</h2>
+      <div class="social-grid">
+        <img src="/images/partners/abaco.png" alt="Abaco Systems partner" loading="lazy" tabindex="0" role="button" aria-label="Abaco Systems">
+        <img src="/images/partners/hima.png" alt="HIMA partner" loading="lazy" tabindex="0" role="button" aria-label="HIMA Railway">
+        <img src="/images/partners/windriver.png" alt="Wind River partner" loading="lazy" tabindex="0" role="button" aria-label="Wind River">
+        <img src="/images/partners/oss.png" alt="OSS partner" loading="lazy" tabindex="0" role="button" aria-label="One Stop Systems">
+        <img src="/images/partners/rti.png" alt="RTI partner" loading="lazy" tabindex="0" role="button" aria-label="RTI">
+        <img src="/images/partners/oktalse.png" alt="OKTAL-SE partner" loading="lazy" tabindex="0" role="button" aria-label="OKTAL-SE">
+        <img src="/images/partners/cambridge-pixel.png" alt="Cambridge Pixel partner" loading="lazy" tabindex="0" role="button" aria-label="Cambridge Pixel">
+        <img src="/images/partners/pentek.png" alt="Pentek partner" loading="lazy" tabindex="0" role="button" aria-label="Pentek">
+      </div>
+      <a href="/about" class="btn-primary">LEARN MORE ABOUT US</a>
+    </div>
+  </section>
+
+  <section class="contact-sec section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-txt">
+          <h2>Get in Touch</h2>
+          <p>Whether you need a product quote, technical consultation, or want to explore a partnership, our engineering team is ready to help. Reach out for RFQs, system design discussions, or project-specific inquiries.</p>
+        </div>
+        <ContactForm prefix="home" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { background: var(--color-bg-alt); padding-top: 110px; padding-bottom: 0; }
+  .hero h1 { font-size: var(--font-size-6xl); padding: 0 var(--spacing-4xl); margin-bottom: var(--spacing-2xl); max-width: var(--container-max); margin-left: auto; margin-right: auto; }
+  .hero-img-wrap { position: relative; max-width: 1300px; margin: 0 auto; padding: 0 var(--spacing-4xl); }
+  .hero-img-wrap img { width: 100%; display: block; height: auto; object-fit: cover; }
+  .hero.section .hero-img-wrap { max-width: 100%; width: 100%; margin: 0; padding: 0 var(--spacing-2xl); box-sizing: border-box; }
+  .hero.section .hero-img-wrap img { width: 100%; height: auto; object-fit: cover; }
+  .hero-overlay { position: absolute; bottom: 40px; left: 90px; max-width: 420px; color: var(--color-white); font-size: var(--font-size-xl); line-height: 1.3; text-shadow: 0 1px 8px rgba(0,0,0,0.5); background: linear-gradient(transparent, var(--color-overlay-dark)); padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg); border-radius: 0 0 var(--radius-sm) var(--radius-sm); }
+  .hero-buttons { padding: 0 var(--spacing-4xl); margin-bottom: var(--spacing-2xl); max-width: var(--container-max); margin-left: auto; margin-right: auto; }
+  .featured { background: var(--color-bg); }
+  .featured-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-2xl); }
+  .featured-top h2 { font-size: var(--font-size-5xl); }
+  .products-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: var(--spacing-lg); align-items: start; }
+  .p-card { position: relative; cursor: pointer; transition: transform var(--transition-slow); text-decoration: none; color: inherit; }
+  .p-img { position: relative; overflow: hidden; background: var(--color-gray-200); padding-bottom: 75%; }
+  .p-img img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity var(--transition-slow); }
+  @media (hover: hover) { .p-card:hover { transform: translateY(-4px); } .p-card:hover img { opacity: 0.85; } }
+  .p-card:active { transform: translateY(0) scale(0.98); transition: all var(--transition-fast); }
+  .p-card .p-name { font-size: var(--font-size-lg); margin-top: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .p-card .p-price { font-size: var(--font-size-md); margin-top: var(--spacing-xs); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .sale-badge { position: absolute; top: 10px; right: 10px; background: var(--color-badge-bg); color: var(--color-white); font-size: var(--font-size-xs); padding: var(--spacing-xs) 10px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; z-index: 1; }
+  .new-badge { position: absolute; top: 10px; left: 10px; background: #2563eb; color: var(--color-white); font-size: var(--font-size-xs); padding: var(--spacing-xs) 10px; font-weight: 500; border-radius: 2px; z-index: 1; }
+  .svc-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-lg); }
+  .s-card { transition: transform var(--transition-slow); cursor: pointer; text-decoration: none; color: inherit; display: block; }
+  @media (hover: hover) { .s-card:hover { transform: translateY(-4px); } .s-card:hover img { opacity: 0.85; } }
+  .s-card:active { transform: translateY(0) scale(0.98); transition: all var(--transition-fast); }
+  .s-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: opacity var(--transition-slow); }
+  .s-card h3 { font-size: var(--font-size-3xl); margin-top: var(--spacing-md); }
+  .s-card .s-price { font-size: var(--font-size-lg); margin: var(--spacing-sm) 0 12px; }
+  .our-services { background: var(--color-bg); }
+  .svc-layout { display: flex; gap: var(--spacing-3xl); align-items: flex-start; }
+  .svc-text { flex: 1; min-width: 0; }
+  .svc-text h2 { font-size: var(--font-size-6xl); margin-bottom: var(--spacing-lg); }
+  .svc-text .desc { font-size: var(--font-size-lg); line-height: 1.4; margin-bottom: var(--spacing-2xl); }
+  .acc { border-top: 1px solid var(--color-gray-400); }
+  .acc-item { border-bottom: 1px solid var(--color-gray-400); }
+  .acc-title { display: flex; justify-content: space-between; align-items: center; padding: 18px var(--spacing-sm); margin: 0 calc(-1 * var(--spacing-sm)); cursor: pointer; font-size: var(--font-size-xl); font-weight: 400; transition: color var(--transition-base); border-radius: var(--radius-sm); }
+  @media (hover: hover) { .acc-title:hover { color: var(--color-gray-800); } }
+  .acc-title .icon { font-size: var(--font-size-lg); display: inline-block; transition: transform var(--transition-slow); }
+  .acc-item.open .acc-title .icon { transform: rotate(135deg); }
+  .acc-body { max-height: 0; overflow: hidden; padding: 0 0 0 var(--spacing-lg); font-size: var(--font-size-md); line-height: 1.4; transition: max-height 0.35s ease, padding 0.35s ease, opacity var(--transition-slow); opacity: 0; }
+  .acc-item.open .acc-body { max-height: 300px; padding: 0 0 18px var(--spacing-lg); opacity: 1; }
+  .svc-img { width: 50%; flex-shrink: 0; height: 500px; overflow: hidden; }
+  .svc-img img { width: 100%; height: 500px; object-fit: cover; }
+  .consult { background: var(--color-black); position: relative; overflow: hidden; min-height: 500px; display: flex; align-items: center; justify-content: center; text-align: center; }
+  .consult-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.4; }
+  .consult-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .consult-inner { position: relative; z-index: 2; color: var(--color-white); max-width: 700px; padding: var(--spacing-5xl) var(--spacing-lg); }
+  .consult-inner h2 { font-size: var(--font-size-6xl); margin-bottom: var(--spacing-lg); }
+  .consult-inner p { font-size: var(--font-size-lg); line-height: 1.4; margin-bottom: var(--spacing-2xl); }
+  .choose-plan { background: var(--color-bg); }
+  .choose-plan h2 { font-size: var(--font-size-6xl); margin-bottom: var(--spacing-3xl); }
+  .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-lg); }
+  .plan-card { border: 1px solid var(--color-gray-300); overflow: hidden; transition: transform var(--transition-slow), box-shadow var(--transition-slow); }
+  @media (hover: hover) { .plan-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); } }
+  .plan-card:active { transform: translateY(0) scale(0.98); transition: all var(--transition-fast); }
+  .plan-card img { width: 100%; aspect-ratio: 1792/1024; object-fit: cover; }
+  .plan-body { padding: var(--spacing-xl); }
+  .plan-body h3 { font-size: var(--font-size-2xl); margin-bottom: 12px; }
+  .plan-body .price { font-size: var(--font-size-price); margin-bottom: var(--spacing-xs); }
+  .plan-body .period { font-size: var(--font-size-md); color: var(--color-gray-700); margin-bottom: var(--spacing-md); }
+  .plan-body .plan-desc { font-size: var(--font-size-md); line-height: 1.4; margin-bottom: var(--spacing-lg); }
+  .about-co { background: var(--color-bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-3xl); align-items: start; }
+  .about-img { height: 650px; overflow: hidden; }
+  .about-img img { width: 100%; height: 650px; object-fit: cover; }
+  .about-txt { display: flex; flex-direction: column; justify-content: center; }
+  .about-txt h2 { font-size: var(--font-size-6xl); margin-bottom: var(--spacing-lg); }
+  .about-txt p { font-size: var(--font-size-lg); line-height: 1.5; }
+  .social { background: var(--color-bg); text-align: center; }
+  .social h2 { font-size: var(--font-size-5xl); margin-bottom: var(--spacing-2xl); }
+  .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: var(--spacing-2xl); }
+  .social-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; cursor: pointer; transition: transform var(--transition-slow), opacity var(--transition-slow); }
+  @media (hover: hover) { .social-grid img:hover { transform: scale(1.03); opacity: 0.85; } }
+  .social-grid img:active { transform: scale(0.98); transition: all var(--transition-fast); }
+  .contact-sec { background: var(--color-bg); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-5xl); align-items: start; }
+  .contact-txt h2 { font-size: var(--font-size-6xl); margin-bottom: var(--spacing-lg); }
+  .contact-txt p { font-size: var(--font-size-lg); line-height: 1.5; }
+
+  @media (max-width: 1024px) {
+    .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .svc-layout { flex-direction: column; }
+    .svc-img { width: 100%; height: 400px; }
+    .svc-img img { height: 400px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .about-img { height: 400px; }
+    .about-img img { height: 400px; }
+    .plans-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+    .svc-cards { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+    .social-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .consult-inner h2 { font-size: 36px; }
+    .choose-plan h2, .svc-text h2, .about-txt h2, .contact-txt h2 { font-size: 38px; }
+    .hero h1 { font-size: 38px; padding: 0 30px; }
+    .hero-img-wrap { padding: 0 30px; }
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding-top: 90px; }
+    .hero h1 { font-size: var(--font-size-4xl); padding: 0 20px; }
+    .hero-buttons { padding: 0 var(--spacing-lg); display: flex; flex-direction: column; gap: var(--spacing-md); }
+    .hero-buttons .mr-sm { margin-right: 0; }
+    .hero-img-wrap { padding: 0; }
+    .hero-overlay { left: 0; right: 0; bottom: 0; font-size: var(--font-size-base); max-width: none; padding: 30px 20px 20px; text-align: center; }
+    .featured-top { flex-direction: column; align-items: flex-start; gap: var(--spacing-md); }
+    .featured-top h2 { font-size: var(--font-size-4xl); }
+    .svc-text h2 { font-size: var(--font-size-5xl); }
+    .consult { min-height: 350px; }
+    .consult-inner h2 { font-size: var(--font-size-4xl); }
+    .about-txt h2 { font-size: var(--font-size-5xl); }
+    .social h2 { font-size: var(--font-size-4xl); }
+    .contact-txt h2 { font-size: var(--font-size-5xl); }
+    .contact-grid { grid-template-columns: 1fr; }
+    .about-img { height: 350px; }
+    .about-img img { height: 350px; }
+    .products-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--spacing-md); }
+    .social-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 6px; }
+    .svc-cards { grid-template-columns: 1fr; max-width: 100%; }
+    .p-card .p-name { font-size: 13px; white-space: normal; line-height: 1.3; }
+    .p-card .p-price { font-size: 11px; white-space: normal; line-height: 1.3; }
+    .svc-layout .svc-img { width: 100%; height: 300px; }
+    .svc-img img { height: 300px; }
+    .consult-inner { padding: var(--spacing-3xl) var(--spacing-lg); }
+    .choose-plan h2 { font-size: var(--font-size-5xl); margin-bottom: var(--spacing-xl); }
+    .img-tall { height: 400px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: var(--font-size-3xl); }
+    .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .social-grid { grid-template-columns: 1fr; }
+    .featured-top h2 { font-size: var(--font-size-3xl); }
+    .svc-text h2, .about-txt h2, .contact-txt h2, .choose-plan h2 { font-size: 26px; }
+    .consult-inner h2 { font-size: var(--font-size-3xl); }
+  }
+</style>
+
+<script>
+  // Accordion toggle for home page
+  function toggleAccordion(e: Event) {
+    const el = e.target as HTMLElement;
+    if (e instanceof KeyboardEvent && e.key !== 'Enter' && e.key !== ' ') return;
+
+    const title = el.closest('.acc-title');
+    if (!title) return;
+    if (e instanceof KeyboardEvent) e.preventDefault();
+
+    const item = title.parentElement;
+    if (!item) return;
+    item.classList.toggle('open');
+    const isOpen = item.classList.contains('open');
+    title.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  document.addEventListener('click', toggleAccordion);
+  document.addEventListener('keydown', toggleAccordion);
+</script>

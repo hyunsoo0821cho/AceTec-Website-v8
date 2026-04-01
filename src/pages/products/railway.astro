@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="Rail Transportation Products - AceTec">
+  <section class="section pt-page">
+    <div class="container">
+      <h1 class="heading-page">Rail Transportation</h1>
+      <p class="heading-sub color-muted">TÜV SÜD SIL4 certified HIMA ControlSafe™ platforms for CBTC, interlocking, and train control — delivering the highest safety integrity levels in rail signaling.</p>
+      <div class="products-grid">
+        <div class="p-card"><div class="p-img"><span class="sale-badge">SIL4</span><img src="/images/products/hima-railway.png" alt="HIMA Railway Systems" loading="lazy"></div><div class="p-name">HIMA HiMax System</div><div class="p-price">Flexible COTS control for train control centers · CBTC · PTC · ATP · ATO · ATS</div></div>
+        <div class="p-card"><div class="p-img"><span class="sale-badge">SIL4</span><img src="/images/products/hima-railway.png" alt="ControlSafe Platform" loading="lazy"></div><div class="p-name">HIMA ControlSafe™ Platform</div><div class="p-price">ControlSafe CCC · ControlSafe EXB · SIL3/SIL4 Certified</div></div>
+        <div class="p-card"><div class="p-img"><img src="/images/products/hima-railway.png" alt="RTOS for Railway" loading="lazy"></div><div class="p-name">RTOS — Wind River</div><div class="p-price">VxWorks · VxWorks 653 Cert · ISaGRAF</div></div>
+        <div class="p-card"><div class="p-img"><img src="/images/products/fanless-pc.png" alt="Railway Industrial PCs" loading="lazy"></div><div class="p-name">Industrial PCs for Railway</div><div class="p-price">Signal Display Control · Station HMI · Trackside Systems</div></div>
+      </div>
+      <div class="mt-xl"><a href="/solutions" class="btn-secondary">&larr; BACK TO ALL SOLUTIONS</a></div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .products-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--spacing-lg); align-items: start; }
+  .p-card { position: relative; cursor: pointer; transition: transform var(--transition-slow); }
+  .p-img { position: relative; overflow: hidden; background: var(--color-gray-200); padding-bottom: 75%; }
+  .p-img img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity var(--transition-slow); }
+  .sale-badge { position: absolute; top: 10px; right: 10px; background: var(--color-badge-bg); color: var(--color-white); font-size: var(--font-size-xs); padding: var(--spacing-xs) 10px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 500; z-index: 1; }
+  @media (hover: hover) { .p-card:hover { transform: translateY(-4px); } .p-card:hover img { opacity: 0.85; } }
+  .p-card:active { transform: translateY(0) scale(0.98); transition: all var(--transition-fast); }
+  .p-card .p-name { font-size: var(--font-size-lg); margin-top: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .p-card .p-price { font-size: var(--font-size-md); margin-top: var(--spacing-xs); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  @media (max-width: 1024px) { .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 768px) {
+    .products-grid { gap: var(--spacing-md); }
+    .p-card .p-name { font-size: 13px; white-space: normal; line-height: 1.3; }
+    .p-card .p-price { font-size: 11px; white-space: normal; line-height: 1.3; }
+  }
+</style>

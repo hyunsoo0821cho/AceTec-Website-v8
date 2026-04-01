@@ -1,0 +1,168 @@
+---
+/**
+ * Header - 고정 네비게이션 바
+ * v7 index.html header 섹션에서 추출
+ * data-page → <a href=""> 로 전환 (Astro 파일 라우팅)
+ */
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const navLinks = [
+  { href: '/solutions', label: 'Solutions' },
+  { href: '/applications', label: 'Applications' },
+  { href: '/about', label: 'About' },
+  { href: '/history', label: 'History' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/login', label: 'Login' },
+  { href: '/cart', label: 'Cart' },
+];
+---
+
+<header class="header" id="mainHeader">
+  <a class="site-title" href="/">AceTec</a>
+  <nav class="nav-right" aria-label="Main navigation">
+    {navLinks.map(({ href, label }) => (
+      <a
+        class:list={['nav-link', { active: currentPath === href }]}
+        href={href}
+        aria-current={currentPath === href ? 'page' : undefined}
+      >
+        {label}
+      </a>
+    ))}
+    <a class="btn-book" href="/contact">Inquiry</a>
+  </nav>
+  <span class="mobile-cart-count" aria-label="Cart items">(0)</span>
+  <button
+    class="hamburger"
+    id="hamburgerBtn"
+    aria-label="Open menu"
+    aria-expanded="false"
+    aria-controls="mobileMenu"
+  >
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-header);
+    padding: 22px var(--spacing-4xl);
+    padding-top: max(22px, env(safe-area-inset-top));
+    padding-left: max(var(--spacing-4xl), env(safe-area-inset-left));
+    padding-right: max(var(--spacing-4xl), env(safe-area-inset-right));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background var(--transition-slow), box-shadow var(--transition-slow);
+  }
+
+  .header.scrolled {
+    box-shadow: var(--shadow-header);
+  }
+
+  .header.transparent {
+    background: transparent;
+    backdrop-filter: none;
+  }
+  .header.transparent .site-title,
+  .header.transparent .nav-link {
+    color: var(--color-white);
+  }
+  .header.transparent .btn-book {
+    background: transparent;
+    border: 2px solid var(--color-white);
+    color: var(--color-white);
+  }
+  .header.transparent .hamburger span {
+    background: var(--color-white);
+  }
+
+  .site-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-black);
+    letter-spacing: 0;
+    cursor: pointer;
+    transition: opacity var(--transition-base);
+    text-decoration: none;
+  }
+
+  .site-title:hover {
+    opacity: 0.6;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+
+  .nav-link {
+    font-size: var(--font-size-md);
+    font-weight: 400;
+    color: var(--color-black);
+    cursor: pointer;
+    transition: opacity var(--transition-base);
+    text-decoration: none;
+  }
+
+  .nav-link:hover {
+    opacity: 0.6;
+  }
+
+  .nav-link.active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: var(--spacing-sm);
+    z-index: var(--z-hamburger);
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-black);
+    margin: 5px 0;
+    transition: all var(--transition-slow);
+  }
+
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .mobile-cart-count {
+    display: none;
+    font-size: var(--font-size-base);
+    color: var(--color-black);
+    margin-right: var(--spacing-md);
+    font-family: var(--font-family);
+  }
+
+  @media (max-width: 1024px) {
+    .header { padding: 18px 30px; }
+  }
+
+  @media (max-width: 768px) {
+    .header { padding: 16px 20px; }
+    .nav-right { display: none; }
+    .hamburger { display: block; }
+  }
+</style>

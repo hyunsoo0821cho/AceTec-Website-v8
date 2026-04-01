@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Base title="Solutions - AceTec">
+  <section class="section pt-page">
+    <div class="container">
+      <div class="svc-header-grid">
+        <h1 class="text-6xl">Solutions</h1>
+        <p class="text-lg">End-to-end technology solutions for defense, aerospace, rail, telecom, and industrial automation — spanning hardware selection, system integration, and lifecycle support.</p>
+      </div>
+      <div class="svc-cards">
+        <a href="/products/military" class="s-card"><img src="/images/services/military-aerospace.png" alt="Military and Aerospace solutions" loading="lazy"><h3>Military &amp; Aerospace</h3><div class="s-price">Defense-Grade Computing</div><p>Rugged VPX/VME boards and signal processing platforms purpose-built for precision strike, C2, surveillance, and unmanned systems in the most demanding operational environments.</p></a>
+        <a href="/products/railway" class="s-card"><img src="/images/services/railway.png" alt="Railway and Transportation solutions" loading="lazy"><h3>Rail Transportation</h3><div class="s-price">SIL4 Safety Systems</div><p>TÜV SÜD SIL4 certified HIMA ControlSafe™ platforms for CBTC, interlocking, and train control — delivering the highest safety integrity levels in rail signaling.</p></a>
+        <a href="/products/industrial" class="s-card"><img src="/images/services/industrial.png" alt="Industrial Automation solutions" loading="lazy"><h3>Industrial Automation</h3><div class="s-price">Industrial-Grade Platforms</div><p>Fanless industrial PCs, network appliances, and IoT platforms for factory automation, process control, semiconductor manufacturing, and quality inspection.</p></a>
+        <a href="/products/telecom" class="s-card"><img src="/images/services/industrial.png" alt="Telecom and Networking solutions" loading="lazy"><h3>Telecom &amp; Networking</h3><div class="s-price">Network Infrastructure</div><p>Intel/AMD-based network appliances for firewall, VPN, UTM, and load balancing — along with high-performance NIC adapters for data center and telecom infrastructure.</p></a>
+        <a href="/products/sensor" class="s-card"><img src="/images/services/military-aerospace.png" alt="Sensor Modeling and Simulation solutions" loading="lazy"><h3>Sensor Modeling &amp; Simulation</h3><div class="s-price">OKTAL-SE Solutions</div><p>High-fidelity EO/IR/RF sensor simulation from OKTAL-SE for Hardware-In-the-Loop, Man-In-the-Loop, and training environments across defense and aerospace programs.</p></a>
+        <a href="/products/hpc" class="s-card"><img src="/images/services/military-aerospace.png" alt="High Performance Computing solutions" loading="lazy"><h3>High Performance Computing</h3><div class="s-price">GPU &amp; Compute Platforms</div><p>High-density GPU servers and PCIe expansion systems for machine learning, financial analysis, military applications, medical imaging, and scientific research.</p></a>
+      </div>
+    </div>
+  </section>
+  <section class="contact-bright section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-txt"><h2>Request a Quote</h2><p>Share your project requirements and our engineering team will deliver a tailored solution proposal within two business days.</p></div>
+        <ContactForm prefix="svc" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .svc-header-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg); margin-bottom: var(--spacing-2xl); }
+  .svc-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-lg); }
+  .s-card { transition: transform var(--transition-slow); cursor: pointer; text-decoration: none; color: inherit; display: block; }
+  @media (hover: hover) { .s-card:hover { transform: translateY(-4px); } .s-card:hover img { opacity: 0.85; } }
+  .s-card:active { transform: translateY(0) scale(0.98); transition: all var(--transition-fast); }
+  .s-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; transition: opacity var(--transition-slow); }
+  .s-card h3 { font-size: var(--font-size-3xl); margin-top: var(--spacing-md); }
+  .s-card .s-price { font-size: var(--font-size-lg); margin: var(--spacing-sm) 0 12px; }
+  .s-card p { font-size: var(--font-size-md); line-height: 1.4; }
+  .contact-bright { background: var(--color-bg-alt); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-5xl); align-items: start; }
+  .contact-txt h2 { font-size: var(--font-size-6xl); margin-bottom: var(--spacing-lg); }
+  .contact-txt p { font-size: var(--font-size-lg); line-height: 1.5; }
+
+  @media (max-width: 1024px) { .svc-cards { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; } }
+  @media (max-width: 768px) {
+    .svc-header-grid, .contact-grid { grid-template-columns: 1fr; }
+    .svc-cards { max-width: 100%; }
+    .text-6xl { font-size: var(--font-size-5xl); }
+  }
+</style>

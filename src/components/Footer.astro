@@ -1,0 +1,126 @@
+---
+/**
+ * Footer - 사이트 푸터
+ * v7 index.html footer 섹션에서 추출
+ */
+---
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>AceTec</h4>
+      <p>Trusted for over 30 years in embedded computing, industrial PCs, and safety-critical systems — serving defense, aerospace, railway, and industrial markets.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Solutions</h4>
+      <a href="/products/military">Military &amp; Aerospace</a>
+      <a href="/products/railway">Rail Transportation</a>
+      <a href="/products/industrial">Industrial Automation</a>
+      <a href="/products/telecom">Telecom &amp; Networking</a>
+      <a href="/products/sensor">Sensor Modeling &amp; Simulation</a>
+      <a href="/products/hpc">High Performance Computing</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/solutions">Solutions</a>
+      <a href="/applications">Applications</a>
+      <a href="/about">About</a>
+      <a href="/history">History</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Partners</h4>
+      <a href="https://www.abaco.com" target="_blank" rel="noopener">Abaco Systems</a>
+      <a href="https://www.artesyn.com" target="_blank" rel="noopener">SMART Embedded Computing</a>
+      <a href="https://www.onestopsystems.com" target="_blank" rel="noopener">OneStopSystems</a>
+      <a href="https://www.pentek.com" target="_blank" rel="noopener">Pentek</a>
+      <a href="https://www.windriver.com" target="_blank" rel="noopener">Wind River</a>
+      <a href="https://www.oktal-se.fr" target="_blank" rel="noopener">OKTAL-SE</a>
+      <a href="https://www.rti.com" target="_blank" rel="noopener">RTI</a>
+      <a href="https://www.hima.com" target="_blank" rel="noopener">HIMA</a>
+      <a href="https://www.cambridgepixel.com" target="_blank" rel="noopener">Cambridge Pixel</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>
+        <strong>Seoul HQ</strong><br>
+        <a href="mailto:acetec@acetec-korea.co.kr">acetec@acetec-korea.co.kr</a><br>
+        <a href="tel:+8224202343">+82-2-420-2343</a><br>
+        FAX: +82-2-420-2757
+      </p>
+      <p>
+        <strong>Daejeon Branch</strong><br>
+        Rm. 205, Migeon Techno World, 199, Techno 2-ro, Yuseong-gu, Daejeon<br>
+        <a href="tel:+82424712343">+82-42-471-2343</a><br>
+        FAX: +82-42-933-2642
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    AceTec Co., Ltd. &middot; CEO: Jang Jeong Hoon &middot; Biz No: 215-81-68464<br>
+    &copy; {new Date().getFullYear()} AceTec Co., Ltd. All rights reserved.
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: var(--spacing-5xl) var(--spacing-4xl) var(--spacing-2xl);
+    padding-bottom: max(var(--spacing-2xl), env(safe-area-inset-bottom));
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--spacing-3xl);
+    max-width: var(--container-max);
+    margin: 0 auto;
+  }
+
+  .footer-col h4 {
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-col p {
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--color-footer-link);
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: var(--font-size-base);
+    color: var(--color-footer-link);
+    padding: 6px 0;
+    transition: color var(--transition-base);
+  }
+
+  .footer-col a:hover {
+    color: var(--color-white);
+  }
+
+  .footer-bottom {
+    max-width: var(--container-max);
+    margin: var(--spacing-3xl) auto 0;
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-gray-900);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-700);
+    text-align: center;
+  }
+
+  @media (max-width: 1024px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-col a { padding: 10px 0; }
+    .site-footer { padding: var(--spacing-3xl) var(--spacing-lg) var(--spacing-lg); }
+  }
+</style>
