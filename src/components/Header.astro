@@ -35,7 +35,7 @@ const navLinks = [
 // 메가메뉴 데이터 JSON에서 로드
 const root = process.cwd();
 const megaData = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'megamenu.json'), 'utf-8'));
-const megaCategories = megaData.categories || [];
+const megaMenuCols = megaData.columns || [];
 
 // 관리자 인라인 편집 헬퍼
 function eMega(p: string) {
@@ -60,8 +60,13 @@ function eMega(p: string) {
             </a>
             <div class="mega-menu">
               <div class="mega-grid">
-                {megaCategories.map((cat: any, ci: number) => (
-                  <a href={cat.href} class="mega-title" {...eMega(`categories[${ci}].title`)}>{cat.title}</a>
+                {megaMenuCols.map((col: any, ci: number) => (
+                  <div class="mega-col">
+                    <a href={col.href} class="mega-title" {...eMega(`columns[${ci}].title`)}>{col.title}</a>
+                    {col.items.map((item: string) => (
+                      <span class="mega-item">{item}</span>
+                    ))}
+                  </div>
                 ))}
               </div>
             </div>
@@ -226,25 +231,28 @@ function eMega(p: string) {
   .mega-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px 32px;
-    max-width: 1000px;
+    gap: var(--spacing-xl) var(--spacing-2xl);
+    max-width: 1200px;
     margin: 0 auto;
   }
 
+  .mega-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
   .mega-title {
-    display: block;
     font-size: var(--font-size-base);
-    font-weight: 500;
-    color: #1e293b;
+    font-weight: 600;
+    color: #1a5ba0;
+    margin-bottom: 6px;
     text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: background 0.15s, color 0.15s;
+    transition: opacity var(--transition-base);
   }
 
   .mega-title:hover {
-    background: #f1f5f9;
-    color: #2563eb;
+    opacity: 0.7;
   }
 
   .mega-item {

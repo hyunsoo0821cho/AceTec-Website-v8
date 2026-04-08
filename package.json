@@ -18,6 +18,7 @@
     "format:check": "prettier --check .",
     "ingest": "npx tsx scripts/ingest-embeddings.ts",
     "test": "vitest run",
+    "sync": "node scripts/auto-sync.mjs",
     "watch-images": "npx tsx scripts/watch-images.ts",
     "test:watch": "vitest",
     "test:a11y": "playwright test",

@@ -1,16 +1,123 @@
 {
-  "categories": [
-    { "title": "Industrial PCs", "href": "/products/ipc" },
-    { "title": "Network Appliance", "href": "/products/telecom" },
-    { "title": "Device Cloud (IoT)", "href": "/products/industrial" },
-    { "title": "Form Factor \u2014 Abaco", "href": "/products/military" },
-    { "title": "HIMA Railway", "href": "/products/railway" },
-    { "title": "High Performance Computing", "href": "/products/hpc" },
-    { "title": "Embedded Digital Signal Processing", "href": "/products/military" },
-    { "title": "Real-Time Operating System", "href": "/products/industrial" },
-    { "title": "Sensor Modeling & Simulation", "href": "/products/sensor" },
-    { "title": "Middleware Software", "href": "/products/telecom" },
-    { "title": "Radar Processing System", "href": "/products/radar" },
-    { "title": "PCIe Fabric & Low Latency Networking", "href": "/products/interconnect" }
+  "columns": [
+    {
+      "title": "",
+      "href": "/products/ipc",
+      "items": [
+        "Boxtype PC",
+        "Rackmount PC",
+        "Server",
+        "Desktop PC",
+        "Wallmount PC",
+        "Panel PC"
+      ]
+    },
+    {
+      "title": "",
+      "href": "/products/telecom",
+      "items": [
+        "Entry Network Appliance",
+        "Middle Network Appliance",
+        "High-end Network Appliance",
+        "Server Network Appliance",
+        "Customizing Network Appliance",
+        "NIC Adapter"
+      ]
+    },
+    {
+      "title": "",
+      "href": "/products/industrial",
+      "items": [
+        "Helix Virtualization Platform",
+        "Software Defined Infrastructure",
+        "Wind River Simics"
+      ]
+    },
+    {
+      "title": "",
+      "href": "/products/military",
+      "items": [
+        "VME",
+        "VPX 3U",
+        "VPX 6U",
+        "Compact PCI",
+        "PMC",
+        "XMC",
+        "FMC/FMC+"
+      ]
+    },
+    {
+      "title": "",
+      "href": "/products/railway",
+      "items": [
+        "HiMax System",
+        "HiMatrix System"
+      ]
+    },
+    {
+      "title": "",
+      "href": "/products/hpc",
+      "items": [
+        "Servers",
+        "Desktop Computing Appliances",
+        "GPU Appliances",
+        "GPU Expansion",
+        "VIDEO Acceleration Platform"
+      ]
+    },
+    {
+      "title": "",
+      "href": "/products/military",
+      "items": [
+        "Jade",
+        "Cobalt",
+        "Onyx",
+        "Talon",
+        "Flexor",
+        "Spark"
+      ]
+    },
+    {
+      "title": "",
+      "href": "/products/industrial",
+      "items": [
+        "Wind River VxWorks",
+        "Wind River Linux",
+        "VxWorks 653 and Certified System",
+        "SoftPLC ISaGRAF"
+      ]
+    },
+    {
+      "title": "",
+      "href": "/products/sensor",
+      "items": [
+        "EO/IR Sensor Simulation",
+        "RF Sensor Simulation",
+        "Active EO Sensor Simulation",
+        "GNSS Sensor Simulation",
+        "3D Terrain & Building Generation",
+        "APIs",
+        "Special Effects",
+        "3D Database"
+      ]
+    },
+    {
+      "title": "",
+      "href": "/products/telecom",
+      "items": [
+        "Connext DDS Professional",
+        "Connext DDS Secure",
+        "Connext DDS Micro",
+        "Connext DDS Cert"
+      ]
+    },
+    {
+      "title": "",
+      "href": "/products/radar",
+      "items": [
+        "SPx Software Family",
+        "HPx Hardware Family"
+      ]
+    }
   ]
 }

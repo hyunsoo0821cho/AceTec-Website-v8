@@ -142,11 +142,11 @@
   },
   "solutionCards": [
     {
-      "title": "군수항공분야",
-      "subtitle": "Abaco (Rugged 임베디드 보드)",
+      "title": "Military & Aerospace",
+      "subtitle": "Defense-Grade Computing",
       "image": "/images/services/military-aerospace.png",
       "href": "/products/military",
-      "description": "VME, VPX 3U/6U, CompactPCI, PMC, XMC, FMC/FMC+ 등 가혹한 환경에서도 동작하는 고신뢰성 임베디드 솔루션입니다. 주요 제품: DSP (디지털 신호 처리 플랫폼), Radar (레이더 체계 및 제어)",
+      "description": "Rugged VPX/VME boards and signal processing platforms purpose-built for precision strike, C2, surveillance, and unmanned systems in the most demanding operational environments.",
       "subcategories": [
         "Form Factor — Abaco",
         "Middleware Software",
@@ -154,11 +154,11 @@
       ]
     },
     {
-      "title": "철도분야",
-      "subtitle": "HIMA (열차 제어 및 안전 시스템)",
+      "title": "Rail Transportation",
+      "subtitle": "SIL4 Safety Systems",
       "image": "/images/services/railway.png",
       "href": "/products/railway",
-      "description": "HiMax, HiMatrix를 포함하며, 철도 안전의 핵심인 SIL3/SIL4 등급을 만족하는 안전 제어 시스템입니다. 주요 기술: RTOS (실시간 운영체제 기반 제어)",
+      "description": "TÜV SÜD SIL4 certified HIMA ControlSafe™ platforms for CBTC, interlocking, and train control — delivering the highest safety integrity levels in rail signaling.",
       "subcategories": [
         "HIMA SIL4 Railway System",
         "HiMax System",
@@ -166,23 +166,22 @@
       ]
     },
     {
-      "title": "자동화분야",
-      "subtitle": "Auto",
+      "title": "Industrial Automation",
+      "subtitle": "Industrial-Grade Platforms",
       "image": "/images/services/industrial.png",
       "href": "/products/industrial",
-      "description": "ACETEC은 다양한 산업 분야에 맞춤형 임베디드 컴퓨팅 솔루션과 전문 컨설팅을 제공하여 산업 효율성을 최적화합니다.",
+      "description": "Fanless industrial PCs, network appliances, and IoT platforms for factory automation, process control, semiconductor manufacturing, and quality inspection.",
       "subcategories": [
-        "Network Appliance",
         "Device Cloud (IoT)",
         "Real-Time Operating System"
       ]
     },
     {
-      "title": "정보통신분야",
-      "subtitle": "Server (통신용 서버 솔루션)",
+      "title": "Telecom & Networking",
+      "subtitle": "Network Infrastructure",
       "image": "/images/services/telecom.png",
       "href": "/products/telecom",
-      "description": "대용량 데이터 처리와 끊김 없는 연결을 위한 고가용성 네트워크 서버 인프라를 제공합니다. 주요 기술: Middleware (데이터 연동 및 최적화 미들웨어)",
+      "description": "Intel/AMD-based network appliances for firewall, VPN, UTM, and load balancing — along with high-performance NIC adapters for data center and telecom infrastructure.",
       "subcategories": [
         "Entry/Middle/High-end Network Appliance",
         "Server Network Appliance",
@@ -190,11 +189,11 @@
       ]
     },
     {
-      "title": "슈퍼컴퓨팅시스템분야",
-      "subtitle": "High Performance Computing",
+      "title": "Sensor Modeling & Simulation",
+      "subtitle": "OKTAL-SE Solutions",
       "image": "/images/products/sensor/satellite.png",
       "href": "/products/sensor",
-      "description": "Big Data, UHD/FHD, Simulation 등의 대용량의 자료와 정보가 증가함에 따라 Data 처리 속도의 중요성은 계속해서 증가하면서 HPC의 요구가 공공기관, 학교, 실험실 등에서 증가하고 있습니다. High Density Compute Accelerator는 CPU가 아닌 GPU를 통한 타 HPC와의 차별화 제품을 제공합니다.",
+      "description": "High-fidelity EO/IR/RF sensor simulation from OKTAL-SE for Hardware-In-the-Loop, Man-In-the-Loop, and training environments across defense and aerospace programs.",
       "subcategories": [
         "EO/IR Sensor Simulation",
         "RF Sensor Simulation",
@@ -204,19 +203,19 @@
       ]
     },
     {
-      "title": "산업용컴퓨터분야",
-      "subtitle": "산업용 컴퓨터",
+      "title": "R&D Center",
+      "subtitle": "AI, R&D Center",
       "image": "/images/services/ai-center.png",
       "href": "",
       "i18nKey": "lab",
-      "description": "관공서 업무용 장비부터 특수목적 컴퓨팅, 국방용 시스템, 산업용 HMI, 반도체 품질 검사 장비까지 포괄적인 기술 솔루션을 제공합니다."
+      "description": "From embedded hardware design to software algorithms, we research the entire process of specialized control systems and achieve technological internalization."
     },
     {
-      "title": "슈퍼컴퓨팅시스템분야",
+      "title": "Supercomputing Systems",
       "subtitle": "High Performance Computing",
       "image": "/images/services/hpc.png",
       "href": "/products/hpc",
-      "description": "Big Data, UHD/FHD, Simulation 등의 대용량의 자료와 정보가 증가함에 따라 Data 처리 속도의 중요성은 계속해서 증가하면서 HPC의 요구가 공공기관, 학교, 실험실 등에서 증가하고 있습니다. High Density Compute Accelerator는 CPU가 아닌 GPU를 통한 타 HPC와의 차별화 제품을 제공합니다.",
+      "description": "As Big Data, UHD/FHD, and Simulation demands grow, HPC requirements are increasing across government, academia, and research labs. High Density Compute Accelerators deliver differentiated HPC through GPU-based processing.",
       "subcategories": [
         "Servers",
         "Desktop Computing Appliances",
@@ -226,9 +225,9 @@
       ]
     },
     {
-      "title": "산업용컴퓨터분야",
-      "subtitle": "산업용 컴퓨터",
-      "description": "관공서 업무용 장비부터 특수목적 컴퓨팅, 국방용 시스템, 산업용 HMI, 반도체 품질 검사 장비까지 포괄적인 기술 솔루션을 제공합니다.",
+      "title": "Industrial PCs & Fanless Systems",
+      "subtitle": "Industrial Computer",
+      "description": "Boxtype, rackmount, server, desktop, wall-mount, and panel PCs for 24/7 industrial operation — fanless designs, wide temperature, and KC/ISO certified.",
       "image": "/images/services/ipc.png",
       "href": "/products/ipc",
       "subcategories": [
@@ -241,9 +240,9 @@
       ]
     },
     {
-      "title": "레이더 분야",
-      "subtitle": "레이더 처리 & 디스플레이",
-      "description": "레이더 신호의 생성과 획득부터 정밀 분석, 타겟 추적, 다채널 데이터 기록 및 통합 상황 시각화까지 레이더 데이터 처리의 전 과정을 지원하는 종합 솔루션입니다.",
+      "title": "Radar Processing & Display",
+      "subtitle": "Cambridge Pixel Solutions",
+      "description": "High-performance radar scan conversion, target tracking, and display solutions from Cambridge Pixel — SPx Server, HPx acquisition cards, and integrated radar visualization systems.",
       "image": "/images/services/radar.png",
       "href": "/products/radar",
       "subcategories": [
@@ -252,9 +251,9 @@
       ]
     },
     {
-      "title": "초고속 데이터 인터커넥트 분야",
+      "title": "High-Speed Data Interconnect",
       "subtitle": "PCIe Fabric & Low Latency Networking",
-      "description": "PCIe 기반의 독자적인 통신 프로토콜을 활용하여 서버, GPU, 스토리지 간의 데이터 전송 지연을 극소화하고, 여러 대의 노드를 하나의 단일 시스템처럼 작동시키는 초고속 연산 클러스터를 구축합니다.",
+      "description": "Utilizing proprietary PCIe-based communication protocols to minimize data transfer latency between servers, GPUs, and storage, building ultra-fast computing clusters that operate multiple nodes as a single unified system.",
       "image": "/uploads/services/1775193405048-dolphin---.webp",
       "href": "/products/interconnect",
       "subcategories": [

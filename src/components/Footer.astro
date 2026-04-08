@@ -44,7 +44,10 @@ function e(p: string) {
         d?.solutionLinks ? (
           <>
             {d.solutionLinks.map((link: any, i: number) => (
-              <a href={link.href} {...e(`solutionLinks[${i}].label`)}>{link.label}</a>
+              <div class="footer-link-row">
+                <a href={link.href} {...e(`solutionLinks[${i}].label`)}>{link.label}</a>
+                {isAdmin && <button class="footer-del-btn" data-admin-delete={`solutionLinks[${i}]`} data-edit-page="footer">&times;</button>}
+              </div>
             ))}
             {isAdmin && (
               <button
@@ -76,7 +79,10 @@ function e(p: string) {
         d?.companyLinks ? (
           <>
             {d.companyLinks.map((link: any, i: number) => (
-              <a href={link.href} {...e(`companyLinks[${i}].label`)}>{link.label}</a>
+              <div class="footer-link-row">
+                <a href={link.href} {...e(`companyLinks[${i}].label`)}>{link.label}</a>
+                {isAdmin && <button class="footer-del-btn" data-admin-delete={`companyLinks[${i}]`} data-edit-page="footer">&times;</button>}
+              </div>
             ))}
             {isAdmin && (
               <button
@@ -104,9 +110,10 @@ function e(p: string) {
         d?.partners ? (
           <>
             {d.partners.map((p: any, i: number) => (
-              <a href={p.url} target="_blank" rel="noopener" {...e(`partners[${i}].name`)}>
-                {p.name}
-              </a>
+              <div class="footer-link-row">
+                <a href={p.url} target="_blank" rel="noopener" {...e(`partners[${i}].name`)}>{p.name}</a>
+                {isAdmin && <button class="footer-del-btn" data-admin-delete={`partners[${i}]`} data-edit-page="footer">&times;</button>}
+              </div>
             ))}
             {isAdmin && (
               <button
@@ -242,6 +249,35 @@ function e(p: string) {
     border-color: #3b82f6;
     color: #3b82f6;
   }
+
+  .footer-link-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .footer-link-row a {
+    flex: 1;
+    min-width: 0;
+  }
+  .footer-del-btn {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: none;
+    background: #ef4444;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .footer-link-row:hover .footer-del-btn { opacity: 1; }
+  .footer-del-btn:hover { background: #dc2626; }
 
   .footer-bottom {
     margin: var(--spacing-3xl) auto 0;

@@ -26,77 +26,9 @@
       "alt": "RTOS Wind River",
       "partner": "Wind River",
       "detailDescription": "Wind River real-time operating systems for industrial automation, including VxWorks, Wind River Linux, and ISaGRAF IEC 61131-3 control runtime."
-    },
-    {
-      "name": "RAM Module",
-      "specs": "Industrial-grade memory for embedded systems",
-      "image": "/images/products/ram-module.png",
-      "alt": "RAM Module",
-      "badge": "new",
-      "detailDescription": "Industrial-grade RAM modules designed for embedded computing systems, featuring extended temperature range and high reliability."
-    },
-    {
-      "name": "CPU Processor",
-      "specs": "Intel & AMD processors for industrial platforms",
-      "image": "/images/products/cpu-processor.png",
-      "alt": "CPU Processor",
-      "badge": "new",
-      "detailDescription": "Intel and AMD processors optimized for industrial computing platforms, supporting extended lifecycle and wide temperature operation."
-    },
-    {
-      "name": "HDD & Storage",
-      "specs": "Industrial-grade HDDs and SSDs",
-      "image": "/images/products/hdd-2tb.png",
-      "alt": "HDD Storage",
-      "badge": "new",
-      "detailDescription": "Industrial-grade hard disk drives and solid-state drives for embedded systems, offering high reliability in harsh environments."
-    },
-    {
-      "name": "Motherboard",
-      "specs": "Industrial & embedded motherboards",
-      "image": "/images/products/motherboard.png",
-      "alt": "Motherboard",
-      "badge": "new",
-      "detailDescription": "Industrial and embedded motherboards supporting long product lifecycles, wide operating temperatures, and multiple I/O expansion options."
-    },
-    {
-      "name": "ISaGRAF",
-      "specs": "IEC 61131-3 compliant SoftPLC development environment for embedded automation",
-      "image": "",
-      "badge": "none"
     }
   ],
   "sections": [
-    {
-      "title": "Network Appliance",
-      "products": [
-        {
-          "name": "Entry Network Appliance",
-          "image": "/images/products/telecom/network-appliance.png",
-          "features": ["Intel Atom / Celeron", "2~6 GbE LAN", "Compact 1U / Desktop"]
-        },
-        {
-          "name": "Middle Network Appliance",
-          "image": "/images/products/telecom/network-appliance.png",
-          "features": ["Intel Core i3/i5/i7", "6~10 GbE LAN", "1U Rackmount"]
-        },
-        {
-          "name": "High-end Network Appliance",
-          "image": "/images/products/telecom/network-appliance.png",
-          "features": ["Intel Xeon Scalable", "10~20 GbE LAN", "2U Rackmount"]
-        },
-        {
-          "name": "Server Network Appliance",
-          "image": "/images/products/telecom/network-appliance.png",
-          "features": ["Dual Xeon", "High Availability", "Enterprise Grade"]
-        },
-        {
-          "name": "NIC Adapter",
-          "image": "/images/products/telecom/network-appliance.png",
-          "features": ["1G / 10G / 25G / 40G", "PCIe x4 / x8 / x16", "DPDK / SR-IOV"]
-        }
-      ]
-    },
     {
       "title": "Device Cloud (IoT)",
       "products": [

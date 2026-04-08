@@ -82,9 +82,21 @@ function cardKey(href: string): string {
               {item.subcategories && item.subcategories.length > 0 && (
                 <ul class="s-subcats">
                   {item.subcategories.map((sub: string, si: number) => (
-                    <li><a href={`${item.href}#section-${si}`} class="s-subcat-link" {...e(`solutionCards[${i}].subcategories[${si}]`)}>{sub}</a></li>
+                    <li>
+                      <a href={`${item.href}#section-${si}`} class="s-subcat-link" {...e(`solutionCards[${i}].subcategories[${si}]`)}>{sub}</a>
+                      {isAdmin && (
+                        <button class="subcat-delete-btn" data-admin-delete={`solutionCards[${i}].subcategories[${si}]`} title="Delete">&times;</button>
+                      )}
+                    </li>
                   ))}
                 </ul>
+              )}
+              {isAdmin && (
+                <button
+                  class="admin-add-btn subcat-add-btn"
+                  data-admin-add={`solutionCards[${i}].subcategories`}
+                  data-admin-template='"New Item"'
+                >+ Add</button>
               )}
             </div>
           ))
@@ -202,9 +214,35 @@ function cardKey(href: string): string {
     list-style: none;
   }
   .s-subcats li {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 6px;
     border-left: 2px solid var(--color-gray-300);
     padding: 3px 0 3px 10px;
+  }
+  .subcat-delete-btn {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: none;
+    background: #ef4444;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .s-subcats li:hover .subcat-delete-btn { opacity: 1; }
+  .subcat-delete-btn:hover { background: #dc2626; }
+  .subcat-add-btn {
+    margin: 0 14px 14px !important;
+    font-size: 12px !important;
+    padding: 4px 10px !important;
   }
   .s-subcats li:hover {
     border-left-color: var(--color-black);
