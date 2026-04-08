@@ -41,11 +41,8 @@ import Base from '../layouts/Base.astro';
       <h1>새 계정 만들기</h1>
       <p class="reg-sub">조직도에 등록된 이메일을 입력해주세요</p>
       <div class="field">
-        <label>회사 이메일</label>
-        <div class="email-input-row">
-          <input type="text" id="emailUser" placeholder="username" />
-          <span class="email-domain">@acetec-korea.co.kr</span>
-        </div>
+        <label>이메일</label>
+        <input type="email" id="emailUser" placeholder="example@email.com" />
       </div>
       <div class="field">
         <label>이름</label>
@@ -224,8 +221,8 @@ import Base from '../layouts/Base.astro';
   document.getElementById('sendCodeBtn')!.addEventListener('click', async () => {
     const user = (document.getElementById('emailUser') as HTMLInputElement).value.trim();
     const msg = document.getElementById('step2Msg')!;
-    if (!user) { msg.textContent = '이메일을 입력해주세요'; msg.className = 'msg error'; return; }
-    emailFull = user + '@acetec-korea.co.kr';
+    if (!user || !user.includes('@')) { msg.textContent = '올바른 이메일을 입력해주세요'; msg.className = 'msg error'; return; }
+    emailFull = user;
 
     msg.textContent = '발송 중...';
     msg.className = 'msg';
@@ -240,6 +237,13 @@ import Base from '../layouts/Base.astro';
     if (res.ok) {
       document.getElementById('step2')!.style.display = 'none';
       document.getElementById('step3')!.style.display = 'block';
+      // SMTP 미설정 시 코드 자동 입력
+      if (data.devCode) {
+        (document.getElementById('verifyCode') as HTMLInputElement).value = data.devCode;
+        const devMsg = document.getElementById('step3Msg')!;
+        devMsg.textContent = '인증 코드가 자동 입력되었습니다 (SMTP 미설정)';
+        devMsg.className = 'msg success';
+      }
     } else {
       msg.textContent = data.error || '발송 실패';
       msg.className = 'msg error';

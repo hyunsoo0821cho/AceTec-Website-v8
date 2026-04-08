@@ -42,7 +42,13 @@ export const POST: APIRoute = async ({ request }) => {
   getDb().prepare('INSERT INTO verification_codes (email, code, purpose, role, expires_at) VALUES (?, ?, ?, ?, ?)').run(email, code, purpose, role || null, expiresAt);
 
   // 이메일 발송
-  await sendVerificationEmail(email, code, purpose);
+  const sent = await sendVerificationEmail(email, code, purpose);
 
-  return Response.json({ ok: true, message: '인증 코드가 발송되었습니다' });
+  // SMTP 미설정 시 코드를 응답에 포함 (개발용)
+  const smtpConfigured = !!(process.env.SMTP_USER && process.env.SMTP_PASS);
+  if (smtpConfigured) {
+    return Response.json({ ok: true, message: '인증 코드가 이메일로 발송되었습니다' });
+  } else {
+    return Response.json({ ok: true, message: '인증 코드가 생성되었습니다', devCode: code });
+  }
 };

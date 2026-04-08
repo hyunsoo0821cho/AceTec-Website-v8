@@ -37,10 +37,6 @@ const root = process.cwd();
 const megaData = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'megamenu.json'), 'utf-8'));
 const megaMenuCols = megaData.columns || [];
 
-// 관리자 인라인 편집 헬퍼
-function eMega(p: string) {
-  return isAdmin ? { 'data-edit': p, 'data-edit-page': 'megamenu' } : {};
-}
 ---
 
 <header class="header" id="mainHeader">
@@ -60,9 +56,9 @@ function eMega(p: string) {
             </a>
             <div class="mega-menu">
               <div class="mega-grid">
-                {megaMenuCols.map((col: any, ci: number) => (
+                {megaMenuCols.map((col: any) => (
                   <div class="mega-col">
-                    <a href={col.href} class="mega-title" {...eMega(`columns[${ci}].title`)}>{col.title}</a>
+                    <a href={col.href} class="mega-title">{col.title}</a>
                     {col.items.map((item: string) => (
                       <span class="mega-item">{item}</span>
                     ))}

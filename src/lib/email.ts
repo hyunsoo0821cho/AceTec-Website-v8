@@ -1,11 +1,27 @@
 import nodemailer from 'nodemailer';
+import fs from 'fs';
+import path from 'path';
 
-// SMTP 설정 (환경변수 또는 기본값)
-const SMTP_HOST = process.env.SMTP_HOST || 'smtp.acetec-korea.co.kr';
+// .env 파일 수동 로드 (Astro SSR에서 process.env 보장)
+try {
+  const envPath = path.join(process.cwd(), '.env');
+  if (fs.existsSync(envPath)) {
+    const lines = fs.readFileSync(envPath, 'utf-8').split('\n');
+    for (const line of lines) {
+      const match = line.match(/^([^#=]+)=(.*)$/);
+      if (match && !process.env[match[1].trim()]) {
+        process.env[match[1].trim()] = match[2].trim();
+      }
+    }
+  }
+} catch { /* 무시 */ }
+
+// SMTP 설정
+const SMTP_HOST = process.env.SMTP_HOST || '';
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
 const SMTP_USER = process.env.SMTP_USER || '';
 const SMTP_PASS = process.env.SMTP_PASS || '';
-const SMTP_FROM = process.env.SMTP_FROM || 'noreply@acetec-korea.co.kr';
+const SMTP_FROM = process.env.SMTP_FROM || SMTP_USER;
 
 let transporter: nodemailer.Transporter | null = null;
 

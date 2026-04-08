@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "미션 크리티컬 임베디드 컴퓨팅 & 산업 솔루션",
-    "description": "에이스텍은 다양한 산업별 자동차, 제어, 테스트, 데이터 처리 및 여러 응용 분야에 적용하기 위해 임베디드 보드 및 시스템 소프트웨어, 산업용 PC등을 제공합니다. 당사가 제공하는 자사 솔루션 제품은 고객 맞춤형으로 진행되며, 운영을 효율적으로 개선할 수 있는 전문적인 컨설팅이 가능합니다.",
+    "description": "30년 이상의 전문성으로 국방, 항공우주, 철도, 산업 분야의 임베디드 컴퓨팅, 산업용 PC, 안전 필수 시스템을 제공합니다.",
     "image": "/uploads/hero/1775629832284------------.webp",
     "btnPrimary": "솔루션 보기",
     "btnSecondary": "견적 요청"
@@ -189,11 +189,11 @@
       ]
     },
     {
-      "title": "Sensor Modeling & Simulation",
-      "subtitle": "OKTAL-SE Solutions",
+      "title": "Supercomputing Systems",
+      "subtitle": "High Performance Computing",
       "image": "/images/products/sensor/satellite.png",
       "href": "/products/sensor",
-      "description": "High-fidelity EO/IR/RF sensor simulation from OKTAL-SE for Hardware-In-the-Loop, Man-In-the-Loop, and training environments across defense and aerospace programs.",
+      "description": "As Big Data, UHD/FHD, and Simulation demands grow, HPC requirements are increasing across government, academia, and research labs. High Density Compute Accelerators deliver differentiated HPC through GPU-based processing.",
       "subcategories": [
         "EO/IR Sensor Simulation",
         "RF Sensor Simulation",
@@ -203,12 +203,12 @@
       ]
     },
     {
-      "title": "R&D Center",
-      "subtitle": "AI, R&D Center",
+      "title": "Industrial PCs & Fanless Systems",
+      "subtitle": "Industrial Computer",
       "image": "/images/services/ai-center.png",
       "href": "",
       "i18nKey": "lab",
-      "description": "From embedded hardware design to software algorithms, we research the entire process of specialized control systems and achieve technological internalization."
+      "description": "Boxtype, rackmount, server, desktop, wall-mount, and panel PCs for 24/7 industrial operation — fanless designs, wide temperature, and KC/ISO certified."
     },
     {
       "title": "Supercomputing Systems",
@@ -278,6 +278,14 @@
     {
       "name": "New Partner",
       "image": "/uploads/partners/1775551639390-iwave.png"
+    },
+    {
+      "name": "New Partner",
+      "image": "/uploads/partners/1775634543765-nvidia-logo.webp"
+    },
+    {
+      "name": "New Partner",
+      "image": "/uploads/partners/1775634720848-intel.webp"
     }
   ],
   "companyDescription": "Trusted for over 30 years in embedded computing, industrial PCs, and safety-critical systems — serving defense, aerospace, railway, and industrial markets."
