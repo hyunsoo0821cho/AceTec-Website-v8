@@ -27,9 +27,9 @@ import Base from '../layouts/Base.astro';
           /><div class="field-error" data-i18n="login.passwordError">Please enter your password.</div>
         </div>
         <button type="button" class="btn-primary w-full text-center" data-action="signin" data-i18n="login.signIn">SIGN IN</button>
-        <p class="login-help"><a href="#" class="login-link" data-action="forgot-pw" data-i18n="login.forgotPassword">Forgot password?</a></p>
-        <p class="login-signup" data-i18n="login.noAccount">
-          Don't have an account? <a href="#" class="login-link" data-action="register" data-i18n="login.signUp">Sign up</a>
+        <p class="login-help"><a href="#" class="login-link" data-action="forgot-pw">비밀번호를 잊으셨나요?</a></p>
+        <p class="login-signup">
+          계정이 없으신가요? <a href="#" class="login-link" data-action="register"><strong>회원가입</strong></a>
         </p>
       </form>
       <details class="admin-section">
@@ -141,11 +141,11 @@ import Base from '../layouts/Base.astro';
 
   document.querySelector('[data-action="forgot-pw"]')?.addEventListener('click', (e) => {
     e.preventDefault();
-    showToast('Password reset coming soon!');
+    window.location.href = '/forgot-password';
   });
 
   document.querySelector('[data-action="register"]')?.addEventListener('click', (e) => {
     e.preventDefault();
-    showToast('Registration coming soon!');
+    window.location.href = '/register';
   });
 </script>

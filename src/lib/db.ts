@@ -50,6 +50,16 @@ function getDb(): InstanceType<typeof Database> {
       created_at INTEGER NOT NULL
     );
 
+    CREATE TABLE IF NOT EXISTS verification_codes (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      email TEXT NOT NULL,
+      code TEXT NOT NULL,
+      purpose TEXT NOT NULL,
+      role TEXT,
+      expires_at INTEGER NOT NULL,
+      used INTEGER NOT NULL DEFAULT 0
+    );
+
     CREATE TABLE IF NOT EXISTS conversations (
       id TEXT PRIMARY KEY,
       visitor_id TEXT NOT NULL,
@@ -77,6 +87,11 @@ function getDb(): InstanceType<typeof Database> {
   // admins 테이블에 display_name 컬럼 추가
   try {
     _db.exec(`ALTER TABLE admins ADD COLUMN display_name TEXT`);
+  } catch { /* 이미 존재하면 무시 */ }
+
+  // admins 테이블에 email 컬럼 추가
+  try {
+    _db.exec(`ALTER TABLE admins ADD COLUMN email TEXT`);
   } catch { /* 이미 존재하면 무시 */ }
 
   return _db;

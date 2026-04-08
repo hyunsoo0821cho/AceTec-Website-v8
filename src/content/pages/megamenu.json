@@ -1,123 +1,59 @@
 {
   "columns": [
     {
-      "title": "",
+      "title": "Industrial PCs",
       "href": "/products/ipc",
-      "items": [
-        "Boxtype PC",
-        "Rackmount PC",
-        "Server",
-        "Desktop PC",
-        "Wallmount PC",
-        "Panel PC"
-      ]
+      "items": ["Boxtype PC", "Rackmount PC", "Server", "Desktop PC", "Wallmount PC", "Panel PC"]
     },
     {
-      "title": "",
+      "title": "Network Appliance",
       "href": "/products/telecom",
-      "items": [
-        "Entry Network Appliance",
-        "Middle Network Appliance",
-        "High-end Network Appliance",
-        "Server Network Appliance",
-        "Customizing Network Appliance",
-        "NIC Adapter"
-      ]
+      "items": ["Entry Network Appliance", "Middle Network Appliance", "High-end Network Appliance", "Server Network Appliance", "Customizing Network Appliance", "NIC Adapter"]
     },
     {
-      "title": "",
+      "title": "Device Cloud (The Internet of Things)",
       "href": "/products/industrial",
-      "items": [
-        "Helix Virtualization Platform",
-        "Software Defined Infrastructure",
-        "Wind River Simics"
-      ]
+      "items": ["Helix Virtualization Platform", "Software Defined Infrastructure", "Wind River Simics"]
     },
     {
-      "title": "",
+      "title": "Form Factor_Abaco",
       "href": "/products/military",
-      "items": [
-        "VME",
-        "VPX 3U",
-        "VPX 6U",
-        "Compact PCI",
-        "PMC",
-        "XMC",
-        "FMC/FMC+"
-      ]
+      "items": ["VME", "VPX 3U", "VPX 6U", "Compact PCI", "PMC", "XMC", "FMC/FMC+"]
     },
     {
-      "title": "",
+      "title": "HIMA Railway",
       "href": "/products/railway",
-      "items": [
-        "HiMax System",
-        "HiMatrix System"
-      ]
+      "items": ["HiMax System", "HiMatrix System"]
     },
     {
-      "title": "",
+      "title": "High Performance Computing",
       "href": "/products/hpc",
-      "items": [
-        "Servers",
-        "Desktop Computing Appliances",
-        "GPU Appliances",
-        "GPU Expansion",
-        "VIDEO Acceleration Platform"
-      ]
+      "items": ["Servers", "Desktop Computing Appliances", "GPU Appliances", "GPU Expansion", "VIDEO Acceleration Platform"]
     },
     {
-      "title": "",
-      "href": "/products/military",
-      "items": [
-        "Jade",
-        "Cobalt",
-        "Onyx",
-        "Talon",
-        "Flexor",
-        "Spark"
-      ]
+      "title": "High-Speed Data Interconnect",
+      "href": "/products/interconnect",
+      "items": ["PCIe Network Adapter", "Superfast Interconnect Switch"]
     },
     {
-      "title": "",
+      "title": "Real-Time Operating System",
       "href": "/products/industrial",
-      "items": [
-        "Wind River VxWorks",
-        "Wind River Linux",
-        "VxWorks 653 and Certified System",
-        "SoftPLC ISaGRAF"
-      ]
+      "items": ["Wind River VxWorks", "Wind River Linux", "VxWorks 653 and Certified System", "SoftPLC ISaGRAF"]
     },
     {
-      "title": "",
+      "title": "Sensor modeling and simulation",
       "href": "/products/sensor",
-      "items": [
-        "EO/IR Sensor Simulation",
-        "RF Sensor Simulation",
-        "Active EO Sensor Simulation",
-        "GNSS Sensor Simulation",
-        "3D Terrain & Building Generation",
-        "APIs",
-        "Special Effects",
-        "3D Database"
-      ]
+      "items": ["EO/IR Sensor Simulation", "RF Sensor Simulation", "Active EO Sensor Simulation", "GNSS Sensor Simulation", "3D Terrain & Building Generation", "APIs", "Special Effects", "3D Database"]
     },
     {
-      "title": "",
+      "title": "Middleware Software",
       "href": "/products/telecom",
-      "items": [
-        "Connext DDS Professional",
-        "Connext DDS Secure",
-        "Connext DDS Micro",
-        "Connext DDS Cert"
-      ]
+      "items": ["Connext DDS Professional", "Connext DDS Secure", "Connext DDS Micro", "Connext DDS Cert"]
     },
     {
-      "title": "",
+      "title": "Radar processing System",
       "href": "/products/radar",
-      "items": [
-        "SPx Software Family",
-        "HPx Hardware Family"
-      ]
+      "items": ["SPx Software Family", "HPx Hardware Family"]
     }
   ]
 }

@@ -1,0 +1,279 @@
+---
+export const prerender = false;
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="회원가입 - AceTec">
+  <section class="reg-page">
+    <!-- Step 1: 역할 선택 -->
+    <div id="step1" class="reg-card">
+      <h1>새 계정 만들기</h1>
+      <p class="reg-sub">계정 유형을 선택해주세요</p>
+      <div class="role-grid">
+        <button class="role-card" data-role="person">
+          <div class="role-icon">👤</div>
+          <div class="role-title">일반 가입</div>
+          <div class="role-desc">일반 사용자 계정 생성</div>
+        </button>
+        <button class="role-card" data-role="customer">
+          <div class="role-icon">🏢</div>
+          <div class="role-title">Customer</div>
+          <div class="role-desc">고객사 담당자 계정</div>
+        </button>
+        <button class="role-card" data-role="sales">
+          <div class="role-icon">📊</div>
+          <div class="role-title">Sales</div>
+          <div class="role-desc">영업 담당자 계정</div>
+        </button>
+        <button class="role-card" data-role="admin">
+          <div class="role-icon">🔑</div>
+          <div class="role-title">Admin</div>
+          <div class="role-desc">관리자 계정 (승인 필요)</div>
+        </button>
+      </div>
+      <div class="reg-footer">
+        <a href="/login" class="link-back">← 로그인으로 돌아가기</a>
+      </div>
+    </div>
+
+    <!-- Step 2: 이메일 입력 -->
+    <div id="step2" class="reg-card" style="display:none;">
+      <h1>새 계정 만들기</h1>
+      <p class="reg-sub">조직도에 등록된 이메일을 입력해주세요</p>
+      <div class="field">
+        <label>회사 이메일</label>
+        <div class="email-input-row">
+          <input type="text" id="emailUser" placeholder="username" />
+          <span class="email-domain">@acetec-korea.co.kr</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>이름</label>
+        <input type="text" id="displayName" placeholder="홍길동" />
+      </div>
+      <button class="btn-full" id="sendCodeBtn">인증 코드 받기</button>
+      <div id="step2Msg" class="msg"></div>
+      <div class="reg-footer">
+        <button class="link-back" id="backToStep1">← 돌아가기</button>
+      </div>
+    </div>
+
+    <!-- Step 3: 코드 입력 + 비밀번호 설정 -->
+    <div id="step3" class="reg-card" style="display:none;">
+      <h1>이메일 인증</h1>
+      <p class="reg-sub">이메일로 발송된 6자리 인증 코드를 입력해주세요</p>
+      <div class="field">
+        <label>인증 코드</label>
+        <input type="text" id="verifyCode" placeholder="000000" maxlength="6" style="text-align:center;font-size:24px;letter-spacing:8px;" />
+      </div>
+      <div class="field">
+        <label>비밀번호</label>
+        <input type="password" id="regPassword" placeholder="6자 이상" />
+      </div>
+      <div class="field">
+        <label>비밀번호 확인</label>
+        <input type="password" id="regPasswordConfirm" placeholder="비밀번호 재입력" />
+      </div>
+      <button class="btn-full" id="registerBtn">회원가입 완료</button>
+      <div id="step3Msg" class="msg"></div>
+      <div class="reg-footer">
+        <button class="link-back" id="backToStep2">← 돌아가기</button>
+      </div>
+    </div>
+
+    <!-- Step 4: 완료 -->
+    <div id="step4" class="reg-card" style="display:none;">
+      <div style="text-align:center;padding:20px 0;">
+        <div style="font-size:48px;margin-bottom:16px;">✅</div>
+        <h1>회원가입 완료!</h1>
+        <p class="reg-sub">계정이 생성되었습니다. 로그인해주세요.</p>
+        <a href="/login" class="btn-full" style="display:inline-block;text-decoration:none;text-align:center;margin-top:24px;">로그인하기</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .reg-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 60px;
+    background: var(--color-bg-alt);
+  }
+  .reg-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  .reg-card h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+  .reg-sub { color: #64748b; font-size: 15px; margin-bottom: 28px; }
+  .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .role-card {
+    background: #fff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+  }
+  .role-card:hover { border-color: #2563eb; box-shadow: 0 2px 12px rgba(37,99,235,0.1); }
+  .role-icon { font-size: 28px; margin-bottom: 8px; }
+  .role-title { font-size: 15px; font-weight: 600; color: #0f172a; }
+  .role-desc { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 6px; }
+  .field input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .field input:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+  .email-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1.5px solid #d1d5db;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .email-input-row:focus-within { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+  .email-input-row input {
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    flex: 1;
+  }
+  .email-domain {
+    padding: 0 14px;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    background: #f8fafc;
+    border-left: 1px solid #e2e8f0;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+  }
+  .btn-full {
+    width: 100%;
+    padding: 13px;
+    background: #0f172a;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+  }
+  .btn-full:hover { background: #1e293b; }
+  .msg { margin-top: 12px; font-size: 13px; text-align: center; min-height: 20px; }
+  .msg.error { color: #ef4444; }
+  .msg.success { color: #16a34a; }
+  .reg-footer { margin-top: 20px; text-align: center; }
+  .link-back {
+    color: #64748b;
+    text-decoration: none;
+    font-size: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .link-back:hover { color: #0f172a; }
+</style>
+
+<script>
+  let selectedRole = '';
+  let emailFull = '';
+
+  // Step 1 → Step 2
+  document.querySelectorAll('.role-card').forEach(btn => {
+    btn.addEventListener('click', () => {
+      selectedRole = btn.getAttribute('data-role') || 'person';
+      document.getElementById('step1')!.style.display = 'none';
+      document.getElementById('step2')!.style.display = 'block';
+    });
+  });
+
+  document.getElementById('backToStep1')!.addEventListener('click', () => {
+    document.getElementById('step2')!.style.display = 'none';
+    document.getElementById('step1')!.style.display = 'block';
+  });
+
+  document.getElementById('backToStep2')!.addEventListener('click', () => {
+    document.getElementById('step3')!.style.display = 'none';
+    document.getElementById('step2')!.style.display = 'block';
+  });
+
+  // Step 2: 인증 코드 발송
+  document.getElementById('sendCodeBtn')!.addEventListener('click', async () => {
+    const user = (document.getElementById('emailUser') as HTMLInputElement).value.trim();
+    const msg = document.getElementById('step2Msg')!;
+    if (!user) { msg.textContent = '이메일을 입력해주세요'; msg.className = 'msg error'; return; }
+    emailFull = user + '@acetec-korea.co.kr';
+
+    msg.textContent = '발송 중...';
+    msg.className = 'msg';
+
+    const res = await fetch('/api/auth/send-code', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: emailFull, purpose: 'register', role: selectedRole }),
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      document.getElementById('step2')!.style.display = 'none';
+      document.getElementById('step3')!.style.display = 'block';
+    } else {
+      msg.textContent = data.error || '발송 실패';
+      msg.className = 'msg error';
+    }
+  });
+
+  // Step 3: 회원가입 완료
+  document.getElementById('registerBtn')!.addEventListener('click', async () => {
+    const code = (document.getElementById('verifyCode') as HTMLInputElement).value.trim();
+    const pw = (document.getElementById('regPassword') as HTMLInputElement).value;
+    const pwConfirm = (document.getElementById('regPasswordConfirm') as HTMLInputElement).value;
+    const displayName = (document.getElementById('displayName') as HTMLInputElement).value.trim();
+    const msg = document.getElementById('step3Msg')!;
+
+    if (!code || code.length !== 6) { msg.textContent = '6자리 인증 코드를 입력해주세요'; msg.className = 'msg error'; return; }
+    if (!pw || pw.length < 6) { msg.textContent = '비밀번호는 6자 이상이어야 합니다'; msg.className = 'msg error'; return; }
+    if (pw !== pwConfirm) { msg.textContent = '비밀번호가 일치하지 않습니다'; msg.className = 'msg error'; return; }
+
+    msg.textContent = '처리 중...';
+    msg.className = 'msg';
+
+    const res = await fetch('/api/auth/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: emailFull, code, password: pw, displayName }),
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      document.getElementById('step3')!.style.display = 'none';
+      document.getElementById('step4')!.style.display = 'block';
+    } else {
+      msg.textContent = data.error || '회원가입 실패';
+      msg.className = 'msg error';
+    }
+  });
+</script>
