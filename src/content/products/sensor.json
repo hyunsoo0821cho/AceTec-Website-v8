@@ -1,0 +1,196 @@
+{
+  "category": "sensor",
+  "title": "Sensor Modeling & Simulation",
+  "pageTitle": "Sensor Modeling & Simulation Products - AceTec",
+  "description": "High-fidelity EO/IR/RF sensor simulation from OKTAL-SE for Hardware-In-the-Loop, Man-In-the-Loop, and training environments across defense and aerospace programs.",
+  "items": [
+    {
+      "name": "SE-Workbench-EO",
+      "specs": "Real-time electro-optical & infrared scene generation for HWIL testing",
+      "image": "/images/products/sensor/se-workbench-eo.png",
+      "alt": "SE-Workbench-EO",
+      "partner": "OKTAL-SE",
+      "detailDescription": "OKTAL-SE SE-Workbench-EO provides real-time electro-optical and infrared scene generation for Hardware-In-the-Loop testing of EO/IR sensors and seekers."
+    },
+    {
+      "name": "SE-Workbench-RF",
+      "specs": "RF sensor simulation for radar & electronic warfare environments",
+      "image": "/images/products/sensor/se-workbench-rf.png",
+      "alt": "SE-Workbench-RF",
+      "partner": "OKTAL-SE",
+      "detailDescription": "OKTAL-SE SE-Workbench-RF simulates RF sensor environments for radar and electronic warfare system testing and evaluation."
+    },
+    {
+      "name": "SE-RAY-SAR",
+      "specs": "Synthetic aperture radar image simulation & analysis",
+      "image": "/images/products/sensor/se-workbench-sar.png",
+      "alt": "SE-RAY-SAR",
+      "partner": "OKTAL-SE",
+      "detailDescription": "OKTAL-SE SE-RAY-SAR generates synthetic aperture radar images for SAR system development, testing, and algorithm validation."
+    },
+    {
+      "name": "SE-FAST-HWIL",
+      "specs": "High-speed Hardware-In-the-Loop simulation engine",
+      "image": "/images/products/sensor/se-workbench-hwil.png",
+      "alt": "SE-FAST-HWIL",
+      "partner": "OKTAL-SE",
+      "detailDescription": "OKTAL-SE SE-FAST-HWIL high-speed simulation engine for closed-loop Hardware-In-the-Loop testing of guided weapons and sensors."
+    },
+    {
+      "name": "Active EO & GNSS Simulation",
+      "specs": "Active electro-optical sensor & GNSS signal simulation",
+      "image": "/images/products/sensor/se-workbench-gnss.png",
+      "alt": "Active EO and GNSS Simulation",
+      "partner": "OKTAL-SE",
+      "detailDescription": "Active electro-optical sensor simulation and GNSS signal generation for comprehensive navigation and targeting system testing."
+    },
+    {
+      "name": "3D Terrain & Scene Database",
+      "specs": "Real-time 3D terrain generation  Building models  Special effects  APIs",
+      "image": "/images/products/sensor/se-agetim.png",
+      "alt": "3D Terrain and Scene Database",
+      "partner": "OKTAL-SE",
+      "detailDescription": "OKTAL-SE 3D terrain and scene databases with real-time generation, building models, atmospheric effects, and integration APIs for simulation environments."
+    }
+  ],
+  "sections": [
+    {
+      "title": "EO/IR Sensor Simulation",
+      "products": [
+        {
+          "name": "SE-Workbench-EO",
+          "image": "/images/catalog/10.png",
+          "features": [
+            "SE-Workbench-EO has been designed for the creation of synthetic models of complex environments that have to be as realistic as possible in order to stimulate systems using sensors in the EO domain"
+          ]
+        },
+        {
+          "name": "SE-Workbench-HWIL-EO",
+          "image": "/images/catalog/11.png",
+          "features": [
+            "SE-FAST-HWIL is the real time image generator package designed to deliver high realistic infrared (IR) images at very high frame rates (200Hz and above) in a closed loop mode"
+          ]
+        },
+        {
+          "name": "SE-Workbench-EOS",
+          "image": "/images/catalog/12.png",
+          "features": [
+            "Target signature rendering in Electro-Optics domain",
+            "Tools and data included in SE-WORKBENCH-EOS dedicated to aircraft signature computation in the EO domain"
+          ]
+        },
+        {
+          "name": "SE-FAST-IG",
+          "image": "/images/catalog/14.png",
+          "features": [
+            "SE-FAST-IG is a high performance visualisation application",
+            "Driven by users' simulators through its CIGI interface, supports features for flight training, driving simulations, ground warfare"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "RF Sensor Simulation",
+      "products": [
+        {
+          "name": "SE-Workbench-RF",
+          "image": "/images/catalog/15.png",
+          "features": [
+            "The aim of SE-Workbench-RF is to create synthetic models of complex environments for simulating systems with EM sources and sensors, typically radar systems"
+          ]
+        },
+        {
+          "name": "SE-Workbench-SAR",
+          "image": "/images/catalog/16.png",
+          "features": [
+            "SE-Workbench-SAR allows computing SAR data with advanced OKTAL-SE software",
+            "SAR raw data computed using ray-tracing combined with asymptotic methods (GO, PO and ECM)"
+          ]
+        },
+        {
+          "name": "SE-Workbench-RBGM",
+          "image": "/images/catalog/17.png",
+          "features": [
+            "SE-RAY-RADAR is dedicated to RBGM computing (Real Beam Ground Mapping) of complex 3D scenes",
+            "Simulates radar frequency, scanning parameters, trajectory embedding, visualization modes"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Active EO Sensor Simulation",
+      "products": [
+        {
+          "name": "SE-Workbench-AEO",
+          "image": "/images/catalog/18.png",
+          "features": [
+            "SE-RAY-AEO: Pulsed LASER context, specular predominant cover",
+            "Simulation of range gating capacities and detection/identification of metallic or dielectric targets"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "GNSS Sensor Simulation",
+      "products": [
+        {
+          "name": "SE-Workbench-GNSS",
+          "image": "/images/catalog/19.png",
+          "features": [
+            "SE-NAV is a propagation simulator for assessment of signals reception in stringent environments",
+            "Predicts performance of GPS, GALILEO, BEIDOU or pseudolites in 3D virtual scenes"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3D Terrain & Building Generation",
+      "products": [
+        {
+          "name": "SE-AGETIM",
+          "image": "/images/catalog/20.png",
+          "features": [
+            "SE-AGETIM is an integrated software tools suite enabling 3D environment generation for simulation",
+            "Dedicated to GIS experts, enables full integration"
+          ]
+        },
+        {
+          "name": "SE-AGETIM-LIGHT",
+          "image": "/images/catalog/21.png",
+          "features": [
+            "SE-AGETIM-LIGHT is a simple standalone software enabling easy 3D environment generation for sensor simulation with integration of various geographical data sources"
+          ]
+        },
+        {
+          "name": "SE-AGETIM-BUILDING",
+          "image": "/images/catalog/22.png",
+          "features": [
+            "SE-AGETIM-BUILDING is dedicated to editing building templates and handling extrusion of buildings from templates in SE-AGETIM"
+          ]
+        },
+        {
+          "name": "SE-AGETIM-INDOOR",
+          "image": "/images/catalog/23.png",
+          "features": [
+            "SE-AGETIM-INDOOR is dedicated to editing building plans including furniture, lighting and decoration objects, with automatic extrusion of interior structures"
+          ]
+        },
+        {
+          "name": "SE-TK FORM Suite",
+          "image": "/images/catalog/24.png",
+          "features": [
+            "SE-Workbench Special Tool-Kits (TK) for expert users",
+            "Divided in 2 families of APIs: refined preparation of scenarios and dynamic modification"
+          ]
+        },
+        {
+          "name": "SE-TK D SCNX Suite",
+          "image": "/images/catalog/25.png",
+          "features": [
+            "SE-TK-D-SCNX enhances SE-TOOLKIT functions for making changes during scenario rendering in closed loop mode"
+          ]
+        }
+      ]
+    }
+  ]
+}

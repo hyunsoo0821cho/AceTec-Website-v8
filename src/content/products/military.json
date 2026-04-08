@@ -1,0 +1,219 @@
+{
+  "category": "military",
+  "title": "Military & Aerospace",
+  "pageTitle": "Military & Aerospace Products - AceTec",
+  "description": "Rugged VPX/VME boards and signal processing platforms purpose-built for precision strike, C2, surveillance, and unmanned systems in the most demanding operational environments.",
+  "items": [],
+  "sections": [
+    {
+      "title": "Form Factor Abaco Systems",
+      "products": [
+        {
+          "name": "VME",
+          "image": "/images/catalog/VME.png",
+          "features": [
+            "VME: Winning over the long term",
+            "Launched in 1981, the large majority of open architecture rugged systems around the world today are based on the VME architecture"
+          ]
+        },
+        {
+          "name": "VPX 3U",
+          "image": "/images/catalog/VME 3U.png",
+          "features": [
+            "In 2006, launched the SBC340, the industry's first 3U VPX single board computer",
+            "Solutions in all shapes and sizes for any systems architecture, form factor, and interface requirements"
+          ]
+        },
+        {
+          "name": "VPX 6U",
+          "image": "/images/catalog/VPX 6U.png",
+          "features": [
+            "Key members of Abaco's HPEC solution include the SWE540 fully managed 6U VPX 40/10GigE Data Plane Ethernet switch (NETernity SWE540), Layer 2/3 managed switching and routing"
+          ]
+        },
+        {
+          "name": "CompactPCI",
+          "image": "/images/catalog/CompactPCI.png",
+          "features": [
+            "Now into its third decade, CompactPCI still makes it possible to leverage Intel Core i7 and NXP QorIQ processor technology in proven rugged form factors"
+          ]
+        },
+        {
+          "name": "PMC",
+          "image": "/images/catalog/PMC.png",
+          "features": [
+            "Abaco Systems has expertise in military, commercial and telecommunications markets",
+            "In-depth understanding of application requirements and communication protocols"
+          ]
+        },
+        {
+          "name": "XMC",
+          "image": "/images/catalog/XMC.png",
+          "features": [
+            "Abaco's range of high performance XMCs supports demanding networking, I/O and processing needs of advanced applications"
+          ]
+        },
+        {
+          "name": "FMC/FMC+",
+          "image": "/images/catalog/FMC FMC+.png",
+          "features": [
+            "Perhaps the industry's broadest range of mezzanines to take advantage of FPGA technology power and flexibility"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Middleware Software",
+      "products": [
+        {
+          "name": "Connext DDS Professional",
+          "image": "/images/catalog/26.png",
+          "features": [
+            "RTI Connext DDS Professional is the first connectivity software for Industrial Internet of Things (IIoT)",
+            "Delivers low-latency, high reliability, scalability and security for mission-critical systems"
+          ]
+        },
+        {
+          "name": "RTI Connext DDS Secure",
+          "image": "/images/catalog/57.png",
+          "features": [
+            "RTI Connext DDS Secure enables IIoT architects to build secure and scalable systems of systems with fine-grained security on Connext Databus"
+          ]
+        },
+        {
+          "name": "RTI Connext DDS Micro",
+          "image": "/images/catalog/58.png",
+          "features": [
+            "Connext DDS Micro for distributed IIoT systems meeting stringent Size, Weight and Power (SWaP) requirements",
+            "Small-footprint connectivity framework"
+          ]
+        },
+        {
+          "name": "RTI Connext DDS Cert",
+          "image": "/images/catalog/59.png",
+          "features": [
+            "RTI Connext DDS Cert enables IIoT architects to build safety-critical systems",
+            "Only off-the-shelf connectivity framework certifiable for highest safety standards"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Radar Processing & Display",
+      "products": [
+        {
+          "name": "SPx Server (Target Tracking)",
+          "image": "/images/catalog/73.png",
+          "features": [
+            "SPx Server is a multi-function radar processor providing radar distribution, plot extraction and target tracking"
+          ]
+        },
+        {
+          "name": "RadarView (Visualization)",
+          "image": "/images/catalog/72.png",
+          "features": [
+            "RadarView is Cambridge Pixel's Windows-based application for capture and visualization of primary radar video from remote server, network interface, or HPx capture card"
+          ]
+        },
+        {
+          "name": "SPx Radar Simulator",
+          "image": "/images/catalog/74.png",
+          "features": [
+            "SPx Radar Simulator is a Windows-based application generating simulated radar video data over network socket, with terrain elevation data for realistic radar returns"
+          ]
+        },
+        {
+          "name": "SPx Development",
+          "image": "/images/catalog/75.png",
+          "features": [
+            "Cambridge Pixel's SPx Development software for developers incorporating radar processing or display capabilities"
+          ]
+        },
+        {
+          "name": "SPx Fusion Server",
+          "image": "/images/catalog/76.png",
+          "features": [
+            "SPx Fusion fuses observations from multiple independent sensors into a single stream of correlated reports"
+          ]
+        },
+        {
+          "name": "RDR Data Recorder",
+          "image": "/images/catalog/77.png",
+          "features": [
+            "Cambridge Pixel's RDR provides full-featured, multichannel record and replay for radar video, target tracks, AIS, ADS-B, IFF and navigation data simultaneously"
+          ]
+        },
+        {
+          "name": "VSD (Video Security Display)",
+          "image": "/images/catalog/78.png",
+          "features": [
+            "VSD application interfaces to radars and cameras providing a readymade situational awareness display"
+          ]
+        },
+        {
+          "name": "ASD-100",
+          "image": "/images/catalog/79.png",
+          "features": [
+            "ASD-100 is Cambridge Pixel's PC-based air surveillance display for primary and secondary radar data"
+          ]
+        },
+        {
+          "name": "SPx-Scan",
+          "image": "/images/catalog/80.png",
+          "features": [
+            "SPx-Scan software-based radar scan converter for Windows and Linux/X11, simplifying radar integration into graphics applications"
+          ]
+        },
+        {
+          "name": "SPx Radar Image Distribution",
+          "image": "/images/catalog/81.png",
+          "features": [
+            "SPx Radar Image Server (RIS) is a scan conversion server that captures and scan converts radar video into images delivered to clients or web browsers"
+          ]
+        },
+        {
+          "name": "SPx AIS",
+          "image": "/images/catalog/82.png",
+          "features": [
+            "SPx AV is Cambridge Pixel's audio and video streaming software for compression, distribution and recording from multiple sources"
+          ]
+        },
+        {
+          "name": "HPx-346",
+          "image": "/images/catalog/HPx-346.png",
+          "features": [
+            "HPx-346 is a small form factor combined analogue radar input and network distribution card"
+          ]
+        },
+        {
+          "name": "HPx-400e",
+          "image": "/images/catalog/HPx-400e.png",
+          "features": [
+            "HPx-400e is a high-performance PCIe dual-stream radar acquisition card capturing analogue and digital primary radar video from up to two radars"
+          ]
+        },
+        {
+          "name": "HPx-300",
+          "image": "/images/catalog/HPx-300.png",
+          "features": [
+            "HPx-300 Radar Signal Output card generates representative radar signals for testing, simulation, training or streaming"
+          ]
+        },
+        {
+          "name": "HPx-250",
+          "image": "/images/catalog/HPx-250.png",
+          "features": [
+            "HPx-250 is a high-performance PMC-based radar acquisition card capturing one or two analogue and up to 2 bits of digital primary radar video"
+          ]
+        },
+        {
+          "name": "HPx-200",
+          "image": "/images/catalog/HPx-200.png",
+          "features": [
+            "HPx-200 is a high-performance PCI-based radar acquisition card capturing one or two analogue or up to 8 bits of digital primary radar video"
+          ]
+        }
+      ]
+    }
+  ]
+}

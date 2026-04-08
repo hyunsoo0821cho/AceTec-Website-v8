@@ -1,0 +1,83 @@
+{
+  "whoWeAre": {
+    "title": "Who We Are",
+    "paragraphs": [
+      "For over three decades, AceTec has stood at the intersection of global embedded technology and Korea's most demanding industries. What began as a specialized distributor has evolved into a full-spectrum technology partner — one that not only supplies world-class hardware and software, but engineers custom solutions from the ground up through our own R&D center.",
+      "We pioneered Korea's first desktop-type fanless industrial PC, setting an industry benchmark that still defines our approach: solve real problems with robust, purpose-built technology. Today, our platforms operate inside naval combat systems, railway interlocking networks, steel mill production lines, and defense simulation environments — anywhere failure is not an option.",
+      "Backed by strategic partnerships with Abaco Systems, HIMA, Wind River, RTI, OKTAL-SE, Cambridge Pixel, OneStopSystems, Pentek, and SMART Embedded Computing, we bring proven global technology with deep local engineering expertise. Our clients — from the Agency for Defense Development and POSCO to Hyundai and Hanwha Systems — trust us because we deliver not just products, but outcomes."
+    ],
+    "image": "/images/about/about-team.png"
+  },
+  "stats": [
+    {
+      "number": "30+",
+      "label": "Years in Embedded Computing"
+    },
+    {
+      "number": "487+",
+      "label": "Project Deliveries"
+    },
+    {
+      "number": "300+",
+      "label": "Institutions Served"
+    },
+    {
+      "number": "9",
+      "label": "Global Technology Partners"
+    }
+  ],
+  "ceo": {
+    "title": "CEO Greeting",
+    "quote": "Our mission is to deliver the most reliable embedded solutions where failure is simply not an option.",
+    "paragraphs": [
+      "Since our founding in 1994, AceTec has spent over 30 years building deep expertise in the embedded computing industry. We started with a vision to bring world-class embedded technology to Korea's most demanding sectors — and today that vision drives everything we do.",
+      "We were the first in Korea to develop a desktop-type fanless industrial PC, earning a US patent for our natural cooling technology. This pioneering spirit continues to define us — we don't just distribute technology, we engineer solutions that our clients can stake their operations on.",
+      "Through strategic partnerships with leading global companies including Abaco Systems, HIMA, Wind River, and RTI, we combine proven international technology with our own deep local engineering expertise. Our in-house R&D center allows us to customize and validate every solution before it reaches the field.",
+      "As embedded systems become ever more critical in defense, transportation, energy, and industrial automation, AceTec will continue to grow as a trusted partner — delivering technology that performs when it matters most."
+    ],
+    "signature": "— Jang Jeong Hoon, CEO, AceTec Co., Ltd."
+  },
+  "philosophy": {
+    "title": "Management Philosophy",
+    "subtitle": "Three principles that guide every decision we make",
+    "items": [
+      {
+        "number": "01",
+        "title": "Customer Satisfaction",
+        "description": "We place customer success at the center of our business. Every product, every project, and every support interaction is measured by one standard: did we exceed expectations? Our 300+ institutional clients and 487+ project deliveries reflect our relentless commitment to results."
+      },
+      {
+        "number": "02",
+        "title": "Communication-Centered",
+        "description": "Technology partnerships thrive on transparency and trust. We maintain open, proactive communication with our clients and global partners alike — ensuring that requirements are understood, timelines are met, and challenges are addressed before they become problems."
+      },
+      {
+        "number": "03",
+        "title": "Technology-Centered",
+        "description": "At our core, we are engineers. We invest continuously in R&D, maintain deep technical expertise across embedded platforms, and stay ahead of industry evolution. From VxWorks BSP porting to SIL4-certified safety systems, our technical depth is our competitive advantage."
+      }
+    ]
+  },
+  "culture": {
+    "title": "Our Culture",
+    "subtitle": "The values that define how we work and grow together",
+    "items": [
+      {
+        "title": "Creativity",
+        "description": "We encourage innovative thinking and creative problem-solving. When standard solutions fall short, we engineer new ones — like our patented fanless cooling technology that set a national benchmark."
+      },
+      {
+        "title": "Dedication",
+        "description": "Passion for technology and care for our people. We foster a supportive environment where expertise is shared, mentorship is valued, and every team member contributes to our collective mission."
+      },
+      {
+        "title": "Challenge",
+        "description": "We embrace difficult problems. From mission-critical defense systems to nuclear power plant controls, we take on the projects that demand the highest standards — and deliver every time."
+      }
+    ]
+  },
+  "partnerCta": {
+    "title": "Partner With Us",
+    "description": "Seeking a technology partner for your next program? Share your requirements and our team will respond within one business day."
+  }
+}

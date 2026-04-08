@@ -1,0 +1,876 @@
+{
+  "title": "Full Product Catalog",
+  "description": "Complete listing of 95 products across 16 categories.",
+  "categories": [
+    {
+      "id": "cs1",
+      "icon": "",
+      "title": "Boxtype PC",
+      "products": [
+        {
+          "name": "ACE-BoxIPC-C4L3",
+          "image": "/images/catalog/ACE-BoxIPC-C4L3.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support 4 x RS232/422/485",
+            "Support 1 x 8-bit DIO via the DB-9 port",
+            "Support WIFI, 3G/4G and GPRS application",
+            "Aluminum + metal aluminum",
+            "Support Wall Mounting (Optional VESA, DIN Rail)"
+          ]
+        },
+        {
+          "name": "ACE-BoxIPC-73L2D",
+          "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "DDR3L SO-DIMM 4GB Memory up to 16GB",
+            "Support Wall Mounting",
+            "Support RAID 0/1/5/10",
+            "Support 3 x Independent Displays",
+            "Support intel iAMT 8.0"
+          ]
+        },
+        {
+          "name": "ACE-BoxIPC-7110L2D",
+          "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "DDR3L SO-DIMM 4GB Memory up to 16GB",
+            "Support Wall Mounting",
+            "Support RAID 0/1/5/10",
+            "Support 3 x Independent Displays",
+            "Support intel iAMT 8.0"
+          ]
+        },
+        {
+          "name": "ACE-BoxIPC-74L2D",
+          "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
+          "features": [
+            "Support 2x Gigabit LAN Ports",
+            "DDR4 SO-DIMM 8GB Memory up to 32GB",
+            "Support Wall Mounting",
+            "Support RAID 0/1",
+            "Support 3 x Independent Displays",
+            "Support ESD Protection"
+          ]
+        },
+        {
+          "name": "ACE-BoxIPC-76L2D",
+          "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
+          "features": [
+            "Support 2x Gigabit LAN Ports",
+            "DDR4 SO-DIMM 8GB Memory up to 32GB",
+            "Support Wall Mounting",
+            "Support RAID 0/1",
+            "Support 3 x Independent Displays",
+            "Support ESD Protection"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs2",
+      "icon": "",
+      "title": "Rackmount PC",
+      "products": [
+        {
+          "name": "ACE-IPC02R-4U-i7-6",
+          "image": "/images/catalog/ACE-IPC01R-4U-i7-3.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support Standard Rack Mounting",
+            "Support RAID 0/1/5/10",
+            "Support Easy install HDD Rack",
+            "Support intel iAMT 11.0"
+          ]
+        },
+        {
+          "name": "ACE-IPC02R-4U-Xeon-E3",
+          "image": "/images/catalog/ACE-IPC01R-4U-i7-3.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support Standard Rack Mounting",
+            "Support RAID 0/1/5/10",
+            "Support Easy install HDD Rack",
+            "Support intel iAMT 11.0"
+          ]
+        },
+        {
+          "name": "ACE-IPC02R-2U-i7-6-F",
+          "image": "/images/catalog/ACE-IPC02R-2U-i7-4-F.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support Standard Rack Mounting",
+            "Support RAID 0/1/5/10",
+            "Support Easy install HDD Rack",
+            "Supports intel iAMT 11.0"
+          ]
+        },
+        {
+          "name": "ACE-IPC02R-4U-i7-9",
+          "image": "/images/catalog/ACE-IPC02R-2U-i7-4-F.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support Standard Rack Mounting",
+            "Support RAID 0/1/5/10",
+            "Support Easy install HDD Rack",
+            "Supports intel iAMT 11.0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs3",
+      "icon": "",
+      "title": "Server",
+      "products": [
+        {
+          "name": "ACE-Sever-2U-Xeon-E5-F",
+          "image": "/images/catalog/ACE-Sever-2U-Xeon-E5-F.png",
+          "features": [
+            "2U Rack Mounting (Ȯ强  )",
+            "Support Intel Xeon E5 Series Processor (Dual Socket )",
+            "Support up to 256GB System Memory",
+            "Support 4 x Gigabit LAN Ports (Network Redundancy)",
+            "Support Multi-bay Hot-swap HDD/SSD Rack",
+            "Flexible PCIe expansion slots for Add-on cards"
+          ]
+        },
+        {
+          "name": "ACE-Sever-4U-Xeon-E5-F",
+          "image": "/images/catalog/ACE-Sever-4U-Xeon-E5-F.png",
+          "features": [
+            "4U Rack / Tower Convertible (ִ Ȯ强 )",
+            "Support Intel Xeon E5 Series High-performance Processor",
+            "Support High-capacity System Memory (Large Database optimized)",
+            "Support Massive Storage Bay for Enterprise HDD",
+            "Support GPU Acceleration for AI and Data analysis",
+            "Redundant Power Supply for 24/7 Mission-critical stability"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs4",
+      "icon": "",
+      "title": "Desktop PC",
+      "products": [
+        {
+          "name": "ACE-IPC02D-i7-3",
+          "image": "/images/catalog/ACE-IPC02D-i7-3.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "DDR3L SO-DIMM 4GB Memory up to 16GB",
+            "Support RAID 0/1/5/10",
+            "Support 3 x Independent Displays",
+            "Support intel iAMT 8.0"
+          ]
+        },
+        {
+          "name": "ACE-IPC02D-i7-4",
+          "image": "/images/catalog/ACE-IPC02D-i7-3.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "DDR3 DIMM 4GB Memory up to 32GB",
+            "Support RAID 0/1/5/10",
+            "Support intel iAMT 9.0"
+          ]
+        },
+        {
+          "name": "ACE-IPC02D-i7-6",
+          "image": "/images/catalog/ACE-IPC02D-i7-3.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "DDR4 DIMM 8GB Memory up to 16GB",
+            "Support RAID 0/1/5/10",
+            "Support 3 x Independent Displays",
+            "Support intel iAMT 11.0"
+          ]
+        },
+        {
+          "name": "ACE-WS01D-i7-4-F",
+          "image": "/images/catalog/ACE-WS01D-i7-4-F.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 32GB system memory",
+            "Support RAID 0/1/5/10",
+            "Support intel iAMT 9.0"
+          ]
+        },
+        {
+          "name": "ACE-WS01D-i7-6-F",
+          "image": "/images/catalog/ACE-WS01D-i7-4-F.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support RAID 0/1/5/10",
+            "Support 3 x Independent Displays",
+            "Support iAMT 9.0 and vPRO 9.0",
+            "500W High Efficiency Power Supply"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs5",
+      "icon": "",
+      "title": "Wallmount PC",
+      "products": [
+        {
+          "name": "ACE-IPC-Wall-i7-6-F",
+          "image": "/images/catalog/ACE-IPC-Wall-i7-6-F.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support Wall Mounting",
+            "Support RAID 0/1/5/10",
+            "Support Easy install HDD Rack",
+            "Support intel iAMT 11.0"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs6",
+      "icon": "",
+      "title": "Panel PC",
+      "products": [
+        {
+          "name": "ACE-PPC-10AT",
+          "image": "/images/catalog/ACE-PPC-10AT.png",
+          "features": [
+            "Support 1024 x 768 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-15AT",
+          "image": "/images/catalog/ACE-PPC-15AT.png",
+          "features": [
+            "Support 1024 x 768 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-17AT",
+          "image": "/images/catalog/ACE-PPC-17AT.png",
+          "features": [
+            "Support 1024 x 768 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-19MT",
+          "image": "/images/catalog/ACE-PPC-19MT.png",
+          "features": [
+            "Support 1280 x 1024 dots",
+            "DDR3L SODIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-15HT",
+          "image": "/images/catalog/ACE-PPC-15HT.png",
+          "features": [
+            "Support 1024 x 768 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-17HT",
+          "image": "/images/catalog/ACE-PPC-17HT.png",
+          "features": [
+            "Support 1024 x 1024 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-19HT",
+          "image": "/images/catalog/ACE-PPC-19HT.png",
+          "features": [
+            "Support 1280 x 1024 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-21HT",
+          "image": "/images/catalog/ACE-PPC-21HT.png",
+          "features": [
+            "Support 1920 x 1080 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs7",
+      "icon": "",
+      "title": "Form Factor Abaco Systems",
+      "products": [
+        {
+          "name": "VME",
+          "image": "/images/catalog/VME.png",
+          "features": [
+            "VME: Winning over the long term",
+            "Launched in 1981, the large majority of open architecture rugged systems around the world today are based on the VME architecture"
+          ]
+        },
+        {
+          "name": "VPX 3U",
+          "image": "/images/catalog/VME 3U.png",
+          "features": [
+            "In 2006, launched the SBC340, the industry's first 3U VPX single board computer",
+            "Solutions in all shapes and sizes for any systems architecture, form factor, and interface requirements"
+          ]
+        },
+        {
+          "name": "VPX 6U",
+          "image": "/images/catalog/VPX 6U.png",
+          "features": [
+            "Key members of Abaco's HPEC solution include the SWE540 fully managed 6U VPX 40/10GigE Data Plane Ethernet switch (NETernity SWE540), Layer 2/3 managed switching and routing"
+          ]
+        },
+        {
+          "name": "CompactPCI",
+          "image": "/images/catalog/CompactPCI.png",
+          "features": [
+            "Now into its third decade, CompactPCI still makes it possible to leverage Intel Core i7 and NXP QorIQ processor technology in proven rugged form factors"
+          ]
+        },
+        {
+          "name": "PMC",
+          "image": "/images/catalog/PMC.png",
+          "features": [
+            "Abaco Systems has expertise in military, commercial and telecommunications markets",
+            "In-depth understanding of application requirements and communication protocols"
+          ]
+        },
+        {
+          "name": "XMC",
+          "image": "/images/catalog/XMC.png",
+          "features": [
+            "Abaco's range of high performance XMCs supports demanding networking, I/O and processing needs of advanced applications"
+          ]
+        },
+        {
+          "name": "FMC/FMC+",
+          "image": "/images/catalog/FMC FMC+.png",
+          "features": [
+            "Perhaps the industry's broadest range of mezzanines to take advantage of FPGA technology power and flexibility"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs9",
+      "icon": "",
+      "title": "HIMA Railway System",
+      "products": [
+        {
+          "name": "HIMA HiMax System",
+          "image": "/images/catalog/HIMA HiMax System.png",
+          "features": [
+            "HiMax is a range of flexible COTS control system for safety-critical rail industry applications with high performance requirements"
+          ]
+        },
+        {
+          "name": "HIMA HiMatrix System",
+          "image": "/images/catalog/HImA HiMatrix System.png",
+          "features": [
+            "HIMatrix is a range of versatile COTS controllers for small to mid-scale safety-critical rail applications",
+            "Pre-certified CENELEC SIL 4, compact, vibration/shock resistant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs10",
+      "icon": "",
+      "title": "High Performance Computing",
+      "products": [
+        {
+          "name": "1U 5500/5600-Series Server",
+          "image": "/images/catalog/1U 55005600-Series Server.png",
+          "features": [
+            "1U NEBS-compliant server with Intel 5500 series Server Board, two Intel Xeon quad-core processors, 550W AC/DC or dual 750W power supplies"
+          ]
+        },
+        {
+          "name": "Expansion Optimized Server",
+          "image": "/images/catalog/Expansion Optimized Server.png",
+          "features": [
+            "2U server revolutionizing homogenous systems with closely coupled processors, solid-state storage and accelerator co-processing (GPGPUs, Intel Xeon Phi, FPGAs)"
+          ]
+        },
+        {
+          "name": "3U 5000 Series Server",
+          "image": "/images/catalog/3U 5000 Series Server.png",
+          "features": [
+            "OSS offers custom server configurations for rackmount, specialized, military rugged, high density, and HPC variations",
+            "Optimized for PCIe over Cable Expansion"
+          ]
+        },
+        {
+          "name": "FlashCUBE",
+          "image": "/images/catalog/FlashCUBE.png",
+          "features": [
+            "CUBE desktop enclosure supports one double-wide or two single-wide full-height I/O cards up to 13.25 inch long",
+            "Includes PCIe cable adapter/cable or Thunderbolt cable and 180W power supply"
+          ]
+        },
+        {
+          "name": "Flash-µCUBE",
+          "image": "/images/products/hpc/flash-ucube.png",
+          "features": [
+            "uCUBE desktop enclosure supports one full-height I/O card up to 9.55 inch long",
+            "Includes PCIe cable adapter/cable and 84W external power supply"
+          ]
+        },
+        {
+          "name": "GPU CUBE",
+          "image": "/images/catalog/GPU CUBE.png",
+          "features": [
+            "CUBE desktop enclosure supports one double-wide or two single-wide full-height I/O cards up to 13.25 inch long with PCIe cable adapter/cable or Thunderbolt cable and 180W power supply"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs12",
+      "icon": "",
+      "title": "Real-Time Operating System",
+      "products": [
+        {
+          "name": "Wind River VxWorks 6.9",
+          "image": "/images/catalog/51.png",
+          "features": [
+            "VxWorks is the industry's leading commercial RTOS, matching applications with hardware performance and reliability for secure, intelligent, connected devices"
+          ]
+        },
+        {
+          "name": "Wind River Workbench 3.2",
+          "image": "/images/catalog/52.png",
+          "features": [
+            "Wind River Workbench is a full commercial development suite for embedded device software development"
+          ]
+        },
+        {
+          "name": "WIND RIVER LINUX",
+          "image": "/images/catalog/53.png",
+          "features": [
+            "Wind River Linux is the embedded Linux solution reducing risk and time-to-market for Linux-based devices with commercial-tested Yocto Project Linux content"
+          ]
+        },
+        {
+          "name": "WIND RIVER PULSAR LINUX",
+          "image": "/images/catalog/54.png",
+          "features": [
+            "Wind River Pulsar Linux is a container-based OS delivering bug fixes and security vulnerability fixes to protect deployed devices and mitigate costs"
+          ]
+        },
+        {
+          "name": "VxWorks 653 Platform",
+          "image": "/images/catalog/55.png",
+          "features": [
+            "Wind River VxWorks 653 Platform is a safe, secure, reliable RTOS fully compliant with ARINC Spec 653, providing robust partitioning for IMA and ARINC compliance"
+          ]
+        },
+        {
+          "name": "ISaGRAF",
+          "image": "/images/catalog/56.png",
+          "features": [
+            "ISaGRAF is the reference and de facto standard in automation software technology, designed to bridge microcomputer systems and PLCs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs13",
+      "icon": "",
+      "title": "Sensor Modeling & Simulation",
+      "products": [
+        {
+          "name": "SE-Workbench-EO",
+          "image": "/images/catalog/10.png",
+          "features": [
+            "SE-Workbench-EO has been designed for the creation of synthetic models of complex environments that have to be as realistic as possible in order to stimulate systems using sensors in the EO domain"
+          ]
+        },
+        {
+          "name": "SE-Workbench-HWIL-EO",
+          "image": "/images/catalog/11.png",
+          "features": [
+            "SE-FAST-HWIL is the real time image generator package designed to deliver high realistic infrared (IR) images at very high frame rates (200Hz and above) in a closed loop mode"
+          ]
+        },
+        {
+          "name": "SE-Workbench-EOS",
+          "image": "/images/catalog/12.png",
+          "features": [
+            "Target signature rendering in Electro-Optics domain",
+            "Tools and data included in SE-WORKBENCH-EOS dedicated to aircraft signature computation in the EO domain"
+          ]
+        },
+        {
+          "name": "SE-FAST-IG",
+          "image": "/images/catalog/14.png",
+          "features": [
+            "SE-FAST-IG is a high performance visualisation application",
+            "Driven by users' simulators through its CIGI interface, supports features for flight training, driving simulations, ground warfare"
+          ]
+        },
+        {
+          "name": "SE-Workbench-RF",
+          "image": "/images/catalog/15.png",
+          "features": [
+            "The aim of SE-Workbench-RF is to create synthetic models of complex environments for simulating systems with EM sources and sensors, typically radar systems"
+          ]
+        },
+        {
+          "name": "SE-Workbench-SAR",
+          "image": "/images/catalog/16.png",
+          "features": [
+            "SE-Workbench-SAR allows computing SAR data with advanced OKTAL-SE software",
+            "SAR raw data computed using ray-tracing combined with asymptotic methods (GO, PO and ECM)"
+          ]
+        },
+        {
+          "name": "SE-Workbench-RBGM",
+          "image": "/images/catalog/17.png",
+          "features": [
+            "SE-RAY-RADAR is dedicated to RBGM computing (Real Beam Ground Mapping) of complex 3D scenes",
+            "Simulates radar frequency, scanning parameters, trajectory embedding, visualization modes"
+          ]
+        },
+        {
+          "name": "SE-Workbench-AEO",
+          "image": "/images/catalog/18.png",
+          "features": [
+            "SE-RAY-AEO: Pulsed LASER context, specular predominant cover",
+            "Simulation of range gating capacities and detection/identification of metallic or dielectric targets"
+          ]
+        },
+        {
+          "name": "SE-Workbench-GNSS",
+          "image": "/images/catalog/19.png",
+          "features": [
+            "SE-NAV is a propagation simulator for assessment of signals reception in stringent environments",
+            "Predicts performance of GPS, GALILEO, BEIDOU or pseudolites in 3D virtual scenes"
+          ]
+        },
+        {
+          "name": "SE-AGETIM",
+          "image": "/images/catalog/20.png",
+          "features": [
+            "SE-AGETIM is an integrated software tools suite enabling 3D environment generation for simulation",
+            "Dedicated to GIS experts, enables full integration"
+          ]
+        },
+        {
+          "name": "SE-AGETIM-LIGHT",
+          "image": "/images/catalog/21.png",
+          "features": [
+            "SE-AGETIM-LIGHT is a simple standalone software enabling easy 3D environment generation for sensor simulation with integration of various geographical data sources"
+          ]
+        },
+        {
+          "name": "SE-AGETIM-BUILDING",
+          "image": "/images/catalog/22.png",
+          "features": [
+            "SE-AGETIM-BUILDING is dedicated to editing building templates and handling extrusion of buildings from templates in SE-AGETIM"
+          ]
+        },
+        {
+          "name": "SE-AGETIM-INDOOR",
+          "image": "/images/catalog/23.png",
+          "features": [
+            "SE-AGETIM-INDOOR is dedicated to editing building plans including furniture, lighting and decoration objects, with automatic extrusion of interior structures"
+          ]
+        },
+        {
+          "name": "SE-TK FORM Suite",
+          "image": "/images/catalog/24.png",
+          "features": [
+            "SE-Workbench Special Tool-Kits (TK) for expert users",
+            "Divided in 2 families of APIs: refined preparation of scenarios and dynamic modification"
+          ]
+        },
+        {
+          "name": "SE-TK D SCNX Suite",
+          "image": "/images/catalog/25.png",
+          "features": [
+            "SE-TK-D-SCNX enhances SE-TOOLKIT functions for making changes during scenario rendering in closed loop mode"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs14",
+      "icon": "",
+      "title": "Middleware Software",
+      "products": [
+        {
+          "name": "Connext DDS Professional",
+          "image": "/images/catalog/26.png",
+          "features": [
+            "RTI Connext DDS Professional is the first connectivity software for Industrial Internet of Things (IIoT)",
+            "Delivers low-latency, high reliability, scalability and security for mission-critical systems"
+          ]
+        },
+        {
+          "name": "RTI Connext DDS Secure",
+          "image": "/images/catalog/57.png",
+          "features": [
+            "RTI Connext DDS Secure enables IIoT architects to build secure and scalable systems of systems with fine-grained security on Connext Databus"
+          ]
+        },
+        {
+          "name": "RTI Connext DDS Micro",
+          "image": "/images/catalog/58.png",
+          "features": [
+            "Connext DDS Micro for distributed IIoT systems meeting stringent Size, Weight and Power (SWaP) requirements",
+            "Small-footprint connectivity framework"
+          ]
+        },
+        {
+          "name": "RTI Connext DDS Cert",
+          "image": "/images/catalog/59.png",
+          "features": [
+            "RTI Connext DDS Cert enables IIoT architects to build safety-critical systems",
+            "Only off-the-shelf connectivity framework certifiable for highest safety standards"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs15",
+      "icon": "",
+      "title": "Radar Processing & Display",
+      "products": [
+        {
+          "name": "SPx Server (Target Tracking)",
+          "image": "/images/catalog/73.png",
+          "features": [
+            "SPx Server is a multi-function radar processor providing radar distribution, plot extraction and target tracking"
+          ]
+        },
+        {
+          "name": "RadarView (Visualization)",
+          "image": "/images/catalog/72.png",
+          "features": [
+            "RadarView is Cambridge Pixel's Windows-based application for capture and visualization of primary radar video from remote server, network interface, or HPx capture card"
+          ]
+        },
+        {
+          "name": "SPx Radar Simulator",
+          "image": "/images/catalog/74.png",
+          "features": [
+            "SPx Radar Simulator is a Windows-based application generating simulated radar video data over network socket, with terrain elevation data for realistic radar returns"
+          ]
+        },
+        {
+          "name": "SPx Development",
+          "image": "/images/catalog/75.png",
+          "features": [
+            "Cambridge Pixel's SPx Development software for developers incorporating radar processing or display capabilities"
+          ]
+        },
+        {
+          "name": "SPx Fusion Server",
+          "image": "/images/catalog/76.png",
+          "features": [
+            "SPx Fusion fuses observations from multiple independent sensors into a single stream of correlated reports"
+          ]
+        },
+        {
+          "name": "RDR Data Recorder",
+          "image": "/images/catalog/77.png",
+          "features": [
+            "Cambridge Pixel's RDR provides full-featured, multichannel record and replay for radar video, target tracks, AIS, ADS-B, IFF and navigation data simultaneously"
+          ]
+        },
+        {
+          "name": "VSD (Video Security Display)",
+          "image": "/images/catalog/78.png",
+          "features": [
+            "VSD application interfaces to radars and cameras providing a readymade situational awareness display"
+          ]
+        },
+        {
+          "name": "ASD-100",
+          "image": "/images/catalog/79.png",
+          "features": [
+            "ASD-100 is Cambridge Pixel's PC-based air surveillance display for primary and secondary radar data"
+          ]
+        },
+        {
+          "name": "SPx-Scan",
+          "image": "/images/catalog/80.png",
+          "features": [
+            "SPx-Scan software-based radar scan converter for Windows and Linux/X11, simplifying radar integration into graphics applications"
+          ]
+        },
+        {
+          "name": "SPx Radar Image Distribution",
+          "image": "/images/catalog/81.png",
+          "features": [
+            "SPx Radar Image Server (RIS) is a scan conversion server that captures and scan converts radar video into images delivered to clients or web browsers"
+          ]
+        },
+        {
+          "name": "SPx AIS",
+          "image": "/images/catalog/82.png",
+          "features": [
+            "SPx AV is Cambridge Pixel's audio and video streaming software for compression, distribution and recording from multiple sources"
+          ]
+        },
+        {
+          "name": "HPx-346",
+          "image": "/images/catalog/HPx-346.png",
+          "features": [
+            "HPx-346 is a small form factor combined analogue radar input and network distribution card"
+          ]
+        },
+        {
+          "name": "HPx-400e",
+          "image": "/images/catalog/HPx-400e.png",
+          "features": [
+            "HPx-400e is a high-performance PCIe dual-stream radar acquisition card capturing analogue and digital primary radar video from up to two radars"
+          ]
+        },
+        {
+          "name": "HPx-300",
+          "image": "/images/catalog/HPx-300.png",
+          "features": [
+            "HPx-300 Radar Signal Output card generates representative radar signals for testing, simulation, training or streaming"
+          ]
+        },
+        {
+          "name": "HPx-250",
+          "image": "/images/catalog/HPx-250.png",
+          "features": [
+            "HPx-250 is a high-performance PMC-based radar acquisition card capturing one or two analogue and up to 2 bits of digital primary radar video"
+          ]
+        },
+        {
+          "name": "HPx-200",
+          "image": "/images/catalog/HPx-200.png",
+          "features": [
+            "HPx-200 is a high-performance PCI-based radar acquisition card capturing one or two analogue or up to 8 bits of digital primary radar video"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs16",
+      "icon": "",
+      "title": "Device Cloud (IoT)",
+      "products": [
+        {
+          "name": "WIND RIVER HELIX DEVICE CLOUD",
+          "image": "/images/catalog/69.png",
+          "features": [
+            "Wind River Helix Device Cloud is an IoT device management platform reducing complexities of large-scale deployments with health monitoring and remote access"
+          ]
+        },
+        {
+          "name": "TITANIUM CONTROL",
+          "image": "/images/catalog/70.png",
+          "features": [
+            "Wind River Titanium Control: on-premise cloud infrastructure for critical services, improving agility and reducing operating/deployment costs"
+          ]
+        },
+        {
+          "name": "Wind River Simics",
+          "image": "/images/catalog/71.png",
+          "features": [
+            "Simics simulates systems from smallest to most complex",
+            "Moving from physical hardware to virtual lab lets embedded software teams revolutionize development processes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cs17",
+      "icon": "",
+      "title": "High-Speed Interconnect",
+      "products": [
+        {
+          "name": "MXH532 PCIe 5.0 x16 Transparent Adapter",
+          "image": "/images/products/interconnect/MXH532 PCIe 5.0 x16 Transparent  Adapter.png",
+          "features": [
+            "성능 및 규격: PCIe Gen5(32 GT/s) 지원 및 하위 버전(1.0~5.0) 완벽 호환, 초저지연 성능(칩 100ns / 앱 간 600ns)",
+            "연결성: Quad SFF-8614 x4 커넥터 및 패시브 구리 케이블 지원",
+            "하드웨어 설계: Microchip Switchtec® Gen 5.0 PFX 탑재, LP-HL(Low Profile, Half Length) 폼팩터, 상태 표시 LED",
+            "주요 기능: RDMA(PIO/DMA) 지원, 클럭 격리 및 CFC/SSC 자동 지원, 멀티 설정을 위한 EEPROM 내장",
+            "소프트웨어: eXpressWare™ 소프트웨어 라이선스 포함"
+          ]
+        },
+        {
+          "name": "MXH930 PCIe NTB Adapter",
+          "image": "/images/products/interconnect/MXH930 PCIe NTB Adapter.png",
+          "features": [
+            "성능 및 인터페이스: PCIe Gen4(16 GT/s) 지원 및 하위 호환(Gen1~4), Microchip PM40036-PFX 칩셋 탑재, 100ns 미만의 초저지연(Cut-Through) 성능",
+            "연결성 및 케이블: Quad SFF-8644 커넥터 사용, 구리(Copper) 및 광(Fiber-optic) 케이블 지원, CMI 및 non-CMI 케이블 호환",
+            "유연한 포트 구성: 1개(x16), 2개(x8), 4개(x4) 등 다양한 포트 구성 옵션 제공",
+            "클러스터링 및 확장성: 2~5 노드 클러스터 구성 지원, MXS924와 결합 시 최대 64~128 노드까지 확장 가능",
+            "주요 기능: RDMA(PIO 및 DMA*) 지원, Full Host Clock Isolation 및 CFC/SSC 자동 지원, 커스텀 설정을 위한 EEPROM 내장 (*DMA는 개발 중)",
+            "하드웨어 설계: LP(Low Profile) 폼팩터, 전면부 링크 상태 LED 탑재"
+          ]
+        },
+        {
+          "name": "MXH932 PCIe Transparent Adapter",
+          "image": "/images/products/interconnect/MXH932 PCIe Transparent Adapter.png",
+          "features": [
+            "인터페이스 및 성능: PCIe Gen4(16 GT/s) 지원 및 하위 호환(Gen1~4), 100ns 미만의 초저지연(Cut-Through) 성능, Microchip PM40036-PFX 칩셋 탑재",
+            "연결성 및 케이블: Quad SFF-8644 커넥터 기반, 구리(Copper) 및 광(Fiber-optic) 케이블 지원, CMI 지원 PCIe 4.0 케이블 호환",
+            "유연한 포트 구성 (MXH932): 사용자 필요에 따라 x16 1개, x8 2개, x4 4개 포트로 가변 구성 가능",
+            "시스템 확장성: MXS924와 결합하여 대규모 I/O 확장 시스템(I/O Expansion Systems) 구축 및 스케일링 지원",
+            "하드웨어 및 신뢰성: LP(Low Profile) 폼팩터, 클럭 격리(Clock Isolation) 및 CFC/SSC 자동 지원, 전면 상태 LED 및 커스텀용 EEPROM 내장"
+          ]
+        },
+        {
+          "name": "PXH830 PCIe NTB Adapter",
+          "image": "/images/products/interconnect/PXH830 PCIe NTB Adapter.png",
+          "features": [
+            "인터페이스 및 성능: PCIe Gen3(8.0 Gbps/lane) 지원 및 하위 호환(Gen1~3), RDMA(PIO 및 DMA) 지원",
+            "유연한 포트 구성: 4개의 x4 Gen3 케이블 포트를 탑재하여 사용자 필요에 따라 1x16 또는 2x8 포트로 유연하게 구성 가능",
+            "연결성: SFF-8644(iPass+ HD / MiniSAS-HD®) 커넥터 기반, 구리(Copper) 및 광(Fiber-optic) 케이블 모두 지원",
+            "브릿징 및 기술: 최대 2개의 NTB(Non-transparent bridging) 포트 지원, 호스트 클럭 격리(Full host clock isolation) 및 CFC/SSC 동시 지원",
+            "하드웨어 설계: LP(Low Profile) 폼팩터, 전면 링크 상태 LED, 사용자 맞춤 설정을 위한 EEPROM 내장"
+          ]
+        },
+        {
+          "name": "MXS924 PCIe 4.0 Switch",
+          "image": "/images/products/interconnect/MXS924 PCIe 4.0 Switch.png",
+          "features": [
+            "성능 및 규격: PCIe 4.0(16 GT/s) 지원 및 하위 호환(Gen 1~4), 고성능 Microchip PFX Gen4 칩셋 탑재",
+            "포트 및 연결성: 총 24개의 PCIe 4.0 x4 포트(SFF-8644 커넥터) 제공, 구리 및 광케이블 지원, 유지보수가 용이한 핫플러그(Hot-plug) 지원",
+            "시스템 관리: 이더넷(Ethernet) 기반의 원격 관리 및 모니터링 기능, 전면 패널의 상태 LED를 통한 직관적인 포트 확인",
+            "하드웨어 설계: 표준 19인치 1U 랙마운트 섀시 적용, 다중 스위치 구성을 통한 유연한 확장성(Scalable) 제공"
+          ]
+        }
+      ]
+    }
+  ]
+}

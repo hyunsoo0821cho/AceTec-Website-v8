@@ -1,0 +1,395 @@
+{
+  "title": "적용 분야",
+  "description": "에이스텍 플랫폼이 국방, 철도 교통, 통신, 산업 분야에 어떻게 배치되는지 확인하세요 — 가동 시간과 신뢰성이 타협할 수 없는 곳입니다.",
+  "image": "/images/hero/hero-main.png",
+  "chapters": [
+    {
+      "title": "군수항공분야",
+      "meta": "정밀 타격 · C2 · 감시 · 무인 시스템",
+      "lessons": [
+        {
+          "title": "Rugged Embedded Systems",
+          "description": "VPX, VME, and CompactPCI boards for precision strike, command & control, surveillance, ground/unmanned vehicles, airborne/UAV, and naval/underwater platforms.",
+          "tag": "Abaco"
+        },
+        {
+          "title": "Digital Signal Processing",
+          "description": "Jade, Cobalt, Onyx, Talon, Flexor, and Spark DSP platforms for radar, electronic warfare, and SIGINT applications.",
+          "tag": "DSP"
+        }
+      ],
+      "sections": [
+        {
+          "title": "PLATFORMS & PROGRAMS",
+          "items": [
+            "Precision Strike — Hyeonmu, Haeseong, Shingoong, Cheongoong",
+            "Marine — KNTDS, FFX Series, C4I, KSS-III, JTDLS, KDX-I PIP, KDX, PKX, MLS, LST, ATX, LPH",
+            "Aviation — UAV/GCS, Medium Altitude Unmanned Air Vehicle",
+            "Ground — K2, K21 Control System",
+            "C2 — Satellite comm, Reconnaissance, Electronic warfare/jamming",
+            "Surveillance — Thermal observation, Video/Search radar, Target detection",
+            "Applications — Aerospace/Satellite, Flight/Ship Simulator, Missile Control, Fire Control, MIL-Test Equipment, Image/Signal Processing, Radar/Sonar"
+          ]
+        },
+        {
+          "title": "KEY REFERENCES",
+          "items": [
+            "C4I Upgrade — Ulsan-class Frigate, Gwanggaeto-III (STX Engine)",
+            "KSS-III Batch-III Submarine C4I System (STX Engine)",
+            "Rugged Server Development — Hanwha Systems",
+            "C4I System Upgrade Components — Hanwha Systems",
+            "Radar Target Simulator (RTS) — LIG Nex1",
+            "Mine Detection Sonar Integration Simulator — LIG Nex1",
+            "Submarine Monitoring System Localization — Daewoo Shipbuilding",
+            "OKTAL-SE SE-Workbench-RF & SE-RAY-SAR — Agency for Defense Development",
+            "Naval Data Collection Systems — Fanless BoxIPC",
+            "VxWorks Export Contract for K2 Poland — Hyundai Rotem",
+            "FEPOL CPU Board & VxWorks 7.0 BSP Development",
+            "VxWorks BSP for BITU System — LS Electric",
+            "Ground Tactical C4I System — Defense Acquisition Program Administration",
+            "Navy Monitoring Console ACE-PPC-23H — Mass Production",
+            "Embedded Systems — Hyundai Heavy Industries",
+            "Sensor Systems — Samsung Thales (now Hanwha Systems)",
+            "Combat Systems — Hanwha Defense",
+            "VxWorks & Middleware — LIG System",
+            "Doosan Heavy Industries — Control Systems",
+            "Incheon International Airport — Infrastructure Systems"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "철도분야",
+      "meta": "CBTC · PTC · ATP · ATO · ATS · 연동장치",
+      "lessons": [
+        {
+          "title": "HIMA HiMax System",
+          "description": "Flexible COTS control system for train control centers, CBTC, PTC, ATP, ATO, ATS, and electronic interlocking applications. Over 30 years of proven railway expertise. Modular, expandable architecture suitable for new installations and expansion of existing systems.",
+          "tag": "HIMA"
+        },
+        {
+          "title": "ControlSafe™ Platform",
+          "description": "TÜV SÜD SIL4 certified fail-safe, fault-tolerant system for railway signaling, train control, and electronic block systems. Compliant with EN 50126 (RAMS), EN 50128 (safety software), and EN 50129 (safety hardware). Achieves 99.9999% (six nines) platform hardware availability with 15-year planned lifetime (25-year with extended service). IEC 61375 / EN 50155 compliant.",
+          "tag": "SIL4"
+        }
+      ],
+      "sections": [
+        {
+          "title": "APPLICATION AREAS",
+          "items": [
+            "Train Control Signal System",
+            "Computer Based Interlocking (CBI)",
+            "Communications Based Train Control (CBTC)",
+            "Positive Train Control (PTC)",
+            "ATP / ATO / ATS",
+            "RBC — Radio Block Centre",
+            "TSRS — Temporary Speed Limit Server",
+            "TCC — Train Control Center",
+            "Electronic Interlocking / ETCS / EABS"
+          ]
+        },
+        {
+          "title": "KEY REFERENCES",
+          "items": [
+            "ControlSafe EXB Electronic Interlocking — Yookyung Controls",
+            "ControlSafe CCC Electronic Interlocking — Hyukshin Shalom Engineering",
+            "ISaGRAF System for Railway TCMS — Overseas Project",
+            "ISaGRAF System — VITZROSYS & Intellics",
+            "ISaGRAF for Nuclear Power Project — Complete Configuration",
+            "Smart Railroad Crossing Obstacle Detection System",
+            "Railway Signal Display Control System — Industrial PCs",
+            "Laser Obstacle Detection for Level Crossings — Korea Railroad Research",
+            "Electronic Interlocking Display Control — Korail"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "정보통신분야",
+      "meta": "방화벽 · VPN · 네트워크 보안 · NIC",
+      "lessons": [
+        {
+          "title": "Network Appliances",
+          "description": "Entry-level to high-end network appliances for satellite/voice communications, image processing, and data compression applications.",
+          "tag": "Network"
+        },
+        {
+          "title": "NIC Adapters",
+          "description": "High-performance network interface cards for data center, telecom infrastructure, and RTOS-based systems.",
+          "tag": "NIC"
+        }
+      ],
+      "sections": [
+        {
+          "title": "APPLICATION AREAS",
+          "items": [
+            "Super Computing Solution / High Performance Computing",
+            "Satellite Voice & Data Transceiver Application",
+            "Voice / Data Compression Application",
+            "Image Processing System",
+            "RTOS Product and Professional BSP/Driver Porting Service"
+          ]
+        },
+        {
+          "title": "KEY REFERENCES",
+          "items": [
+            "1U Server & Dual Network Security System — Softwith Solution",
+            "Network Security Solution — Ministry of Foreign Affairs",
+            "HiEMS Server for Intelligent Ship Equipment — Hyundai Samho",
+            "NAC Security Solution Appliance — JUVIS",
+            "Security Solutions — Public, Financial & Enterprise Sectors",
+            "SMB-class Network Appliance — Chaewool"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "자동화분야",
+      "meta": "가속기 · 방송 · 발전 · 데이터 처리",
+      "lessons": [
+        {
+          "title": "Industrial Fanless PCs",
+          "description": "KC certified fanless PCs for administrative networks, military use, factory HMI, iron/steel manufacturing, railway/train control, facility automation, semiconductor/manufacturing quality test, kiosks, digital signage, security & surveillance, and IoT — serving 300+ domestic government institutions.",
+          "tag": "IPC"
+        },
+        {
+          "title": "Process Control & Automation",
+          "description": "Computing platforms for accelerators, broadcast systems, power generation control, industrial vehicles, and high-throughput data processing.",
+          "tag": "Automation"
+        }
+      ],
+      "sections": [
+        {
+          "title": "APPLICATION AREAS",
+          "items": [
+            "Pohang 4th Generation / Proton / Heavy Ion Accelerator",
+            "Broadcasting & Broadcast Transmission System",
+            "Power Generation Control — DSC / SCADA / RTU / Smart Grid / ESS / HVDC",
+            "Nuclear Power Plant — DCS / Duplexing",
+            "Accelerator System — Timing Beam Line"
+          ]
+        },
+        {
+          "title": "KEY REFERENCES",
+          "items": [
+            "No.2 Plate Mill Air Comp System — POSCO Pohang",
+            "Hot Rolling Line Aging Control System — POSCO DX",
+            "HMI Systems — POSCO Pohang",
+            "AGV HMI & Cold-rolled Line PC — POSCO Gwangyang (via Iba Korea)",
+            "Fanless BoxIPC Access Control — Hyundai Steel Dangjin",
+            "Voice Recognition Evaluation System — Hyundai Mobis",
+            "Fanless Rackmount Industrial PC — Hyundai Motor Jeonju",
+            "Real-time OS for Power Control Module — Doosan Enerbility",
+            "Semiconductor Equipment Analysis System — Samsung Electronics",
+            "PLC Communication Module Test — LG Innotek",
+            "Fanless Industrial PC — Kumho Tire Gwangju Plant",
+            "4U Rackmount Industrial PC — SK hynix",
+            "Industrial PC — Dongkuk Steel Pohang",
+            "Industrial Systems — POSCO ICT",
+            "Parking Control Systems — Lotte Mall & Lotte Premium Outlet"
+          ]
+        },
+        {
+          "title": "CUSTOMIZING SUCCESS CASES",
+          "items": [
+            "40U 10-Node Super Computing System",
+            "Portable Radar Navigation Sensor",
+            "36U Modeling and Simulation System",
+            "ACE-BoxIPC-ISIG — Vessel Satellite Gateway Device",
+            "MR-450 — Sensor Data Converter for Vessel",
+            "ACE-LI-AG-001 — Performance Simulator",
+            "ACE-PPC-23H — Navy Monitoring Console",
+            "ACE-HD-10T — Integrated Navigation Sensor Gathering Device",
+            "ACE-2016-EM-01 — Custom Embedded System"
+          ]
+        },
+        {
+          "title": "MANUFACTURING PROCESS",
+          "items": [
+            "3D Modeling & Product Design",
+            "Tool Design & Engineering",
+            "Prototype (Mock-up) Development",
+            "Mold Production",
+            "Mass Production — One-Stop System"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "모델링 & 시뮬레이션 분야",
+      "meta": "EO/IR · RF · Active EO · GNSS · HWIL · MITL",
+      "lessons": [
+        {
+          "title": "EO/IR, RF & Active EO Simulation",
+          "description": "Physics-based COTS software for multi-sensor simulation — SE-Workbench-EO, SE-Workbench-HWIL-EO, SE-Workbench-EOS, SE-Workbench-RF, SE-Workbench-SAR (SE-RAY-SAR), SE-Workbench-RBGM, SE-Workbench-AEO, SE-Workbench-GNSS, and SE-FAST-IG for real-time HWIL.",
+          "tag": "OKTAL-SE"
+        },
+        {
+          "title": "3D Terrain, Databases & APIs",
+          "description": "Real-time 3D terrain and building generation (SE-3D-DB), scene databases, special effects, and integration APIs for training simulation, mission rehearsal, UAV control stations, and synthetic battlefield production.",
+          "tag": "3D"
+        }
+      ],
+      "sections": [
+        {
+          "title": "USER APPLICATIONS",
+          "items": [
+            "Research Simulation — IR/RF missile tracker assessment, Enhanced Vision System (IR or Radar), Hardware-In-the-Loop simulation, GNSS system stimulation",
+            "Man-In-the-Loop Simulation — Training simulation, all-weather-condition piloting, UAV control station, war & serious games"
+          ]
+        },
+        {
+          "title": "OVERSEAS APPLICATIONS",
+          "items": [
+            "MBDA — SCALP (Storm Shadow) missile (EO)",
+            "SAGEM — AASM missile (EO)",
+            "MBDA — ANL (FASGW) missile (EO)",
+            "French DGA — Surveillance radar / wind power plant assessment (RF)",
+            "French DGA — Reference tool in EO domain",
+            "AIRBUS Helicopter — Tiger Rotorcraft painting characteristics assessment (EO)",
+            "EDA — Maritime environment modeling & electromagnetic signature of surface targets (RF)",
+            "DIEHL-BGT — Missile (EO + RF)",
+            "ADD — Missile + UAV (EO + RF)",
+            "BWB — Reference tool for EO",
+            "DSO — Reference tool for RF",
+            "FOI — Reference tool for EO + RF"
+          ]
+        },
+        {
+          "title": "DOMESTIC APPLICATIONS",
+          "items": [
+            "Synthetic battlefield production, simulation & result analysis",
+            "Synthetic infrared 3D image modeling software development",
+            "Terrain model production for synthetic image creation",
+            "Image-based guided rocket simulation software development",
+            "Infrared image creation software development",
+            "Target image DB construction & performance simulation system",
+            "Infrared image creation & target model thermal analysis interlock system",
+            "Hardware-In-the-Loop Simulation (HILS) system"
+          ]
+        },
+        {
+          "title": "KEY REFERENCES",
+          "items": [
+            "SE-SEA-DB with SAR Enhancements — Agency for Defense Development",
+            "SE-Workbench-RF & SE-RAY-SAR Maintenance — ADD",
+            "SE-Workbench-EO for New SGW — LIG Nex1",
+            "SE-TK-D-SCNX-TEL & 3D Models — Agency for Defense Development",
+            "IR Image Generation for AI Research — OKTAL-SE",
+            "Multi-wavelength Video Data Processing — Collaborative R&D"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "슈퍼컴퓨팅시스템분야",
+      "meta": "HPC · GPU · Big Data · Simulation",
+      "lessons": [
+        {
+          "title": "GPU Servers & Appliances",
+          "description": "High-density GPU computing platforms for AI inference, deep learning, and scientific computation.",
+          "tag": "GPU"
+        },
+        {
+          "title": "PCIe Expansion & Storage",
+          "description": "One Stop Systems PCIe expansion chassis and high-performance NVMe storage solutions.",
+          "tag": "OSS"
+        }
+      ],
+      "sections": [
+        {
+          "title": "APPLICATION FIELDS",
+          "items": [
+            "Machine Learning — Deep Learning, Image Recognition, Autonomous Cars, Real-Time Voice Translation",
+            "Finance — Monte Carlo Simulations, High Frequency Trading, Partial Differential Equations, Risk Analytics",
+            "Defense — Geospatial Visualization, Intelligence, SAAR",
+            "Media — Video Storage, Rendering, Color Grading",
+            "Medical — Image Processing, Bio Informatics, Simulations",
+            "Research — Molecular Dynamics, Numerical Analytics, Weather & Climate Forecasting",
+            "Oil & Gas — Seismic Processing, Reservoir Modeling"
+          ]
+        },
+        {
+          "title": "KEY REFERENCES",
+          "items": [
+            "2nd Gen Xeon 1U Server — Ministry of Foreign Affairs Data Center",
+            "Xeon 1U Server Security Solution — Fubon Hyundai Life Insurance",
+            "mTCA for Accelerator — HUMANTECH",
+            "PENTEK Accelerators — Korea Atomic Energy Research Institute",
+            "40U 10-Node Super Computing System (Custom Build)"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "연구소",
+      "meta": "영상처리 · GPU · FPGA · 임베디드 설계",
+      "lessons": [
+        {
+          "title": "Algorithm & System Design",
+          "description": "Image processing algorithm research (stabilization, panorama, tracking, Kalman filter), GPU-based high-speed image processing (OpenCV, NVIDIA/ATI GPU), FPGA IP design (registration, feature detection, fusion, VSIPL), infrared simulation, and high-performance embedded system development.",
+          "tag": "R&D"
+        },
+        {
+          "title": "Custom Integration & Support",
+          "description": "End-to-end custom hardware design, system integration, and full lifecycle technical support from consultation through deployment.",
+          "tag": "Support"
+        }
+      ],
+      "sections": [
+        {
+          "title": "CORE TECHNOLOGIES",
+          "items": [
+            "Vision-based navigation, guidance & real-time target tracking",
+            "FPGA realization of image processing algorithms (IP design, Matlab/Simulink, C2HDL)",
+            "Simulator host computer — Airplane, Tank gunnery training, CSC & RTU",
+            "Flight test control & satellite launching control — Radar, GPS, Nidar, Telemetry interface",
+            "VME/VPX system design & RTOS BSP/driver porting",
+            "Fanless radiant heat technology — Heat pipe & heat sink optimization",
+            "Vibration resistant structure & dust-proof design"
+          ]
+        },
+        {
+          "title": "R&D APPLICATIONS",
+          "items": [
+            "Flight Simulator (6 DOF Motion Platform)",
+            "Full-Flight Simulator System",
+            "Missile / Satellite Launch Test Control",
+            "Guidance Computer Test System",
+            "Hardware-In-the-Loop Simulation (HILS)"
+          ]
+        },
+        {
+          "title": "KEY REFERENCES",
+          "items": [
+            "SDM Platform for Digital Construction Machinery — National R&D",
+            "Real-time Computer Systems — Agency for Defense Development",
+            "US Patent — Natural Cooling Type Industrial Computer",
+            "Patent — Cooling Fin with Thermoelectric Element (2020)",
+            "ISO-9001:2015 · KC Certified · K Mark · CE · FCC",
+            "Serving 300+ domestic institutions since 1994"
+          ]
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "에이스텍은 어떤 산업 분야에 서비스를 제공하나요?",
+      "answer": "에이스텍은 군수항공, 철도 교통, 정보통신, 산업 자동화, 고성능 컴퓨팅, 센서 시뮬레이션 분야에 서비스를 제공합니다."
+    },
+    {
+      "question": "맞춤형 솔루션을 제공하나요?",
+      "answer": "네. 자체 R&D 센터와 엔지니어링 팀이 고객의 프로젝트 요구사항에 맞춤화된 시스템 통합, 하드웨어 수정, 소프트웨어 개발 서비스를 제공합니다."
+    },
+    {
+      "question": "제품은 어떤 인증을 보유하고 있나요?",
+      "answer": "제품 라인에 따라 KC(한국인증), ISO 9001 품질경영, 철도 안전 시스템용 TÜV SÜD SIL4, 국방용 하드웨어 MIL-STD 규격 준수 등이 있습니다."
+    },
+    {
+      "question": "제품 데모를 요청하려면 어떻게 하나요?",
+      "answer": "문의 양식을 통해 제출하거나 직접 전화해 주세요. 기술팀이 현장 데모, 원격 세션 또는 평가 장비 제공을 준비해 드립니다."
+    }
+  ],
+  "companyDescription": "Trusted for over 30 years in embedded computing, industrial PCs, and safety-critical systems — serving defense, aerospace, railway, and industrial markets."
+}

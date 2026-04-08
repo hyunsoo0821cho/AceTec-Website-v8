@@ -1,0 +1,1455 @@
+{
+  "periods": [
+    {
+      "id": "tab-2025-2027",
+      "label": "2025 — 2027",
+      "years": [
+        {
+          "year": 2025,
+          "months": [
+            {
+              "month": "Jan.",
+              "entries": ["New entry"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-2022-2024",
+      "label": "2022 — 2024",
+      "years": [
+        {
+          "year": 2024,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": [
+                "Supplied Air Comp System for the No.2 Plate Mill at POSCO Pohang",
+                "Supplied Industrial Fanless PCs for POSCO 2-Gas B Equipment",
+                "Supplied 1U Server and Dual Network Security Solution System to Softwith Solution"
+              ]
+            },
+            {
+              "month": "Nov.",
+              "entries": [
+                "Signed VxWorks Contract for TASS Export with STX Engine",
+                "Supplied Industrial PCs to Hyundai Movient Ansan",
+                "Supplied HMI Systems to POSCO Pohang",
+                "Participated in The Symposium for Nuclear Power Plnat Instrumentation and Control (NuPIC) at Yeosu"
+              ]
+            },
+            {
+              "month": "Oct.",
+              "entries": [
+                "Supplied Fanless BoxIPC for Naval Data Collection Systems",
+                "Supplied sensor Unit for Smart Railroad Crossing Obstacle Detection System",
+                "Supplied Complete Configuration of ISaGRAF System for Railway TCMS(Overseas Project) to Company \"D\"",
+                "Supplied VxWorks7 for Semiconductor Test Equipment to Company \"Y\""
+              ]
+            },
+            {
+              "month": "Sep.",
+              "entries": [
+                "Signed OKTAL-SE SE-SEA-DB with SAR Enhancements Contract with Agency for Defense Development",
+                "Signed OKTAL-SE Special Upgrade & Regular Maintenance S/W Contract with Agency for Defense Development",
+                "Supplied Industrial PC for Interactive Voice Recongnizion Evaluation System to Hyundai Mobis",
+                "Supplied Fanless BoxIPC for Access Control at Hyundai Steel Dangjin Cold Rolling Mill"
+              ]
+            },
+            {
+              "month": "Aug.",
+              "entries": [
+                "Supplied 1U Server for Security Solution to the Ministry of Foreign Affairs",
+                "Supplied PC Hardware to POSCO No.2 Hot Rolling Mill",
+                "Supplied VxWorks6.9 Software for Overseas Ground Railway Signaling System to Company \"H\"",
+                "Development of a Software Defined Machine (SDM) Platform for Digital Solutions in Construction Machinery_National R&D Projects"
+              ]
+            },
+            {
+              "month": "Jul.",
+              "entries": [
+                "Developed Front End Processor for Operating Level (FEPOL) CPU Board and VxWorks 7.0 BSP",
+                "Supplied Fanless Industrial PC to Kumho Tire Gwangju Plant",
+                "Signed OKTAL-SE Regular Maintenance Contract for Agency for Defense Development",
+                "Signed SYNOPSIS RADAR TARGET SIMULATOR (RTS) Contract with LIG Nex1",
+                "Signed SE-TK-D-SCNX-TEL & 3D Models Contract with Agency for Defense Development",
+                "Supplied SMB-class Network Appliance to Chaewool"
+              ]
+            },
+            {
+              "month": "Jun.",
+              "entries": [
+                "Signed C4I Upgrade Batch-III Contract for Ulsan Class Frigate with STX Engine",
+                "Signed C4I Upgrade Batch-II Contract for Gwanggaeto-III Frigate with STX Engine",
+                "Supplied PCs for Inter-System Integration Simulator of Mine Detection Sonar to LIGNex1"
+              ]
+            },
+            {
+              "month": "May.",
+              "entries": [
+                "Supplied Industrial Fanless Box PC to Dongkuk Steel Pohang",
+                "Supplied HiEMS Server for Intelligent Ship Equipment Management Solution",
+                "Supplied Secure Gateway Components for Network Separation and Interworking Solution"
+              ]
+            },
+            {
+              "month": "Apr.",
+              "entries": [
+                "Supplied HiEMS Server to Hyundai Samho",
+                "Supplied Industrial PC to Hyundai WIA",
+                "Supplied Fanless Industrial PCs to Kumho Tire Gwangju plant",
+                "Supplied Industrial PCs for Railway Signal Display Control System",
+                "Supplied VxWorks7 Software for Railway Signaling to Company \"W\"",
+                "Supplied Embedded System for Automotive Seat Inspection Equipment to Brills"
+              ]
+            },
+            {
+              "month": "Mar.",
+              "entries": [
+                "Signed OKTAL-SE Upgrade & Regular Maintenance of SE-Workbench-RF & SE-RAY-SAR Contract with Agency for Defense Development",
+                "Supplied Cold-rolled Line PC for POSCO Gwangyang to Iba Korea",
+                "Supplied 4U Rackmount Industrial PC to SK hynix",
+                "Developed and Supplied Rugged Server for Hanwha Systems"
+              ]
+            },
+            {
+              "month": "Feb.",
+              "entries": [
+                "Supplied Fanless BoxIPC to Dongkuk Steel Pohang",
+                "Supplied Industrial PC for Laser Obstacle Detection System for Level Crossings to Korea Railroad Corporation",
+                "Supplied Stratus ZTC Edge 200 System for Hi-pass Processing System",
+                "Supplied C4I System Upgrade Components to Hanwha Systems"
+              ]
+            },
+            {
+              "month": "Jan.",
+              "entries": [
+                "Supplied 1U Server and System for Network Security Solution to SGN",
+                "Signed C4I Upgrade Contract for PKMR B-2 with STX Engine",
+                "Signed C4I Upgrade Contract for Jangbogo-III Batch-III with STX Engine",
+                "Signed SE-Workbench-EO Maintenance Contract with LIG Nex1 via LIG System",
+                "Development of BSP and Preparation of Certification Documents for the BITU System for LS Electric",
+                "Supplied Aging Control System PC for Hot Rolling Line Upgrade to POSCO DX",
+                "Supplied VxWorks7 for Railway Signaling to Company \"H\""
+              ]
+            }
+          ]
+        },
+        {
+          "year": 2023,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": [
+                "Signed SW Contract for OKTAL-SE New SGW with LIG Nex1",
+                "Signed Real-time Computer Systems 2 with Agency for Defense Development",
+                "Supplied mTCA for Accelerator to HUMANTECH"
+              ]
+            },
+            {
+              "month": "Nov.",
+              "entries": [
+                "Supplied Industrial PC to Hyundai-transys",
+                "Supplied Real-time OS for Power Control Module Development to Doosan Enerbility",
+                "Signed Contract for OKTAL-SE SE-3D-CLOUDS with LIG Nex1",
+                "Signed Contract for OKTAL-SE EM Particle Analysis Module with Agency for Defense Development",
+                "Signed Contract for OKTAL-SE Externally Controllable RF Analysis Module with Agency for Defense Development",
+                "Participated in The Symposium for Nuclear Power Plnat Instrumentation and Control (NuPIC) at Geoje",
+                "Supplied HMI System for No.4 Blast Furnace Upgrade at POSCO Phhang",
+                "Supplied Industrial PC for Instrumentation and Control at POSCO Pohang"
+              ]
+            },
+            {
+              "month": "Oct.",
+              "entries": [
+                "Signed OKTAL-SE SE-Wrokbench S/W Training contract with Agency for Defense Development",
+                "Supplied Controlsafe EXB, the Electronic Interlocking Systems, to Yookyung Control",
+                "Participated in WIND RIVER TECHNOLOGY FORUM 2023",
+                "Supplied Industrial PC for No.2 Hot Rolling Mill Aging Control System at POSCO Pohang via POSCO DX",
+                "Supplied Industrial PC for Interactive Voice Recongnizion Evaluation System to Hyundai Mobis"
+              ]
+            },
+            {
+              "month": "Sep.",
+              "entries": [
+                "Signed OKTAL-SE Massive EO/IR/SAR image generator SW Maintenance Contract with Agency for Defense Development",
+                "Supplied Rack Type Industrial PC to Hyundai Steel Dangjin",
+                "Supplied HMI PC and GUI Package to POSCO (Pohang) Bar Mill Line",
+                "Supplied Controlsafe EXB, the Electronic Interlocking Systems, to Hyukshin Engineering",
+                "Supplied Complete Configuration of ISaGRAF System to VITZROSYS",
+                "Supplied Complete Configuration of ISaGRAF System to Intellics"
+              ]
+            },
+            {
+              "month": "Aug.",
+              "entries": [
+                "Developed a Control Unit for Ship Navigation Automation System S&SYS",
+                "Signed OKTAL-SE Massive EO/IR/SAR image generator SW contract with Agency for Defense Development",
+                "Supplied Controlsafe CCC, the electronic interlocking systems, to Hyukshin Shalom Engineering",
+                "SSupplied Ground Control PC Hardware for Automation at POSCO 2nd Hot Mill"
+              ]
+            },
+            {
+              "month": "Jul.",
+              "entries": [
+                "Supplied NAC Securty Solution Appliance to JUVIS",
+                "Supplied Industrial PC for Developing a Mine Detection Sonar to LIG Nex1",
+                "Supplied HMI PCs for Electrical Steel Line to POSCO",
+                "Supplied HiEMS Server for Advanced Vessel Equipment Management System",
+                "Signed OKTAL-SE SE-FAST-HWIL Contract with LIG Nex1"
+              ]
+            },
+            {
+              "month": "Jun.",
+              "entries": [
+                "Supplied 2nd Gen XEON 1U Server to Ministry of Foreign Affairs Data Center",
+                "Supply of Appliances for Security Solutions in Public, Financial, and Enterprise Sectors",
+                "Supplied Controlsafe EXB, the Electronic Interlocking Systems, to Yookyung Control",
+                "Signed Real-time Computer Systems 1 with Agency for Defense Development",
+                "Signed OKTAL-SE Maintenance of Real-time IR Scene Generation Package and RF Target Analysis Package Contract with Agency for Defense Development"
+              ]
+            },
+            {
+              "month": "May.",
+              "entries": [
+                "Signed OKTAL-SE SE-WORKBENCH-EO, SE-FLARE Package with LIG Nex1",
+                "Supplied VxWorks PL to YIKC",
+                "Supplied Controlsafe CCC, the Electronic Interlocking Systems, to Hyukshin Shalom Engineering",
+                "Supplied Xeon 1U Server for Security Solution to Fubon Hyundai Life Insurance",
+                "Supplied Security Solution Appliance to Hanwha Financial Group",
+                "Supplied Xeon 1U Server for Security Solution to Namyangju City Urban Corpotation",
+                "Signed VxWorks7 Contract for Nevigation Device with I.T Science",
+                "Supplied Laser Recovery Equipment to POSCO Pohang",
+                "Supplied AGV HMI System for Electrical Steel Line at POSCO Gwangyang",
+                "Supplied Safety Fence Monitoring System for Hyundai Steel Pohang",
+                "Participated in 2023 Spring Conference & Annual Meeting of the Korean Society for Railway"
+              ]
+            },
+            {
+              "month": "Apr.",
+              "entries": [
+                "Performed Linux Porting for Accelerated Life Test Verification at Myongji University",
+                "Supplied Controlsafe CCC, the electronic interlocking systems, to Hyukshin Shalom Engineering",
+                "Supplied industrial PC for signal control display",
+                "supplied additional PIMS system for POSCO via Eva Korea",
+                "Built Autonomous Plating Control System at Hyundai Steel Dangjin"
+              ]
+            },
+            {
+              "month": "Mar.",
+              "entries": [
+                "Supplied 3rd Mass Production (Deployment) for Ground Tactical C4I System 2nd Performance Upgrade Project to Defense Acquisition Program Administration",
+                "Supplied Controlsafe EXB, the Electronic Interlocking Systems, to Yookyung Control",
+                "Replacement of Aging Shuttle Cars for Alloy Iron Import at Pohang Steelmaking Plant No. 2"
+              ]
+            },
+            {
+              "month": "Feb.",
+              "entries": [
+                "Supplied Embedded Fanless BOX PC for Seat Inspection to Hyundai Transys",
+                "Supplied Industrial PC for Laser Level Crossing Detection to Korea Railroad Corporation",
+                "Supplied Industrial PCs to POSCO R&D Center",
+                "Supplied CMS PC and SW for PosFrame DAQ System at POSCOICT"
+              ]
+            },
+            {
+              "month": "Jan.",
+              "entries": [
+                "Signed 3-year Maintenance Contract for OKTAL-SE DPW & SGW SW with LIG Nex1 via LIG System",
+                "Signed Maintenance Contract for OKTAL-SE SE-Workbench-EO with LIG Nex1 via LIG System",
+                "Signed Contract for OKTAL-SE DPW Upgrade & Maintenance & Training with Hanwha Systeem",
+                "Supplied Flood Recovery Equipment to POSCO Pohang",
+                "Signed VxWorks Export Contract for K2 Poland with Hyundai Rotem",
+                "Signed New Generation C4I upgrade contract with STX Engine",
+                "Supplied Controlsafe CCC, the Electronic Interlocking systems, to Hyukshin Shalom Engineering",
+                "Supplied VxWorks7 to VC Tech"
+              ]
+            }
+          ]
+        },
+        {
+          "year": 2022,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": [
+                "Supplied the HiEMS server, an intelligent management solution for vessel equipment, to Hyundai Heavy Industries",
+                "A parking control system for Lotte Mall at Gimpo Airport",
+                "Provided a multiple interlocking processing system with LIG Nex1",
+                "Supplied all the constituents of ISaGRAF for a nuclear power project to Wontech System",
+                "Supplied a real-time OS to develop modules for electricity control to Doosan Enerbility"
+              ]
+            },
+            {
+              "month": "Nov.",
+              "entries": [
+                "Held presentations and seminars for new products of ACETEC (at POSCO in Pohang, POSCO ICT, and others)",
+                "Replaced decrepit systems vulnerable to safety in cold plating at POSCO in Gwangyang",
+                "Supplied servers for FACTS C&P HMI and industrial PCs to LS ELECTRIC",
+                "PCs for 2 hot-rolling industry at POSCO (in Pohang) in POSCO ICT",
+                "Supplied servers for engines detecting unsafe systems and those for data gathering to Korea Atomic Energy Research Institute",
+                "Changed the company name from ACETRONIX to ACETEC"
+              ]
+            },
+            {
+              "month": "Oct.",
+              "entries": [
+                "Signed a contract on OKTAL-SE Workbench Regular Maintenance (3 years) of SW Package for Synthetic Environment Development with Agency for Defense Development",
+                "Provided Doosan Enerbility with industrial PCs for LDP and OWS for New Hanwul Nuclear Power Plant No. 1 and No.2",
+                "Supplied industrial PCs for ACE-Box, an automobile imbedded voice recognition engine, to Mediazen",
+                "Supplied industrial PCs for parking control systems to Lotte Premium Outlet in Paju",
+                "Signed a contract on KSS-III, MF HW with Hanhwa Systems",
+                "Signed a contract on PKMR Project with Hanhwa Systems",
+                "Supplied Controlsafe EXB, an electrically interlocking device in S. Korea, to SHINWOO ENG",
+                "Supplied Controlsafe EXB, an electrically interlocking device in S. Korea, to Hyukshin Engineering"
+              ]
+            },
+            {
+              "month": "Sep.",
+              "entries": [
+                "Supplied industrial PCs for a project for crossings (preceding with Seonsan Area)",
+                "Supplied GEMS system servers to Next Technology System",
+                "Supplied industrial PCs for parking control systems to Lotte Premium Outlet in Icheon",
+                "LiB recycling at POSCO in Gwangyang",
+                "Obtained an order for export of soot PIP from Hanhwa Systems"
+              ]
+            },
+            {
+              "month": "Aug.",
+              "entries": [
+                "Signed a contract on OKTAL-SE Special Upgrade & Regular Maintenance with Agency for Defense Development",
+                "Signed a contract on OKTAL-SE SE-Workbench-EO & Add-ons, with LIG Nex1 (Defense Industry Technology Support Center)",
+                "Industrial PCs for PJT on loss of 2 wire rods at POSCO",
+                "HMI PC with electrical steel plates at POSCO",
+                "Urgently provided POSCO with industrial PCs for damages from loss of measuring control",
+                "Obtained an order for developing supplementary batteries from Hanhwa Systems",
+                "Supplied a project consisted of Open SSD storage devices by Dolphin, a company, to Sungkyunkwan University"
+              ]
+            },
+            {
+              "month": "Jul.",
+              "entries": [
+                "Signed a contract on OKTAL-SE SE-RURAL-DB & SE-CHAMBERY-DB with SAR enhancements with Agency for Defense Development",
+                "Industrial PCs for moving devices with 6 cokes at POSCO (in Pohang) in POSCO ICT",
+                "Supplied industrial PCs for quality test sections in the quality technology department to POSCO",
+                "Obtained a project order on devices and services for moving MCC control computers from KCEI (ADD)",
+                "Supplied Controlsafe EXB, an electrically interlocking device in S. Korea, to Yookyung Control",
+                "Supplied Controlsafe CCC, an electrically interlocking device in S. Korea, to Shalom Engineering",
+                "Supplied all the constituents of ISaGRAF for a PLC motion control project to Korea Institute of Machinery & Materials"
+              ]
+            },
+            {
+              "month": "Jun.",
+              "entries": [
+                "Supplied industrial PCs for POSCO's hot-rolling slabs to POSCO ICT",
+                "Supplied accelerators by PENTEK, a company, to Korea Atomic Energy Research Institute",
+                "Supplied virtual electrically interlocking simulators to Korea Railroad Research Institute"
+              ]
+            },
+            {
+              "month": "May.",
+              "entries": [
+                "Supplied interface devices for interlocking tools to Korea Railroad Research Institute",
+                "Supplied industrial PCs for fanless ACE-Box to Hyundai Steel",
+                "Obtained an order on TASS upgrade Vxworks7 from Intellics",
+                "Obtained an order of devices for SS-III batch II, a submarine, from STX Engine"
+              ]
+            },
+            {
+              "month": "Apr.",
+              "entries": [
+                "Exhibited a booth for an autumn symposium of the Korean Society for Railway (in Gangneung)",
+                "Provided TRA with controllers for and industrial PCs for recognition of the boarding building at Incheon International Airport",
+                "Obtained an order on the IFF project and cabinet",
+                "Supplied Controlsafe EXB, an electrically interlocking device in S. Korea, to SHINWOO ENG",
+                "Supplied railroad cars certified for real time to Hyundai Rotem",
+                "Participated in a booth of an autumn symposium of the Korean Society for Railway"
+              ]
+            },
+            {
+              "month": "Mar.",
+              "entries": [
+                "Obtained an order of Vxworks7, a navigation device, from IT Science",
+                "Supplied ONOMICHI Hull No.772 D/W 50,000MT type product, chemical tanker industrial server to Hyundai Heavy Industries"
+              ]
+            },
+            {
+              "month": "Feb.",
+              "entries": [
+                "Signed a contract on OKTAL-SE SW package for synthetic environment development with Agency for Defense Development",
+                "Supplied industrial PCs for rolling work and for pig irons and steels to POSCO",
+                "Heating furnaces with rear plates no. 1 and no. 3 and Leveller HMI PCs at POSCO",
+                "Obtained an order of devices for SS-III batch I, a submarine, from STX Engine"
+              ]
+            },
+            {
+              "month": "Jan.",
+              "entries": [
+                "Signed a contract on OKTAL-SE SE-Workbench-EO Maintenance with LIG System (LIG Nex1)",
+                "Supplied industrial PCs to IBA Korea",
+                "Supplied industrial PCs to POSCO EIC",
+                "Obtained an order of FFX-Batch3 devices on the level of those in Ulsan from STX Engine",
+                "Supplied Evidence certified for real time to CSIN Tech"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-2019-2021",
+      "label": "2019 — 2021",
+      "years": [
+        {
+          "year": 2021,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": [
+                "Supplied servers & computers for the steel, steel and cold rolling industries to POSCO Gwangyang",
+                "Supplied hot-rolled, wire rod, cold-rolled & STS cold-rolled, measurement and control industrial servers & computers to POSCO Pohang",
+                "Supplied the certified (EN50155) touch monitor for rolling stock to Hyundai Rotem",
+                "Proceeded of the malicious identification (PKG/FFX) system of Hanwha Systems",
+                "Developed KVLS2 Vxworks7 of Hanwha Defense",
+                "Supplied RFSoc development environment system to VicTech",
+                "Submarine monitoring system localization task of Daewoo Shipbuilding & Marine Engineering",
+                "Submarine monitoring system using ISAGRAF of KTE",
+                "Shalom City Onboard System SW Static and Dynamic Confidence Line Inspection for Shalom Engineering",
+                "Integrated C4I performance improvement project of Ssangyong Information & Communication",
+                "Real-time data processing project of Defense Science Research Institute"
+              ]
+            },
+            {
+              "month": "Nov.",
+              "entries": [
+                "Participated in Phoenix Jeju Fall Conference of Korea Railroad Association",
+                "Contracted for OKTAL-SE SE-Workbench-RF package, SE-HWIL-RADAR package with Defense Science Research Institute",
+                "OKTAL-SE SE-OASIS-DB & SE-URBAN-DB with SAR enhancements of Defense Science Research Institute",
+                "K mark renewal certification product name: computer",
+                "Participated in Booth of the fall academic conference (Jeju) at the Korea Railroad Association",
+                "Supplied the (EN50155) touch monitor certified for rail vehicles to Woojin Industrial Systems",
+                "Supplied multiple interlocking processing system system to LIG Nex1",
+                "Proceeded Cheolmae PIP mass production of Hanwha Systems"
+              ]
+            },
+            {
+              "month": "Oct.",
+              "entries": [
+                "Signed an IR image generation contract for research on OKTAL-SE artificial intelligence-based synthetic sensor image analysis and improvement techniques with the Korea Advanced Institute of Science and Technology",
+                "Supplied fanless rackmount type industrial computer to Hyundai Motor Company in Asan Plant",
+                "Supplied UAV ground control system SIL equipment to LIG Nex1",
+                "Cloud-based interlocking device simulator (titanium cloud) of Railroad Research Institute"
+              ]
+            },
+            {
+              "month": "Sep.",
+              "entries": [
+                "Supplied the Internet of Things (IoT)-based marine engine condition monitoring and diagnosis system server to Hyundai Heavy Industries",
+                "A5-SIL equipment inspection project of LIGNEX1"
+              ]
+            },
+            {
+              "month": "Aug.",
+              "entries": [
+                "Real-time OS contract for railway project / 3 year project (2 cases)",
+                "Supplied industrial computer for radiation monitor control to Korea Atomic Energy Research Institute",
+                "Supplied high-performance workstations linked to simulators to the National Defense Science Research Institute",
+                "Supplied interactive voice recognition evaluation system industrial computer to Hyundai Mobis",
+                "Trap Power Control of KTE"
+              ]
+            },
+            {
+              "month": "Jul.",
+              "entries": [
+                "Contracted for OKTAL-SE Special Upgrade for DPW and SGW, New Software for SGW with Defense Science Research Institute",
+                "Contracted for Workstation with Defense Science Research Institute",
+                "Contracted for OKTAL-SE SE-SKYDOME with Defense Science Research Institute",
+                "Supplied industrial computer for semiconductor equipment analysis system to Samsung Electronics",
+                "Ship steering system of Daewoo Shipbuilding & Marine Engineering",
+                "Proceeded with the Korea Aerospace Research Institute for multi-purpose satellite 7A, vxWorks."
+              ]
+            },
+            {
+              "month": "Jun.",
+              "entries": [
+                "Participated in Busan BEXCO Spring Conference at Korea Railroad Association",
+                "Contracted for OKTAL-SE Special Upgrade, Training and Regular Maintenance with Defense Science Research Institute",
+                "Developed and supplied Compact STATCOM DC input-only industrial computer to LS Electric",
+                "Supplied industrial computers for PLC communication module test equipment to LG Innotek",
+                "Supplied industrial computer for parking system construction for new construction of Ansan branch to Lotte Department Store",
+                "Booth participation in the Spring Conference (Busan) at the Korea Railroad Association",
+                "Carried out C4I additional ship project together with STX Engine"
+              ]
+            },
+            {
+              "month": "May.",
+              "entries": [
+                "Contracted for Semiconductor process real-time PL mass production (2 cases)",
+                "Contracted with Defense Science Research Institute for OKTAL-SE 3 Years of Regular Maintenance of the DPW and SGW Licenses",
+                "Supplied servers and industrial computers for FACTS C&P HMI to LS Electric",
+                "Power converter protection circuit improvement project with POSCO ICT"
+              ]
+            },
+            {
+              "month": "Apr.",
+              "entries": [
+                "Supplied anti-aircraft fire control system industrial computer to Hanwha Systems",
+                "Supplied Gwanggaeto-III Batch-II inspection equipment Industrial high-performance server to Hyundai Heavy Industries",
+                "Upgraded K2 Tank of Hyundai Rotem"
+              ]
+            },
+            {
+              "month": "Mar.",
+              "entries": [
+                "contracted for Power control real-time OS & middleware S/W ( 3 times )",
+                "contracted for OKTAL-SE Maintenance of Radar Simulation and Analysis System with Defense Science Research Institute",
+                "Supplied ONOMICHI Hull No.772 D/W 50,000MT type product, chemical tanker industrial server to Hyundai Heavy Industries",
+                "Real-time data processor to ADD"
+              ]
+            },
+            {
+              "month": "Feb.",
+              "entries": [
+                "Supplied industrial computer for laser radar crossing obstacle detection device to Korea Railroad Corporation",
+                "Certificated of conformity registration for ACE-BoxIPC-36L3 broadcasting and communication equipment, etc."
+              ]
+            },
+            {
+              "month": "Jan.",
+              "entries": [
+                "contract for OKTAL-SE SE-Workbench-EO Maintenance with LIG system (LIG Nex1)",
+                "Supplied door DCU inspection machine PPC industrial computer to Korea Railroad Corporation"
+              ]
+            }
+          ]
+        },
+        {
+          "year": 2020,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": [
+                "Delivered hot rolled and wire rod steel industrial server&computer to Posco Pohang",
+                "Delivered wire rod, steelmaking and cold rolled steel industrial server&computer to Posco Gwangyang",
+                "Certificated of conformity registration for ACE-BoxIPC-79L2D broadcasting and communication equipment, etc.",
+                "Signed a supply contract of home-manufactured MMIS digital twin hardware with Doosan Heavy Industrial&Construction",
+                "Signed a supply contract of UAV ground control system overhaul with LIGNEX1",
+                "Signed a contract of OKTAL-SE Infrared Scene Generation Package with Agency for Defense and Development",
+                "Signed a contract of OKTAL-SE Special Upgrade and Regular Maintenance with Agency of Defense and Development",
+                "Signed a contract of VxWorks for next military satellite with Vine Telecom",
+                "Delivered Controlsafe EXB for domestic electronic interlocking system to Hyukshin Engineering Co., Ltd.",
+                "Obtained a patent on cooling fin assembled industrial computer using thermoelectric element method/Ace-IPC"
+              ]
+            },
+            {
+              "month": "Nov.",
+              "entries": [
+                "Delivered operator workstation(Quality class A) for Shin-Gori Nuclear Reactors No.5&6 to Doosan Heavy Industrial&Construction",
+                "Delivered server for distribution automation and wireless network EMS to Hanwha Systems",
+                "Signed a contract for KSS-III B2 standard system with Hanwha Systems",
+                "Delivered controlsafe EXB for domestic electronic interlocking system to Yookyung Control INC.",
+                "Exhibited on autumn conference of Korean Society of Railway"
+              ]
+            },
+            {
+              "month": "Oct.",
+              "entries": [
+                "Delivered controlsafe EXB for domestic electronic interlocking system to Yookyung Control INC."
+              ]
+            },
+            {
+              "month": "Sep.",
+              "entries": [
+                "Signed for KDDX MOU with Hanhwa System",
+                "Signed a contract of VxWorks for K2 tank upgrade with Nstel Inc."
+              ]
+            },
+            {
+              "month": "Aug.",
+              "entries": [
+                "Delivered DAQ equipment for rail break detection and industrial computer to Korea Railroad Research Institute",
+                "Delivered all other servers for cyber security and security environment to Doosan Heavy Industrial&Construction"
+              ]
+            },
+            {
+              "month": "Jul.",
+              "entries": [
+                "Renew direct production certificate (Information Infrastructure Construction Service, Special Purpose Computer)/Acetronix",
+                "Delivered industrial computer for interactive voice recognition evaluation system to Hyundai Mobis",
+                "Certificated of conformity registration for ACE-IPC02R-4U-i7-9 broadcasting and communication equipment, etc.",
+                "Obtained K3 certificate for own-brand 9th generation fanless industrial computer",
+                "Signed a contract for VxWorks 7 Cert attestation use product with Hyundai-Rotem"
+              ]
+            },
+            {
+              "month": "Jun.",
+              "entries": [
+                "Delivered industrial computer for semiconductor equipment analytical system to Samsung",
+                "Signed a contract for collaborative development for multi-wavelength video data systematization construct with LIGNEX1",
+                "Signed a contract for OKTAL-SE DPW&SGW Software Upgrade with Agency of Defense and Development",
+                "Signed a contract for OKTAL-SE SE-AIRPORT-DB with Agency of Defense and Development"
+              ]
+            },
+            {
+              "month": "May.",
+              "entries": [
+                "Delivered industrial server and computer for FACTS C&P HMI to LS Electric",
+                "Delivered computer and touch monitor for railway vehicle certification for (National R&D enterprise) development of self-status diagnosis and maintenance support system for railway vehicle to Hyundai-Rotem",
+                "Signed a maintenance contract of OKTAL-SE Radar Simulation and Analysis System with Agency of Defense and Development",
+                "Signed a maintenance contract of OKTAL-SE DPW&SGW S/W with LIGNEX1",
+                "Signed a contract of VxWorks ELM Tool with Electronics and Telecommunications Research Institute"
+              ]
+            },
+            {
+              "month": "Apr.",
+              "entries": [
+                "Delivered marine engine condition monitoring and detection system server based on IoT to Hyundai Heavy Industrial and Construction",
+                "Delivered high performance GPU server for development of FPGA core signal communications transmission to SNU R&D Foundation",
+                "Signed a contract of terrain modeling creation for synthetic imagery with Agency of Defense and Development"
+              ]
+            },
+            {
+              "month": "Mar.",
+              "entries": [
+                "Delivered laser radar obstruction detection device to Korail",
+                "Signed a contract of K21ARV VxWorks with Daewon Mechatronics",
+                "Delivered security VxWorks development tool to National Institute of Research",
+                "Delivered Evidence of VxWorks certificate to Techville",
+                "Delivered RFM card to Durutronix and National Institute of Research"
+              ]
+            },
+            {
+              "month": "Feb.",
+              "entries": [
+                "Delivered industrial computer for smart PLC Line-Up for expanded development to Posco ICT",
+                "Delivered vaccine server (Quality class A) for Shin-Gori Nuclear Reactors No.5&6 to Doosan Heavy Industrial&Construction",
+                "Signed a contract of OKTAL-SE Workbench-RF&SE-RAY-SAR with Agency of Defense and Development"
+              ]
+            },
+            {
+              "month": "Jan.",
+              "entries": [
+                "Delivered industrial computer of electronic interlocking display control to Korail",
+                "Delivered industrial computer of inspection equipment for mobile camera",
+                "Signed a maintenance contract of OKTAL-SE Workbench-EO with LIGNEX1",
+                "Delivered Evidence of VwWorks certificate to Shalom Engineering CO., LTD."
+              ]
+            }
+          ]
+        },
+        {
+          "year": 2019,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": [
+                "Delivered hot rolled and wire rod steel industrial server & computer to Posco Pohang",
+                "Delivered wire rod, steelmaking and cold rolled steel industrial server & computer to Posco Gwangyang",
+                "Delivered industrial computer for airport and harbor radiation monitor to Korea Institute of Nuclear Safety",
+                "Made a purchasing contract for the spare parts of Shin-Kori #5 and #6 operator workstation with Doosan Heavy Industries & Construction",
+                "Delivered system SIL ground control device to LIGNex1"
+              ]
+            },
+            {
+              "month": "Nov.",
+              "entries": [
+                "Made a contract for Identification Friend or Foe (IFF) with Hanwha Systems",
+                "Delivered device data collection solution industrial computer to Samsung Electronics",
+                "Made a contract for OKTAL-SE Special Upgrading and Regular Maintenance of SE-Workbench-EO S/W with Agency for Defense Development"
+              ]
+            },
+            {
+              "month": "Oct.",
+              "entries": [
+                "Issued the certificate for conformity registration of IPC02D-i7-8, IPC02R-4U-i7-8, broadcasting communication apparatus and so on / ACE-IPC",
+                "Delivered industrial computer for commercial engine in Jeonju factory to Hyundai Motor Company",
+                "Exhibited on Autumn conference of the Korean Society for Railway"
+              ]
+            },
+            {
+              "month": "Sep.",
+              "entries": [
+                "Delivered industrial computer for laser radar crossing obstruction detecting device to Korea Railroad Corp."
+              ]
+            },
+            {
+              "month": "Aug.",
+              "entries": [
+                "Delivered POP industrial computer in Hoengseong factory to Seoul F&B",
+                "Delivered industrial computer in Dangjin factory to Hyundai Steel"
+              ]
+            },
+            {
+              "month": "Jul.",
+              "entries": [
+                "M&A by Smart Global Hodings, Inc (Old, Artesyn Embedded Computing)",
+                "Delivered POP industrial computer to Hyundai Sungwoo Casting",
+                "Manufactured and delivered multipurpose standard platform unmanned helicopter test center",
+                "Made a contract for KFX EO-TGP relevant OKTAL-SE SE-Workbench-EO, SE-FAST-HWIL(DPW, SGW) and so on with Hanwha Systems",
+                "Made a contract for OKTAL-SE SE-RAY-ACTIVE-EO and three others with LIGNex1"
+              ]
+            },
+            {
+              "month": "Jun.",
+              "entries": [
+                "Delivered industrial computer for Incheon line 1 train operation control to Incheon Transit Corporation",
+                "Made a contract for OKTAL-SE Maintenance of Radar Simulation and Analysis System with Agency for Defense Development"
+              ]
+            },
+            {
+              "month": "May.",
+              "entries": [
+                "Exhibited on Spring conference of the Korean Society for Railway",
+                "Delivered industrial computer for nuclear power test bed to Doosan Heavy Industries & Construction",
+                "Delivered industrial computer for HVDC solution to LS Electric",
+                "Made a contract for millimeter wave (W band) relevant OKTAL-SE SE-Workbench-RF Maintenance and others with LIGNex1"
+              ]
+            },
+            {
+              "month": "Apr.",
+              "entries": [
+                "Multipurpose standard platform unmanned helicopter development with LIGNex1",
+                "Delivered industrial computer for environment evaluation testing machine to Mando Corp.",
+                "Made a contract for OKTAL-SE Maintenance of Infra-Red Scene Generator with Agency for Defense Development"
+              ]
+            },
+            {
+              "month": "Feb.",
+              "entries": [
+                "Delivered ControlSafe® Platform to Shalom Engineering",
+                "Design and manufacturing nuclear power stability influence items (Quality grade T, A)",
+                "Delivered DATS vessel sensor collection server with Hyundai Global Service"
+              ]
+            },
+            {
+              "month": "Mar.",
+              "entries": [
+                "Delivered POP industrial touch computer in Ganghwa factory to HJF",
+                "Made a contract for OKTAL-SE SE-PLUME and two others with Agency for Defense Development"
+              ]
+            },
+            {
+              "month": "Jan.",
+              "entries": [
+                "Made a maintenance contract for OKTAL-SE SE-Workbench-EO with LIGNex1",
+                "Made a contract for target/environment measuring device for each band, target construction service for each band and measuring device for each band with LIGNex1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-2016-2018",
+      "label": "2016 — 2018",
+      "years": [
+        {
+          "year": 2018,
+          "months": [
+            {
+              "month": "Jan.",
+              "entries": [
+                "Made a contract for target/environment measuring device for each band, target construction service for each band and measuring device for each band with LIGNex1",
+                "Delivered TICN Vxworks Product License to Huneed Technologies",
+                "Delivered real-time operation system VxWorks6 to Hanwha Defense",
+                "Made maintenance contract for SE-Workbench-EO and two other types with LIGNex1",
+                "Made maintenance contract for SE-Workbench-EO with LIGNex1",
+                "Delivered industrial computer for laser radar crossing obstruction detecting device to Korea Railroad Corp.",
+                "Delivered 1 thick plate newer and improvement, 2 hot rolled newer and improvement and old elecytroplated steel replacement and many others to Posco",
+                "Delivered HiEMS server and client industrial computer to Hyundai Heavy Industries",
+                "Delivered electronic interlocking industrial computer to Korea Railroad Corp."
+              ]
+            },
+            {
+              "month": "Dec.",
+              "entries": [
+                "Delivered soot PIP to Hanwha Systems",
+                "Delivered industrial computer for airport and harbor radiation monitor to Korea Institute of Nuclear Safety"
+              ]
+            },
+            {
+              "month": "Nov.",
+              "entries": [
+                "Delivered electronic interlocking SIL4 EXB Solution to Yookyung Control",
+                "Made a contract for supercomputer subject OSS product with Ultra High Computing Study Group"
+              ]
+            },
+            {
+              "month": "Oct.",
+              "entries": [
+                "Exhibited on Autumn conference of the Korean Society for Railway",
+                "Delivered EOTGP Vxworks7 to I.T.SCIENCE",
+                "Developed BMS prototype and delivered industrial computer for TCS interface device to EMARINE"
+              ]
+            },
+            {
+              "month": "Aug.",
+              "entries": [
+                "Delivered electronic interlocking SIL4 EXB Solution to Yookyung Control",
+                "Acquired ISO-9001:2015 certificate"
+              ]
+            },
+            {
+              "month": "Jul.",
+              "entries": ["Made SBC contract for PKG upgrade project with Hanwha Systems"]
+            },
+            {
+              "month": "Jun.",
+              "entries": [
+                "Delivered Vxworks Product License for small warship Haeuri to Huneed Technologies",
+                "Applied SBC and others for Jangbogo Submarine mass production project / Hanwha Systems",
+                "Made a contract for SE-Workbench-EOS and SE-ATMOSPHERE Software with Agency for Defense Development"
+              ]
+            },
+            {
+              "month": "May.",
+              "entries": [
+                "Delivered electronic interlocking SIL4 EXB Solution to Hyukshin Engineering",
+                "Exhibited on Autumn conference of the Korean Society for Railway",
+                "Exhibited on Autumn conference of the Korean Society for Urban Railway",
+                "Made a maintenance service contract for Radar Signal Simulation and Analysis System with Agency for Defense Development",
+                "Made a SW development and service contract for LAMD algorithm test device with LIGNex1",
+                "Delivered electronic interlocking SIL4 EXB Solution to Yookyung Control",
+                "Delivered LAMD algorithm development environment construction test device to LIGNex1",
+                "Delivered NMS server and others for Shin-Hanul #1 and #2 to Doosan Heavy Industries & Construction"
+              ]
+            },
+            {
+              "month": "Apr.",
+              "entries": [
+                "Made a contract for Scene Generator in EO Domain with Agency for Defense Development",
+                "Delivered industrial computer for industrial facilities in Engine Machinery Business Div. to Hyundai Heavy Industries"
+              ]
+            },
+            {
+              "month": "Mar.",
+              "entries": ["Delivered electronic interlocking SIL4 EXB Solution to Yookyung Control"]
+            },
+            {
+              "month": "Feb.",
+              "entries": ["Delivered MPUH interlocking treatment machine and others to LIGNex1"]
+            }
+          ]
+        },
+        {
+          "year": 2017,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": ["Made a contract for supercomputer subject OSS product with Seoul National University"]
+            },
+            {
+              "month": "Nov.",
+              "entries": ["Delivered Image database construction service H/W to LIGNex1"]
+            },
+            {
+              "month": "Sep.",
+              "entries": ["Image database construction service / LIGNex1"]
+            },
+            {
+              "month": "Aug.",
+              "entries": ["Finally delivered corps level UAV ground system\" ACE-01R-3U-7-F to Aero Master Corporation"]
+            },
+            {
+              "month": "Jul.",
+              "entries": ["Delivered Korean model e-navigation HPC\" ACE-HPC-10N-01 to Hanwha Systems"]
+            },
+            {
+              "month": "Jun.",
+              "entries": [
+                "Mass production of railway crossing signal control, tunnel monitoring system ACE-BoxIPC-C4L3 / ARTECH"
+              ]
+            },
+            {
+              "month": "May.",
+              "entries": [
+                "DPW & SGW Maintenance / Agency for Defense Development",
+                "DPW & SGW 3 years Maintenance / LIGNex1",
+                "Made a contract for electronic interlocking SIL4 Solution System with SHINWOO ENG",
+                "Made a contract for real-time network/information protection verification test prototype manufacturing with Agency for Defense Development"
+              ]
+            },
+            {
+              "month": "Apr.",
+              "entries": ["Proposed and made a contract for SBC of KDX PIP project with Hanwha Systems"]
+            },
+            {
+              "month": "Mar.",
+              "entries": [
+                "Made a contract for C4I performance improvement project, MFCS and DLP-K with STX",
+                "Mass production of integrated measuring system\" ACE-02R-2U-i5-4-F / Ire Industry"
+              ]
+            },
+            {
+              "month": "Feb.",
+              "entries": [
+                "Mass production of semiconductor manufacturing line automation monitoring system\" ACE-BoxIPC-73L2D / Doople",
+                "SE-Workbench-EO Maintenance / LIGNex1",
+                "SE-Workbench-EO and two other types Maintenance / LIGNex1"
+              ]
+            }
+          ]
+        },
+        {
+          "year": 2016,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": [
+                "Delivered synthetic infrared 3D image modelling HW to LIGNex1",
+                "Made a contract for C4I performance improvement project, EIU with SsangYong I&C"
+              ]
+            },
+            {
+              "month": "Nov.",
+              "entries": [
+                "Registered as military goods trading agency to Defense Acquisition Program Administration",
+                "Made a contract for Railway SoftPLC ISaGRAF subject with Korea Railroad Research Institute"
+              ]
+            },
+            {
+              "month": "Oct.",
+              "entries": [
+                "Mass production of \"maritime safety solution\" ACE-PPC-12JT with GMT",
+                "Made a contract for electronic interlocking system SIL4 Solution System with Hyukshin Engineering"
+              ]
+            },
+            {
+              "month": "Sep.",
+              "entries": [
+                "SE-Workbench-EO & SE-Workbench-RF and six other types / Agency for Defense Development",
+                "SE-Workbench-EO and sixteen other types with Agency / Defense Development"
+              ]
+            },
+            {
+              "month": "Aug.",
+              "entries": ["Introduced broadcasting multi monitoring Artesyn Encoding Service System"]
+            },
+            {
+              "month": "Jul.",
+              "entries": [
+                "Delivered IR HILS facility construction IRSG HW",
+                "Made a contract for Operator Workstation ACE-BoxIPC-EC541 and 116 other units with Doosan Heavy Industries & Construction",
+                "SE-Workbench-RF and two other types / Agency for Defense Development",
+                "Maintenance for SE-Workbench-EO and two other types / LIGNex1"
+              ]
+            },
+            {
+              "month": "Jun.",
+              "entries": [
+                "SE-DESERT-DB and two other two types / LIGNex1",
+                "Mass production of Navy monitoring console\" ACE-PPC-23H\" / Global Systems",
+                "Proposed and made a contract for SBC of LPH project with Hanwha Systems"
+              ]
+            },
+            {
+              "month": "May.",
+              "entries": [
+                "Delivered 38 units of IPC for maintenance part and display control part on electronic interlocking device to Yookyung Control",
+                "Delivered 34 units of server system for satellite monitor station project to NAVcours",
+                "SGW and two other types / Agency for Defense Development",
+                "SE-Workbench-EO and sixteen other types / LIGNex1",
+                "Synthetic infrared 3D image modelling S/W / LIGNex1"
+              ]
+            },
+            {
+              "month": "Apr.",
+              "entries": [
+                "SE-Workbench-EO 2 years Maintenance / Agency for Defense Development",
+                "IRSG and three other types / LIGNex1"
+              ]
+            },
+            {
+              "month": "Mar.",
+              "entries": [
+                "Made a contract for VME system on 1st mass production of division level UAV GCS project with Satrec Initiative"
+              ]
+            },
+            {
+              "month": "Feb.",
+              "entries": ["Delivered coast passenger sensor collection device ACE-2016-EM-01 to EMARINE"]
+            },
+            {
+              "month": "Jan.",
+              "entries": ["SE-Workbench-EO Maintenance / LIGNex1", "SE-Workbench-EO and one other type / LIGNex1"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-2013-2015",
+      "label": "2013 — 2015",
+      "years": [
+        {
+          "year": 2015,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": [
+                "SE-Workbench-EO and four other types / Agency for Defense Development",
+                "Delivered 68 units of remote unmanned fire control system ACE-BoxIPC-73L2D to DODDAM SYSTEMS"
+              ]
+            },
+            {
+              "month": "Nov.",
+              "entries": ["Target image DB construction and performance simulation system / LIGNex1"]
+            },
+            {
+              "month": "Oct.",
+              "entries": [
+                "Delivered pure manufacturing facility and ion beam ACE-IPC02R-4U-I7-4 to Accelerator Laboratory"
+              ]
+            },
+            {
+              "month": "Sep.",
+              "entries": ["Delivered long term repair goods automated warehouse automation system to Korail Networks"]
+            },
+            {
+              "month": "Aug.",
+              "entries": ["Developed and delivered Ethernet based IEC61162-450 data converter device to Maritime Radio"]
+            },
+            {
+              "month": "Jul.",
+              "entries": [
+                "SE-SPECIAL-EFFECTS / LIGNex1",
+                "Delivered 186 units of flight information guidance system ACE-BoxIPC-C4L3 to Incheon International Airport",
+                "Infrared image creation SW and others for [LIGNex1 seeker individual development capability reinforcement project in 2015] / LIGNex1"
+              ]
+            },
+            {
+              "month": "May.",
+              "entries": [
+                "SE-Workbench-EO 3 years Maintenance / Agency for Defense Development",
+                "Delivered next generation guided weapon infrared image seeker prototype to LIGNex1",
+                "Developed thermal analysis maritime target model to Agency for Defense Development"
+              ]
+            },
+            {
+              "month": "Apr.",
+              "entries": ["SE-Workbench-EO and two other types / LIGNex1"]
+            },
+            {
+              "month": "Mar.",
+              "entries": [
+                "SE-Workbench-EO Maintenance / LIGNex1",
+                "Made a contract for VME system of UAV (Medium altitude, crops and others) ground system with SOLETOP"
+              ]
+            }
+          ]
+        },
+        {
+          "year": 2014,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": [
+                "Developed AiPMC-H4A high performance UART/HDLC PMC HW with ACE-IPC",
+                "RFQ for maritime target image thermal analysis DB construction and characteristic analysis / Agency for Defense Development"
+              ]
+            },
+            {
+              "month": "Nov.",
+              "entries": [
+                "Registered US patent for \"Natural cooling type industrial computer\" / ACE-IPC",
+                "Concluded KALRAY NDA"
+              ]
+            },
+            {
+              "month": "Sep.",
+              "entries": [
+                "Made a contract for air base antiaircraft fire control system service with Agency for Defense Development"
+              ]
+            },
+            {
+              "month": "Apr.",
+              "entries": [
+                "Delivered \"ASR track seeker\" mass production to Samsung Thales (*Old name: current Hanwha Systems)"
+              ]
+            },
+            {
+              "month": "Mar.",
+              "entries": [
+                "Proposed and made a contract for SBC of PKG project / Samsung Thales",
+                "Terrain model production service for synthetic image creation / Agency for Defense Development"
+              ]
+            },
+            {
+              "month": "Jan.",
+              "entries": ["Developed two types of Rackmount IPC and 1 type of Embedded BoxIPC with ACE-IPC"]
+            }
+          ]
+        },
+        {
+          "year": 2013,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": [
+                "Made a partnership with Dassault System",
+                "Made a contract for flight measurement data interface system with Agency for Defense Development"
+              ]
+            },
+            {
+              "month": "Nov.",
+              "entries": [
+                "Developed image based guided rocket simulation software with Agency for Defense Development",
+                "Proposed and made a contract for SBC of FFX project with Samsung Thales"
+              ]
+            },
+            {
+              "month": "Aug.",
+              "entries": ["ADS-B air control system / AP Aerospace"]
+            },
+            {
+              "month": "Jul.",
+              "entries": ["Developed flight test measuring sensor interface system with Agency for Defense Development"]
+            },
+            {
+              "month": "May.",
+              "entries": ["Developed ACE-BoxIPC-73L2D and other Intel i7 affiliated five types of IPCs with ACE-IPC"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-2010-2012",
+      "label": "2010 — 2012",
+      "years": [
+        {
+          "year": 2012,
+          "months": [
+            {
+              "month": "Sep.",
+              "entries": [
+                "Developed air base antiaircraft fire ASR flight seeker and IFF signal controller with Samsung Thales"
+              ]
+            },
+            {
+              "month": "Jul.",
+              "entries": [
+                "Designated as superior product by Public Procurement Service (ACE-IPC02D-i7, ACE-IPC01D-i5, ACE-BoxIPC-11L2) / ACE-IPC"
+              ]
+            },
+            {
+              "month": "Jun.",
+              "entries": ["Proposed and made a contract for SBC of Jangbogo submarine project with Samsung Thales"]
+            },
+            {
+              "month": "Mar.",
+              "entries": ["Made Embedded Customer License Agreement (CLA) with Microsoft"]
+            }
+          ]
+        },
+        {
+          "year": 2011,
+          "months": [
+            {
+              "month": "Nov.",
+              "entries": ["Acquired CE, FCC certificate for ACE-IPC01D-i5, ACE-IPC02D-i7 / ACE-IPC"]
+            },
+            {
+              "month": "Oct.",
+              "entries": ["Acquired K mark certificate / ACE-IPC"]
+            },
+            {
+              "month": "Sep.",
+              "entries": [
+                "Registered patent for natural cooling type industrial computer using parallel type radiation fin assembly / ACE-IPC"
+              ]
+            },
+            {
+              "month": "Jun.",
+              "entries": [
+                "Applied patent for industrial computer for dust prevention and strong to vibration (China) / ACE-IPC"
+              ]
+            },
+            {
+              "month": "May.",
+              "entries": [
+                "Applied patent for industrial computer for dust prevention and strong to vibration (US) / ACE-IPC"
+              ]
+            },
+            {
+              "month": "Mar.",
+              "entries": ["Made a contract for JTDLS with Samsung Thales"]
+            }
+          ]
+        },
+        {
+          "year": 2010,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": ["Manufacturing real-time simulation computer system / Agency for Defense Development"]
+            },
+            {
+              "month": "Nov.",
+              "entries": [
+                "Made a contract for Real-time simulation computer system manufacturing / Agency for Defense Development"
+              ]
+            },
+            {
+              "month": "Sep.",
+              "entries": ["Released ACE-IPC01D-i5, ACE-IPC02D-i7, ACE-IPC01R-4U-i7 products / ACE-IPC"]
+            },
+            {
+              "month": "Jun.",
+              "entries": ["Released ACE-BoxIPC product series / ACE-IPC"]
+            },
+            {
+              "month": "Apr.",
+              "entries": ["Manufacturing OKTAL-SE modelling data for flight operation simulator / LIGNex1"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-2007-2009",
+      "label": "2007 — 2009",
+      "years": [
+        {
+          "year": 2009,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": [
+                "Applied patent for natural cooling type industrial computer using parallel type radiation fin assembly / ACE-IPC",
+                "Registered patent for industrial computer for dust prevention and strong to vibration / ACE-IPC"
+              ]
+            },
+            {
+              "month": "Nov.",
+              "entries": ["Certified reassignment of INNO-Biz", "Made Cambridge Pixel_Distribution Agreement"]
+            },
+            {
+              "month": "May.",
+              "entries": ["Made Distributor Agreement with Real-Time Innovations"]
+            },
+            {
+              "month": "Mar.",
+              "entries": ["Made a contract for KHP with DODDAM SYSTEMS"]
+            }
+          ]
+        },
+        {
+          "year": 2008,
+          "months": [
+            {
+              "month": "May.",
+              "entries": ["Delivered ACE-IPC / ACE-IPC01D, ACE-IPC02D, ACE-IPC01R to Posco Pohang"]
+            },
+            {
+              "month": "Apr.",
+              "entries": ["Made a contract for KNTDS-2 with SsangYong I&C"]
+            },
+            {
+              "month": "Feb.",
+              "entries": ["Made Third Party sales representative agreement with Emerson Network Power"]
+            }
+          ]
+        },
+        {
+          "year": 2007,
+          "months": [
+            {
+              "month": "Nov.",
+              "entries": ["FFX / STX", "FFX / STC", "FFX-ICU / STC"]
+            },
+            {
+              "month": "May.",
+              "entries": ["Developed general purpose industrial HMI computer strong to dust and vibration / ACE-IPC"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-2003-2005",
+      "label": "2003 — 2005",
+      "years": [
+        {
+          "year": 2005,
+          "months": [
+            {
+              "month": "Nov.",
+              "entries": ["Acquired ISO-9001:2008 certificate"]
+            },
+            {
+              "month": "Aug.",
+              "entries": ["C4I / SsangYong I&C"]
+            },
+            {
+              "month": "Jul.",
+              "entries": ["Navy RBOC / S&T"]
+            },
+            {
+              "month": "Apr.",
+              "entries": ["PKX-MFCC / STX"]
+            }
+          ]
+        },
+        {
+          "year": 2004,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": ["Made Sales Agent Agreement for Synthetic Environment"]
+            },
+            {
+              "month": "Mar.",
+              "entries": ["Made Distributor Agreement for ICS Triple ISaGRAF", "PKX-ICU / STC & ADD"]
+            },
+            {
+              "month": "Feb.",
+              "entries": ["Real Time Data Processing System / ADD"]
+            }
+          ]
+        },
+        {
+          "year": 2003,
+          "months": [
+            {
+              "month": "Oct.",
+              "entries": [
+                "Made Distributor Agreement / GE Intelligent Platforms (Old GE Fanuc)",
+                "LPX / STC&ADD",
+                "KDX / STC"
+              ]
+            },
+            {
+              "month": "Mar.",
+              "entries": [
+                "Mil Imaging Processor/Development / LGinnotek",
+                "Made Distribution Agreement withj Wind River Systems, INC"
+              ]
+            },
+            {
+              "month": "Feb.",
+              "entries": ["Radar / STC"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-1999-2002",
+      "label": "1999 — 2002",
+      "years": [
+        {
+          "year": 2002,
+          "months": [
+            {
+              "month": "11",
+              "entries": ["ADD / FCS"]
+            }
+          ]
+        },
+        {
+          "year": 2000,
+          "months": [
+            {
+              "month": "Dec.",
+              "entries": ["Established Telecom & Networking R&D center and automation R&D center"]
+            },
+            {
+              "month": "Apr.",
+              "entries": ["Mil Test Equip SZ / FIRSTEC"]
+            },
+            {
+              "month": "Mar.",
+              "entries": [
+                "Confirmed as a venture company by the Seoul Regional Office Small & Medium Business Administration"
+              ]
+            }
+          ]
+        },
+        {
+          "year": 1999,
+          "months": [
+            {
+              "month": "08",
+              "entries": ["KAI / Mil KTS Simulator SI"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-1996-1998",
+      "label": "1996 — 1998",
+      "years": [
+        {
+          "year": 1998,
+          "months": [
+            {
+              "month": "Oct.",
+              "entries": ["Mil Tank related SI / Hyundai Electronics"]
+            },
+            {
+              "month": "Jul.",
+              "entries": ["Approved Institute of Technology Affiliated to Enterprise"]
+            },
+            {
+              "month": "May.",
+              "entries": ["Made Distributor Agreement with Emerson Network Power (Old Motorola Computing Group)"]
+            },
+            {
+              "month": "Feb.",
+              "entries": ["Incorporation as AceTronix Co., Ltd. (President & CEO: Young-Sool Jang)"]
+            },
+            {
+              "month": "Jan.",
+              "entries": ["Mil imaging processing SI / ADD"]
+            }
+          ]
+        },
+        {
+          "year": 1997,
+          "months": [
+            {
+              "month": "Jul.",
+              "entries": ["LG Precision / Mil.Fire Control system SI)"]
+            }
+          ]
+        },
+        {
+          "year": 1996,
+          "months": [
+            {
+              "month": "Sep.",
+              "entries": ["Daewoo Telecom / Sonar/Radar"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-1994-1995",
+      "label": "1994 — 1995",
+      "years": [
+        {
+          "year": 1995,
+          "months": [
+            {
+              "month": "Nov.",
+              "entries": ["Made Distributor Agreement with PENTEK, Inc."]
+            }
+          ]
+        },
+        {
+          "year": 1994,
+          "months": [
+            {
+              "month": "Oct.",
+              "entries": ["Established Unitop Electronics"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

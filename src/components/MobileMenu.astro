@@ -1,0 +1,94 @@
+---
+/**
+ * MobileMenu - 풀스크린 모바일 네비게이션 오버레이
+ * v7 index.html mobile-menu 섹션에서 추출
+ * ARIA, 포커스 트랩, Escape 닫기 지원
+ */
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Home', i18nKey: '' },
+  { href: '/solutions', label: 'Solutions', i18nKey: 'nav.solutions' },
+  { href: '/products-intro', label: 'Products', i18nKey: 'nav.productsIntro' },
+  { href: '/applications', label: 'Applications', i18nKey: 'nav.applications' },
+  { href: '/about', label: 'About', i18nKey: 'nav.about' },
+  { href: '/history', label: 'History', i18nKey: 'nav.history' },
+  { href: '/contact', label: 'Contact', i18nKey: 'nav.contact' },
+  { href: '/login', label: 'Login', i18nKey: 'nav.login' },
+];
+---
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation" aria-hidden="true" inert>
+  {
+    navLinks.map(({ href, label, i18nKey }) => (
+      <a class:list={['mob-link', { active: currentPath === href }]} href={href} {...(i18nKey ? { 'data-i18n': i18nKey } : {})}>
+        {label}
+      </a>
+    ))
+  }
+  <a class="btn-book" href="/contact" data-i18n="nav.inquiry">Inquiry</a>
+</div>
+
+<style>
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-white);
+    z-index: var(--z-mobile-menu);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-2xl);
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity var(--transition-slow),
+      visibility var(--transition-slow);
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
+  .mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mob-link {
+    font-size: var(--font-size-4xl);
+    font-weight: 400;
+    color: var(--color-black);
+    cursor: pointer;
+    text-decoration: none;
+    font-family: var(--font-family);
+    letter-spacing: -0.02em;
+  }
+
+  .mob-link:hover {
+    opacity: 0.6;
+  }
+
+  .mob-link.active {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+
+  .mobile-menu .btn-book {
+    font-size: var(--font-size-md);
+    padding: 18px 36px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 480px) {
+    .mob-link {
+      font-size: var(--font-size-2xl);
+    }
+  }
+</style>

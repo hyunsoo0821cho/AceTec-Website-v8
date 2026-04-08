@@ -1,0 +1,1047 @@
+---
+export const prerender = false;
+
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+import AdminInline from '../components/AdminInline.astro';
+import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import fs from 'fs';
+import path from 'path';
+const cookie = Astro.request.headers.get('cookie');
+const isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+
+const root = process.cwd();
+const h = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'home.json'), 'utf-8'));
+
+// Helper: spread data-edit attr only for admin
+function e(p: string) {
+  return isAdmin ? { 'data-edit': p } : {};
+}
+function img(p: string, preset: string) {
+  return isAdmin ? { 'data-img': p, 'data-preset': preset } : {};
+}
+const hrefToKey: Record<string, string> = {
+  '/products/military': 'military', '/products/railway': 'railway',
+  '/products/industrial': 'automation', '/products/telecom': 'telecom',
+  '/products/sensor': 'sensor', '/products/hpc': 'hpc',
+  '/products/ipc': 'ipc', '/products/radar': 'radar',
+  '/products/interconnect': 'interconnect',
+};
+function cardKey(href: string): string { return hrefToKey[href] || ''; }
+
+// solutions accordion i18n key mapping (by index)
+const accI18nKeys = [
+  { title: 'embeddedComputing', desc: 'embeddedComputingDesc' },
+  { title: 'industrialNetworking', desc: 'industrialNetworkingDesc' },
+  { title: 'safetyCritical', desc: 'safetyCriticalDesc' },
+  { title: 'telecomNetworking', desc: 'telecomNetworkingDesc' },
+  { title: 'sensorSim', desc: 'sensorSimDesc' },
+  { title: 'hpcTitle', desc: 'hpcDesc' },
+  { title: 'ipcTitle', desc: 'ipcDesc' },
+  { title: 'radarTitle', desc: 'radarDesc' },
+  { title: 'interconnectTitle', desc: 'interconnectDesc' },
+];
+---
+
+<Base title="AceTec - Embedded & Industrial Technology Solutions">
+  <AdminInline page="home" isAdmin={isAdmin} />
+
+  <section class="hero">
+    <div class="hero-bg">
+      <img
+        src={h.hero.image || '/images/hero/hero-main.png'}
+        alt="AceTec embedded computing and industrial solutions"
+        fetchpriority="high"
+        {...img('hero.image', 'hero')}
+      />
+      <div class="hero-bg-gradient"></div>
+    </div>
+    <div class="hero-content">
+      <h1 {...e('hero.title')} data-i18n="home.heroTitle" set:html={h.hero.title} />
+      <p class="hero-desc" {...e('hero.description')} data-i18n="home.heroDesc">{h.hero.description}</p>
+      <div class="hero-buttons">
+        <a href="/solutions" class="hero-btn-primary"
+          ><span {...e('hero.btnPrimary')} data-i18n="home.exploreBtn">{h.hero.btnPrimary || 'EXPLORE SOLUTIONS'}</span></a
+        >
+        <a href="/contact" class="hero-btn-secondary"
+          ><span {...e('hero.btnSecondary')} data-i18n="home.quoteBtn">{h.hero.btnSecondary || 'REQUEST A QUOTE'}</span></a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="featured-top">
+        <h2 data-i18n="home.solutions">주요 솔루션</h2>
+        <a href="/solutions" class="btn-secondary" data-i18n="home.viewAll">VIEW ALL SOLUTIONS</a>
+      </div>
+      <div class="svc-cards">
+        {
+          h.solutionCards.filter((sc: any) => ['/products/military', '/products/railway', '/products/industrial', '/products/telecom', '/products/hpc', '/products/ipc'].includes(sc.href)).map((sc: any, i: number) => (
+            <a href={sc.href || undefined} class="s-card" style={`position:relative;${!sc.href ? 'cursor:default;pointer-events:none;' : ''}`}>
+              {isAdmin && (
+                <button class="admin-delete-btn" data-admin-delete={`solutionCards[${i}]`} title="Delete">
+                  &times;
+                </button>
+              )}
+              {sc.image ? (
+                <img src={sc.image} alt={sc.title} loading="lazy" {...img(`solutionCards[${i}].image`, 'service')} />
+              ) : (
+                <div class="img-placeholder" {...img(`solutionCards[${i}].image`, 'service')}>
+                  Click to add image
+                </div>
+              )}
+              <h3 {...e(`solutionCards[${i}].title`)} {...((sc.i18nKey || cardKey(sc.href)) ? {'data-i18n': `solutionCards.${sc.i18nKey || cardKey(sc.href)}`} : {})}>{sc.title}</h3>
+              <div class="s-subtitle" {...e(`solutionCards[${i}].subtitle`)} {...((sc.i18nKey || cardKey(sc.href)) ? {'data-i18n': `solutionCards.${sc.i18nKey || cardKey(sc.href)}Sub`} : {})}>
+                {sc.subtitle}
+              </div>
+              {sc.description && (
+                <p class="s-desc" {...e(`solutionCards[${i}].description`)} {...((sc.i18nKey || cardKey(sc.href)) ? {'data-i18n': `solutionCards.${sc.i18nKey || cardKey(sc.href)}Desc`} : {})}>{sc.description}</p>
+              )}
+            </a>
+          ))
+        }
+      </div>
+      {
+        isAdmin && (
+          <button
+            class="admin-add-btn"
+            data-admin-add="solutionCards"
+            data-admin-template='{"title":"New Solution","subtitle":"Description","description":"Details here","image":"","href":"/solutions"}'
+            style="margin-top:16px;"
+          >
+            + Add Solution
+          </button>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="featured section">
+    <div class="container">
+      <div class="featured-top"><h2 data-i18n="home.featuredProducts">Featured Products</h2><a href="/catalog" class="btn-secondary" data-i18n="products.viewCatalog">VIEW FULL CATALOG</a></div>
+      <div class="products-grid">
+        {
+          h.featuredProducts.map((fp: any, i: number) => (
+            <a href={fp.href} class="p-card" style="position:relative;" aria-label={fp.name}>
+              {isAdmin && (
+                <button class="admin-delete-btn" data-admin-delete={`featuredProducts[${i}]`} title="Delete">
+                  &times;
+                </button>
+              )}
+              <div class="p-img">
+                {fp.badge === 'SIL4' && <span class="sale-badge">SIL4</span>}
+                {fp.badge === 'NEW' && <span class="new-badge">NEW</span>}
+                {fp.image ? (
+                  <img
+                    src={fp.image}
+                    alt={fp.name}
+                    loading="lazy"
+                    {...img(`featuredProducts[${i}].image`, 'product')}
+                  />
+                ) : isAdmin ? (
+                  <div
+                    style="width:100%;height:100%;position:absolute;top:0;left:0;display:flex;align-items:center;justify-content:center;color:#999;font-size:12px;cursor:pointer;"
+                    {...img(`featuredProducts[${i}].image`, 'product')}
+                  >
+                    Click to add image
+                  </div>
+                ) : null}
+              </div>
+              <div class="p-name" {...e(`featuredProducts[${i}].name`)}>
+                {fp.name}
+              </div>
+              <div class="p-price" {...e(`featuredProducts[${i}].specs`)}>
+                {fp.specs}
+              </div>
+            </a>
+          ))
+        }
+      </div>
+      {
+        isAdmin && (
+          <button
+            class="admin-add-btn"
+            data-admin-add="featuredProducts"
+            data-admin-template='{"name":"New Product","specs":"Specs here","image":"","href":"/products/industrial"}'
+            style="margin-top:16px;"
+          >
+            + Add Featured Product
+          </button>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="our-services section">
+    <div class="container">
+      <div class="svc-layout">
+        <div class="svc-text">
+          <h2 {...e('solutions.title')} data-i18n="home.ourSolutions">{h.solutions.title}</h2>
+          <p class="desc" {...e('solutions.description')} data-i18n="home.solutionsDesc">{h.solutions.description}</p>
+          <div class="acc" role="region" aria-label="Solution details">
+            {
+              h.solutions.items.map((item: any, i: number) => (
+                <div class="acc-item" style="position:relative;">
+                  {isAdmin && (
+                    <button class="admin-delete-btn" data-admin-delete={`solutions.items[${i}]`} title="Delete">
+                      &times;
+                    </button>
+                  )}
+                  <div class="acc-title" role="button" tabindex="0" aria-expanded="false">
+                    <span {...e(`solutions.items[${i}].title`)} {...(accI18nKeys[i] ? {'data-i18n': `home.${accI18nKeys[i].title}`} : {})}>{item.title}</span>{' '}
+                    <span class="icon" aria-hidden="true">
+                      +
+                    </span>
+                  </div>
+                  <div class="acc-body" {...e(`solutions.items[${i}].description`)} {...(accI18nKeys[i] ? {'data-i18n': `home.${accI18nKeys[i].desc}`} : {})}>
+                    {item.description}
+                  </div>
+                </div>
+              ))
+            }
+            {
+              isAdmin && (
+                <button
+                  class="admin-add-btn"
+                  data-admin-add="solutions.items"
+                  data-admin-template='{"title":"New Solution","description":"Description here"}'
+                >
+                  + Add Solution
+                </button>
+              )
+            }
+          </div>
+          <div class="mt-xl"><a href="/solutions" class="btn-primary" data-i18n="home.viewAll">VIEW ALL SOLUTIONS</a></div>
+        </div>
+        <div class="svc-img">
+          <img
+            src={h.solutions.image || '/images/services/services-main.png'}
+            alt="Our technology services"
+            loading="lazy"
+            {...img('solutions.image', 'service')}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="consult">
+    <div class="consult-bg">
+      <img
+        src={h.consult.image || '/images/misc/consult-bg.png'}
+        alt=""
+        loading="lazy"
+        {...img('consult.image', 'misc')}
+      />
+    </div>
+    <div class="consult-inner">
+      <h2 {...e('consult.title')} data-i18n="home.consultTitle">{h.consult.title}</h2>
+      <p {...e('consult.description')} data-i18n="home.consultDesc">{h.consult.description}</p>
+      <a href="/contact" class="btn-light" data-i18n="home.consultBtn">REQUEST CONSULTATION</a>
+    </div>
+  </section>
+
+  <section class="choose-plan section">
+    <div class="container">
+      <h2 {...e('servicePlan.title')} data-i18n="home.serviceTitle">{h.servicePlan.title}</h2>
+      <p class="heading-sub color-muted" {...e('servicePlan.subtitle')} data-i18n="home.serviceDesc">{h.servicePlan.subtitle}</p>
+      <div class="plans-grid">
+        {
+          h.servicePlan.steps.map((step: any, i: number) => (
+            <div class="plan-card">
+              <img
+                src={
+                  step.image ||
+                  [
+                    '/images/plans/plan-standard.png',
+                    '/images/plans/plan-premium.png',
+                    '/images/plans/plan-enterprise.png',
+                  ][i]
+                }
+                alt={step.title}
+                loading="lazy"
+                {...img(`servicePlan.steps[${i}].image`, 'plan')}
+              />
+              <div class="plan-body">
+                <h3 {...e(`servicePlan.steps[${i}].title`)} data-i18n={`home.${['consultDesign','constructSupport','verifyInspect'][i]}Title`}>{step.title}</h3>
+                <div class="price" data-i18n={`home.${['consultDesign','constructSupport','verifyInspect'][i]}Step`}>{step.step}</div>
+                <div class="period" {...e(`servicePlan.steps[${i}].period`)} data-i18n={`home.${['consultDesign','constructSupport','verifyInspect'][i]}Period`}>
+                  {step.period}
+                </div>
+                <p class="plan-desc" {...e(`servicePlan.steps[${i}].description`)} data-i18n={`home.${['consultDesign','constructSupport','verifyInspect'][i]}Desc`}>
+                  {step.description}
+                </p>
+                <a href="/contact" class="btn-primary" data-i18n="nav.inquiry">
+                  INQUIRE
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="about-co section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img">
+          <img
+            src={h.about.image || '/images/about/about-company.png'}
+            alt="About our company"
+            loading="lazy"
+            {...img('about.image', 'about')}
+          />
+        </div>
+        <div class="about-txt">
+          <h2 {...e('about.title')} data-i18n="home.aboutTitle">{h.about.title}</h2>
+          <p {...e('about.description')} data-i18n="home.aboutDesc">{h.about.description}</p>
+          <div class="mt-xl"><a href="/about" class="btn-primary" data-i18n="home.aboutBtn">OUR STORY</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="social section">
+    <div class="container">
+      <h2 data-i18n="home.partners">Our Technology Partners</h2>
+      <div class="social-grid">
+        {
+          h.partners.map((p: any, i: number) => (
+            <div style="position:relative;">
+              {isAdmin && (
+                <button class="admin-delete-btn" data-admin-delete={`partners[${i}]`} title="Delete">
+                  &times;
+                </button>
+              )}
+              <img
+                src={p.image}
+                alt={p.name}
+                loading="lazy"
+                tabindex="0"
+                role="button"
+                aria-label={p.name}
+                {...img(`partners[${i}].image`, 'partner')}
+              />
+            </div>
+          ))
+        }
+      </div>
+      {
+        isAdmin && (
+          <button
+            class="admin-add-btn"
+            data-admin-add="partners"
+            data-admin-template='{"name":"New Partner","image":""}'
+            style="margin-top:16px;"
+          >
+            + Add Partner
+          </button>
+        )
+      }
+      <a href="/about" class="btn-primary" data-i18n="home.learnMore">LEARN MORE ABOUT US</a>
+    </div>
+  </section>
+
+  <section class="contact-sec section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-txt">
+          <h2 {...e('contact.title')} data-i18n="home.contactTitle">{h.contact.title}</h2>
+          <p {...e('contact.description')} data-i18n="home.contactDesc">{h.contact.description}</p>
+        </div>
+        <ContactForm prefix="home" />
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  /* ===== Fullscreen Hero ===== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 1000px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    margin-top: -80px;
+    padding-top: 80px;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-bg-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,0.75) 0%,
+      rgba(0,0,0,0.35) 40%,
+      rgba(0,0,0,0.1) 70%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 var(--container-padding) 80px;
+    max-width: 750px;
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 56px);
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  }
+  .hero-desc {
+    font-size: clamp(15px, 1.8vw, 18px);
+    color: rgba(255,255,255,0.85);
+    line-height: 1.6;
+    margin-bottom: 28px;
+    max-width: 600px;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .hero-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 32px;
+    background: #fff;
+    color: #0a0a0a;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .hero-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(255,255,255,0.3);
+  }
+  .hero-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 32px;
+    background: transparent;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .hero-btn-secondary:hover {
+    border-color: #fff;
+    background: rgba(255,255,255,0.1);
+  }
+  .featured {
+    background: var(--color-bg);
+  }
+  .featured-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-2xl);
+  }
+  .featured-top h2 {
+    font-size: var(--font-size-5xl);
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-lg);
+    align-items: start;
+  }
+  .p-card {
+    position: relative;
+    cursor: pointer;
+    transition: transform var(--transition-slow);
+    text-decoration: none;
+    color: inherit;
+  }
+  .p-img {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-gray-200);
+    padding-bottom: 75%;
+  }
+  .p-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity var(--transition-slow);
+  }
+  @media (hover: hover) {
+    .p-card:hover {
+      transform: translateY(-4px);
+    }
+    .p-card:hover img {
+      opacity: 0.85;
+    }
+  }
+  .p-card:active {
+    transform: translateY(0) scale(0.98);
+    transition: all var(--transition-fast);
+  }
+  .p-card .p-name {
+    font-size: var(--font-size-lg);
+    margin-top: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .p-card .p-price {
+    font-size: var(--font-size-md);
+    margin-top: var(--spacing-xs);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .sale-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--color-badge-bg);
+    color: var(--color-white);
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    z-index: 1;
+  }
+  .new-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #2563eb;
+    color: var(--color-white);
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) 10px;
+    font-weight: 500;
+    border-radius: 2px;
+    z-index: 1;
+  }
+  .svc-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+  }
+  .s-card {
+    transition: transform var(--transition-slow);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  @media (hover: hover) {
+    .s-card:hover {
+      transform: translateY(-4px);
+    }
+    .s-card:hover img {
+      opacity: 0.85;
+    }
+  }
+  .s-card:active {
+    transform: translateY(0) scale(0.98);
+    transition: all var(--transition-fast);
+  }
+  .s-card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    transition: opacity var(--transition-slow);
+  }
+  .s-card h3 {
+    font-size: 25px;
+    margin-top: var(--spacing-md);
+    font-weight: 600;
+  }
+  .s-card .s-subtitle {
+    font-size: 20px;
+    font-weight: 700;
+    margin: var(--spacing-xs) 0 var(--spacing-sm);
+  }
+  .s-card .s-desc {
+    font-size: 16px;
+    color: var(--color-gray-700);
+    line-height: 1.5;
+    margin: 0;
+  }
+  .our-services {
+    background: var(--color-bg);
+  }
+  .svc-layout {
+    display: flex;
+    gap: var(--spacing-3xl);
+    align-items: flex-start;
+  }
+  .svc-text {
+    flex: 1;
+    min-width: 0;
+  }
+  .svc-text h2 {
+    font-size: var(--font-size-6xl);
+    margin-bottom: var(--spacing-lg);
+  }
+  .svc-text .desc {
+    font-size: var(--font-size-lg);
+    line-height: 1.4;
+    margin-bottom: var(--spacing-2xl);
+  }
+  .acc {
+    border-top: 1px solid var(--color-gray-400);
+  }
+  .acc-item {
+    border-bottom: 1px solid var(--color-gray-400);
+  }
+  .acc-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px var(--spacing-sm);
+    margin: 0 calc(-1 * var(--spacing-sm));
+    cursor: pointer;
+    font-size: var(--font-size-xl);
+    font-weight: 400;
+    transition: color var(--transition-base);
+    border-radius: var(--radius-sm);
+  }
+  @media (hover: hover) {
+    .acc-title:hover {
+      color: var(--color-gray-800);
+    }
+  }
+  .acc-title .icon {
+    font-size: var(--font-size-lg);
+    display: inline-block;
+    transition: transform var(--transition-slow);
+  }
+  .acc-item.open .acc-title .icon {
+    transform: rotate(135deg);
+  }
+  .acc-body {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 0 0 var(--spacing-lg);
+    font-size: var(--font-size-md);
+    line-height: 1.4;
+    transition:
+      max-height 0.35s ease,
+      padding 0.35s ease,
+      opacity var(--transition-slow);
+    opacity: 0;
+  }
+  .acc-item.open .acc-body {
+    max-height: 300px;
+    padding: 0 0 18px var(--spacing-lg);
+    opacity: 1;
+  }
+  .svc-img {
+    width: 50%;
+    flex-shrink: 0;
+    height: 500px;
+    overflow: hidden;
+  }
+  .svc-img img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+  .consult {
+    background: var(--color-black);
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .consult-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.4;
+  }
+  .consult-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .consult-inner {
+    position: relative;
+    z-index: 2;
+    color: var(--color-white);
+    max-width: 700px;
+    padding: var(--spacing-5xl) var(--spacing-lg);
+  }
+  .consult-inner h2 {
+    font-size: var(--font-size-6xl);
+    margin-bottom: var(--spacing-lg);
+  }
+  .consult-inner p {
+    font-size: var(--font-size-lg);
+    line-height: 1.4;
+    margin-bottom: var(--spacing-2xl);
+  }
+  .choose-plan {
+    background: var(--color-bg);
+  }
+  .choose-plan h2 {
+    font-size: var(--font-size-6xl);
+    margin-bottom: var(--spacing-3xl);
+  }
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+  }
+  .plan-card {
+    border: 1px solid var(--color-gray-300);
+    overflow: hidden;
+    transition:
+      transform var(--transition-slow),
+      box-shadow var(--transition-slow);
+  }
+  @media (hover: hover) {
+    .plan-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+  .plan-card:active {
+    transform: translateY(0) scale(0.98);
+    transition: all var(--transition-fast);
+  }
+  .plan-card img {
+    width: 100%;
+    aspect-ratio: 1792/1024;
+    object-fit: cover;
+  }
+  .plan-body {
+    padding: var(--spacing-xl);
+  }
+  .plan-body h3 {
+    font-size: var(--font-size-2xl);
+    margin-bottom: 12px;
+  }
+  .plan-body .price {
+    font-size: var(--font-size-price);
+    margin-bottom: var(--spacing-xs);
+  }
+  .plan-body .period {
+    font-size: var(--font-size-md);
+    color: var(--color-gray-700);
+    margin-bottom: var(--spacing-md);
+  }
+  .plan-body .plan-desc {
+    font-size: var(--font-size-md);
+    line-height: 1.4;
+    margin-bottom: var(--spacing-lg);
+  }
+  .about-co {
+    background: var(--color-bg);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: center;
+  }
+  .about-img {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+  .about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .about-txt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .about-txt h2 {
+    font-size: var(--font-size-6xl);
+    margin-bottom: var(--spacing-lg);
+  }
+  .about-txt p {
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+    color: var(--color-gray-700);
+  }
+  .social {
+    background: var(--color-bg);
+    text-align: center;
+  }
+  .social h2 {
+    font-size: var(--font-size-5xl);
+    margin-bottom: var(--spacing-2xl);
+    text-align: center;
+  }
+  .social-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: var(--spacing-2xl);
+  }
+  .social-grid img {
+    width: 160px;
+    height: 55px;
+    object-fit: contain;
+    cursor: pointer;
+    transition:
+      transform var(--transition-slow),
+      opacity var(--transition-slow);
+  }
+  @media (hover: hover) {
+    .social-grid img:hover {
+      transform: scale(1.03);
+      opacity: 0.85;
+    }
+  }
+  .social-grid img:active {
+    transform: scale(0.98);
+    transition: all var(--transition-fast);
+  }
+  .contact-sec {
+    background: var(--color-bg);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-5xl);
+    align-items: start;
+  }
+  .contact-txt h2 {
+    font-size: var(--font-size-6xl);
+    margin-bottom: var(--spacing-lg);
+  }
+  .contact-txt p {
+    font-size: var(--font-size-lg);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .products-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .svc-layout {
+      flex-direction: column;
+    }
+    .svc-img {
+      width: 100%;
+      height: 400px;
+    }
+    .svc-img img {
+      height: 400px;
+    }
+    .about-grid,
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .about-img {
+      aspect-ratio: 16/9;
+    }
+    .plans-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .svc-cards {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .social-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .consult-inner h2 {
+      font-size: 36px;
+    }
+    .choose-plan h2,
+    .svc-text h2,
+    .about-txt h2,
+    .contact-txt h2 {
+      font-size: 38px;
+    }
+    .hero h1 {
+      font-size: 38px;
+      padding: 0 30px;
+    }
+    .hero-img-wrap {
+      padding: 0 30px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 500px;
+      max-height: 700px;
+    }
+    .hero-content {
+      padding: 0 20px 50px;
+    }
+    .hero-desc {
+      font-size: 14px;
+    }
+    .hero-buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hero-btn-primary, .hero-btn-secondary {
+      justify-content: center;
+      padding: 12px 24px;
+    }
+    .featured-top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+    }
+    .featured-top h2 {
+      font-size: var(--font-size-4xl);
+    }
+    .svc-text h2 {
+      font-size: var(--font-size-5xl);
+    }
+    .consult {
+      min-height: 350px;
+    }
+    .consult-inner h2 {
+      font-size: var(--font-size-4xl);
+    }
+    .about-txt h2 {
+      font-size: var(--font-size-5xl);
+    }
+    .social h2 {
+      font-size: var(--font-size-4xl);
+    }
+    .contact-txt h2 {
+      font-size: var(--font-size-5xl);
+    }
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .about-img {
+      aspect-ratio: 16/9;
+    }
+    .products-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--spacing-md);
+    }
+    .social-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .svc-cards {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+    }
+    .p-card .p-name {
+      font-size: 13px;
+      white-space: normal;
+      line-height: 1.3;
+    }
+    .p-card .p-price {
+      font-size: 11px;
+      white-space: normal;
+      line-height: 1.3;
+    }
+    .svc-layout .svc-img {
+      width: 100%;
+      height: 300px;
+    }
+    .svc-img img {
+      height: 300px;
+    }
+    .consult-inner {
+      padding: var(--spacing-3xl) var(--spacing-lg);
+    }
+    .choose-plan h2 {
+      font-size: var(--font-size-5xl);
+      margin-bottom: var(--spacing-xl);
+    }
+    .img-tall {
+      height: 400px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: var(--font-size-3xl);
+    }
+    .products-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .social-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .featured-top h2 {
+      font-size: var(--font-size-3xl);
+    }
+    .svc-text h2,
+    .about-txt h2,
+    .contact-txt h2,
+    .choose-plan h2 {
+      font-size: 26px;
+    }
+    .consult-inner h2 {
+      font-size: var(--font-size-3xl);
+    }
+  }
+</style>
+
+<script>
+  // Accordion toggle for home page
+  function toggleAccordion(e: Event) {
+    const el = e.target as HTMLElement;
+    // Admin 인라인 편집 중이면 무시 (스페이스바 등 입력 허용)
+    if (el.isContentEditable || el.closest('[contenteditable="true"]')) return;
+    if (e instanceof KeyboardEvent && e.key !== 'Enter' && e.key !== ' ') return;
+
+    const title = el.closest('.acc-title');
+    if (!title) return;
+    if (e instanceof KeyboardEvent) e.preventDefault();
+
+    const item = title.parentElement;
+    if (!item) return;
+    item.classList.toggle('open');
+    const isOpen = item.classList.contains('open');
+    title.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  document.addEventListener('click', toggleAccordion);
+  document.addEventListener('keydown', toggleAccordion);
+</script>

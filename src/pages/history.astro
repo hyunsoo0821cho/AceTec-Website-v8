@@ -1,0 +1,327 @@
+---
+export const prerender = false;
+
+import Base from '../layouts/Base.astro';
+import AdminInline from '../components/AdminInline.astro';
+import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+
+const cookie = Astro.request.headers.get('cookie');
+const isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+import HistoryYearGroup from '../components/HistoryYearGroup.astro';
+import fs from 'fs';
+import path from 'path';
+
+const timelinePath = path.join(process.cwd(), 'src', 'content', 'history', 'timeline.json');
+const timeline = JSON.parse(fs.readFileSync(timelinePath, 'utf-8'));
+---
+
+<Base title="History & Reference - AceTec">
+  <div class="pt-page-lg">
+    <AdminInline page="history" isAdmin={isAdmin} />
+    <section class="section">
+      <div class="container">
+        <h1 class="heading-page" data-i18n="history.title">History &amp; Reference</h1>
+        <p class="heading-sub color-muted" data-i18n="history.desc">
+          Over 30 years of innovation in embedded computing, defense systems, and industrial technology — from 1994 to
+          today.
+        </p>
+
+        <div class="history-tabs" role="tablist" aria-label="History timeline periods">
+          {
+            isAdmin && (
+              <button
+                class="admin-add-btn"
+                id="addPeriodBtn"
+                style="padding:8px 16px;font-size:13px;margin-right:8px;width:auto;flex-shrink:0;"
+              >
+                + Add Period
+              </button>
+            )
+          }
+          {
+            timeline.periods.map((period: any, i: number) => (
+              <button
+                class:list={['history-tab', { active: i === 0 }]}
+                role="tab"
+                aria-selected={i === 0 ? 'true' : 'false'}
+                data-tab={period.id}
+              >
+                {period.label}
+              </button>
+            ))
+          }
+        </div>
+
+        {
+          timeline.periods.map((period: any, i: number) => (
+            <div class:list={['history-panel', { active: i === 0 }]} id={period.id} role="tabpanel">
+              {period.years.map((y: any, yi: number) => (
+                <HistoryYearGroup year={y.year} months={y.months} isAdmin={isAdmin} periodIndex={i} yearIndex={yi} />
+              ))}
+              {isAdmin && (
+                <button
+                  class="admin-add-btn"
+                  data-admin-add={`periods[${i}].years`}
+                  data-admin-prepend="true"
+                  data-admin-template={`{"year":${new Date().getFullYear()},"months":[{"month":"Jan.","entries":["New entry"]}]}`}
+                  style="margin:16px 0;"
+                >
+                  + Add Year
+                </button>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .history-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-3xl);
+    border-bottom: 1px solid var(--color-gray-300);
+    padding-bottom: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    flex-wrap: nowrap;
+  }
+
+  .history-tab {
+    padding: 14px 24px;
+    font-size: var(--font-size-lg);
+    font-weight: 400;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    color: var(--color-gray-600);
+    font-family: var(--font-family);
+    transition: all var(--transition-base);
+    margin-bottom: -1px;
+  }
+
+  .history-tab:hover {
+    color: var(--color-black);
+  }
+
+  .history-tab.active {
+    color: var(--color-black);
+    border-bottom-color: var(--color-black);
+    font-weight: 500;
+  }
+
+  .history-panel {
+    display: none;
+  }
+
+  .history-panel.active {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .history-tabs {
+      overflow-x: auto;
+      gap: 0;
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    .history-tab {
+      padding: 8px 12px;
+      font-size: 12px;
+      white-space: nowrap;
+      flex: 0 0 auto;
+    }
+  }
+</style>
+
+<!-- HistoryYearGroup styles (global because component is dynamically rendered) -->
+<style is:global>
+  .history-year-group {
+    margin-bottom: var(--spacing-3xl);
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+
+  .history-year-group.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .history-year {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-black);
+  }
+
+  .history-entries {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .h-month-group {
+    display: flex;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .h-month-group:last-child {
+    border-bottom: none;
+  }
+
+  .h-month {
+    min-width: 52px;
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    color: var(--color-gray-700);
+    flex-shrink: 0;
+    padding-top: 12px;
+  }
+
+  .h-month-items {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .h-entry {
+    padding: 10px var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    transition:
+      background var(--transition-base),
+      transform var(--transition-base);
+    cursor: default;
+  }
+
+  @media (hover: hover) {
+    .h-entry:hover {
+      background: var(--color-gray-100);
+      transform: translateX(6px);
+    }
+  }
+
+  .h-entry p {
+    font-size: var(--font-size-md);
+    line-height: 1.5;
+    margin: 0;
+    transition: color var(--transition-base);
+  }
+
+  @media (hover: hover) {
+    .h-entry:hover p {
+      color: var(--color-black);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .h-month-group {
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+
+    .h-month {
+      min-width: auto;
+      padding-top: 0;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--color-gray-200);
+      margin-bottom: var(--spacing-xs);
+    }
+  }
+</style>
+
+<script>
+  // History scroll fade-in
+  const historyObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          historyObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.05, rootMargin: '0px 0px -20px 0px' },
+  );
+
+  function observeHistoryGroups() {
+    const panel = document.querySelector('.history-panel.active');
+    if (panel) {
+      panel.querySelectorAll('.history-year-group:not(.visible)').forEach((g) => historyObserver.observe(g));
+    }
+  }
+
+  // Tab switching
+  document.addEventListener('click', function (e) {
+    const tab = (e.target as HTMLElement).closest('.history-tab');
+    if (!tab) return;
+    const panelId = tab.getAttribute('data-tab');
+
+    document.querySelectorAll('.history-tab').forEach((t) => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.history-panel').forEach((p) => p.classList.remove('active'));
+
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+
+    const panel = document.getElementById(panelId!);
+    if (panel) {
+      panel.classList.add('active');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          panel.querySelectorAll('.history-year-group').forEach((g) => {
+            g.classList.remove('visible');
+            historyObserver.observe(g);
+          });
+        });
+      });
+    }
+  });
+
+  observeHistoryGroups();
+
+  // Add Period — prepend to periods array (newest first, 3-year range)
+  document.getElementById('addPeriodBtn')?.addEventListener('click', async () => {
+    const res = await fetch('/api/pages/history');
+    if (!res.ok) return;
+    const data = await res.json();
+
+    // Calculate next period based on existing first period
+    let startYear = new Date().getFullYear();
+    if (data.periods.length > 0) {
+      const firstLabel = data.periods[0].label; // e.g. "2022 — 2024"
+      const match = firstLabel.match(/(\d{4})\s*—\s*(\d{4})/);
+      if (match) {
+        startYear = parseInt(match[2]) + 1; // next after the end year
+      }
+    }
+    const endYear = startYear + 2;
+
+    const newPeriod = {
+      id: `tab-${startYear}-${endYear}`,
+      label: `${startYear} — ${endYear}`,
+      years: [{ year: startYear, months: [{ month: 'Jan.', entries: ['New entry'] }] }],
+    };
+
+    data.periods.unshift(newPeriod);
+
+    const saveRes = await fetch('/api/pages/history', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (saveRes.ok) window.location.reload();
+  });
+</script>

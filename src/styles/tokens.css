@@ -1,0 +1,92 @@
+/* ===== DESIGN TOKENS ===== */
+/* Extracted from AceTec-Website-v7 base.css :root */
+:root {
+  /* Colors */
+  --color-black: #000;
+  --color-white: #fff;
+  --color-bg: #fff;
+  --color-bg-alt: #dcdcdc;
+  --color-bg-light: #fafafa;
+  --color-gray-100: #f8f8f8;
+  --color-gray-200: #f0f0f0;
+  --color-gray-300: #e0e0e0;
+  --color-gray-400: #ccc;
+  --color-gray-500: #999;
+  --color-gray-600: #888;
+  --color-gray-700: #666;
+  --color-gray-800: #555;
+  --color-gray-900: #333;
+  --color-error: #e74c3c;
+  --color-success: #2ecc71;
+  --color-footer-link: #aaa;
+  --color-border-light: #eee;
+  --color-border-medium: #ddd;
+  --color-header-bg: rgba(255, 255, 255, 0.65);
+  --color-overlay-dark: rgba(0, 0, 0, 0.4);
+  --color-badge-bg: rgba(0, 0, 0, 0.75);
+
+  /* Typography */
+  --font-family: 'Roboto', sans-serif;
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-md: 15px;
+  --font-size-lg: 17px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 22px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 28px;
+  --font-size-5xl: 33px;
+  --font-size-6xl: 50px;
+  --font-size-price: 30px;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 24px;
+  --spacing-2xl: 30px;
+  --spacing-3xl: 40px;
+  --spacing-4xl: 50px;
+  --spacing-5xl: 60px;
+  --spacing-6xl: 80px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-pill: 300px;
+
+  /* Layout */
+  --header-height: 66px;
+  --container-max: none;
+  --container-padding: 5%;
+
+  /* Transitions */
+  --transition-fast: 0.1s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-header: 0 2px 20px rgba(0, 0, 0, 0.08);
+
+  /* Chat Widget */
+  --chat-panel-width: 420px;
+  --chat-panel-height: 560px;
+  --chat-send-size: 38px;
+  --chat-pill-mobile-size: 52px;
+  --z-chat: 99998;
+
+  /* Z-index scale */
+  --z-header: 100;
+  --z-mobile-menu: 150;
+  --z-hamburger: 200;
+  --z-back-top: 99999;
+  --z-toolbar: 100000;
+  --z-toast: 999999;
+}

@@ -1,0 +1,58 @@
+{
+  "title": "Solutions",
+  "description": "당사는 산업 자동화 분야에 적합한 임베디드 컴퓨팅 솔루션을 고객 맞춤형으로 제공합니다.",
+  "items": [
+    {
+      "title": "Military & Aerospace",
+      "subtitle": "Defense-Grade Computing",
+      "description": "Rugged VPX/VME boards and signal processing platforms purpose-built for precision strike, C2, surveillance, and unmanned systems in the most demanding operational environments.",
+      "href": "/products/military"
+    },
+    {
+      "title": "Rail Transportation",
+      "subtitle": "SIL4 Safety Systems",
+      "description": "TÜV SÜD SIL4 certified HIMA ControlSafe™ platforms for CBTC, interlocking, and train control — delivering the highest safety integrity levels in rail signaling.",
+      "href": "/products/railway"
+    },
+    {
+      "title": "Industrial Automation",
+      "subtitle": "Industrial-Grade Platforms",
+      "description": "Fanless industrial PCs, network appliances, and IoT platforms for factory automation, process control, semiconductor manufacturing, and quality inspection.",
+      "href": "/products/industrial"
+    },
+    {
+      "title": "Telecom & Networking",
+      "subtitle": "Network Infrastructure",
+      "description": "Intel/AMD-based network appliances for firewall, VPN, UTM, and load balancing — along with high-performance NIC adapters for data center and telecom infrastructure.",
+      "href": "/products/telecom"
+    },
+    {
+      "title": "Sensor Modeling & Simulation",
+      "subtitle": "OKTAL-SE Solutions",
+      "description": "High-fidelity EO/IR/RF sensor simulation from OKTAL-SE for Hardware-In-the-Loop, Man-In-the-Loop, and training environments across defense and aerospace programs.",
+      "href": "/products/sensor"
+    },
+    {
+      "title": "High Performance Computing",
+      "subtitle": "GPU & Compute Platforms",
+      "description": "High-density GPU servers and PCIe expansion systems for machine learning, financial analysis, military applications, medical imaging, and scientific research.",
+      "href": "/products/hpc"
+    },
+    {
+      "title": "Radar Processing & Display",
+      "subtitle": "Cambridge Pixel Solutions",
+      "description": "High-performance radar scan conversion, target tracking, and display solutions from Cambridge Pixel — SPx Server, HPx acquisition cards, and integrated radar visualization systems.",
+      "href": "/products/radar"
+    },
+    {
+      "title": "Industrial PCs & Fanless Systems",
+      "subtitle": "ACE-IPC Series",
+      "description": "Boxtype, rackmount, server, desktop, wall-mount, and panel PCs for 24/7 industrial operation — fanless designs, wide temperature, and KC/ISO certified.",
+      "href": "/products/ipc"
+    }
+  ],
+  "quoteCta": {
+    "title": "Request a Quote",
+    "description": "Share your project requirements and our engineering team will deliver a tailored solution proposal within two business days."
+  }
+}

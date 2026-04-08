@@ -1,0 +1,374 @@
+---
+interface Props {
+  page: string;
+  isAdmin: boolean;
+}
+const { page, isAdmin } = Astro.props;
+---
+
+{isAdmin && (
+  <div class="admin-bar" id="adminBar">
+    <div class="admin-bar-inner">
+      <span class="admin-bar-label">Editing: <strong>{page}</strong></span>
+      <div class="admin-bar-actions">
+        <span class="admin-bar-status" id="adminStatus"></span>
+        <button class="admin-btn admin-btn-save" id="adminSave">Save</button>
+        <a href="/admin/dashboard" class="admin-btn admin-btn-dash">Dashboard</a>
+        <form method="POST" action="/api/auth/logout" style="display:inline;">
+          <button type="submit" class="admin-btn admin-btn-logout">Logout</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <input type="file" id="adminImgInput" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none;" />
+
+  <style>
+    .admin-bar { position:fixed; top:0; left:0; right:0; z-index:99999; background:#1e293b; color:#fff; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; box-shadow:0 2px 8px rgba(0,0,0,.2); }
+    .admin-bar-inner { max-width:1400px; margin:0 auto; padding:8px 24px; display:flex; justify-content:space-between; align-items:center; }
+    .admin-bar-label { color:#94a3b8; } .admin-bar-label strong { color:#fff; }
+    .admin-bar-actions { display:flex; gap:8px; align-items:center; }
+    .admin-bar-status { font-size:12px; margin-right:4px; }
+    .admin-btn { padding:5px 12px; border:none; border-radius:4px; font-size:12px; font-weight:600; cursor:pointer; text-decoration:none; display:inline-block; color:#fff; }
+    .admin-btn-save { background:#2563eb; } .admin-btn-save:hover { background:#1d4ed8; }
+    .admin-btn-dash { background:#334155; color:#cbd5e1; } .admin-btn-dash:hover { background:#475569; }
+    .admin-btn-logout { background:transparent; color:#94a3b8; border:1px solid #475569; } .admin-btn-logout:hover { color:#fff; border-color:#64748b; }
+  </style>
+
+  <script define:vars={{ page }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bar = document.getElementById('adminBar');
+      if (!bar) return;
+      const barH = bar.offsetHeight;
+      document.body.style.paddingTop = barH + 'px';
+      const header = document.querySelector('.header, header, #mainHeader');
+      if (header) header.style.top = barH + 'px';
+      const mm = document.getElementById('mobileMenu');
+      if (mm) mm.style.top = barH + 'px';
+
+      // ===== TEXT EDITING =====
+      const editables = document.querySelectorAll('[data-edit]');
+      editables.forEach(el => {
+        el.style.cursor = 'text';
+        el.style.transition = 'outline .15s, background .15s';
+        el.addEventListener('mouseenter', () => {
+          if (!el.isContentEditable) { el.style.outline = '2px dashed #3b82f6'; el.style.outlineOffset = '3px'; }
+        });
+        el.addEventListener('mouseleave', () => {
+          if (!el.isContentEditable) el.style.outline = 'none';
+        });
+        el.addEventListener('click', (ev) => {
+          if (el.isContentEditable) return;
+          ev.preventDefault(); ev.stopPropagation();
+          el.contentEditable = 'true';
+          el.style.outline = '2px solid #2563eb'; el.style.outlineOffset = '3px';
+          el.style.background = 'rgba(59,130,246,.06)'; el.style.borderRadius = '4px';
+          el.focus();
+        });
+        el.addEventListener('blur', () => { el.contentEditable = 'false'; el.style.outline = 'none'; el.style.background = ''; });
+        el.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') { el.contentEditable = 'false'; el.style.outline = 'none'; el.style.background = ''; el.blur(); } });
+      });
+
+      // ===== IMAGE EDITING =====
+      const imgInput = document.getElementById('adminImgInput');
+      let activeImg = null;
+      let activePreset = 'product';
+
+      document.querySelectorAll('[data-img]').forEach(imgEl => {
+        // Create badge that floats over the image using the image's own position
+        const badge = document.createElement('div');
+        badge.textContent = '📷 Replace';
+        badge.style.cssText = 'position:absolute;bottom:8px;right:8px;background:rgba(37,99,235,.9);color:#fff;font-size:11px;padding:3px 7px;border-radius:4px;z-index:10;opacity:0;transition:opacity .2s;cursor:pointer;pointer-events:none;';
+
+        // Wrap image in a relative container so badge stays on the image
+        let wrapper = document.createElement('div');
+        wrapper.style.cssText = 'position:relative;display:inline-block;';
+
+        const imgPos = getComputedStyle(imgEl).position;
+        if (imgPos === 'absolute') {
+          // Image is absolute (e.g. .p-img with padding-bottom trick) — use parent
+          const parent = imgEl.parentElement;
+          if (parent) {
+            if (getComputedStyle(parent).position === 'static') parent.style.position = 'relative';
+            parent.appendChild(badge);
+            wrapper = parent; // reuse existing parent as container
+          }
+        } else {
+          // Normal flow image — wrap it
+          imgEl.parentElement?.insertBefore(wrapper, imgEl);
+          wrapper.appendChild(imgEl);
+          wrapper.appendChild(badge);
+        }
+
+        const container = wrapper;
+
+        // Show badge on hover over the container
+        container.addEventListener('mouseenter', () => { badge.style.opacity = '1'; badge.style.pointerEvents = 'auto'; });
+        container.addEventListener('mouseleave', () => { badge.style.opacity = '0'; badge.style.pointerEvents = 'none'; });
+
+        badge.addEventListener('click', (ev) => {
+          ev.preventDefault(); ev.stopPropagation();
+          activeImg = imgEl;
+          activePreset = imgEl.getAttribute('data-preset') || 'product';
+          imgInput.click();
+        });
+      });
+
+      imgInput?.addEventListener('change', async () => {
+        const file = imgInput.files?.[0];
+        if (!file || !activeImg) return;
+        const status = document.getElementById('adminStatus');
+        if (status) { status.textContent = 'Uploading...'; status.style.color = '#fbbf24'; }
+        const form = new FormData();
+        form.append('image', file);
+        form.append('preset', activePreset);
+        try {
+          const res = await fetch('/api/images/upload', { method: 'POST', body: form });
+          const data = await res.json();
+          if (!res.ok) { if (status) { status.textContent = data.error; status.style.color = '#f87171'; } return; }
+          if (activeImg.tagName === 'IMG') {
+            activeImg.src = data.image_path;
+          } else {
+            // Replace placeholder div with real img
+            const newImg = document.createElement('img');
+            newImg.src = data.image_path;
+            newImg.alt = '';
+            newImg.loading = 'lazy';
+            newImg.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;';
+            newImg.setAttribute('data-img', activeImg.getAttribute('data-img') || '');
+            newImg.setAttribute('data-preset', activeImg.getAttribute('data-preset') || 'product');
+            activeImg.replaceWith(newImg);
+            activeImg = newImg;
+          }
+          activeImg.setAttribute('data-new-src', data.image_path);
+          if (status) { status.textContent = 'Replaced — Save to keep'; status.style.color = '#4ade80'; }
+        } catch {
+          if (status) { status.textContent = 'Upload failed'; status.style.color = '#f87171'; }
+        }
+        imgInput.value = '';
+      });
+
+      // ===== SAVE =====
+      document.getElementById('adminSave')?.addEventListener('click', async () => {
+        const status = document.getElementById('adminStatus');
+        if (status) { status.textContent = 'Saving...'; status.style.color = '#fbbf24'; }
+        try {
+          // Group edits by target page
+          const editsByPage = {};
+          editables.forEach(el => {
+            const p = el.getAttribute('data-edit');
+            const targetPage = el.getAttribute('data-edit-page') || page;
+            if (!p) return;
+            if (!editsByPage[targetPage]) editsByPage[targetPage] = { texts: [], imgs: [] };
+            editsByPage[targetPage].texts.push({ path: p, value: el.innerText.trim() });
+          });
+          document.querySelectorAll('[data-img][data-new-src]').forEach(im => {
+            const p = im.getAttribute('data-img');
+            const s = im.getAttribute('data-new-src');
+            const targetPage = im.getAttribute('data-edit-page') || page;
+            if (!p || !s) return;
+            if (!editsByPage[targetPage]) editsByPage[targetPage] = { texts: [], imgs: [] };
+            editsByPage[targetPage].imgs.push({ path: p, value: s });
+            im.removeAttribute('data-new-src');
+          });
+          // Ensure main page is included even if no edits
+          if (!editsByPage[page]) editsByPage[page] = { texts: [], imgs: [] };
+
+          // i18n 동기화: 편집된 요소의 data-i18n 키도 수집
+          const i18nUpdates = {};
+          editables.forEach(el => {
+            const i18nKey = el.getAttribute('data-i18n');
+            if (i18nKey && el.getAttribute('data-edit')) {
+              i18nUpdates[i18nKey] = el.innerText.trim();
+            }
+          });
+
+          let allOk = true;
+          for (const [targetPage, edits] of Object.entries(editsByPage)) {
+            const res = await fetch('/api/pages/' + targetPage);
+            if (!res.ok) { allOk = false; continue; }
+            const data = await res.json();
+            edits.texts.forEach(e => {
+              // featuresHtml → features 배열 변환
+              if (e.path.endsWith('.featuresHtml')) {
+                const arrPath = e.path.replace('.featuresHtml', '.features');
+                const lines = e.value.split('\n').map(l => l.trim()).filter(Boolean);
+                setByPath(data, arrPath, lines);
+              } else {
+                setByPath(data, e.path, e.value);
+              }
+            });
+            edits.imgs.forEach(e => setByPath(data, e.path, e.value));
+            const saveRes = await fetch('/api/pages/' + targetPage, {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data),
+            });
+            if (!saveRes.ok) allOk = false;
+          }
+
+          // ko.json 번역 파일도 동기화
+          if (Object.keys(i18nUpdates).length > 0) {
+            const i18nRes = await fetch('/api/i18n/update', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ lang: 'ko', updates: i18nUpdates }),
+            });
+            if (!i18nRes.ok) allOk = false;
+          }
+
+          if (status) {
+            if (allOk) { status.textContent = 'Saved!'; status.style.color = '#4ade80'; setTimeout(() => { status.textContent = ''; }, 2000); }
+            else { status.textContent = 'Partial save'; status.style.color = '#fbbf24'; }
+          }
+        } catch (err) {
+          if (status) { status.textContent = 'Save error'; status.style.color = '#f87171'; }
+        }
+      });
+
+      // ===== 현재 편집 내용을 서버 데이터에 반영하는 헬퍼 =====
+      async function fetchWithEdits() {
+        const res = await fetch('/api/pages/' + page);
+        if (!res.ok) return null;
+        const data = await res.json();
+        // 현재 인라인 편집 내용 반영
+        editables.forEach(el => {
+          const p = el.getAttribute('data-edit');
+          const targetPage = el.getAttribute('data-edit-page') || page;
+          if (!p || targetPage !== page) return;
+          if (p.endsWith('.featuresHtml')) {
+            const arrPath = p.replace('.featuresHtml', '.features');
+            const lines = el.innerText.trim().split('\n').map(l => l.trim()).filter(Boolean);
+            setByPath(data, arrPath, lines);
+          } else {
+            setByPath(data, p, el.innerText.trim());
+          }
+        });
+        // 이미지 변경도 반영
+        document.querySelectorAll('[data-img][data-new-src]').forEach(im => {
+          const p = im.getAttribute('data-img');
+          const s = im.getAttribute('data-new-src');
+          const targetPage = im.getAttribute('data-edit-page') || page;
+          if (!p || !s || targetPage !== page) return;
+          setByPath(data, p, s);
+        });
+        return data;
+      }
+
+      // ===== ADD / DELETE =====
+      // data-edit-page 지원: 대상 페이지별 데이터 fetch 헬퍼
+      async function fetchPageData(targetPage) {
+        if (targetPage === page) return await fetchWithEdits();
+        const res = await fetch('/api/pages/' + targetPage);
+        if (!res.ok) return null;
+        return await res.json();
+      }
+
+      document.querySelectorAll('[data-admin-add]').forEach(btn => {
+        btn.addEventListener('click', async (ev) => {
+          ev.preventDefault();
+          const arrayPath = btn.getAttribute('data-admin-add');
+          const template = btn.getAttribute('data-admin-template');
+          if (!arrayPath) return;
+          const targetPage = btn.getAttribute('data-edit-page') || page;
+
+          const status = document.getElementById('adminStatus');
+          if (status) { status.textContent = 'Adding...'; status.style.color = '#fbbf24'; }
+
+          const data = await fetchPageData(targetPage);
+          if (!data) return;
+
+          const arr = getByPath(data, arrayPath);
+          if (!Array.isArray(arr)) return;
+
+          // Parse template or use sensible default
+          const newItem = template ? JSON.parse(template) : { title: 'New Item', description: '' };
+
+          // If new item has empty image, try to pick a random one from existing items
+          if (newItem.image === '' && arr.length > 0) {
+            const existingImages = arr.map(item => item.image).filter(Boolean);
+            if (existingImages.length > 0) {
+              newItem.image = existingImages[Math.floor(Math.random() * existingImages.length)];
+            }
+          }
+
+          const prepend = btn.getAttribute('data-admin-prepend') === 'true';
+          if (prepend) { arr.unshift(newItem); } else { arr.push(newItem); }
+
+          const saveRes = await fetch('/api/pages/' + targetPage, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          if (saveRes.ok) {
+            window.location.reload();
+          } else if (status) {
+            status.textContent = 'Add failed'; status.style.color = '#f87171';
+          }
+        });
+      });
+
+      document.querySelectorAll('[data-admin-delete]').forEach(btn => {
+        btn.addEventListener('click', async (ev) => {
+          ev.preventDefault(); ev.stopPropagation();
+          if (!confirm('Delete this item?')) return;
+
+          const itemPath = btn.getAttribute('data-admin-delete');
+          if (!itemPath) return;
+          const targetPage = btn.getAttribute('data-edit-page') || page;
+
+          // Parse "solutionCards[2]" → arrayPath="solutionCards", index=2
+          const match = itemPath.match(/^(.+)\[(\d+)\]$/);
+          if (!match) return;
+          const [, arrayPath, indexStr] = match;
+          const index = parseInt(indexStr);
+
+          const status = document.getElementById('adminStatus');
+          if (status) { status.textContent = 'Deleting...'; status.style.color = '#fbbf24'; }
+
+          const data = await fetchPageData(targetPage);
+          if (!data) return;
+
+          const arr = getByPath(data, arrayPath);
+          if (!Array.isArray(arr) || index >= arr.length) return;
+          arr.splice(index, 1);
+
+          const saveRes = await fetch('/api/pages/' + targetPage, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+
+          if (saveRes.ok) {
+            window.location.reload();
+          } else if (status) {
+            status.textContent = 'Delete failed'; status.style.color = '#f87171';
+          }
+        });
+      });
+
+      function getByPath(obj, pathStr) {
+        const parts = pathStr.replace(/\[(\d+)\]/g, '.$1').split('.');
+        let current = obj;
+        for (const part of parts) {
+          const key = isNaN(part) ? part : parseInt(part);
+          current = current[key];
+          if (current === undefined) return undefined;
+        }
+        return current;
+      }
+
+      function setByPath(obj, pathStr, value) {
+        const parts = pathStr.replace(/\[(\d+)\]/g, '.$1').split('.');
+        let current = obj;
+        for (let i = 0; i < parts.length - 1; i++) {
+          const key = isNaN(parts[i]) ? parts[i] : parseInt(parts[i]);
+          if (current[key] === undefined || current[key] === null) current[key] = {};
+          current = current[key];
+        }
+        const lastKey = isNaN(parts[parts.length - 1]) ? parts[parts.length - 1] : parseInt(parts[parts.length - 1]);
+        current[lastKey] = value;
+      }
+    });
+  </script>
+)}

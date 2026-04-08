@@ -1,0 +1,69 @@
+{
+  "category": "hpc",
+  "title": "High Performance Computing",
+  "pageTitle": "High Performance Computing Products - AceTec",
+  "description": "High-density GPU servers, GPU appliances, and PCIe expansion systems for machine learning, financial analysis, military applications, medical imaging, and scientific research.",
+  "items": [],
+  "sections": [
+    {
+      "title": "Servers",
+      "products": [
+        {
+          "name": "1U 5500/5600-Series Server",
+          "image": "/images/catalog/1U 55005600-Series Server.png",
+          "features": [
+            "1U NEBS-compliant server with Intel 5500 series Server Board, two Intel Xeon quad-core processors, 550W AC/DC or dual 750W power supplies"
+          ]
+        },
+        {
+          "name": "Expansion Optimized Server",
+          "image": "/images/catalog/Expansion Optimized Server.png",
+          "features": [
+            "2U server revolutionizing homogenous systems with closely coupled processors, solid-state storage and accelerator co-processing (GPGPUs, Intel Xeon Phi, FPGAs)"
+          ]
+        },
+        {
+          "name": "3U 5000 Series Server",
+          "image": "/images/catalog/3U 5000 Series Server.png",
+          "features": [
+            "OSS offers custom server configurations for rackmount, specialized, military rugged, high density, and HPC variations",
+            "Optimized for PCIe over Cable Expansion"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "GPU Appliances",
+      "products": [
+        {
+          "name": "FlashCUBE",
+          "image": "/images/catalog/FlashCUBE.png",
+          "features": [
+            "CUBE desktop enclosure supports one double-wide or two single-wide full-height I/O cards up to 13.25 inch long",
+            "Includes PCIe cable adapter/cable or Thunderbolt cable and 180W power supply"
+          ]
+        },
+        {
+          "name": "Flash-µCUBE",
+          "image": "/images/products/hpc/flash-ucube.png",
+          "features": [
+            "uCUBE desktop enclosure supports one full-height I/O card up to 9.55 inch long",
+            "Includes PCIe cable adapter/cable and 84W external power supply"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "GPU",
+      "products": [
+        {
+          "name": "GPU CUBE",
+          "image": "/images/catalog/GPU CUBE.png",
+          "features": [
+            "CUBE desktop enclosure supports one double-wide or two single-wide full-height I/O cards up to 13.25 inch long with PCIe cable adapter/cable or Thunderbolt cable and 180W power supply"
+          ]
+        }
+      ]
+    }
+  ]
+}

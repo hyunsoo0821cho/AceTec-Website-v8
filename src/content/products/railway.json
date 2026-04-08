@@ -1,0 +1,31 @@
+{
+  "category": "railway",
+  "title": "Rail Transportation",
+  "pageTitle": "Rail Transportation Products - AceTec",
+  "description": "TUV SUD SIL4 certified HIMA ControlSafe platforms for CBTC, interlocking, and train control  delivering the highest safety integrity levels in rail signaling.",
+  "items": [],
+  "sections": [
+    {
+      "title": "HIMA Railway Safety System",
+      "products": [
+        {
+          "name": "HIMA HiMax System",
+          "image": "/images/catalog/HIMA HiMax System.png",
+          "badge": "sil4",
+          "features": [
+            "HiMax is a range of flexible COTS control system for safety-critical rail industry applications with high performance requirements"
+          ]
+        },
+        {
+          "name": "HIMA HiMatrix System",
+          "image": "/images/catalog/HImA HiMatrix System.png",
+          "badge": "sil4",
+          "features": [
+            "HIMatrix is a range of versatile COTS controllers for small to mid-scale safety-critical rail applications",
+            "Pre-certified CENELEC SIL 4, compact, vibration/shock resistant"
+          ]
+        }
+      ]
+    }
+  ]
+}

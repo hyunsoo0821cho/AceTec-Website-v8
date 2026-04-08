@@ -1,0 +1,496 @@
+---
+export const prerender = false;
+
+import Base from '../layouts/Base.astro';
+import AdminInline from '../components/AdminInline.astro';
+import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import fs from 'fs';
+import path from 'path';
+const cookie = Astro.request.headers.get('cookie');
+const isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+const root = process.cwd();
+const d = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'applications.json'), 'utf-8'));
+function e(p: string) {
+  return isAdmin ? { 'data-edit': p } : {};
+}
+---
+
+<Base title="Applications - AceTec" description={d.description}>
+  <AdminInline page="applications" isAdmin={isAdmin} />
+
+  <div class="course-main">
+    <h1 {...e('title')} data-i18n="applications.title">{d.title}</h1>
+    <p {...e('description')} data-i18n="applications.desc">{d.description}</p>
+    <a href="/contact" class="btn-primary" data-i18n="applications.bookConsult">BOOK A CONSULTATION</a>
+  </div>
+
+  <div class="ch-list" role="region" aria-label="Application areas">
+    {
+      d.chapters.map((ch: any, ci: number) => (
+        <div class="ch-item" style="position:relative;">
+          {isAdmin && (
+            <button class="admin-delete-btn" data-admin-delete={`chapters[${ci}]`} title="Delete chapter">
+              &times;
+            </button>
+          )}
+          <div
+            class="ch-head"
+            id={`ch${ci + 1}-head`}
+            role="button"
+            tabindex="0"
+            aria-expanded="false"
+            aria-controls={`ch${ci + 1}-body`}
+          >
+            <div>
+              <h3 {...e(`chapters[${ci}].title`)} data-i18n={`applications.ch${ci + 1}Title`}>{ch.title}</h3>
+              <small class="chapter-meta" {...e(`chapters[${ci}].meta`)} data-i18n={`applications.ch${ci + 1}Meta`}>
+                {ch.meta}
+              </small>
+            </div>
+            <span class="chev" aria-hidden="true">
+              ▼
+            </span>
+          </div>
+          <div class="ch-body" id={`ch${ci + 1}-body`} role="region" aria-labelledby={`ch${ci + 1}-head`}>
+            {ch.lessons.map((lesson: any, li: number) => (
+              <div class="lesson" tabindex="0" role="button" data-action="lesson" style="position:relative;">
+                {isAdmin && (
+                  <button class="admin-delete-btn" data-admin-delete={`chapters[${ci}].lessons[${li}]`} title="Delete">
+                    &times;
+                  </button>
+                )}
+                <div>
+                  <h4 {...e(`chapters[${ci}].lessons[${li}].title`)}>{lesson.title}</h4>
+                  <p {...e(`chapters[${ci}].lessons[${li}].description`)}>{lesson.description}</p>
+                </div>
+                <span class="lesson-t" {...e(`chapters[${ci}].lessons[${li}].tag`)}>
+                  {lesson.tag}
+                </span>
+              </div>
+            ))}
+            {isAdmin && (
+              <button
+                class="admin-add-btn"
+                data-admin-add={`chapters[${ci}].lessons`}
+                data-admin-template='{"title":"New Application","description":"Description","tag":"Partner"}'
+                style="margin:8px 0;"
+              >
+                + Add Application
+              </button>
+            )}
+            {ch.sections.map((sec: any, si: number) => (
+              <div class="ref-block">
+                <h5 {...e(`chapters[${ci}].sections[${si}].title`)}>{sec.title}</h5>
+                <ul class="ref-list">
+                  {sec.items.map((item: string, ii: number) => (
+                    <li {...e(`chapters[${ci}].sections[${si}].items[${ii}]`)}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+    {
+      isAdmin && (
+        <button
+          class="admin-add-btn"
+          data-admin-add="chapters"
+          data-admin-template='{"title":"New Chapter","meta":"Category","lessons":[],"sections":[]}'
+          style="margin:16px 24px;"
+        >
+          + Add Chapter
+        </button>
+      )
+    }
+  </div>
+
+  <section class="faq-sec">
+    <div class="faq-grid">
+      <h2 data-i18n="applications.faqs">FAQs</h2>
+      <div>
+        <div class="acc" role="region" aria-label="Frequently asked questions">
+          {
+            d.faqs.map((faq: any, fi: number) => (
+              <div class={`acc-item${fi === 0 ? ' open' : ''}`} style="position:relative;">
+                {isAdmin && (
+                  <button class="admin-delete-btn" data-admin-delete={`faqs[${fi}]`} title="Delete">
+                    &times;
+                  </button>
+                )}
+                <div
+                  class="acc-title"
+                  id={`faq-q${fi + 1}`}
+                  role="button"
+                  tabindex="0"
+                  aria-expanded={fi === 0 ? 'true' : 'false'}
+                  aria-controls={`faq-a${fi + 1}`}
+                >
+                  <span {...e(`faqs[${fi}].question`)} data-i18n={`applications.faq${fi + 1}Q`}>{faq.question}</span>{' '}
+                  <span class="icon" aria-hidden="true">
+                    +
+                  </span>
+                </div>
+                <div
+                  class="acc-body"
+                  id={`faq-a${fi + 1}`}
+                  role="region"
+                  aria-labelledby={`faq-q${fi + 1}`}
+                  {...e(`faqs[${fi}].answer`)}
+                  data-i18n={`applications.faq${fi + 1}A`}
+                >
+                  {faq.answer}
+                </div>
+              </div>
+            ))
+          }
+          {
+            isAdmin && (
+              <button
+                class="admin-add-btn"
+                data-admin-add="faqs"
+                data-admin-template='{"question":"New Question","answer":"Answer here"}'
+              >
+                + Add FAQ
+              </button>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Course Main */
+  .course-main {
+    text-align: center;
+    padding: 120px 50px 60px;
+  }
+  .course-main h1 {
+    font-size: 50px;
+    margin-bottom: 16px;
+  }
+  .course-main > p {
+    font-size: 17px;
+    margin-bottom: 30px;
+  }
+
+  /* Chapter List */
+  .ch-list {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    overflow-anchor: none;
+  }
+
+  /* Chapter Item */
+  .ch-item {
+    border-bottom: 1px solid var(--color-border-medium);
+  }
+
+  /* Chapter Head */
+  .ch-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg) var(--spacing-sm);
+    margin: 0 calc(-1 * var(--spacing-sm));
+    cursor: pointer;
+    transition: color var(--transition-base);
+    border-radius: var(--radius-sm);
+  }
+  .ch-head:hover {
+    color: var(--color-gray-800);
+  }
+  .ch-head h3 {
+    font-size: var(--font-size-3xl);
+  }
+  .chapter-meta {
+    color: var(--color-gray-700);
+  }
+
+  /* Chevron */
+  .ch-head .chev {
+    font-size: var(--font-size-sm);
+    transition: transform var(--transition-slow);
+    display: inline-block;
+  }
+  .ch-item.open .ch-head .chev {
+    transform: rotate(180deg);
+  }
+
+  /* Chapter Body (accordion) */
+  .ch-body {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition:
+      max-height 0.35s ease,
+      padding 0.35s ease,
+      opacity var(--transition-slow);
+    opacity: 0;
+  }
+  .ch-item.open .ch-body {
+    max-height: 2000px;
+    padding: 0 0 var(--spacing-lg);
+    opacity: 1;
+  }
+
+  /* Lesson */
+  .lesson {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 14px var(--spacing-sm);
+    border-top: 1px solid var(--color-border-light);
+    cursor: pointer;
+    transition: background var(--transition-base);
+    border-radius: var(--radius-sm);
+    min-height: 44px;
+  }
+  .lesson:hover {
+    background: var(--color-gray-100);
+  }
+  .lesson:active {
+    background: var(--color-gray-200);
+  }
+  .lesson h4 {
+    font-size: var(--font-size-lg);
+    font-weight: 400;
+  }
+  .lesson p {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-700);
+    margin-top: var(--spacing-xs);
+  }
+  .lesson-t {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-700);
+  }
+
+  /* Reference Block */
+  .ref-block {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: var(--color-bg);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-black);
+  }
+  .ref-block h5 {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Reference List */
+  .ref-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xs) var(--spacing-lg);
+  }
+  .ref-list li {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-700);
+    padding: 4px 0;
+    padding-left: 14px;
+    position: relative;
+  }
+  .ref-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 6px;
+    height: 6px;
+    background: var(--color-gray-400);
+    border-radius: 50%;
+  }
+
+  /* FAQ Section */
+  .faq-sec {
+    padding: 60px 50px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+  }
+  .faq-grid h2 {
+    font-size: var(--font-size-6xl);
+    text-align: center;
+  }
+
+  /* Accordion (FAQ) */
+  .acc {
+    border-top: 1px solid var(--color-gray-400);
+  }
+  .acc-item {
+    border-bottom: 1px solid var(--color-gray-400);
+  }
+  .acc-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px var(--spacing-sm);
+    margin: 0 calc(-1 * var(--spacing-sm));
+    cursor: pointer;
+    font-size: var(--font-size-xl);
+    font-weight: 400;
+    transition: color var(--transition-base);
+    border-radius: var(--radius-sm);
+  }
+  @media (hover: hover) {
+    .acc-title:hover {
+      color: var(--color-gray-800);
+    }
+  }
+  .acc-title .icon {
+    font-size: var(--font-size-lg);
+    display: inline-block;
+    transition: transform var(--transition-slow);
+  }
+  .acc-item.open .acc-title .icon {
+    transform: rotate(135deg);
+  }
+  .acc-body {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 0 0 var(--spacing-lg);
+    font-size: var(--font-size-md);
+    line-height: 1.4;
+    transition:
+      max-height 0.35s ease,
+      padding 0.35s ease,
+      opacity var(--transition-slow);
+    opacity: 0;
+  }
+  .acc-item.open .acc-body {
+    max-height: 300px;
+    padding: 0 0 18px var(--spacing-lg);
+    opacity: 1;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .course-main {
+      padding: 100px 20px 40px;
+    }
+    .course-main h1 {
+      font-size: 32px;
+    }
+    .ch-list {
+      padding: 0 20px;
+    }
+    .faq-sec {
+      padding: 40px 20px;
+    }
+    .faq-grid h2 {
+      font-size: var(--font-size-5xl);
+    }
+    .ref-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Chapter accordion toggle
+  function handleChapterToggle(e: Event) {
+    const el = e.target as HTMLElement;
+    const head = el.closest('.ch-head');
+    if (!head) return;
+    e.stopPropagation();
+
+    if (e instanceof KeyboardEvent) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+    }
+
+    const item = head.parentElement;
+    if (!item || !item.classList.contains('ch-item')) return;
+
+    const html = document.documentElement;
+
+    // Disable smooth scroll temporarily (v7 behavior)
+    html.classList.add('no-smooth');
+
+    // Close other open items instantly (no transition)
+    const allItems = item.parentElement?.querySelectorAll('.ch-item.open');
+    allItems?.forEach((sibling) => {
+      if (sibling !== item) {
+        const body = sibling.querySelector('.ch-body') as HTMLElement;
+        if (body) body.style.transition = 'none';
+        sibling.classList.remove('open');
+        const sibHead = sibling.querySelector('.ch-head');
+        sibHead?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Force layout reflow
+    void document.body.offsetHeight;
+
+    // Calculate target position BEFORE toggling (stable state)
+    const targetY = window.pageYOffset + item.getBoundingClientRect().top;
+
+    // Toggle current item (with no transition)
+    const currentBody = item.querySelector('.ch-body') as HTMLElement;
+    if (currentBody) currentBody.style.transition = 'none';
+    item.classList.toggle('open');
+    const isOpen = item.classList.contains('open');
+    head.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    void item.offsetHeight; // Force layout
+
+    // Scroll to opened item instantly (v7 behavior)
+    if (isOpen) {
+      const header = document.querySelector('.header') as HTMLElement;
+      const headerH = header ? header.offsetHeight : 0;
+      window.scrollTo({ top: targetY - headerH, behavior: 'instant' as ScrollBehavior });
+    }
+
+    // Restore transitions after layout settles
+    setTimeout(() => {
+      document.querySelectorAll('.ch-body').forEach((b) => {
+        (b as HTMLElement).style.transition = '';
+      });
+      html.classList.remove('no-smooth');
+    }, 100);
+  }
+
+  // FAQ accordion toggle
+  function handleFaqToggle(e: Event) {
+    const el = e.target as HTMLElement;
+    const title = el.closest('.acc-title');
+    if (!title) return;
+
+    if (e instanceof KeyboardEvent) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+    }
+
+    const item = title.parentElement;
+    if (!item || !item.classList.contains('acc-item')) return;
+
+    item.classList.toggle('open');
+    const isOpen = item.classList.contains('open');
+    title.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+
+  // Bind chapter accordion (capture phase, matching v7)
+  document.addEventListener('click', handleChapterToggle, true);
+  document.addEventListener('keydown', handleChapterToggle, true);
+
+  // Bind FAQ accordion
+  document.querySelectorAll('.acc-title').forEach((title) => {
+    title.addEventListener('click', handleFaqToggle);
+    title.addEventListener('keydown', handleFaqToggle);
+  });
+</script>

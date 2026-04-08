@@ -1,0 +1,435 @@
+---
+/**
+ * Base Layout - 모든 페이지의 공통 레이아웃
+ * v7 index.html <head> + header + footer + scripts 통합
+ */
+import Header from '../components/Header.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import Footer from '../components/Footer.astro';
+import BackToTop from '../components/BackToTop.astro';
+import ChatWidget from '../components/ChatWidget.astro';
+
+import '../styles/fonts.css';
+import '../styles/tokens.css';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'AceTec - Leading provider of embedded computing, industrial PCs, railway safety systems, and defense solutions for mission-critical applications.',
+} = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="keywords"
+      content="embedded computing, industrial PC, VPX, VME, HIMA railway, defense solutions, HPC, RTOS, sensor simulation"
+    />
+    <link rel="canonical" href="https://www.acetronix.co.kr" />
+    <title>{title}</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%230a0a0a'/><text x='50' y='68' text-anchor='middle' font-size='60' font-weight='700' fill='white' font-family='sans-serif'>A</text></svg>"
+    />
+    <!-- Fonts self-hosted: see src/styles/fonts.css -->
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <Header currentPath={currentPath} />
+    <MobileMenu currentPath={currentPath} />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <Footer />
+    <BackToTop />
+    <ChatWidget />
+
+    <script>
+      // Mobile menu toggle
+      const hamburger = document.getElementById('hamburgerBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      function toggleMenu() {
+        if (!hamburger || !mobileMenu) return;
+        const isOpen = mobileMenu.classList.toggle('open');
+        hamburger.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+        mobileMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        if (isOpen) {
+          mobileMenu.removeAttribute('inert');
+        } else {
+          mobileMenu.setAttribute('inert', '');
+        }
+        document.body.classList.toggle('no-scroll', isOpen);
+
+        if (isOpen) {
+          const firstLink = mobileMenu.querySelector('.mob-link');
+          if (firstLink) setTimeout(() => (firstLink as HTMLElement).focus(), 100);
+        }
+      }
+
+      function closeMenu() {
+        if (!hamburger || !mobileMenu || !mobileMenu.classList.contains('open')) return;
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open menu');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        mobileMenu.setAttribute('inert', '');
+        document.body.classList.remove('no-scroll');
+      }
+
+      hamburger?.addEventListener('click', toggleMenu);
+
+      // Close menu when a link inside mobile menu is clicked (v7 router.js closeMenu pattern)
+      mobileMenu?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => closeMenu());
+      });
+
+      // Escape key + Focus trap
+      document.addEventListener('keydown', (e) => {
+        if (!mobileMenu?.classList.contains('open')) return;
+
+        if (e.key === 'Escape') {
+          closeMenu();
+          hamburger?.focus();
+          return;
+        }
+
+        if (e.key === 'Tab') {
+          const focusable = mobileMenu.querySelectorAll<HTMLElement>('a, button, [tabindex]:not([tabindex="-1"])');
+          if (focusable.length === 0) return;
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+
+          if (e.shiftKey) {
+            if (document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            }
+          } else {
+            if (document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        }
+      });
+
+      // Header scroll shadow + Back to top
+      const header = document.getElementById('mainHeader');
+      const backBtn = document.querySelector<HTMLElement>('.back-to-top');
+      let ticking = false;
+
+      window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          header?.classList.toggle('scrolled', scrollY > 50);
+          backBtn?.classList.toggle('visible', scrollY > 500);
+          ticking = false;
+        });
+      });
+
+      backBtn?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // Toast notification
+      const TOAST_DURATION = 2500;
+      const TOAST_FADE = 300;
+
+      function showToast(msg: string, isError = false) {
+        const existing = document.querySelector('.toast-msg');
+        if (existing) existing.remove();
+
+        const toast = document.createElement('div');
+        toast.className = 'toast-msg ' + (isError ? 'toast-msg--error' : 'toast-msg--success');
+        toast.textContent = msg;
+        toast.setAttribute('role', 'alert');
+        toast.setAttribute('aria-live', 'polite');
+        document.body.appendChild(toast);
+
+        requestAnimationFrame(() => toast.classList.add('visible'));
+
+        setTimeout(() => {
+          toast.classList.remove('visible');
+          setTimeout(() => toast.remove(), TOAST_FADE);
+        }, TOAST_DURATION);
+      }
+
+      // Contact form validation + submission
+      const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      function validateField(input: HTMLInputElement | HTMLTextAreaElement): boolean {
+        const fg = input.closest('.fg');
+        if (!input.value.trim()) {
+          fg?.classList.add('has-error');
+          return false;
+        }
+        if (input.type === 'email' && !EMAIL_REGEX.test(input.value.trim())) {
+          fg?.classList.add('has-error');
+          return false;
+        }
+        fg?.classList.remove('has-error');
+        return true;
+      }
+
+      // Contact form: data-action="submit" click handler (v7 forms.js pattern)
+      document.addEventListener('click', (e) => {
+        const el = (e.target as HTMLElement).closest('[data-action="submit"]') as HTMLButtonElement;
+        if (!el) return;
+        e.preventDefault();
+
+        const wrapper = el.closest('form') || el.closest('.contact-grid') || el.closest('.container');
+        if (!wrapper) return;
+
+        const inputs = wrapper.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
+          'input:not([type=checkbox]), textarea',
+        );
+        let valid = true;
+        let firstError: HTMLElement | null = null;
+
+        inputs.forEach((input) => {
+          if (!validateField(input)) {
+            valid = false;
+            if (!firstError) firstError = input;
+          }
+        });
+
+        if (!valid) {
+          showToast('Please fill in all required fields.', true);
+          firstError?.focus();
+          return;
+        }
+
+        // 폼 데이터 수집
+        const formData: Record<string, string> = {};
+        inputs.forEach((input) => {
+          const label = input.closest('.fg')?.querySelector('label')?.textContent?.trim() || input.id;
+          formData[label] = input.value;
+        });
+
+        // 이름 필드 찾기
+        const fnameEl = wrapper.querySelector('[id$="-fname"]') as HTMLInputElement;
+        const lnameEl = wrapper.querySelector('[id$="-lname"]') as HTMLInputElement;
+        const emailEl = wrapper.querySelector('[id$="-email"]') as HTMLInputElement;
+        const msgEl = wrapper.querySelector('textarea') as HTMLTextAreaElement;
+        const name = ((lnameEl?.value || '') + ' ' + (fnameEl?.value || '')).trim();
+        const senderEmail = emailEl?.value || '';
+        const message = msgEl?.value || '';
+
+        // mailto로 Outlook 열기
+        const subject = encodeURIComponent('[AceTec 문의] ' + name);
+        const body = encodeURIComponent(
+          '성명: ' + name + '\n' +
+          '이메일: ' + senderEmail + '\n' +
+          '\n' + message
+        );
+        window.location.href = 'mailto:acetec@acetec-korea.co.kr?subject=' + subject + '&body=' + body;
+
+        el.textContent = 'SENT!';
+        el.classList.add('btn-sent');
+
+        showToast('Message sent successfully!');
+
+        setTimeout(() => {
+          el.textContent = el.getAttribute('data-original') || 'SUBMIT';
+          el.classList.remove('btn-sent');
+        }, 3000);
+      });
+
+      // data-action="submit" keyboard support (Enter key)
+      document.addEventListener('keydown', (e) => {
+        if ((e as KeyboardEvent).key !== 'Enter') return;
+        const el = (e.target as HTMLElement).closest('[data-action="submit"]');
+        if (el) (el as HTMLElement).click();
+      });
+
+      // Clear error on input
+      document.addEventListener('input', (e) => {
+        const input = e.target as HTMLElement;
+        if (!input.matches('.fg input, .fg textarea')) return;
+        const fg = input.closest('.fg');
+        if (fg && (input as HTMLInputElement).value.trim()) {
+          fg.classList.remove('has-error');
+        }
+      });
+
+      // data-action dispatcher (v7 forms.js actionHandlers)
+      const MESSAGES = {
+        SIGNUP_SOON: 'Sign up coming soon!',
+        SOCIAL: 'Follow us on social media!',
+        SOCIAL_OPEN: 'Opening social media...',
+        APP_SOON: 'Application details coming soon!',
+        LESSON_SOON: 'Details coming soon!',
+      };
+
+      const actionHandlers: Record<string, (e: Event, el: HTMLElement) => void> = {
+        signup: (e) => {
+          e.preventDefault();
+          showToast(MESSAGES.SIGNUP_SOON);
+        },
+        social: (e) => {
+          e.preventDefault();
+          showToast(MESSAGES.SOCIAL);
+        },
+        'start-app': (e) => {
+          e.preventDefault();
+          showToast(MESSAGES.APP_SOON);
+        },
+        lesson: () => {
+          showToast(MESSAGES.LESSON_SOON);
+        },
+      };
+
+      document.addEventListener('click', (e) => {
+        const el = (e.target as HTMLElement).closest('[data-action]') as HTMLElement;
+        if (!el) return;
+        const action = el.getAttribute('data-action');
+        if (action && actionHandlers[action]) actionHandlers[action](e, el);
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if ((e as KeyboardEvent).key !== 'Enter') return;
+        const el = (e.target as HTMLElement).closest('[data-action="lesson"]');
+        if (el) showToast(MESSAGES.LESSON_SOON);
+      });
+
+      // Partner logo click toast (v7 scroll-effects.js)
+      const socialGrid = document.querySelector('.social-grid');
+      if (socialGrid) {
+        socialGrid.addEventListener('click', (e) => {
+          if ((e.target as HTMLElement).tagName === 'IMG') showToast(MESSAGES.SOCIAL_OPEN);
+        });
+        socialGrid.addEventListener('keydown', (e) => {
+          if ((e as KeyboardEvent).key === 'Enter' && (e.target as HTMLElement).tagName === 'IMG') {
+            showToast(MESSAGES.SOCIAL_OPEN);
+          }
+        });
+      }
+    </script>
+
+    <!-- 제품 이미지 확대/축소 Lightbox -->
+    <div id="imgLightbox" style="display:none;position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,0.85);cursor:zoom-out;justify-content:center;align-items:center;">
+      <img id="imgLightboxImg" style="max-width:90vw;max-height:90vh;object-fit:contain;transform-origin:center;transition:transform 0.2s ease;" />
+      <button id="imgLightboxClose" style="position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:36px;cursor:pointer;line-height:1;">&times;</button>
+    </div>
+    <script>
+      (function() {
+        const lb = document.getElementById('imgLightbox');
+        const lbImg = document.getElementById('imgLightboxImg') as HTMLImageElement;
+        const lbClose = document.getElementById('imgLightboxClose');
+        if (!lb || !lbImg || !lbClose) return;
+
+        let scale = 1;
+        let isDragging = false;
+        let startX = 0, startY = 0, tx = 0, ty = 0, curTx = 0, curTy = 0;
+
+        function openLb(src: string) {
+          lbImg.src = src;
+          scale = 1; tx = 0; ty = 0; curTx = 0; curTy = 0;
+          lbImg.style.transform = 'scale(1) translate(0,0)';
+          lb.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+        function closeLb() {
+          lb.style.display = 'none';
+          lbImg.src = '';
+          document.body.style.overflow = '';
+        }
+        function updateTransform() {
+          lbImg.style.transform = `scale(${scale}) translate(${curTx}px,${curTy}px)`;
+        }
+
+        // .p-img 안의 img 클릭 시 확대
+        document.addEventListener('click', (e) => {
+          const target = e.target as HTMLElement;
+          if (target.tagName === 'IMG' && target.closest('.p-img')) {
+            e.preventDefault();
+            e.stopPropagation();
+            openLb((target as HTMLImageElement).src);
+          }
+        });
+
+        // 닫기
+        lbClose.addEventListener('click', closeLb);
+        lb.addEventListener('click', (e) => {
+          if (e.target === lb) closeLb();
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && lb.style.display === 'flex') closeLb();
+        });
+
+        // 마우스 휠 확대/축소
+        lb.addEventListener('wheel', (e) => {
+          e.preventDefault();
+          const delta = (e as WheelEvent).deltaY > 0 ? -0.15 : 0.15;
+          scale = Math.min(Math.max(0.5, scale + delta), 5);
+          updateTransform();
+        }, { passive: false });
+
+        // 드래그 이동
+        lbImg.addEventListener('mousedown', (e) => {
+          if (scale <= 1) return;
+          isDragging = true;
+          startX = e.clientX; startY = e.clientY;
+          tx = curTx; ty = curTy;
+          lbImg.style.cursor = 'grabbing';
+          e.preventDefault();
+        });
+        document.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          curTx = tx + (e.clientX - startX) / scale;
+          curTy = ty + (e.clientY - startY) / scale;
+          updateTransform();
+        });
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          lbImg.style.cursor = '';
+        });
+
+        // 터치 핀치 줌
+        let lastDist = 0;
+        lb.addEventListener('touchstart', (e) => {
+          const te = e as TouchEvent;
+          if (te.touches.length === 2) {
+            lastDist = Math.hypot(te.touches[0].clientX - te.touches[1].clientX, te.touches[0].clientY - te.touches[1].clientY);
+          }
+        });
+        lb.addEventListener('touchmove', (e) => {
+          const te = e as TouchEvent;
+          if (te.touches.length === 2) {
+            e.preventDefault();
+            const dist = Math.hypot(te.touches[0].clientX - te.touches[1].clientX, te.touches[0].clientY - te.touches[1].clientY);
+            const delta = (dist - lastDist) * 0.005;
+            scale = Math.min(Math.max(0.5, scale + delta), 5);
+            lastDist = dist;
+            updateTransform();
+          }
+        }, { passive: false });
+      })();
+    </script>
+  </body>
+</html>

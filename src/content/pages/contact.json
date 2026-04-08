@@ -1,0 +1,23 @@
+{
+  "title": "Contact Us",
+  "subtitle": "For product inquiries, technical consultation, or partnership opportunities — our team is here to help.",
+  "offices": [
+    {
+      "name": "Seoul HQ",
+      "address": "Rm. 1604, Acehighend Tower 2nd, 61, Digital-ro 26-gil, Guro-gu, Seoul, Republic of Korea",
+      "email": "acetec@acetec-korea.co.kr",
+      "tel": "+82-2-420-2343",
+      "fax": "+82-2-420-2757",
+      "directions": {
+        "subway": "Namguro Station Exit 2 (approx. 200m) or Guro Digital Complex Station Exit 3 (approx. 450m)",
+        "car": "Navigate to Manmin Jungang Church or Korea Testing Laboratory — Acehighend Tower 2nd is adjacent."
+      }
+    },
+    {
+      "name": "Daejeon Branch",
+      "address": "Rm. 205, Migeon Techno World, 199, Techno 2-ro, Yuseong-gu, Daejeon, Republic of Korea",
+      "tel": "+82-42-471-2343",
+      "fax": "+82-42-933-2642"
+    }
+  ]
+}

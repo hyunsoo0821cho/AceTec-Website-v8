@@ -1,0 +1,237 @@
+---
+export const prerender = false;
+
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+import AdminInline from '../components/AdminInline.astro';
+import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import fs from 'fs';
+import path from 'path';
+const cookie = Astro.request.headers.get('cookie');
+const isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+const root = process.cwd();
+const d = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'contact.json'), 'utf-8'));
+function e(p: string) {
+  return isAdmin ? { 'data-edit': p } : {};
+}
+function img(p: string, preset: string) {
+  return isAdmin ? { 'data-img': p, 'data-preset': preset } : {};
+}
+
+const hq = d.offices[0];
+const branch = d.offices[1];
+---
+
+<Base title="Contact Us - AceTec">
+  <AdminInline page="contact" isAdmin={isAdmin} />
+
+  <section class="section pt-page">
+    <div class="container">
+      <div class="contact-page-grid">
+        <div>
+          <h1 class="heading-page" {...e('title')} data-i18n="contact.title">{d.title}</h1>
+          <p class="heading-sub-sm" {...e('subtitle')} data-i18n="contact.subtitle">{d.subtitle}</p>
+          <ContactForm prefix="ct" />
+          <div class="contact-offices">
+            <div class="contact-office">
+              <h3 {...e('offices[0].name')} data-i18n="contact.hqName">{hq.name}</h3>
+              <p {...e('offices[0].address')}>{hq.address}</p>
+              <ul class="contact-info-list">
+                <li><a href={`mailto:${hq.email}`} class="link-underline" {...e('offices[0].email')}>{hq.email}</a></li>
+                <li>
+                  <a href={`tel:${hq.tel.replace(/-/g, '')}`} class="link-underline"
+                    >TEL: <span {...e('offices[0].tel')}>{hq.tel}</span></a
+                  >
+                </li>
+                <li>FAX: <span {...e('offices[0].fax')}>{hq.fax}</span></li>
+              </ul>
+            </div>
+            <div class="contact-office">
+              <h3 {...e('offices[1].name')} data-i18n="contact.branchName">{branch.name}</h3>
+              <p {...e('offices[1].address')}>{branch.address}</p>
+              <ul class="contact-info-list">
+                <li>
+                  <a href={`tel:${branch.tel.replace(/-/g, '')}`} class="link-underline"
+                    >TEL: <span {...e('offices[1].tel')}>{branch.tel}</span></a
+                  >
+                </li>
+                <li>FAX: <span {...e('offices[1].fax')}>{branch.fax}</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="overflow-hidden">
+            <img
+              src="/images/plans/plan-premium.png"
+              alt="Contact us"
+              class="img-cover"
+              loading="lazy"
+              {...img('image', 'hero')}
+            />
+          </div>
+          {
+            hq.directions && (
+              <div class="contact-directions">
+                <h4 data-i18n="contact.directions">Directions</h4>
+                <p>
+                  <strong data-i18n="contact.subway">Subway:</strong> <span {...e('offices[0].directions.subway')}>{hq.directions.subway}</span>
+                </p>
+                <p>
+                  <strong data-i18n="contact.byCar">By car:</strong> <span {...e('offices[0].directions.car')}>{hq.directions.car}</span>
+                </p>
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .contact-page-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: start;
+  }
+
+  .contact-offices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .contact-office h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .contact-office > p {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-700);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .contact-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-lg) 0;
+  }
+
+  .contact-info-list li {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-700);
+    padding: 6px 0;
+  }
+
+  .contact-directions {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: var(--color-gray-100);
+    border-radius: var(--radius-md);
+  }
+
+  .contact-directions h4 {
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .contact-directions p {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-700);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .contact-directions p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: var(--font-size-5xl);
+    }
+    .contact-page-grid {
+      grid-template-columns: 1fr;
+    }
+    .contact-page-grid .overflow-hidden {
+      order: -1;
+    }
+    .contact-offices {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+<script>
+  // 챗봇 문의 데이터 자동 입력
+  document.addEventListener('DOMContentLoaded', () => {
+    const raw = localStorage.getItem('acetec-inquiry');
+    if (!raw) return;
+    try {
+      const data = JSON.parse(raw);
+      localStorage.removeItem('acetec-inquiry');
+
+      const form = document.querySelector('[data-contact-form="ct"]') as HTMLFormElement;
+      if (!form) return;
+
+      const fname = form.querySelector('#ct-fname') as HTMLInputElement;
+      const lname = form.querySelector('#ct-lname') as HTMLInputElement;
+      const email = form.querySelector('#ct-email') as HTMLInputElement;
+      const phone = form.querySelector('#ct-phone') as HTMLInputElement;
+      const msg = form.querySelector('#ct-msg') as HTMLTextAreaElement;
+
+      if (fname && data.firstName) fname.value = data.firstName;
+      if (lname && data.lastName) lname.value = data.lastName;
+      if (email && data.email) email.value = data.email;
+      if (phone && data.phone) phone.value = data.phone;
+      if (msg) {
+        const parts = [];
+        if (data.product) parts.push('[관심 제품: ' + data.product + ']');
+        if (data.message) parts.push(data.message);
+        msg.value = parts.join('\n');
+      }
+
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // 자동 채워진 알림
+      const notice = document.createElement('div');
+      notice.style.cssText = 'background:#eff6ff;border:1px solid #93c5fd;color:#1e40af;padding:12px 16px;border-radius:8px;font-size:13px;margin-bottom:16px;';
+      notice.textContent = '✅ Contact Us 양식에 자동 작성되었습니다! 하단의 SUBMIT 버튼을 눌러 문의를 완료하세요.';
+      form.insertBefore(notice, form.firstChild);
+    } catch { /* ignore */ }
+  });
+
+  // SUBMIT 시 Outlook mailto 열기
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('[data-contact-form="ct"]') as HTMLFormElement;
+    if (!form) return;
+
+    const submitBtn = form.querySelector('[data-action="submit"]');
+    if (!submitBtn) return;
+
+    submitBtn.addEventListener('click', () => {
+      const fname = (form.querySelector('#ct-fname') as HTMLInputElement)?.value || '';
+      const lname = (form.querySelector('#ct-lname') as HTMLInputElement)?.value || '';
+      const email = (form.querySelector('#ct-email') as HTMLInputElement)?.value || '';
+      const phone = (form.querySelector('#ct-phone') as HTMLInputElement)?.value || '';
+      const msg = (form.querySelector('#ct-msg') as HTMLTextAreaElement)?.value || '';
+
+      if (!fname || !email || !msg) return; // 기본 유효성
+
+      const subject = encodeURIComponent(`[AceTec 문의] ${lname}${fname} - 제품 문의`);
+      const body = encodeURIComponent(
+        `성명: ${lname} ${fname}\n` +
+        `이메일: ${email}\n` +
+        `전화번호: ${phone}\n` +
+        `\n${msg}`
+      );
+      window.location.href = `mailto:acetec@acetec-korea.co.kr?subject=${subject}&body=${body}`;
+    });
+  });
+</script>

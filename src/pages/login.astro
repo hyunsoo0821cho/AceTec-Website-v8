@@ -1,0 +1,151 @@
+---
+export const prerender = false;
+
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Login - AceTec">
+  <section class="section pt-page-lg text-center min-h-60">
+    <div class="container">
+      <h1 class="heading-page" data-i18n="login.title">Login</h1>
+      <p class="heading-sub" data-i18n="login.subtitle">Sign in to access your account</p>
+      <form novalidate class="login-form">
+        <div class="fg">
+          <label for="login-email" data-i18n="login.email">Email <span>(required)</span></label><input
+            type="email"
+            id="login-email"
+            autocomplete="email"
+            required
+          /><div class="field-error" data-i18n="login.emailError">Please enter a valid email address.</div>
+        </div>
+        <div class="fg">
+          <label for="login-pass" data-i18n="login.password">Password <span>(required)</span></label><input
+            type="password"
+            id="login-pass"
+            autocomplete="current-password"
+            required
+          /><div class="field-error" data-i18n="login.passwordError">Please enter your password.</div>
+        </div>
+        <button type="button" class="btn-primary w-full text-center" data-action="signin" data-i18n="login.signIn">SIGN IN</button>
+        <p class="login-help"><a href="#" class="login-link" data-action="forgot-pw" data-i18n="login.forgotPassword">Forgot password?</a></p>
+        <p class="login-signup" data-i18n="login.noAccount">
+          Don't have an account? <a href="#" class="login-link" data-action="register" data-i18n="login.signUp">Sign up</a>
+        </p>
+      </form>
+      <details class="admin-section">
+        <summary class="admin-link" data-i18n="login.adminLogin">Admin Login</summary>
+        <form method="POST" action="/api/auth/login" class="admin-form">
+          <div class="fg">
+            <label for="admin-user" data-i18n="login.username">Username</label>
+            <input type="text" id="admin-user" name="username" autocomplete="username" required />
+          </div>
+          <div class="fg">
+            <label for="admin-pass" data-i18n="login.adminPassword">Password</label>
+            <input type="password" id="admin-pass" name="password" autocomplete="current-password" required />
+          </div>
+          <button type="submit" class="btn-primary w-full" data-i18n="login.adminSignIn">ADMIN SIGN IN</button>
+        </form>
+      </details>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .login-form {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .login-help {
+    text-align: center;
+    margin-top: var(--spacing-md);
+    font-size: var(--font-size-base);
+    color: var(--color-gray-700);
+  }
+  .login-signup {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    font-size: var(--font-size-base);
+    color: var(--color-gray-700);
+  }
+  .login-link {
+    color: var(--color-black);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .admin-link {
+    display: inline-block;
+    margin-top: 48px;
+    font-size: 12px;
+    color: var(--color-gray-500);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+  .admin-link:hover {
+    color: var(--color-gray-800);
+    text-decoration: underline;
+  }
+  .admin-section {
+    margin-top: 48px;
+    text-align: center;
+  }
+  .admin-form {
+    max-width: 400px;
+    margin: 16px auto 0;
+    text-align: left;
+  }
+</style>
+
+<script>
+  function showToast(msg: string, isError = false) {
+    const existing = document.querySelector('.toast-msg');
+    if (existing) existing.remove();
+
+    const toast = document.createElement('div');
+    toast.className = 'toast-msg ' + (isError ? 'toast-msg--error' : 'toast-msg--success');
+    toast.textContent = msg;
+    toast.setAttribute('role', 'alert');
+    toast.setAttribute('aria-live', 'polite');
+    document.body.appendChild(toast);
+
+    requestAnimationFrame(() => toast.classList.add('visible'));
+
+    setTimeout(() => {
+      toast.classList.remove('visible');
+      setTimeout(() => toast.remove(), 300);
+    }, 2500);
+  }
+
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  document.querySelector('[data-action="signin"]')?.addEventListener('click', () => {
+    const emailInput = document.getElementById('login-email') as HTMLInputElement;
+    const passInput = document.getElementById('login-pass') as HTMLInputElement;
+    let valid = true;
+
+    [emailInput, passInput].forEach((input) => {
+      const fg = input.closest('.fg');
+      if (!input.value.trim()) {
+        fg?.classList.add('has-error');
+        valid = false;
+      } else if (input.type === 'email' && !EMAIL_REGEX.test(input.value.trim())) {
+        fg?.classList.add('has-error');
+        valid = false;
+      } else {
+        fg?.classList.remove('has-error');
+      }
+    });
+
+    showToast(valid ? 'Login feature coming soon!' : 'Please fill in all fields.', !valid);
+  });
+
+  document.querySelector('[data-action="forgot-pw"]')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    showToast('Password reset coming soon!');
+  });
+
+  document.querySelector('[data-action="register"]')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    showToast('Registration coming soon!');
+  });
+</script>

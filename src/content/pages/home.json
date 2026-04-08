@@ -1,0 +1,285 @@
+{
+  "hero": {
+    "title": "미션 크리티컬 임베디드 컴퓨팅 & 산업 솔루션",
+    "description": "에이스텍은 다양한 산업별 자동차, 제어, 테스트, 데이터 처리 및 여러 응용 분야에 적용하기 위해 임베디드 보드 및 시스템 소프트웨어, 산업용 PC등을 제공합니다. 당사가 제공하는 자사 솔루션 제품은 고객 맞춤형으로 진행되며, 운영을 효율적으로 개선할 수 있는 전문적인 컨설팅이 가능합니다.",
+    "image": "/uploads/hero/1775629832284------------.webp",
+    "btnPrimary": "솔루션 보기",
+    "btnSecondary": "견적 요청"
+  },
+  "solutions": {
+    "title": "우리의 솔루션",
+    "description": "자체 R&D 센터와 수십 년의 도메인 전문성을 바탕으로, 에이스텍은 국방, 항공우주, 철도, 산업 자동화를 위한 맞춤형 기술 솔루션을 제공합니다 — 모두 KC 인증 및 ISO 9001 준수.",
+    "items": [
+      {
+        "title": "임베디드 컴퓨팅",
+        "description": "Jade, Cobalt, Onyx, Talon, Flexor, Spark 플랫폼을 포함한 보드 레벨 신호 처리 시스템 — 가혹한 국방 및 항공우주 환경을 위해 설계."
+      },
+      {
+        "title": "산업용 & 네트워크",
+        "description": "KC 인증, ISO 9001 준수 팬리스 PC, 랙마운트 서버, 네트워크 어플라이언스 — 24시간 365일 연속 가동을 위해 제작."
+      },
+      {
+        "title": "안전 필수 시스템",
+        "description": "TÜV SÜD SIL4 인증 HIMA ControlSafe™ 플랫폼 — 페일세이프, 폴트톨러런트 설계로 최고 수준의 운영 안전성 보장."
+      },
+      {
+        "title": "통신 & 네트워킹",
+        "description": "방화벽, VPN, UTM, 로드밸런싱용 Intel/AMD 기반 네트워크 어플라이언스 및 고성능 NIC."
+      },
+      {
+        "title": "센서 모델링 & 시뮬레이션",
+        "description": "OKTAL-SE 고충실도 EO/IR/RF 센서 시뮬레이션 — HIL, MITL, 훈련 시뮬레이션 환경용."
+      },
+      {
+        "title": "슈퍼 컴퓨팅시스템",
+        "description": "Big Data, UHD/FHD, Simulation 등의 대용량 자료 처리를 위한 고밀도 GPU 서버 및 HPC 시스템."
+      },
+      {
+        "title": "산업용 컴퓨터",
+        "description": "관공서 업무용 장비부터 특수목적 컴퓨팅, 국방용 시스템, 산업용 HMI, 반도체 품질 검사 장비까지 포괄적인 기술 솔루션을 제공합니다."
+      },
+      {
+        "title": "레이더",
+        "description": "레이더 신호의 생성과 획득부터 정밀 분석, 타겟 추적, 다채널 데이터 기록 및 통합 상황 시각화까지 레이더 데이터 처리의 전 과정을 지원하는 종합 솔루션입니다."
+      },
+      {
+        "title": "초고속 데이터 인터커넥트",
+        "description": "PCIe 기반의 독자적인 통신 프로토콜을 활용하여 서버, GPU, 스토리지 간의 데이터 전송 지연을 극소화하고, 여러 대의 노드를 하나의 단일 시스템처럼 작동시키는 초고속 연산 클러스터를 구축합니다."
+      }
+    ],
+    "image": "/uploads/services/1775463385832-hero-main.webp"
+  },
+  "consult": {
+    "title": "맞춤형 솔루션이 필요하신가요?",
+    "description": "플랫폼 선정부터 시스템 설계, 배포, 지속적 지원까지 엔드투엔드 컨설팅을 제공합니다.",
+    "image": "/images/misc/consult-bg.png"
+  },
+  "servicePlan": {
+    "title": "토탈 서비스 솔루션",
+    "subtitle": "프로젝트의 모든 단계를 지원합니다 — 초기 시스템 컨설팅부터 최종 납품까지.",
+    "steps": [
+      {
+        "title": "컨설팅 & 설계",
+        "step": "Step 1–2",
+        "period": "고객 컨설팅 · 설계 컨설팅",
+        "description": "프로젝트 요구사항을 평가하고 최적의 하드웨어, 소프트웨어, 통합 접근 방식으로 맞춤형 시스템 설계를 구축합니다.",
+        "image": "/images/plans/plan-standard.png"
+      },
+      {
+        "title": "구축 & 지원",
+        "step": "Step 3–4",
+        "period": "시스템 구축 · 기술 지원",
+        "description": "조달 및 시스템 구축을 안내하고 프로젝트 수명주기 전반에 걸쳐 기술 지원을 제공합니다.",
+        "image": "/images/plans/plan-premium.png"
+      },
+      {
+        "title": "검증 & 검사",
+        "step": "Step 5",
+        "period": "제품 평가 · 품질 보증",
+        "description": "모든 납품 시스템이 프로젝트 사양, 산업 표준, 성능 벤치마크를 충족하는지 확인하는 엄격한 테스트와 평가.",
+        "image": "/images/plans/plan-enterprise.png"
+      }
+    ]
+  },
+  "about": {
+    "title": "회사 소개",
+    "description": "에이스텍은 1994년부터 임베디드 컴퓨팅 및 산업 기술 솔루션의 신뢰받는 파트너입니다.",
+    "image": "/uploads/about/1775629504150------------.webp"
+  },
+  "featuredProducts": [
+    {
+      "name": "DDR4 RAM Module 16GB",
+      "specs": "₩150,000",
+      "image": "/images/products/ram-module.png",
+      "href": "/products/industrial"
+    },
+    {
+      "name": "GPU Accelerator Card",
+      "specs": "₩2,500,000",
+      "image": "/images/products/cpu-processor.png",
+      "href": "/products/hpc"
+    },
+    {
+      "name": "4U Rackmount Server",
+      "specs": "₩8,500,000",
+      "image": "/images/products/ipc/rack-4u.png",
+      "href": "/products/ipc"
+    },
+    {
+      "name": "Server Motherboard",
+      "specs": "₩850,000",
+      "image": "/images/products/motherboard.png",
+      "href": "/products/industrial"
+    },
+    {
+      "name": "Fanless Box PC",
+      "specs": "₩3,200,000",
+      "image": "/images/products/ipc/boxipc-c4l3.png",
+      "href": "/products/ipc"
+    },
+    {
+      "name": "Enterprise HDD 2TB",
+      "specs": "₩280,000",
+      "image": "/images/products/hdd-2tb.png",
+      "href": "/products/industrial"
+    },
+    {
+      "name": "Industrial Panel PC 15\"",
+      "specs": "₩4,500,000",
+      "image": "/images/products/ipc/ppc-15at.png",
+      "href": "/products/ipc"
+    },
+    {
+      "name": "2U Rackmount PC",
+      "specs": "₩6,800,000",
+      "image": "/images/products/ipc/rack-2u.png",
+      "href": "/products/ipc"
+    }
+  ],
+  "contact": {
+    "title": "문의하기",
+    "description": "제품 견적, 기술 상담, 파트너십을 원하시면 저희 엔지니어링 팀이 도와드리겠습니다."
+  },
+  "solutionCards": [
+    {
+      "title": "군수항공분야",
+      "subtitle": "Abaco (Rugged 임베디드 보드)",
+      "image": "/images/services/military-aerospace.png",
+      "href": "/products/military",
+      "description": "VME, VPX 3U/6U, CompactPCI, PMC, XMC, FMC/FMC+ 등 가혹한 환경에서도 동작하는 고신뢰성 임베디드 솔루션입니다. 주요 제품: DSP (디지털 신호 처리 플랫폼), Radar (레이더 체계 및 제어)",
+      "subcategories": [
+        "Form Factor — Abaco",
+        "Middleware Software",
+        "Radar Processing & Display"
+      ]
+    },
+    {
+      "title": "철도분야",
+      "subtitle": "HIMA (열차 제어 및 안전 시스템)",
+      "image": "/images/services/railway.png",
+      "href": "/products/railway",
+      "description": "HiMax, HiMatrix를 포함하며, 철도 안전의 핵심인 SIL3/SIL4 등급을 만족하는 안전 제어 시스템입니다. 주요 기술: RTOS (실시간 운영체제 기반 제어)",
+      "subcategories": [
+        "HIMA SIL4 Railway System",
+        "HiMax System",
+        "HiMatrix System"
+      ]
+    },
+    {
+      "title": "자동화분야",
+      "subtitle": "Auto",
+      "image": "/images/services/industrial.png",
+      "href": "/products/industrial",
+      "description": "ACETEC은 다양한 산업 분야에 맞춤형 임베디드 컴퓨팅 솔루션과 전문 컨설팅을 제공하여 산업 효율성을 최적화합니다.",
+      "subcategories": [
+        "Network Appliance",
+        "Device Cloud (IoT)",
+        "Real-Time Operating System"
+      ]
+    },
+    {
+      "title": "정보통신분야",
+      "subtitle": "Server (통신용 서버 솔루션)",
+      "image": "/images/services/telecom.png",
+      "href": "/products/telecom",
+      "description": "대용량 데이터 처리와 끊김 없는 연결을 위한 고가용성 네트워크 서버 인프라를 제공합니다. 주요 기술: Middleware (데이터 연동 및 최적화 미들웨어)",
+      "subcategories": [
+        "Entry/Middle/High-end Network Appliance",
+        "Server Network Appliance",
+        "NIC Adapter"
+      ]
+    },
+    {
+      "title": "슈퍼컴퓨팅시스템분야",
+      "subtitle": "High Performance Computing",
+      "image": "/images/products/sensor/satellite.png",
+      "href": "/products/sensor",
+      "description": "Big Data, UHD/FHD, Simulation 등의 대용량의 자료와 정보가 증가함에 따라 Data 처리 속도의 중요성은 계속해서 증가하면서 HPC의 요구가 공공기관, 학교, 실험실 등에서 증가하고 있습니다. High Density Compute Accelerator는 CPU가 아닌 GPU를 통한 타 HPC와의 차별화 제품을 제공합니다.",
+      "subcategories": [
+        "EO/IR Sensor Simulation",
+        "RF Sensor Simulation",
+        "Active EO Sensor Simulation",
+        "GNSS Sensor Simulation",
+        "3D Terrain & Building Generation"
+      ]
+    },
+    {
+      "title": "산업용컴퓨터분야",
+      "subtitle": "산업용 컴퓨터",
+      "image": "/images/services/ai-center.png",
+      "href": "",
+      "i18nKey": "lab",
+      "description": "관공서 업무용 장비부터 특수목적 컴퓨팅, 국방용 시스템, 산업용 HMI, 반도체 품질 검사 장비까지 포괄적인 기술 솔루션을 제공합니다."
+    },
+    {
+      "title": "슈퍼컴퓨팅시스템분야",
+      "subtitle": "High Performance Computing",
+      "image": "/images/services/hpc.png",
+      "href": "/products/hpc",
+      "description": "Big Data, UHD/FHD, Simulation 등의 대용량의 자료와 정보가 증가함에 따라 Data 처리 속도의 중요성은 계속해서 증가하면서 HPC의 요구가 공공기관, 학교, 실험실 등에서 증가하고 있습니다. High Density Compute Accelerator는 CPU가 아닌 GPU를 통한 타 HPC와의 차별화 제품을 제공합니다.",
+      "subcategories": [
+        "Servers",
+        "Desktop Computing Appliances",
+        "GPU Appliances",
+        "GPU Expansion",
+        "VIDEO Acceleration Platform"
+      ]
+    },
+    {
+      "title": "산업용컴퓨터분야",
+      "subtitle": "산업용 컴퓨터",
+      "description": "관공서 업무용 장비부터 특수목적 컴퓨팅, 국방용 시스템, 산업용 HMI, 반도체 품질 검사 장비까지 포괄적인 기술 솔루션을 제공합니다.",
+      "image": "/images/services/ipc.png",
+      "href": "/products/ipc",
+      "subcategories": [
+        "Boxtype PC",
+        "Rackmount PC",
+        "Server",
+        "Desktop PC",
+        "Wallmount PC",
+        "Panel PC"
+      ]
+    },
+    {
+      "title": "레이더 분야",
+      "subtitle": "레이더 처리 & 디스플레이",
+      "description": "레이더 신호의 생성과 획득부터 정밀 분석, 타겟 추적, 다채널 데이터 기록 및 통합 상황 시각화까지 레이더 데이터 처리의 전 과정을 지원하는 종합 솔루션입니다.",
+      "image": "/images/services/radar.png",
+      "href": "/products/radar",
+      "subcategories": [
+        "SPx Software Family",
+        "HPx Hardware Family"
+      ]
+    },
+    {
+      "title": "초고속 데이터 인터커넥트 분야",
+      "subtitle": "PCIe Fabric & Low Latency Networking",
+      "description": "PCIe 기반의 독자적인 통신 프로토콜을 활용하여 서버, GPU, 스토리지 간의 데이터 전송 지연을 극소화하고, 여러 대의 노드를 하나의 단일 시스템처럼 작동시키는 초고속 연산 클러스터를 구축합니다.",
+      "image": "/uploads/services/1775193405048-dolphin---.webp",
+      "href": "/products/interconnect",
+      "subcategories": [
+        "PCIe Network Adapter",
+        "Superfast Interconnect Switch"
+      ]
+    }
+  ],
+  "partners": [
+    {
+      "name": "New Partner",
+      "image": "/uploads/partners/1775551564884-rti.png"
+    },
+    {
+      "name": "New Partner",
+      "image": "/uploads/partners/1775551571386-dolphin.png"
+    },
+    {
+      "name": "New Partner",
+      "image": "/uploads/partners/1775551594988-future-design-system.png"
+    },
+    {
+      "name": "New Partner",
+      "image": "/uploads/partners/1775551639390-iwave.png"
+    }
+  ],
+  "companyDescription": "Trusted for over 30 years in embedded computing, industrial PCs, and safety-critical systems — serving defense, aerospace, railway, and industrial markets."
+}

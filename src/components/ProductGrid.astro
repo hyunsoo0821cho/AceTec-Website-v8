@@ -1,0 +1,349 @@
+---
+/**
+ * ProductGrid - 제품 카드 그리드 (섹션 그룹 + 플랫 아이템 지원)
+ * sections 배열이 있으면 섹션별로 그룹 렌더링, 없으면 기존 flat items 렌더링
+ */
+import { Image } from 'astro:assets';
+
+interface ProductItem {
+  name: string;
+  specs: string;
+  image?: string;
+  alt?: string;
+  badge?: 'sil4' | 'new' | 'none';
+}
+
+interface SectionProduct {
+  name: string;
+  image?: string;
+  features?: string[];
+  badge?: 'sil4' | 'new' | 'none';
+}
+
+interface Section {
+  title: string;
+  products: SectionProduct[];
+}
+
+interface Props {
+  items?: ProductItem[];
+  sections?: Section[];
+  isAdmin?: boolean;
+  category?: string;
+}
+
+const { items = [], sections, isAdmin = false, category = '' } = Astro.props;
+
+// Load all product images from src/assets for Astro optimization
+const allImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/products/*.{png,jpg,webp}', {
+  eager: true,
+});
+
+function getImage(imagePath?: string): ImageMetadata | undefined {
+  if (!imagePath) return undefined;
+  const assetPath = imagePath.replace('/images/', '/src/assets/images/');
+  return allImages[assetPath]?.default;
+}
+
+function e(p: string) {
+  return isAdmin ? { 'data-edit': p } : {};
+}
+function img(p: string, preset: string) {
+  return isAdmin ? { 'data-img': p, 'data-preset': preset } : {};
+}
+
+const hasSections = sections && sections.length > 0;
+---
+
+{/* ===== 섹션 기반 렌더링 ===== */}
+{hasSections && sections.map((section, si) => (
+  <div class="cat-section" style="position:relative;">
+    {isAdmin && (
+      <button class="admin-delete-btn" data-admin-delete={`sections[${si}]`} title="Delete Section">
+        &times;
+      </button>
+    )}
+    <h2 class="cat-section-title" id={`section-${si}`} {...e(`sections[${si}].title`)}
+      data-i18n={`ps.${category}.s${si}`}>{section.title}</h2>
+    <div class="products-grid">
+      {section.products.map((product, pi) => (
+        <div class="p-card" style="position:relative;">
+          {isAdmin && (
+            <button class="admin-delete-btn" data-admin-delete={`sections[${si}].products[${pi}]`} title="Delete Product">
+              &times;
+            </button>
+          )}
+          <div class="p-img">
+            {product.badge === 'sil4' && <span class="sale-badge">SIL4</span>}
+            {product.badge === 'new' && <span class="new-badge">NEW</span>}
+            {product.image ? (
+              <img src={product.image} alt={product.name} loading="lazy"
+                {...img(`sections[${si}].products[${pi}].image`, 'product')} />
+            ) : isAdmin ? (
+              <div class="p-img-empty"
+                {...img(`sections[${si}].products[${pi}].image`, 'product')}
+                style="width:100%;height:100%;position:absolute;top:0;left:0;display:flex;align-items:center;justify-content:center;color:#999;font-size:12px;cursor:pointer;">
+                Click to add image
+              </div>
+            ) : (
+              <div class="p-img-placeholder" />
+            )}
+          </div>
+          <div class="p-name" {...e(`sections[${si}].products[${pi}].name`)}
+            data-i18n={`ps.${category}.s${si}p${pi}n`}>{product.name}</div>
+          {product.features && product.features.length > 0 && (
+            <ul class="p-features" {...e(`sections[${si}].products[${pi}].featuresHtml`)}
+              data-i18n={`ps.${category}.s${si}p${pi}f`} data-i18n-html="">
+              {product.features.map((f) => <li>{f}</li>)}
+            </ul>
+          )}
+        </div>
+      ))}
+    </div>
+    {isAdmin && (
+      <button
+        class="admin-add-btn"
+        data-admin-add={`sections[${si}].products`}
+        data-admin-template='{"name":"New Product","image":"","features":["Feature 1"]}'
+        style="margin-top:12px;"
+      >
+        + Add Product
+      </button>
+    )}
+  </div>
+))}
+
+{/* Admin: 섹션 추가 버튼 */}
+{isAdmin && hasSections && (
+  <button
+    class="admin-add-btn"
+    data-admin-add="sections"
+    data-admin-template='{"title":"New Section","products":[]}'
+    style="margin-top:16px;"
+  >
+    + Add Section
+  </button>
+)}
+
+{/* ===== 기존 flat items 렌더링 ===== */}
+{items.length > 0 && (
+  <>
+    <div class="products-grid">
+      {items.map((item, i) => {
+        const optimized = getImage(item.image);
+        const imgAttrs = isAdmin ? { 'data-img': `items[${i}].image`, 'data-preset': 'product' } : {};
+        const editName = isAdmin ? { 'data-edit': `items[${i}].name` } : {};
+        const editSpecs = isAdmin ? { 'data-edit': `items[${i}].specs` } : {};
+        return (
+          <div class="p-card" style="position:relative;">
+            {isAdmin && (
+              <button class="admin-delete-btn" data-admin-delete={`items[${i}]`} title="Delete">
+                &times;
+              </button>
+            )}
+            <div class="p-img">
+              {item.badge === 'sil4' && <span class="sale-badge">SIL4</span>}
+              {item.badge === 'new' && <span class="new-badge">NEW</span>}
+              {optimized ? (
+                <Image
+                  src={optimized}
+                  alt={item.alt || item.name}
+                  loading="lazy"
+                  width={400}
+                  height={300}
+                  {...imgAttrs}
+                />
+              ) : item.image ? (
+                <img src={item.image} alt={item.alt || item.name} loading="lazy" {...imgAttrs} />
+              ) : isAdmin ? (
+                <div
+                  class="p-img-empty"
+                  {...imgAttrs}
+                  style="width:100%;height:100%;position:absolute;top:0;left:0;display:flex;align-items:center;justify-content:center;color:#999;font-size:12px;cursor:pointer;"
+                >
+                  Click to add image
+                </div>
+              ) : null}
+            </div>
+            <div class="p-name" {...editName}>
+              {item.name}
+            </div>
+            <div class="p-price" {...editSpecs}>
+              {item.specs}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+    {isAdmin && (
+      <button
+        class="admin-add-btn"
+        data-admin-add="items"
+        data-admin-template='{"name":"New Product","specs":"Specifications here"}'
+        style="margin-top:16px;"
+      >
+        + Add Product
+      </button>
+    )}
+  </>
+)}
+
+<style>
+  /* 섹션 제목 스타일 */
+  .cat-section-title {
+    font-size: 20px;
+    margin: 40px 0 16px;
+    padding: 10px 16px;
+    background: var(--color-gray-200);
+    border-left: 4px solid var(--color-black);
+    border-radius: 4px;
+    font-weight: 700;
+  }
+  .cat-section:first-child .cat-section-title {
+    margin-top: 0;
+  }
+
+  /* 제품 그리드 */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-lg);
+    align-items: start;
+  }
+
+  /* 제품 카드 */
+  .p-card {
+    position: relative;
+    cursor: pointer;
+    transition: transform var(--transition-slow);
+  }
+  .p-img {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-gray-200);
+    padding-bottom: 75%;
+  }
+  .p-img img,
+  .p-img :global(img) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity var(--transition-slow);
+  }
+  .p-img-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* 배지 */
+  .sale-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--color-badge-bg);
+    color: var(--color-white);
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    z-index: 1;
+  }
+  .new-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #2563eb;
+    color: var(--color-white);
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) 10px;
+    font-weight: 500;
+    border-radius: 2px;
+    z-index: 1;
+  }
+
+  /* 호버 효과 */
+  @media (hover: hover) {
+    .p-card:hover {
+      transform: translateY(-4px);
+    }
+    .p-card:hover img,
+    .p-card:hover :global(img) {
+      opacity: 0.85;
+    }
+  }
+  .p-card:active {
+    transform: translateY(0) scale(0.98);
+    transition: all var(--transition-fast);
+  }
+
+  /* 제품명 */
+  .p-card .p-name {
+    font-size: var(--font-size-lg);
+    margin-top: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .p-card .p-price {
+    font-size: var(--font-size-md);
+    margin-top: var(--spacing-xs);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* 기능 목록 */
+  .p-features {
+    margin-top: 8px;
+    padding: 0 0 0 16px;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #555;
+    list-style: none;
+  }
+  .p-features li {
+    position: relative;
+    padding-left: 10px;
+  }
+  .p-features li::before {
+    content: "\00B7";
+    position: absolute;
+    left: 0;
+    color: #999;
+    font-weight: 700;
+  }
+
+  /* 반응형 */
+  @media (max-width: 1024px) {
+    .products-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 768px) {
+    .products-grid {
+      gap: var(--spacing-md);
+    }
+    .p-card .p-name {
+      font-size: 13px;
+      white-space: normal;
+      line-height: 1.3;
+    }
+    .p-card .p-price {
+      font-size: 11px;
+      white-space: normal;
+      line-height: 1.3;
+    }
+    .cat-section-title {
+      font-size: 16px;
+      margin: 24px 0 12px;
+      padding: 8px 12px;
+    }
+  }
+</style>

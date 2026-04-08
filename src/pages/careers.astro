@@ -1,0 +1,40 @@
+---
+export const prerender = false;
+
+import Base from '../layouts/Base.astro';
+import AdminInline from '../components/AdminInline.astro';
+import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import fs from 'fs';
+import path from 'path';
+const cookie = Astro.request.headers.get('cookie');
+const isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+const root = process.cwd();
+const d = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'careers.json'), 'utf-8'));
+function e(p: string) {
+  return isAdmin ? { 'data-edit': p } : {};
+}
+---
+
+<Base title="인재채용 - AceTec">
+  <AdminInline page="careers" isAdmin={isAdmin} />
+
+  <section class="section pt-page">
+    <div class="container">
+      <h1 class="heading-page" {...e('title')} data-i18n="careers.title">{d.title}</h1>
+      <p class="heading-sub color-muted" {...e('description')} data-i18n="careers.description">{d.description}</p>
+
+      <div class="coming-soon">
+        <p data-i18n="careers.comingSoon">콘텐츠가 곧 업데이트됩니다.</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .coming-soon {
+    text-align: center;
+    padding: var(--spacing-5xl) 0;
+    color: var(--color-gray-700);
+    font-size: var(--font-size-lg);
+  }
+</style>

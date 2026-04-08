@@ -1,0 +1,317 @@
+{
+  "category": "ipc",
+  "title": "Industrial PCs & Fanless Industrial PCs",
+  "pageTitle": "Industrial PCs & Fanless Industrial PCs - AceTec",
+  "description": "Complete lineup of industrial PCs, panel systems, rack enclosures, and wall-mount solutions  engineered for mission-critical environments.",
+  "items": [],
+  "sections": [
+    {
+      "title": "Boxtype PC",
+      "products": [
+        {
+          "name": "ACE-BoxIPC-C4L3",
+          "image": "/images/catalog/ACE-BoxIPC-C4L3.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support 4 x RS232/422/485",
+            "Support 1 x 8-bit DIO via the DB-9 port",
+            "Support WIFI, 3G/4G and GPRS application",
+            "Aluminum + metal aluminum",
+            "Support Wall Mounting (Optional VESA, DIN Rail)"
+          ]
+        },
+        {
+          "name": "ACE-BoxIPC-73L2D",
+          "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "DDR3L SO-DIMM 4GB Memory up to 16GB",
+            "Support Wall Mounting",
+            "Support RAID 0/1/5/10",
+            "Support 3 x Independent Displays",
+            "Support intel iAMT 8.0"
+          ]
+        },
+        {
+          "name": "ACE-BoxIPC-7110L2D",
+          "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "DDR3L SO-DIMM 4GB Memory up to 16GB",
+            "Support Wall Mounting",
+            "Support RAID 0/1/5/10",
+            "Support 3 x Independent Displays",
+            "Support intel iAMT 8.0"
+          ]
+        },
+        {
+          "name": "ACE-BoxIPC-74L2D",
+          "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
+          "features": [
+            "Support 2x Gigabit LAN Ports",
+            "DDR4 SO-DIMM 8GB Memory up to 32GB",
+            "Support Wall Mounting",
+            "Support RAID 0/1",
+            "Support 3 x Independent Displays",
+            "Support ESD Protection"
+          ]
+        },
+        {
+          "name": "ACE-BoxIPC-76L2D",
+          "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
+          "features": [
+            "Support 2x Gigabit LAN Ports",
+            "DDR4 SO-DIMM 8GB Memory up to 32GB",
+            "Support Wall Mounting",
+            "Support RAID 0/1",
+            "Support 3 x Independent Displays",
+            "Support ESD Protection"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Rackmount PC",
+      "products": [
+        {
+          "name": "ACE-IPC02R-4U-i7-6",
+          "image": "/images/catalog/ACE-IPC01R-4U-i7-3.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support Standard Rack Mounting",
+            "Support RAID 0/1/5/10",
+            "Support Easy install HDD Rack",
+            "Support intel iAMT 11.0"
+          ]
+        },
+        {
+          "name": "ACE-IPC02R-4U-Xeon-E3",
+          "image": "/images/catalog/ACE-IPC01R-4U-i7-3.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support Standard Rack Mounting",
+            "Support RAID 0/1/5/10",
+            "Support Easy install HDD Rack",
+            "Support intel iAMT 11.0"
+          ]
+        },
+        {
+          "name": "ACE-IPC02R-2U-i7-6-F",
+          "image": "/images/catalog/ACE-IPC02R-2U-i7-4-F.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support Standard Rack Mounting",
+            "Support RAID 0/1/5/10",
+            "Support Easy install HDD Rack",
+            "Supports intel iAMT 11.0"
+          ]
+        },
+        {
+          "name": "ACE-IPC02R-4U-i7-9",
+          "image": "/images/catalog/ACE-IPC02R-2U-i7-4-F.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support Standard Rack Mounting",
+            "Support RAID 0/1/5/10",
+            "Support Easy install HDD Rack",
+            "Supports intel iAMT 11.0"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Server",
+      "products": [
+        {
+          "name": "ACE-Sever-2U-Xeon-E5-F",
+          "image": "/images/catalog/ACE-Sever-2U-Xeon-E5-F.png",
+          "features": [
+            "2U Rack Mounting (Ȯ强  )",
+            "Support Intel Xeon E5 Series Processor (Dual Socket )",
+            "Support up to 256GB System Memory",
+            "Support 4 x Gigabit LAN Ports (Network Redundancy)",
+            "Support Multi-bay Hot-swap HDD/SSD Rack",
+            "Flexible PCIe expansion slots for Add-on cards"
+          ]
+        },
+        {
+          "name": "ACE-Sever-4U-Xeon-E5-F",
+          "image": "/images/catalog/ACE-Sever-4U-Xeon-E5-F.png",
+          "features": [
+            "4U Rack / Tower Convertible (ִ Ȯ强 )",
+            "Support Intel Xeon E5 Series High-performance Processor",
+            "Support High-capacity System Memory (Large Database optimized)",
+            "Support Massive Storage Bay for Enterprise HDD",
+            "Support GPU Acceleration for AI and Data analysis",
+            "Redundant Power Supply for 24/7 Mission-critical stability"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Desktop PC",
+      "products": [
+        {
+          "name": "ACE-IPC02D-i7-3",
+          "image": "/images/catalog/ACE-IPC02D-i7-3.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "DDR3L SO-DIMM 4GB Memory up to 16GB",
+            "Support RAID 0/1/5/10",
+            "Support 3 x Independent Displays",
+            "Support intel iAMT 8.0"
+          ]
+        },
+        {
+          "name": "ACE-IPC02D-i7-4",
+          "image": "/images/catalog/ACE-IPC02D-i7-3.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "DDR3 DIMM 4GB Memory up to 32GB",
+            "Support RAID 0/1/5/10",
+            "Support intel iAMT 9.0"
+          ]
+        },
+        {
+          "name": "ACE-IPC02D-i7-6",
+          "image": "/images/catalog/ACE-IPC02D-i7-3.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "DDR4 DIMM 8GB Memory up to 16GB",
+            "Support RAID 0/1/5/10",
+            "Support 3 x Independent Displays",
+            "Support intel iAMT 11.0"
+          ]
+        },
+        {
+          "name": "ACE-WS01D-i7-4-F",
+          "image": "/images/catalog/ACE-WS01D-i7-4-F.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 32GB system memory",
+            "Support RAID 0/1/5/10",
+            "Support intel iAMT 9.0"
+          ]
+        },
+        {
+          "name": "ACE-WS01D-i7-6-F",
+          "image": "/images/catalog/ACE-WS01D-i7-4-F.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support RAID 0/1/5/10",
+            "Support 3 x Independent Displays",
+            "Support iAMT 9.0 and vPRO 9.0",
+            "500W High Efficiency Power Supply"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Wallmount PC",
+      "products": [
+        {
+          "name": "ACE-IPC-Wall-i7-6-F",
+          "image": "/images/catalog/ACE-IPC-Wall-i7-6-F.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support Wall Mounting",
+            "Support RAID 0/1/5/10",
+            "Support Easy install HDD Rack",
+            "Support intel iAMT 11.0"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Panel PC",
+      "products": [
+        {
+          "name": "ACE-PPC-10AT",
+          "image": "/images/catalog/ACE-PPC-10AT.png",
+          "features": [
+            "Support 1024 x 768 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-15AT",
+          "image": "/images/catalog/ACE-PPC-15AT.png",
+          "features": [
+            "Support 1024 x 768 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-17AT",
+          "image": "/images/catalog/ACE-PPC-17AT.png",
+          "features": [
+            "Support 1024 x 768 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-19MT",
+          "image": "/images/catalog/ACE-PPC-19MT.png",
+          "features": [
+            "Support 1280 x 1024 dots",
+            "DDR3L SODIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-15HT",
+          "image": "/images/catalog/ACE-PPC-15HT.png",
+          "features": [
+            "Support 1024 x 768 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-17HT",
+          "image": "/images/catalog/ACE-PPC-17HT.png",
+          "features": [
+            "Support 1024 x 1024 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-19HT",
+          "image": "/images/catalog/ACE-PPC-19HT.png",
+          "features": [
+            "Support 1280 x 1024 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        },
+        {
+          "name": "ACE-PPC-21HT",
+          "image": "/images/catalog/ACE-PPC-21HT.png",
+          "features": [
+            "Support 1920 x 1080 dots",
+            "DDR3L SO-DIMM 4GB Memory up to 8GB",
+            "Support VESA Mounting",
+            "Support Touch Screen"
+          ]
+        }
+      ]
+    }
+  ]
+}

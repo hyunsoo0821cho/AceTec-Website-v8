@@ -1,0 +1,172 @@
+{
+  "category": "telecom",
+  "title": "Telecom & Networking",
+  "pageTitle": "Telecom & Networking Products - AceTec",
+  "description": "Intel/AMD-based network appliances for firewall, VPN, UTM, and load balancing  along with high-performance NIC adapters for data center and telecom infrastructure.",
+  "items": [],
+  "sections": [
+    {
+      "title": "Device Cloud & IoT Wind River",
+      "products": [
+        {
+          "name": "WIND RIVER HELIX DEVICE CLOUD",
+          "image": "/images/catalog/69.png",
+          "features": [
+            "Wind River Helix Device Cloud is an IoT device management platform reducing complexities of large-scale deployments with health monitoring and remote access"
+          ]
+        },
+        {
+          "name": "TITANIUM CONTROL",
+          "image": "/images/catalog/70.png",
+          "features": [
+            "Wind River Titanium Control: on-premise cloud infrastructure for critical services, improving agility and reducing operating/deployment costs"
+          ]
+        },
+        {
+          "name": "Wind River Simics",
+          "image": "/images/catalog/71.png",
+          "features": [
+            "Simics simulates systems from smallest to most complex",
+            "Moving from physical hardware to virtual lab lets embedded software teams revolutionize development processes"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Rackmount & Server Systems",
+      "products": [
+        {
+          "name": "ACE-IPC02R-4U-Xeon-E3",
+          "image": "/images/catalog/ACE-IPC01R-4U-i7-3.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support Standard Rack Mounting",
+            "Support RAID 0/1/5/10",
+            "Support Easy install HDD Rack",
+            "Support intel iAMT 11.0"
+          ]
+        },
+        {
+          "name": "ACE-IPC02R-2U-i7-6-F",
+          "image": "/images/catalog/ACE-IPC02R-2U-i7-4-F.png",
+          "features": [
+            "Support 2 x Gigabit LAN Ports",
+            "Support up to 64GB system memory",
+            "Support Standard Rack Mounting",
+            "Support RAID 0/1/5/10",
+            "Support Easy install HDD Rack",
+            "Supports intel iAMT 11.0"
+          ]
+        },
+        {
+          "name": "ACE-Sever-2U-Xeon-E5-F",
+          "image": "/images/catalog/ACE-Sever-2U-Xeon-E5-F.png",
+          "features": [
+            "2U Rack Mounting (˭  )",
+            "Support Intel Xeon E5 Series Processor (Dual Socket )",
+            "Support up to 256GB System Memory",
+            "Support 4 x Gigabit LAN Ports (Network Redundancy)",
+            "Support Multi-bay Hot-swap HDD/SSD Rack",
+            "Flexible PCIe expansion slots for Add-on cards"
+          ]
+        },
+        {
+          "name": "ACE-Sever-4U-Xeon-E5-F",
+          "image": "/images/catalog/ACE-Sever-4U-Xeon-E5-F.png",
+          "features": [
+            "4U Rack / Tower Convertible ( ˭ )",
+            "Support Intel Xeon E5 Series High-performance Processor",
+            "Support High-capacity System Memory (Large Database optimized)",
+            "Support Massive Storage Bay for Enterprise HDD",
+            "Support GPU Acceleration for AI and Data analysis",
+            "Redundant Power Supply for 24/7 Mission-critical stability"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Real-Time Operating System",
+      "products": [
+        {
+          "name": "Wind River VxWorks 6.9",
+          "image": "/images/catalog/51.png",
+          "features": [
+            "VxWorks is the industry's leading commercial RTOS, matching applications with hardware performance and reliability for secure, intelligent, connected devices"
+          ]
+        },
+        {
+          "name": "Wind River Workbench 3.2",
+          "image": "/images/catalog/52.png",
+          "features": [
+            "Wind River Workbench is a full commercial development suite for embedded device software development"
+          ]
+        },
+        {
+          "name": "WIND RIVER LINUX",
+          "image": "/images/catalog/53.png",
+          "features": [
+            "Wind River Linux is the embedded Linux solution reducing risk and time-to-market for Linux-based devices with commercial-tested Yocto Project Linux content"
+          ]
+        },
+        {
+          "name": "WIND RIVER PULSAR LINUX",
+          "image": "/images/catalog/54.png",
+          "features": [
+            "Wind River Pulsar Linux is a container-based OS delivering bug fixes and security vulnerability fixes to protect deployed devices and mitigate costs"
+          ]
+        },
+        {
+          "name": "VxWorks 653 Platform",
+          "image": "/images/catalog/55.png",
+          "features": [
+            "Wind River VxWorks 653 Platform is a safe, secure, reliable RTOS fully compliant with ARINC Spec 653, providing robust partitioning for IMA and ARINC compliance"
+          ]
+        },
+        {
+          "name": "ISaGRAF",
+          "image": "/images/catalog/56.png",
+          "features": [
+            "ISaGRAF is the reference and de facto standard in automation software technology, designed to bridge microcomputer systems and PLCs"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Middleware Software",
+      "products": [
+        {
+          "name": "Connext DDS Professional",
+          "image": "/images/catalog/26.png",
+          "features": [
+            "RTI Connext DDS Professional is the first connectivity software for Industrial Internet of Things (IIoT)",
+            "Delivers low-latency, high reliability, scalability and security for mission-critical systems"
+          ]
+        },
+        {
+          "name": "RTI Connext DDS Secure",
+          "image": "/images/catalog/57.png",
+          "features": [
+            "RTI Connext DDS Secure enables IIoT architects to build secure and scalable systems of systems with fine-grained security on Connext Databus"
+          ]
+        },
+        {
+          "name": "RTI Connext DDS Micro",
+          "image": "/images/catalog/58.png",
+          "features": [
+            "Connext DDS Micro for distributed IIoT systems meeting stringent Size, Weight and Power (SWaP) requirements",
+            "Small-footprint connectivity framework"
+          ]
+        },
+        {
+          "name": "RTI Connext DDS Cert",
+          "image": "/images/catalog/59.png",
+          "features": [
+            "RTI Connext DDS Cert enables IIoT architects to build safety-critical systems",
+            "Only off-the-shelf connectivity framework certifiable for highest safety standards"
+          ]
+        }
+      ]
+    }
+  ]
+}

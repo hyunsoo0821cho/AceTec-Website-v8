@@ -1,0 +1,299 @@
+---
+export const prerender = false;
+import { verifySession, getSessionIdFromCookie } from '../../lib/auth';
+
+const cookie = Astro.request.headers.get('cookie');
+const session = verifySession(getSessionIdFromCookie(cookie));
+if (!session) return Astro.redirect('/login');
+---
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - AceTec</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f1f5f9; color: #1e293b; }
+
+    /* Topbar */
+    .topbar { background: #0f172a; color: #fff; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    .topbar-left { display: flex; align-items: center; gap: 16px; }
+    .topbar-left h1 { font-size: 16px; font-weight: 600; }
+    .topbar-right { display: flex; gap: 8px; }
+    .topbar-btn { padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; border: none; }
+    .topbar-btn--back { background: #334155; color: #cbd5e1; }
+    .topbar-btn--back:hover { background: #475569; }
+    .topbar-btn--logout { background: transparent; color: #94a3b8; border: 1px solid #475569; }
+    .topbar-btn--logout:hover { color: #fff; border-color: #64748b; }
+
+    /* Layout */
+    .dash { max-width: 1200px; margin: 0 auto; padding: 32px 24px; }
+
+    /* Stats Cards */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+    .stat-card { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    .stat-card .label { font-size: 13px; color: #64748b; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .stat-card .value { font-size: 32px; font-weight: 700; color: #0f172a; }
+    .stat-card .sub { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+
+    /* Section */
+    .section { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: 24px; }
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .section-header h2 { font-size: 18px; font-weight: 600; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; font-size: 12px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.04em; padding: 10px 12px; border-bottom: 2px solid #e2e8f0; }
+    td { padding: 12px; border-bottom: 1px solid #f1f5f9; font-size: 14px; vertical-align: middle; }
+    tr:hover td { background: #f8fafc; }
+    .role-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+    .role-admin { background: #dbeafe; color: #1d4ed8; }
+    .role-sales { background: #dcfce7; color: #16a34a; }
+    .role-customer { background: #fef3c7; color: #d97706; }
+
+    /* Buttons */
+    .btn { padding: 7px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; border: none; transition: all 0.15s; }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-sm { padding: 5px 10px; font-size: 12px; }
+    .btn-edit { background: #f1f5f9; color: #475569; }
+    .btn-edit:hover { background: #e2e8f0; }
+    .btn-danger { background: none; color: #ef4444; }
+    .btn-danger:hover { background: #fef2f2; }
+    .btn-group { display: flex; gap: 4px; }
+
+    /* Modal */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; justify-content: center; align-items: center; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: #fff; border-radius: 12px; padding: 24px; width: 440px; max-width: 90vw; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+    .modal h3 { font-size: 18px; margin-bottom: 20px; }
+    .field { margin-bottom: 14px; }
+    .field label { display: block; font-size: 13px; font-weight: 500; color: #475569; margin-bottom: 4px; }
+    .field input, .field select { width: 100%; padding: 9px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; font-family: inherit; }
+    .field input:focus, .field select:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+    .btn-cancel { background: #f1f5f9; color: #475569; }
+
+    /* Logs */
+    .log-item { padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: 13px; display: flex; justify-content: space-between; }
+    .log-item:last-child { border: none; }
+    .log-action { font-weight: 600; color: #0f172a; }
+    .log-detail { color: #64748b; }
+    .log-time { color: #94a3b8; font-size: 12px; flex-shrink: 0; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .topbar { padding: 12px 16px; }
+      .dash { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-left">
+      <h1>AceTec Admin Dashboard</h1>
+    </div>
+    <div class="topbar-right">
+      <a href="/" class="topbar-btn topbar-btn--back">Back to Site</a>
+      <form method="POST" action="/api/auth/logout" style="display:inline;">
+        <button type="submit" class="topbar-btn topbar-btn--logout">Logout</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="dash">
+    <!-- Stats -->
+    <div class="stats" id="statsGrid">
+      <div class="stat-card"><div class="label">Today Visitors</div><div class="value" id="statDaily">-</div><div class="sub">Unique IPs</div></div>
+      <div class="stat-card"><div class="label">Monthly Visitors</div><div class="value" id="statMonthly">-</div><div class="sub">Last 30 days</div></div>
+      <div class="stat-card"><div class="label">Annual Visitors</div><div class="value" id="statYearly">-</div><div class="sub">Last 365 days</div></div>
+      <div class="stat-card"><div class="label">Today Page Views</div><div class="value" id="statViews">-</div><div class="sub">Total requests</div></div>
+    </div>
+
+    <!-- User Management -->
+    <div class="section">
+      <div class="section-header">
+        <h2>User Management</h2>
+        <button class="btn btn-primary" id="addUserBtn">+ Add User</button>
+      </div>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Username</th><th>Display Name</th><th>Role</th><th>Actions</th></tr>
+        </thead>
+        <tbody id="userTableBody">
+          <tr><td colspan="5" style="text-align:center;color:#94a3b8;">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Audit Logs -->
+    <div class="section">
+      <div class="section-header">
+        <h2>Activity Logs</h2>
+      </div>
+      <div id="logsContainer">
+        <div style="text-align:center;color:#94a3b8;padding:20px;">Loading...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Modal -->
+  <div class="modal-overlay" id="userModal">
+    <div class="modal">
+      <h3 id="modalTitle">Add User</h3>
+      <input type="hidden" id="modalUserId" />
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="modalUsername" placeholder="Enter username" />
+      </div>
+      <div class="field">
+        <label>Display Name</label>
+        <input type="text" id="modalDisplayName" placeholder="Enter display name" />
+      </div>
+      <div class="field">
+        <label>Password <span id="pwHint" style="font-weight:400;color:#94a3b8;"></span></label>
+        <input type="password" id="modalPassword" placeholder="Enter password" />
+      </div>
+      <div class="field">
+        <label>Role</label>
+        <select id="modalRole">
+          <option value="admin">Admin</option>
+          <option value="sales">Sales</option>
+          <option value="customer">Customer</option>
+        </select>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-cancel" id="modalCancel">Cancel</button>
+        <button class="btn btn-primary" id="modalSave">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const userTable = document.getElementById('userTableBody')!;
+    const logsContainer = document.getElementById('logsContainer')!;
+    const modal = document.getElementById('userModal')!;
+
+    // Load stats
+    async function loadStats() {
+      try {
+        const res = await fetch('/api/admin/stats');
+        if (!res.ok) return;
+        const data = await res.json();
+        document.getElementById('statDaily')!.textContent = data.visitors.daily.toLocaleString();
+        document.getElementById('statMonthly')!.textContent = data.visitors.monthly.toLocaleString();
+        document.getElementById('statYearly')!.textContent = data.visitors.yearly.toLocaleString();
+        document.getElementById('statViews')!.textContent = data.pageViews.daily.toLocaleString();
+
+        // Logs
+        if (data.logs.length === 0) {
+          logsContainer.innerHTML = '<div style="text-align:center;color:#94a3b8;padding:20px;">No activity yet</div>';
+        } else {
+          logsContainer.innerHTML = data.logs.map((log: any) => {
+            const dt = new Date(log.created_at);
+            const ts = `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')} ${String(dt.getHours()).padStart(2,'0')}:${String(dt.getMinutes()).padStart(2,'0')}`;
+            return `<div class="log-item"><div><span class="log-action">${esc(log.action)}</span> <span class="log-detail">${esc(log.detail || '')}</span></div><span class="log-time">${ts}</span></div>`;
+          }).join('');
+        }
+      } catch {}
+    }
+
+    // Load users
+    async function loadUsers() {
+      try {
+        const res = await fetch('/api/admin/users');
+        if (!res.ok) return;
+        const users = await res.json();
+        if (users.length === 0) {
+          userTable.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#94a3b8;">No users</td></tr>';
+          return;
+        }
+        userTable.innerHTML = users.map((u: any) => `
+          <tr>
+            <td>${u.id}</td>
+            <td><strong>${esc(u.username)}</strong></td>
+            <td>${esc(u.display_name || '-')}</td>
+            <td><span class="role-badge role-${u.role || 'admin'}">${u.role || 'admin'}</span></td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-sm btn-edit" onclick="editUser(${u.id}, '${esc(u.username)}', '${esc(u.display_name || '')}', '${u.role || 'admin'}')">Edit</button>
+                <button class="btn btn-sm btn-danger" onclick="deleteUser(${u.id}, '${esc(u.username)}')">Delete</button>
+              </div>
+            </td>
+          </tr>
+        `).join('');
+      } catch {}
+    }
+
+    function esc(s: string) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+    // Modal
+    function openModal(title: string, id: number | null, username: string, displayName: string, role: string) {
+      (document.getElementById('modalTitle') as HTMLElement).textContent = title;
+      (document.getElementById('modalUserId') as HTMLInputElement).value = id ? String(id) : '';
+      (document.getElementById('modalUsername') as HTMLInputElement).value = username;
+      (document.getElementById('modalDisplayName') as HTMLInputElement).value = displayName;
+      (document.getElementById('modalPassword') as HTMLInputElement).value = '';
+      (document.getElementById('modalRole') as HTMLSelectElement).value = role;
+      (document.getElementById('pwHint') as HTMLElement).textContent = id ? '(leave blank to keep)' : '';
+      modal.classList.add('open');
+    }
+    function closeModal() { modal.classList.remove('open'); }
+
+    document.getElementById('addUserBtn')!.addEventListener('click', () => openModal('Add User', null, '', '', 'customer'));
+    document.getElementById('modalCancel')!.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    // @ts-ignore
+    window.editUser = (id: number, username: string, displayName: string, role: string) => {
+      openModal('Edit User', id, username, displayName, role);
+    };
+
+    // @ts-ignore
+    window.deleteUser = async (id: number, username: string) => {
+      if (!confirm(`Delete user "${username}"?`)) return;
+      await fetch('/api/admin/users?id=' + id, { method: 'DELETE' });
+      loadUsers();
+      loadStats();
+    };
+
+    // Save
+    document.getElementById('modalSave')!.addEventListener('click', async () => {
+      const id = (document.getElementById('modalUserId') as HTMLInputElement).value;
+      const username = (document.getElementById('modalUsername') as HTMLInputElement).value.trim();
+      const displayName = (document.getElementById('modalDisplayName') as HTMLInputElement).value.trim();
+      const password = (document.getElementById('modalPassword') as HTMLInputElement).value;
+      const role = (document.getElementById('modalRole') as HTMLSelectElement).value;
+
+      if (!username) { alert('Username is required'); return; }
+      if (!id && !password) { alert('Password is required for new users'); return; }
+
+      const body: any = { username, role, display_name: displayName };
+      if (password) body.password = password;
+      if (id) body.id = parseInt(id);
+
+      const res = await fetch('/api/admin/users', {
+        method: id ? 'PUT' : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      if (res.ok) {
+        closeModal();
+        loadUsers();
+        loadStats();
+      } else {
+        const err = await res.json();
+        alert(err.error || 'Failed');
+      }
+    });
+
+    // Init
+    loadStats();
+    loadUsers();
+  </script>
+</body>
+</html>

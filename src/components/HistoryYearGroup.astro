@@ -1,0 +1,75 @@
+---
+/**
+ * HistoryYearGroup — 연도별 히스토리 항목 렌더링
+ * history.astro에서 추출. Admin CMS 지원.
+ */
+interface MonthData {
+  month: string;
+  entries: string[];
+}
+
+interface Props {
+  year: number;
+  months: MonthData[];
+  isAdmin?: boolean;
+  periodIndex?: number;
+  yearIndex?: number;
+}
+
+const { year, months, isAdmin = false, periodIndex = 0, yearIndex = 0 } = Astro.props;
+function e(p: string) {
+  return isAdmin ? { 'data-edit': p } : {};
+}
+---
+
+<div class="history-year-group">
+  <h2 class="history-year">{year}</h2>
+  <div class="history-entries">
+    {
+      months.map((m, mi) => (
+        <div class="h-month-group">
+          <div class="h-month">{m.month}</div>
+          <div class="h-month-items">
+            {m.entries.map((entry, ei) => (
+              <div class="h-entry" style="position:relative;">
+                {isAdmin && (
+                  <button
+                    class="admin-delete-btn"
+                    data-admin-delete={`periods[${periodIndex}].years[${yearIndex}].months[${mi}].entries[${ei}]`}
+                    title="Delete"
+                    style="top:4px;right:4px;"
+                  >
+                    &times;
+                  </button>
+                )}
+                <p {...e(`periods[${periodIndex}].years[${yearIndex}].months[${mi}].entries[${ei}]`)}>{entry}</p>
+              </div>
+            ))}
+            {isAdmin && (
+              <button
+                class="admin-add-btn"
+                data-admin-add={`periods[${periodIndex}].years[${yearIndex}].months[${mi}].entries`}
+                data-admin-template='"New entry"'
+                style="padding:8px;font-size:12px;margin:4px 0;"
+              >
+                + Add Entry
+              </button>
+            )}
+          </div>
+        </div>
+      ))
+    }
+    {
+      isAdmin && (
+        <button
+          class="admin-add-btn"
+          data-admin-add={`periods[${periodIndex}].years[${yearIndex}].months`}
+          data-admin-template='{"month":"Jan.","entries":["New entry"]}'
+          style="padding:8px;font-size:12px;margin:8px 0;"
+        >
+          + Add Month
+        </button>
+      )
+    }
+  </div>
+</div>

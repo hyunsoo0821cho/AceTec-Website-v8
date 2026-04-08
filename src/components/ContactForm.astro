@@ -1,0 +1,47 @@
+---
+/**
+ * ContactForm - 재사용 가능한 컨택트 폼
+ * v7 forms.js createContactForm() 에서 추출
+ * 유일하게 4곳에서 재사용되는 컴포넌트
+ */
+interface Props {
+  prefix: string;
+}
+
+const { prefix } = Astro.props;
+---
+
+<form novalidate data-contact-form={prefix}>
+  <p class="fg-heading" data-i18n="form.name">Name</p>
+  <div class="f-row">
+    <div class="fg">
+      <label for={`${prefix}-fname`}><span data-i18n="form.firstName">First Name</span> <span data-i18n="form.firstNameReq">(required)</span></label>
+      <input type="text" id={`${prefix}-fname`} autocomplete="given-name" required />
+      <div class="field-error">Please enter your first name.</div>
+    </div>
+    <div class="fg">
+      <label for={`${prefix}-lname`}><span data-i18n="form.lastName">Last Name</span> <span data-i18n="form.lastNameReq">(required)</span></label>
+      <input type="text" id={`${prefix}-lname`} autocomplete="family-name" required />
+      <div class="field-error">Please enter your last name.</div>
+    </div>
+  </div>
+  <div class="fg">
+    <label for={`${prefix}-email`}><span data-i18n="form.email">Email</span> <span data-i18n="form.emailReq">(required)</span></label>
+    <input type="email" id={`${prefix}-email`} autocomplete="email" required />
+    <div class="field-error">Please enter a valid email address.</div>
+  </div>
+  <div class="fg">
+    <label for={`${prefix}-phone`}><span data-i18n="form.phone">Phone</span></label>
+    <input type="tel" id={`${prefix}-phone`} autocomplete="tel" />
+  </div>
+  <div class="f-check">
+    <input type="checkbox" id={`${prefix}-news`} />
+    <label for={`${prefix}-news`} data-i18n="form.newsletter">Sign up for news and updates</label>
+  </div>
+  <div class="fg">
+    <label for={`${prefix}-msg`}><span data-i18n="form.message">Message</span> <span data-i18n="form.messageReq">(required)</span></label>
+    <textarea id={`${prefix}-msg`} required></textarea>
+    <div class="field-error">Please enter your message.</div>
+  </div>
+  <button type="button" class="btn-primary" data-action="submit" data-original="SUBMIT" data-i18n="form.submit">SUBMIT</button>
+</form>

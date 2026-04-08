@@ -1,0 +1,256 @@
+---
+export const prerender = false;
+
+import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
+import AdminInline from '../components/AdminInline.astro';
+import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import fs from 'fs';
+import path from 'path';
+const cookie = Astro.request.headers.get('cookie');
+const isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+const root = process.cwd();
+const d = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'solutions.json'), 'utf-8'));
+const home = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'home.json'), 'utf-8'));
+// Solutions 카드는 home.json의 solutionCards를 사용 (Home과 동기화)
+const cards = home.solutionCards;
+function e(p: string) {
+  return isAdmin ? { 'data-edit': p } : {};
+}
+// home.json 기준으로 편집
+function eHome(p: string) {
+  return isAdmin ? { 'data-edit': p, 'data-edit-page': 'home' } : {};
+}
+// solutions.json 기준으로 편집
+function eSol(p: string) {
+  return isAdmin ? { 'data-edit': p, 'data-edit-page': 'solutions' } : {};
+}
+function img(p: string, preset: string) {
+  return isAdmin ? { 'data-img': p, 'data-preset': preset } : {};
+}
+
+// href → i18n key mapping for solution cards
+const hrefToKey: Record<string, string> = {
+  '/products/military': 'military', '/products/railway': 'railway',
+  '/products/industrial': 'automation', '/products/telecom': 'telecom',
+  '/products/sensor': 'sensor', '/products/hpc': 'hpc',
+  '/products/ipc': 'ipc', '/products/radar': 'radar',
+  '/products/interconnect': 'interconnect',
+};
+function cardKey(href: string): string {
+  return hrefToKey[href] || '';
+}
+
+---
+
+<Base title="Solutions - AceTec">
+  <!-- Cards use home.json (synced with Home page), header uses solutions.json -->
+  <AdminInline page="home" isAdmin={isAdmin} />
+
+  <section class="section pt-page">
+    <div class="container">
+      <div class="svc-header-grid">
+        <h1 class="text-6xl" {...eSol('title')} data-i18n="solutions.title">{d.title}</h1>
+        <p class="text-lg" {...eSol('description')} data-i18n="solutions.desc">{d.description}</p>
+      </div>
+      <div class={`svc-cards ${isAdmin ? 'is-admin' : ''}`}>
+        {
+          cards.map((item: any, i: number) => (
+            <div class="s-card" data-href={item.href || ''} style="position:relative;">
+              {isAdmin && (
+                <button class="admin-delete-btn" data-admin-delete={`solutionCards[${i}]`} title="Delete">
+                  &times;
+                </button>
+              )}
+              {item.image ? (
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                  {...img(`solutionCards[${i}].image`, 'service')}
+                />
+              ) : (
+                <div class="img-placeholder" {...img(`solutionCards[${i}].image`, 'service')}>
+                  Click to add image
+                </div>
+              )}
+              <h3 {...e(`solutionCards[${i}].title`)} {...((item.i18nKey || cardKey(item.href)) ? {'data-i18n': `solutionCards.${item.i18nKey || cardKey(item.href)}`} : {})}>{item.title}</h3>
+              <div class="s-subtitle" {...e(`solutionCards[${i}].subtitle`)} {...((item.i18nKey || cardKey(item.href)) ? {'data-i18n': `solutionCards.${item.i18nKey || cardKey(item.href)}Sub`} : {})}>
+                {item.subtitle}
+              </div>
+              <p class="s-desc" style={item.href === '/products/hpc' ? 'font-size:13px;' : ''} {...e(`solutionCards[${i}].description`)} {...((item.i18nKey || cardKey(item.href)) ? {'data-i18n': `solutionCards.${item.i18nKey || cardKey(item.href)}Desc`} : {})}>{item.description}</p>
+              {item.subcategories && item.subcategories.length > 0 && (
+                <ul class="s-subcats">
+                  {item.subcategories.map((sub: string, si: number) => (
+                    <li><a href={`${item.href}#section-${si}`} class="s-subcat-link" {...e(`solutionCards[${i}].subcategories[${si}]`)}>{sub}</a></li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))
+        }
+      </div>
+      {
+        isAdmin && (
+          <button
+            class="admin-add-btn"
+            data-admin-add="solutionCards"
+            data-admin-template='{"title":"New Solution","subtitle":"Description","description":"Details here","href":"/solutions","image":""}'
+            style="margin-top:16px;"
+          >
+            + Add Solution
+          </button>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="contact-bright section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-txt">
+          <h2 {...eSol('quoteCta.title')} data-i18n="solutions.requestQuote">{d.quoteCta.title}</h2>
+          <p {...eSol('quoteCta.description')} data-i18n="solutions.requestQuoteDesc">{d.quoteCta.description}</p>
+        </div>
+        <ContactForm prefix="svc" />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // 카드 클릭 시 href로 이동 (서브카테고리 링크 클릭은 제외)
+  document.querySelectorAll('.s-card[data-href]').forEach(card => {
+    card.addEventListener('click', (ev) => {
+      const target = ev.target as HTMLElement;
+      if (target.closest('.s-subcat-link') || target.closest('.admin-delete-btn') || target.closest('[data-edit]') || target.closest('[data-img]')) return;
+      const href = card.getAttribute('data-href');
+      if (href) window.location.href = href;
+    });
+  });
+</script>
+
+<style>
+  .svc-header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-3xl);
+  }
+  .svc-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+  .s-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--color-gray-100);
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow var(--transition-slow);
+  }
+  /* 관리자 모드: 인라인 편집 outline이 잘리지 않도록 overflow 해제 */
+  .is-admin .s-card {
+    overflow: visible;
+  }
+  .is-admin .s-desc {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+  .s-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+  .s-card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    transition: opacity var(--transition-slow);
+  }
+  .s-card:hover img {
+    opacity: 0.9;
+  }
+  .s-card h3 {
+    font-size: 25px;
+    margin: 0;
+    padding: 14px 14px 0;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .s-card .s-subtitle {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 4px 0 8px;
+    padding: 0 14px;
+  }
+  .s-card .s-desc {
+    font-size: 16px;
+    color: var(--color-gray-600);
+    line-height: 1.5;
+    padding: 0 14px 14px;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .s-subcats {
+    margin: 0;
+    padding: 0 14px 14px;
+    list-style: none;
+  }
+  .s-subcats li {
+    display: block;
+    border-left: 2px solid var(--color-gray-300);
+    padding: 3px 0 3px 10px;
+  }
+  .s-subcats li:hover {
+    border-left-color: var(--color-black);
+  }
+  .s-subcat-link {
+    font-size: 14px;
+    color: var(--color-gray-600);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .s-subcat-link:hover {
+    color: var(--color-black);
+  }
+  .contact-bright {
+    background: var(--color-bg-alt);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-5xl);
+    align-items: start;
+  }
+  .contact-txt h2 {
+    font-size: var(--font-size-6xl);
+    margin-bottom: var(--spacing-lg);
+  }
+  .contact-txt p {
+    font-size: var(--font-size-lg);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1200px) {
+    .svc-cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 768px) {
+    .svc-header-grid,
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    .svc-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .text-6xl {
+      font-size: var(--font-size-5xl);
+    }
+  }
+</style>

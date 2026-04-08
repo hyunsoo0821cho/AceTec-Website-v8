@@ -1,0 +1,75 @@
+{
+  "category": "interconnect",
+  "title": "초고속 데이터 인터커넥트 (High-Speed Interconnect)",
+  "pageTitle": "High-Speed Interconnect - AceTec",
+  "description": "PCIe 기반의 독자적인 통신 프로토콜을 활용하여 서버, GPU, 스토리지 간의 데이터 전송 지연을 극소화하고, 여러 대의 노드를 하나의 단일 시스템처럼 작동시키는 초고속 연산 클러스터를 구축합니다.",
+  "items": [],
+  "sections": [
+    {
+      "title": "PCIe Network Adapter",
+      "products": [
+        {
+          "name": "MXH532 PCIe 5.0 x16 Transparent Adapter",
+          "image": "/images/products/interconnect/MXH532 PCIe 5.0 x16 Transparent  Adapter.png",
+          "features": [
+            "성능 및 규격: PCIe Gen5(32 GT/s) 지원 및 하위 버전(1.0~5.0) 완벽 호환, 초저지연 성능(칩 100ns / 앱 간 600ns)",
+            "연결성: Quad SFF-8614 x4 커넥터 및 패시브 구리 케이블 지원",
+            "하드웨어 설계: Microchip Switchtec® Gen 5.0 PFX 탑재, LP-HL(Low Profile, Half Length) 폼팩터, 상태 표시 LED",
+            "주요 기능: RDMA(PIO/DMA) 지원, 클럭 격리 및 CFC/SSC 자동 지원, 멀티 설정을 위한 EEPROM 내장",
+            "소프트웨어: eXpressWare™ 소프트웨어 라이선스 포함"
+          ]
+        },
+        {
+          "name": "MXH930 PCIe NTB Adapter",
+          "image": "/images/products/interconnect/MXH930 PCIe NTB Adapter.png",
+          "features": [
+            "성능 및 인터페이스: PCIe Gen4(16 GT/s) 지원 및 하위 호환(Gen1~4), Microchip PM40036-PFX 칩셋 탑재, 100ns 미만의 초저지연(Cut-Through) 성능",
+            "연결성 및 케이블: Quad SFF-8644 커넥터 사용, 구리(Copper) 및 광(Fiber-optic) 케이블 지원, CMI 및 non-CMI 케이블 호환",
+            "유연한 포트 구성: 1개(x16), 2개(x8), 4개(x4) 등 다양한 포트 구성 옵션 제공",
+            "클러스터링 및 확장성: 2~5 노드 클러스터 구성 지원, MXS924와 결합 시 최대 64~128 노드까지 확장 가능",
+            "주요 기능: RDMA(PIO 및 DMA*) 지원, Full Host Clock Isolation 및 CFC/SSC 자동 지원, 커스텀 설정을 위한 EEPROM 내장 (*DMA는 개발 중)",
+            "하드웨어 설계: LP(Low Profile) 폼팩터, 전면부 링크 상태 LED 탑재"
+          ]
+        },
+        {
+          "name": "MXH932 PCIe Transparent Adapter",
+          "image": "/images/products/interconnect/MXH932 PCIe Transparent Adapter.png",
+          "features": [
+            "인터페이스 및 성능: PCIe Gen4(16 GT/s) 지원 및 하위 호환(Gen1~4), 100ns 미만의 초저지연(Cut-Through) 성능, Microchip PM40036-PFX 칩셋 탑재",
+            "연결성 및 케이블: Quad SFF-8644 커넥터 기반, 구리(Copper) 및 광(Fiber-optic) 케이블 지원, CMI 지원 PCIe 4.0 케이블 호환",
+            "유연한 포트 구성 (MXH932): 사용자 필요에 따라 x16 1개, x8 2개, x4 4개 포트로 가변 구성 가능",
+            "시스템 확장성: MXS924와 결합하여 대규모 I/O 확장 시스템(I/O Expansion Systems) 구축 및 스케일링 지원",
+            "하드웨어 및 신뢰성: LP(Low Profile) 폼팩터, 클럭 격리(Clock Isolation) 및 CFC/SSC 자동 지원, 전면 상태 LED 및 커스텀용 EEPROM 내장"
+          ]
+        },
+        {
+          "name": "PXH830 PCIe NTB Adapter",
+          "image": "/images/products/interconnect/PXH830 PCIe NTB Adapter.png",
+          "features": [
+            "인터페이스 및 성능: PCIe Gen3(8.0 Gbps/lane) 지원 및 하위 호환(Gen1~3), RDMA(PIO 및 DMA) 지원",
+            "유연한 포트 구성: 4개의 x4 Gen3 케이블 포트를 탑재하여 사용자 필요에 따라 1x16 또는 2x8 포트로 유연하게 구성 가능",
+            "연결성: SFF-8644(iPass+ HD / MiniSAS-HD®) 커넥터 기반, 구리(Copper) 및 광(Fiber-optic) 케이블 모두 지원",
+            "브릿징 및 기술: 최대 2개의 NTB(Non-transparent bridging) 포트 지원, 호스트 클럭 격리(Full host clock isolation) 및 CFC/SSC 동시 지원",
+            "하드웨어 설계: LP(Low Profile) 폼팩터, 전면 링크 상태 LED, 사용자 맞춤 설정을 위한 EEPROM 내장"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Superfast Interconnect Switch",
+      "products": [
+        {
+          "name": "MXS924 PCIe 4.0 Switch",
+          "image": "/images/products/interconnect/MXS924 PCIe 4.0 Switch.png",
+          "features": [
+            "성능 및 규격: PCIe 4.0(16 GT/s) 지원 및 하위 호환(Gen 1~4), 고성능 Microchip PFX Gen4 칩셋 탑재",
+            "포트 및 연결성: 총 24개의 PCIe 4.0 x4 포트(SFF-8644 커넥터) 제공, 구리 및 광케이블 지원, 유지보수가 용이한 핫플러그(Hot-plug) 지원",
+            "시스템 관리: 이더넷(Ethernet) 기반의 원격 관리 및 모니터링 기능, 전면 패널의 상태 LED를 통한 직관적인 포트 확인",
+            "하드웨어 설계: 표준 19인치 1U 랙마운트 섀시 적용, 다중 스위치 구성을 통한 유연한 확장성(Scalable) 제공"
+          ]
+        }
+      ]
+    }
+  ],
+  "companyDescription": "Trusted for over 30 years in embedded computing, industrial PCs, and safety-critical systems — serving defense, aerospace, railway, and industrial markets."
+}

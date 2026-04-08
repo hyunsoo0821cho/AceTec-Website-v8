@@ -1,0 +1,129 @@
+{
+  "nav": {
+    "solutions": "解決方案",
+    "applications": "應用領域",
+    "about": "關於我們",
+    "history": "發展歷程",
+    "contact": "聯絡我們",
+    "login": "登入",
+    "inquiry": "詢價"
+  },
+  "home": {
+    "heroTitle": "關鍵任務嵌入式運算與工業解決方案",
+    "heroDesc": "超過30年的專業經驗，為國防、航太、鐵路及工業應用提供嵌入式運算、工業電腦及安全關鍵系統。",
+    "exploreBtn": "探索解決方案",
+    "quoteBtn": "索取報價",
+    "solutions": "解決方案",
+    "viewAll": "查看所有解決方案",
+    "featuredProducts": "精選產品",
+    "ourSolutions": "我們的解決方案",
+    "consultTitle": "需要客製化解決方案？",
+    "consultDesc": "我們的工程師提供端到端的顧問服務——從平台選型、系統設計到部署及持續支援——滿足您的關鍵任務應用需求。",
+    "consultBtn": "預約諮詢",
+    "serviceTitle": "全方位服務解決方案",
+    "serviceDesc": "從初步系統諮詢到最終交付，我們支援您專案的每一個階段。",
+    "aboutTitle": "關於 AceTec",
+    "aboutBtn": "我們的故事",
+    "partners": "技術合作夥伴",
+    "learnMore": "深入了解",
+    "contactTitle": "聯絡我們",
+    "contactDesc": "無論您需要產品報價、技術諮詢，還是想探討合作機會，我們的工程團隊隨時為您服務。"
+  },
+  "solutions": {
+    "title": "解決方案",
+    "requestQuote": "索取報價",
+    "requestQuoteDesc": "分享您的專案需求，我們的工程團隊將在兩個工作日內提供量身打造的解決方案提案。"
+  },
+  "applications": {
+    "title": "應用領域",
+    "bookConsult": "預約諮詢",
+    "faqs": "常見問題"
+  },
+  "about": {
+    "title": "關於我們"
+  },
+  "history": {
+    "title": "歷史與實績",
+    "desc": "從1994年至今，在嵌入式運算、國防系統及工業技術領域擁有超過30年的創新歷程。"
+  },
+  "contact": {
+    "title": "聯絡我們",
+    "directions": "交通指引",
+    "subway": "捷運",
+    "byCar": "開車前往"
+  },
+  "products": {
+    "backToHome": "← 返回首頁",
+    "viewCatalog": "查看完整目錄",
+    "military": "軍事與航太",
+    "railway": "軌道運輸",
+    "telecom": "通訊與網路",
+    "industrial": "工業自動化",
+    "sensor": "感測器建模與模擬",
+    "hpc": "高效能運算",
+    "radar": "雷達處理與顯示",
+    "ipc": "工業電腦",
+    "ai": "AI 中心"
+  },
+  "chat": {
+    "pillText": "詢問我們的產品",
+    "placeholder": "輸入您的問題...",
+    "welcome": "歡迎！我是 AceTec 的 AI 助理。我可以協助您：",
+    "productSpecs": "產品規格",
+    "solutionRec": "解決方案推薦",
+    "companyInfo": "公司資訊",
+    "contactDetails": "聯絡資訊",
+    "send": "發送",
+    "close": "關閉",
+    "assistant": "AceTec AI 助理"
+  },
+  "form": {
+    "name": "姓名",
+    "firstName": "名",
+    "firstNameReq": "（必填）",
+    "lastName": "姓",
+    "lastNameReq": "（必填）",
+    "email": "電子郵件",
+    "emailReq": "（必填）",
+    "message": "訊息",
+    "messageReq": "（必填）",
+    "newsletter": "訂閱最新消息與更新",
+    "submit": "提交",
+    "sent": "已送出！",
+    "fillRequired": "請填寫所有必填欄位。",
+    "sentSuccess": "訊息已成功送出！"
+  },
+  "catalog": {
+    "title": "完整產品目錄",
+    "desc": "涵蓋16個類別共108項產品的完整列表。"
+  },
+  "footer": {
+    "company": "公司資訊",
+    "partners": "合作夥伴",
+    "contact": "聯絡我們",
+    "rights": "All rights reserved."
+  },
+  "lang": {
+    "label": "Language",
+    "ko": "한국어",
+    "en": "English",
+    "ja": "日本語",
+    "zh-TW": "繁體中文",
+    "de": "Deutsch",
+    "fr": "Français",
+    "es": "Español",
+    "pt": "Português",
+    "it": "Italiano",
+    "nl": "Nederlands",
+    "ru": "Русский",
+    "ar": "العربية",
+    "th": "ไทย",
+    "vi": "Tiếng Việt",
+    "id": "Bahasa Indonesia",
+    "ms": "Bahasa Melayu",
+    "tr": "Türkçe",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "hi": "हिन्दी"
+  }
+}

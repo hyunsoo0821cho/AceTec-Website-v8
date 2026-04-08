@@ -1,0 +1,310 @@
+---
+/**
+ * Header - 고정 네비게이션 바
+ * 다국어 지원 (data-i18n 속성)
+ * 메가메뉴 데이터는 megamenu.json에서 로드 (관리자 인라인 편집 지원)
+ */
+import LangSwitcher from './LangSwitcher.astro';
+import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import fs from 'fs';
+import path from 'path';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+// 관리자 여부 확인
+let isAdmin = false;
+try {
+  const cookie = Astro.request.headers.get('cookie');
+  isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+} catch { /* prerender 페이지에서는 무시 */ }
+
+const navLinks = [
+  { href: '/solutions', label: 'Solutions', i18nKey: 'nav.solutions' },
+  { href: '/catalog', label: 'Products', i18nKey: 'nav.productsIntro', hasMega: true },
+  { href: '/applications', label: 'Applications', i18nKey: 'nav.applications' },
+  { href: '/about', label: 'About', i18nKey: 'nav.about' },
+  { href: '/history', label: 'History', i18nKey: 'nav.history' },
+  { href: '/contact', label: 'Contact', i18nKey: 'nav.contact' },
+  { href: '/login', label: 'Login', i18nKey: 'nav.login' },
+];
+
+// 메가메뉴 데이터 JSON에서 로드
+const root = process.cwd();
+const megaData = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'megamenu.json'), 'utf-8'));
+const megaCategories = megaData.categories || [];
+
+// 관리자 인라인 편집 헬퍼
+function eMega(p: string) {
+  return isAdmin ? { 'data-edit': p, 'data-edit-page': 'megamenu' } : {};
+}
+---
+
+<header class="header" id="mainHeader">
+  <a class="site-logo" href="/"><img src="/images/logo.png" alt="AceTec" /></a>
+  <nav class="nav-right" aria-label="Main navigation">
+    {
+      navLinks.map(({ href, label, i18nKey, hasMega }: any) => (
+        hasMega ? (
+          <div class="nav-dropdown">
+            <a
+              class:list={['nav-link', { active: currentPath === href }]}
+              href={href}
+              aria-current={currentPath === href ? 'page' : undefined}
+              data-i18n={i18nKey}
+            >
+              {label}
+            </a>
+            <div class="mega-menu">
+              <div class="mega-grid">
+                {megaCategories.map((cat: any, ci: number) => (
+                  <a href={cat.href} class="mega-title" {...eMega(`categories[${ci}].title`)}>{cat.title}</a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <a
+            class:list={['nav-link', { active: currentPath === href }]}
+            href={href}
+            aria-current={currentPath === href ? 'page' : undefined}
+            data-i18n={i18nKey}
+          >
+            {label}
+          </a>
+        )
+      ))
+    }
+    <a class="btn-book" href="/contact" data-i18n="nav.inquiry">Inquiry</a>
+    <LangSwitcher />
+  </nav>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+{isAdmin && (
+  <script>
+    // 관리자 모드: 메가메뉴 편집 시 메뉴 고정
+    document.addEventListener('DOMContentLoaded', () => {
+      const mega = document.querySelector('.mega-menu');
+      if (!mega) return;
+      // 메가메뉴 내 editable 클릭 시 메뉴 고정
+      mega.addEventListener('click', (ev) => {
+        const target = (ev.target as HTMLElement).closest('[data-edit]');
+        if (target) mega.classList.add('pinned');
+      });
+      // 편집 완료(blur) 시 고정 해제
+      mega.addEventListener('focusout', (ev) => {
+        const related = (ev as FocusEvent).relatedTarget as HTMLElement | null;
+        if (!related || !mega.contains(related)) {
+          mega.classList.remove('pinned');
+        }
+      });
+      // ESC로 고정 해제
+      mega.addEventListener('keydown', (ev) => {
+        if ((ev as KeyboardEvent).key === 'Escape') mega.classList.remove('pinned');
+      });
+    });
+  </script>
+)}
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-header);
+    padding: 22px var(--spacing-4xl);
+    padding-top: max(22px, env(safe-area-inset-top));
+    padding-left: max(var(--container-padding), env(safe-area-inset-left));
+    padding-right: max(var(--container-padding), env(safe-area-inset-right));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition:
+      background var(--transition-slow),
+      box-shadow var(--transition-slow);
+  }
+
+  .header.scrolled {
+    box-shadow: var(--shadow-header);
+  }
+
+  .header.transparent {
+    background: transparent;
+    backdrop-filter: none;
+  }
+  .header.transparent .site-logo img,
+  .header.transparent .nav-link {
+    color: var(--color-white);
+  }
+  .header.transparent .btn-book {
+    background: transparent;
+    border: 2px solid var(--color-white);
+    color: var(--color-white);
+  }
+  .header.transparent .hamburger span {
+    background: var(--color-white);
+  }
+
+  .site-logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity var(--transition-base);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .site-logo img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+  }
+  .site-logo:hover {
+    opacity: 0.6;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+
+  .nav-link {
+    font-size: var(--font-size-md);
+    font-weight: 400;
+    color: var(--color-black);
+    cursor: pointer;
+    transition: opacity var(--transition-base);
+    text-decoration: none;
+  }
+
+  .nav-link:hover {
+    opacity: 0.6;
+  }
+
+  .nav-link.active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  /* Mega Menu */
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .mega-menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    padding: var(--spacing-2xl) var(--container-padding);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+    z-index: 999;
+  }
+
+  .nav-dropdown:hover .mega-menu,
+  .mega-menu.pinned {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .mega-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .mega-title {
+    display: block;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: #1e293b;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .mega-title:hover {
+    background: #f1f5f9;
+    color: #2563eb;
+  }
+
+  .mega-item {
+    font-size: 13px;
+    color: var(--color-gray-700);
+    padding: 3px 0;
+    line-height: 1.4;
+  }
+
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: var(--spacing-sm);
+    z-index: var(--z-hamburger);
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-black);
+    margin: 5px 0;
+    transition: all var(--transition-slow);
+  }
+
+  .hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  .mobile-cart-count {
+    display: none;
+    font-size: var(--font-size-base);
+    color: var(--color-black);
+    margin-right: var(--spacing-md);
+    font-family: var(--font-family);
+  }
+
+  @media (max-width: 1024px) {
+    .header {
+      padding: 18px 30px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      padding: 16px 20px;
+    }
+    .nav-right {
+      display: none;
+    }
+    .hamburger {
+      display: block;
+    }
+  }
+</style>

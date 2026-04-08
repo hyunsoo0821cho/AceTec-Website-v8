@@ -1,0 +1,60 @@
+---
+/**
+ * BackToTop - 상단으로 스크롤 버튼
+ * v7 index.html back-to-top 에서 추출
+ */
+---
+
+<button class="back-to-top" aria-label="Back to top">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2.5"
+    aria-hidden="true"
+  >
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+
+<style>
+  .back-to-top {
+    position: fixed;
+    bottom: calc(80px + env(safe-area-inset-bottom));
+    right: max(28px, env(safe-area-inset-right));
+    z-index: var(--z-back-top);
+    width: 44px;
+    height: 44px;
+    background: var(--color-black);
+    color: var(--color-white);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-slow);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (hover: hover) {
+    .back-to-top:hover {
+      background: var(--color-gray-900);
+      transform: translateY(-2px);
+    }
+  }
+
+  .back-to-top:active {
+    transform: translateY(0) scale(0.9);
+    transition: all var(--transition-fast);
+  }
+</style>

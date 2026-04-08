@@ -1,0 +1,173 @@
+---
+/**
+ * AdminBar - 관리자 로그인 시 인라인 편집 모드 활성화
+ * 상단 고정 바 + contenteditable 스크립트
+ */
+interface Props {
+  page: string;
+}
+const { page } = Astro.props;
+---
+
+<div class="admin-bar" id="adminBar">
+  <div class="admin-bar-inner">
+    <span class="admin-bar-label">Admin Mode — Editing: <strong>{page}</strong></span>
+    <div class="admin-bar-actions">
+      <span class="admin-bar-status" id="adminStatus"></span>
+      <button class="admin-btn admin-btn-save" id="adminSave">Save Changes</button>
+      <a href="/admin" class="admin-btn admin-btn-dash">Dashboard</a>
+      <form method="POST" action="/api/auth/logout" style="display:inline;">
+        <button type="submit" class="admin-btn admin-btn-logout">Logout</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  .admin-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99999;
+    background: #1e293b;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 13px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .admin-bar-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 8px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .admin-bar-label { color: #94a3b8; }
+  .admin-bar-label strong { color: #fff; }
+  .admin-bar-actions { display: flex; gap: 8px; align-items: center; }
+  .admin-bar-status { font-size: 12px; color: #4ade80; margin-right: 8px; }
+  .admin-btn {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .admin-btn-save { background: #2563eb; color: #fff; }
+  .admin-btn-save:hover { background: #1d4ed8; }
+  .admin-btn-dash { background: #334155; color: #cbd5e1; }
+  .admin-btn-dash:hover { background: #475569; }
+  .admin-btn-logout { background: transparent; color: #94a3b8; border: 1px solid #475569; }
+  .admin-btn-logout:hover { color: #fff; border-color: #64748b; }
+</style>
+
+<script define:vars={{ page }}>
+  // Inline edit system
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add body padding for admin bar
+    const barHeight = document.getElementById('adminBar').offsetHeight;
+    document.body.style.paddingTop = barHeight + 'px';
+
+    // Make all [data-edit] elements editable
+    const editables = document.querySelectorAll('[data-edit]');
+
+    editables.forEach(el => {
+      // Visual hint
+      el.style.cursor = 'pointer';
+      el.style.transition = 'outline 0.15s, background 0.15s';
+      el.style.borderRadius = '4px';
+
+      el.addEventListener('mouseenter', () => {
+        if (!el.isContentEditable) {
+          el.style.outline = '2px dashed #3b82f6';
+          el.style.outlineOffset = '4px';
+          el.style.background = 'rgba(59,130,246,0.05)';
+        }
+      });
+
+      el.addEventListener('mouseleave', () => {
+        if (!el.isContentEditable) {
+          el.style.outline = 'none';
+          el.style.background = '';
+        }
+      });
+
+      el.addEventListener('click', (e) => {
+        if (el.isContentEditable) return;
+        e.preventDefault();
+        e.stopPropagation();
+        el.contentEditable = 'true';
+        el.style.outline = '2px solid #2563eb';
+        el.style.outlineOffset = '4px';
+        el.style.background = 'rgba(59,130,246,0.08)';
+        el.focus();
+      });
+
+      el.addEventListener('blur', () => {
+        el.contentEditable = 'false';
+        el.style.outline = 'none';
+        el.style.background = '';
+      });
+
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          el.contentEditable = 'false';
+          el.style.outline = 'none';
+          el.style.background = '';
+          el.blur();
+        }
+      });
+    });
+
+    // Save button
+    document.getElementById('adminSave').addEventListener('click', async () => {
+      const status = document.getElementById('adminStatus');
+      status.textContent = 'Saving...';
+      status.style.color = '#fbbf24';
+
+      // Collect current page data
+      const res = await fetch(`/api/pages/${page}`);
+      if (!res.ok) { status.textContent = 'Error loading data'; status.style.color = '#f87171'; return; }
+      const data = await res.json();
+
+      // Update data from DOM
+      editables.forEach(el => {
+        const path = el.getAttribute('data-edit');
+        const value = el.innerText.trim();
+        setByPath(data, path, value);
+      });
+
+      // Save
+      const saveRes = await fetch(`/api/pages/${page}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (saveRes.ok) {
+        status.textContent = 'Saved!';
+        status.style.color = '#4ade80';
+        setTimeout(() => { status.textContent = ''; }, 2000);
+      } else {
+        status.textContent = 'Save failed';
+        status.style.color = '#f87171';
+      }
+    });
+
+    function setByPath(obj, pathStr, value) {
+      const parts = pathStr.replace(/\[(\d+)\]/g, '.$1').split('.');
+      let current = obj;
+      for (let i = 0; i < parts.length - 1; i++) {
+        const key = isNaN(parts[i]) ? parts[i] : parseInt(parts[i]);
+        current = current[key];
+      }
+      const lastKey = isNaN(parts[parts.length - 1]) ? parts[parts.length - 1] : parseInt(parts[parts.length - 1]);
+      current[lastKey] = value;
+    }
+  });
+</script>

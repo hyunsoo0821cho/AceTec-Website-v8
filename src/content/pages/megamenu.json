@@ -1,0 +1,16 @@
+{
+  "categories": [
+    { "title": "Industrial PCs", "href": "/products/ipc" },
+    { "title": "Network Appliance", "href": "/products/telecom" },
+    { "title": "Device Cloud (IoT)", "href": "/products/industrial" },
+    { "title": "Form Factor \u2014 Abaco", "href": "/products/military" },
+    { "title": "HIMA Railway", "href": "/products/railway" },
+    { "title": "High Performance Computing", "href": "/products/hpc" },
+    { "title": "Embedded Digital Signal Processing", "href": "/products/military" },
+    { "title": "Real-Time Operating System", "href": "/products/industrial" },
+    { "title": "Sensor Modeling & Simulation", "href": "/products/sensor" },
+    { "title": "Middleware Software", "href": "/products/telecom" },
+    { "title": "Radar Processing System", "href": "/products/radar" },
+    { "title": "PCIe Fabric & Low Latency Networking", "href": "/products/interconnect" }
+  ]
+}

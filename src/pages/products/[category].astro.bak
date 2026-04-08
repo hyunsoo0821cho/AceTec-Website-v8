@@ -1,0 +1,28 @@
+---
+export const prerender = true;
+
+import Base from '../../layouts/Base.astro';
+import ProductGrid from '../../components/ProductGrid.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allProducts = await getCollection('products');
+  return allProducts.map((entry) => ({
+    params: { category: entry.data.category },
+    props: { product: entry.data },
+  }));
+}
+
+const { product } = Astro.props;
+---
+
+<Base title={product.pageTitle}>
+  <section class="section pt-page">
+    <div class="container">
+      <h1 class="heading-page">{product.title}</h1>
+      <p class="heading-sub color-muted">{product.description}</p>
+      <ProductGrid items={product.items} />
+      <div class="mt-xl"><a href="/solutions" class="btn-secondary">&larr; BACK TO ALL SOLUTIONS</a></div>
+    </div>
+  </section>
+</Base>
