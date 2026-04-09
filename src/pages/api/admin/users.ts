@@ -13,7 +13,7 @@ function auth(request: Request) {
 // 사용자 목록
 export const GET: APIRoute = async ({ request }) => {
   if (!auth(request)) return Response.json({ error: 'Unauthorized' }, { status: 401 });
-  const users = getDb().prepare('SELECT id, username, role, display_name FROM admins ORDER BY id').all();
+  const users = getDb().prepare('SELECT id, username, role, display_name, email, phone, bio, avatar_url FROM admins ORDER BY id').all();
   return Response.json(users);
 };
 
@@ -39,13 +39,13 @@ export const POST: APIRoute = async ({ request }) => {
 export const PUT: APIRoute = async ({ request }) => {
   if (!auth(request)) return Response.json({ error: 'Unauthorized' }, { status: 401 });
   const body = await request.json();
-  const { id, username, password, role, display_name } = body;
+  const { id, username, password, role, display_name, phone, bio } = body;
   if (!id) return Response.json({ error: 'ID required' }, { status: 400 });
   if (password) {
     const hash = bcrypt.hashSync(password, 10);
-    getDb().prepare('UPDATE admins SET username = ?, password_hash = ?, role = ?, display_name = ? WHERE id = ?').run(username, hash, role, display_name || '', id);
+    getDb().prepare('UPDATE admins SET username = ?, password_hash = ?, role = ?, display_name = ?, phone = ?, bio = ? WHERE id = ?').run(username, hash, role, display_name || '', phone || '', bio || '', id);
   } else {
-    getDb().prepare('UPDATE admins SET username = ?, role = ?, display_name = ? WHERE id = ?').run(username, role, display_name || '', id);
+    getDb().prepare('UPDATE admins SET username = ?, role = ?, display_name = ?, phone = ?, bio = ? WHERE id = ?').run(username, role, display_name || '', phone || '', bio || '', id);
   }
   getDb().prepare('INSERT INTO audit_logs (action, detail, created_at) VALUES (?, ?, ?)').run('user_update', `Updated user #${id}: ${username}`, Date.now());
   return Response.json({ ok: true });

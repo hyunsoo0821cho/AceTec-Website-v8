@@ -97,6 +97,11 @@ if (!currentUser || currentUser.role !== 'admin') return Astro.redirect('/');
     .log-detail { color: #64748b; }
     .log-time { color: #94a3b8; font-size: 12px; flex-shrink: 0; }
 
+    /* Avatar */
+    .user-avatar { width:32px;height:32px;border-radius:50%;object-fit:cover;background:#e2e8f0; }
+    .user-info { display:flex;align-items:center;gap:8px; }
+    td.td-email, td.td-phone { font-size:13px;color:#64748b; }
+
     /* Responsive */
     @media (max-width: 768px) {
       .stats { grid-template-columns: repeat(2, 1fr); }
@@ -150,10 +155,10 @@ if (!currentUser || currentUser.role !== 'admin') return Astro.redirect('/');
       </div>
       <table>
         <thead>
-          <tr><th>ID</th><th>Username</th><th>Display Name</th><th>Role</th><th>Actions</th></tr>
+          <tr><th></th><th>Username</th><th>Display Name</th><th>Email</th><th>Phone</th><th>Role</th><th>Actions</th></tr>
         </thead>
         <tbody id="userTableBody">
-          <tr><td colspan="5" style="text-align:center;color:#94a3b8;">Loading...</td></tr>
+          <tr><td colspan="7" style="text-align:center;color:#94a3b8;">Loading...</td></tr>
         </tbody>
       </table>
     </div>
@@ -178,25 +183,38 @@ if (!currentUser || currentUser.role !== 'admin') return Astro.redirect('/');
     <div class="modal">
       <h3 id="modalTitle">Add User</h3>
       <input type="hidden" id="modalUserId" />
-      <div class="field">
-        <label>Username</label>
-        <input type="text" id="modalUsername" placeholder="Enter username" />
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="field">
+          <label>Username</label>
+          <input type="text" id="modalUsername" placeholder="Enter username" />
+        </div>
+        <div class="field">
+          <label>Display Name</label>
+          <input type="text" id="modalDisplayName" placeholder="Enter display name" />
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="field">
+          <label>Password <span id="pwHint" style="font-weight:400;color:#94a3b8;"></span></label>
+          <input type="password" id="modalPassword" placeholder="Enter password" />
+        </div>
+        <div class="field">
+          <label>Role</label>
+          <select id="modalRole">
+            <option value="admin">Admin</option>
+            <option value="sales">Sales</option>
+            <option value="customer">Customer</option>
+            <option value="person">Person</option>
+          </select>
+        </div>
       </div>
       <div class="field">
-        <label>Display Name</label>
-        <input type="text" id="modalDisplayName" placeholder="Enter display name" />
+        <label>Phone</label>
+        <input type="tel" id="modalPhone" placeholder="010-1234-5678" />
       </div>
       <div class="field">
-        <label>Password <span id="pwHint" style="font-weight:400;color:#94a3b8;"></span></label>
-        <input type="password" id="modalPassword" placeholder="Enter password" />
-      </div>
-      <div class="field">
-        <label>Role</label>
-        <select id="modalRole">
-          <option value="admin">Admin</option>
-          <option value="sales">Sales</option>
-          <option value="customer">Customer</option>
-        </select>
+        <label>Bio</label>
+        <textarea id="modalBio" rows="2" placeholder="간단한 소개" style="width:100%;padding:9px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;font-family:inherit;resize:vertical;"></textarea>
       </div>
       <div class="modal-actions">
         <button class="btn btn-cancel" id="modalCancel">Cancel</button>
@@ -241,36 +259,47 @@ if (!currentUser || currentUser.role !== 'admin') return Astro.redirect('/');
         if (!res.ok) return;
         const users = await res.json();
         if (users.length === 0) {
-          userTable.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#94a3b8;">No users</td></tr>';
+          userTable.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#94a3b8;">No users</td></tr>';
           return;
         }
         userTable.innerHTML = users.map((u: any) => `
           <tr>
-            <td>${u.id}</td>
+            <td><img class="user-avatar" src="${u.avatar_url || '/images/misc/default-avatar.svg'}" alt="" /></td>
             <td><strong>${esc(u.username)}</strong></td>
             <td>${esc(u.display_name || '-')}</td>
+            <td class="td-email">${esc(u.email || '-')}</td>
+            <td class="td-phone">${esc(u.phone || '-')}</td>
             <td><span class="role-badge role-${u.role || 'admin'}">${u.role || 'admin'}</span></td>
             <td>
               <div class="btn-group">
-                <button class="btn btn-sm btn-edit" onclick="editUser(${u.id}, '${esc(u.username)}', '${esc(u.display_name || '')}', '${u.role || 'admin'}')">Edit</button>
+                <button class="btn btn-sm btn-edit" data-edit-user='${JSON.stringify({id:u.id,username:u.username,display_name:u.display_name||'',role:u.role||'admin',phone:u.phone||'',bio:u.bio||''})}'>Edit</button>
                 <button class="btn btn-sm btn-danger" onclick="deleteUser(${u.id}, '${esc(u.username)}')">Delete</button>
               </div>
             </td>
           </tr>
         `).join('');
+        // Edit 버튼 이벤트 바인딩
+        userTable.querySelectorAll('[data-edit-user]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const u = JSON.parse(btn.getAttribute('data-edit-user')!);
+            openModal('Edit User', u.id, u.username, u.display_name, u.role, u.phone, u.bio);
+          });
+        });
       } catch {}
     }
 
     function esc(s: string) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
     // Modal
-    function openModal(title: string, id: number | null, username: string, displayName: string, role: string) {
+    function openModal(title: string, id: number | null, username: string, displayName: string, role: string, phone: string = '', bio: string = '') {
       (document.getElementById('modalTitle') as HTMLElement).textContent = title;
       (document.getElementById('modalUserId') as HTMLInputElement).value = id ? String(id) : '';
       (document.getElementById('modalUsername') as HTMLInputElement).value = username;
       (document.getElementById('modalDisplayName') as HTMLInputElement).value = displayName;
       (document.getElementById('modalPassword') as HTMLInputElement).value = '';
       (document.getElementById('modalRole') as HTMLSelectElement).value = role;
+      (document.getElementById('modalPhone') as HTMLInputElement).value = phone;
+      (document.getElementById('modalBio') as HTMLTextAreaElement).value = bio;
       (document.getElementById('pwHint') as HTMLElement).textContent = id ? '(leave blank to keep)' : '';
       modal.classList.add('open');
     }
@@ -304,7 +333,10 @@ if (!currentUser || currentUser.role !== 'admin') return Astro.redirect('/');
       if (!username) { alert('Username is required'); return; }
       if (!id && !password) { alert('Password is required for new users'); return; }
 
-      const body: any = { username, role, display_name: displayName };
+      const phone = (document.getElementById('modalPhone') as HTMLInputElement).value.trim();
+      const bio = (document.getElementById('modalBio') as HTMLTextAreaElement).value.trim();
+
+      const body: any = { username, role, display_name: displayName, phone, bio };
       if (password) body.password = password;
       if (id) body.id = parseInt(id);
 
