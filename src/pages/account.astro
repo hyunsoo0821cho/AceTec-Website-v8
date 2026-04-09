@@ -23,6 +23,7 @@ if (!sessionId) return Astro.redirect('/login');
         <h2 id="profileName">-</h2>
         <p class="profile-role" id="profileRole">-</p>
         <p class="profile-email" id="profileEmail">-</p>
+        <button class="btn-logout" id="logoutBtn">로그아웃</button>
       </div>
 
       <!-- 기본 정보 -->
@@ -138,6 +139,20 @@ if (!sessionId) return Astro.redirect('/login');
   .profile-card h2 { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
   .profile-role { font-size: 13px; color: #64748b; text-transform: uppercase; font-weight: 600; letter-spacing: 0.04em; }
   .profile-email { font-size: 14px; color: #94a3b8; margin-top: 4px; }
+  .btn-logout {
+    margin-top: 16px;
+    padding: 10px 32px;
+    border: 1px solid #ef4444;
+    border-radius: 10px;
+    background: #fff;
+    color: #ef4444;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .btn-logout:hover { background: #fef2f2; }
 
   /* 기본 정보 */
   .card-header {
@@ -297,6 +312,12 @@ if (!sessionId) return Astro.redirect('/login');
     } else {
       toast(data.error || '업로드 실패');
     }
+  });
+
+  // 로그아웃
+  document.getElementById('logoutBtn')!.addEventListener('click', async () => {
+    await fetch('/api/auth/logout', { method: 'POST' });
+    window.location.href = '/';
   });
 
   loadProfile();
