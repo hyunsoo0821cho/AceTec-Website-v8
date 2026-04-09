@@ -101,6 +101,9 @@ const currentPath = Astro.url.pathname;
 
       hamburger?.addEventListener('click', toggleMenu);
 
+      // 모바일 메뉴 닫기 버튼 (모바일 미리보기용)
+      document.getElementById('mobileMenuClose')?.addEventListener('click', closeMenu);
+
       // Close menu when a link inside mobile menu is clicked (v7 router.js closeMenu pattern)
       mobileMenu?.querySelectorAll('a').forEach((link) => {
         link.addEventListener('click', () => closeMenu());
@@ -235,29 +238,103 @@ const currentPath = Astro.url.pathname;
         const fnameEl = wrapper.querySelector('[id$="-fname"]') as HTMLInputElement;
         const lnameEl = wrapper.querySelector('[id$="-lname"]') as HTMLInputElement;
         const emailEl = wrapper.querySelector('[id$="-email"]') as HTMLInputElement;
+        const phoneEl = wrapper.querySelector('[id$="-phone"]') as HTMLInputElement;
         const msgEl = wrapper.querySelector('textarea') as HTMLTextAreaElement;
-        const name = ((lnameEl?.value || '') + ' ' + (fnameEl?.value || '')).trim();
+        const name = ((fnameEl?.value || '') + ' ' + (lnameEl?.value || '')).trim();
         const senderEmail = emailEl?.value || '';
+        const phone = phoneEl?.value || '';
         const message = msgEl?.value || '';
 
-        // mailto로 Outlook 열기
-        const subject = encodeURIComponent('[AceTec 문의] ' + name);
-        const body = encodeURIComponent(
+        const to = 'acetec@acetec-korea.co.kr';
+        const subjectText = '[AceTec 문의] ' + name + ' - 제품 문의';
+        const bodyText =
           '성명: ' + name + '\n' +
           '이메일: ' + senderEmail + '\n' +
-          '\n' + message
-        );
-        window.location.href = 'mailto:acetec@acetec-korea.co.kr?subject=' + subject + '&body=' + body;
+          (phone ? '전화번호: ' + phone + '\n' : '') +
+          '\n' + message;
 
-        el.textContent = 'SENT!';
-        el.classList.add('btn-sent');
+        // Gmail / Outlook 선택 모달
+        let overlay = document.getElementById('emailChoiceOverlay');
+        if (!overlay) {
+          overlay = document.createElement('div');
+          overlay.id = 'emailChoiceOverlay';
+          overlay.innerHTML = `
+            <div class="email-choice-modal">
+              <h3>이메일 앱 선택</h3>
+              <p>어떤 이메일로 보내시겠습니까?</p>
+              <div class="email-choice-btns">
+                <button data-choice="gmail" class="email-choice-btn gmail-btn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" stroke="currentColor" stroke-width="2"/><path d="m2 6 10 7L22 6" stroke="currentColor" stroke-width="2"/></svg>
+                  Gmail
+                </button>
+                <button data-choice="outlook" class="email-choice-btn outlook-btn">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" stroke="currentColor" stroke-width="2"/><path d="m2 6 10 7L22 6" stroke="currentColor" stroke-width="2"/></svg>
+                  Outlook
+                </button>
+              </div>
+              <button class="email-choice-cancel">취소</button>
+            </div>
+          `;
+          document.body.appendChild(overlay);
 
-        showToast('Message sent successfully!');
+          // 스타일 삽입
+          if (!document.getElementById('emailChoiceStyle')) {
+            const style = document.createElement('style');
+            style.id = 'emailChoiceStyle';
+            style.textContent = `
+              #emailChoiceOverlay { position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:99999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s; }
+              #emailChoiceOverlay.open { opacity:1;pointer-events:auto; }
+              .email-choice-modal { background:#fff;border-radius:16px;padding:32px;width:90%;max-width:400px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.15); }
+              .email-choice-modal h3 { font-size:20px;font-weight:700;margin-bottom:8px; }
+              .email-choice-modal p { color:#64748b;font-size:14px;margin-bottom:24px; }
+              .email-choice-btns { display:flex;gap:12px;margin-bottom:16px; }
+              .email-choice-btn { flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border:2px solid #e2e8f0;border-radius:12px;background:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:inherit; }
+              .gmail-btn:hover { border-color:#ea4335;color:#ea4335;background:#fef2f2; }
+              .outlook-btn:hover { border-color:#0078d4;color:#0078d4;background:#eff6ff; }
+              .email-choice-cancel { background:none;border:none;color:#94a3b8;font-size:14px;cursor:pointer;font-family:inherit; }
+              .email-choice-cancel:hover { color:#475569; }
+            `;
+            document.head.appendChild(style);
+          }
+        }
 
-        setTimeout(() => {
-          el.textContent = el.getAttribute('data-original') || 'SUBMIT';
-          el.classList.remove('btn-sent');
-        }, 3000);
+        overlay.classList.add('open');
+
+        const handleChoice = (ev: Event) => {
+          const btn = (ev.target as HTMLElement).closest('[data-choice]');
+          const cancel = (ev.target as HTMLElement).closest('.email-choice-cancel');
+
+          if (cancel) {
+            overlay!.classList.remove('open');
+            overlay!.removeEventListener('click', handleChoice);
+            return;
+          }
+          if (!btn) return;
+          const choice = btn.getAttribute('data-choice');
+          overlay!.classList.remove('open');
+          overlay!.removeEventListener('click', handleChoice);
+
+          if (choice === 'gmail') {
+            const gmailUrl = 'https://mail.google.com/mail/?view=cm'
+              + '&to=' + encodeURIComponent(to)
+              + '&su=' + encodeURIComponent(subjectText)
+              + '&body=' + encodeURIComponent(bodyText);
+            window.open(gmailUrl, '_blank');
+          } else {
+            window.location.href = 'mailto:' + to
+              + '?subject=' + encodeURIComponent(subjectText)
+              + '&body=' + encodeURIComponent(bodyText);
+          }
+
+          el.textContent = 'SENT!';
+          el.classList.add('btn-sent');
+          showToast('이메일 앱이 열렸습니다. 전송을 완료해주세요.');
+          setTimeout(() => {
+            el.textContent = el.getAttribute('data-original') || 'SUBMIT';
+            el.classList.remove('btn-sent');
+          }, 3000);
+        };
+        overlay.addEventListener('click', handleChoice);
       });
 
       // data-action="submit" keyboard support (Enter key)
@@ -430,6 +507,421 @@ const currentPath = Astro.url.pathname;
           }
         }, { passive: false });
       })();
+    </script>
+
+    <!-- ===== Desktop / Mobile Preview Toggle ===== -->
+    <div id="view-toggle-toolbar" role="toolbar" aria-label="View mode toggle">
+      <button id="desktop-view-btn" class="view-btn active" data-view="desktop" aria-pressed="true" title="Desktop view">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+          <line x1="8" y1="21" x2="16" y2="21"></line>
+          <line x1="12" y1="17" x2="12" y2="21"></line>
+        </svg>
+      </button>
+      <button id="mobile-view-btn" class="view-btn" data-view="mobile" aria-pressed="false" title="Mobile view">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+          <line x1="12" y1="18" x2="12.01" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <style is:global>
+      /* ===== View Toggle Toolbar ===== */
+      #view-toggle-toolbar {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 99998;
+        display: flex;
+        gap: 4px;
+        background: #fff;
+        border-radius: 12px;
+        padding: 4px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        border: 1px solid #e5e5e5;
+      }
+      .view-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 8px;
+        background: transparent;
+        color: #999;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .view-btn:hover { background: #f5f5f5; color: #333; }
+      .view-btn.active { background: #e5e5e5; color: #000; }
+
+      /* 실제 모바일(768px 이하)에서는 토글 불필요 → 숨김 */
+      @media (max-width: 768px) {
+        #view-toggle-toolbar { display: none !important; }
+      }
+
+      /* ================================================= */
+      /* ===== MOBILE PREVIEW MODE — 클래스 기반 시뮬레이션 ===== */
+      /* ================================================= */
+
+      body.mobile-preview-mode {
+        background: #e5e7eb !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        min-height: 100vh !important;
+      }
+
+      /* 모든 직계 자식을 390px 폭으로 제한 */
+      body.mobile-preview-mode > * {
+        max-width: 390px !important;
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      /* 툴바는 제한 해제 */
+      body.mobile-preview-mode > #view-toggle-toolbar {
+        max-width: none !important;
+        width: auto !important;
+      }
+
+      /* Skip link */
+      body.mobile-preview-mode > .skip-link {
+        max-width: none !important;
+      }
+
+      /* ===== Header ===== */
+      body.mobile-preview-mode .header {
+        max-width: 390px !important;
+        width: 100% !important;
+        position: sticky !important;
+        top: 0 !important;
+      }
+      body.mobile-preview-mode .nav-right { display: none !important; }
+      body.mobile-preview-mode .hamburger { display: flex !important; }
+      body.mobile-preview-mode .mega-menu { display: none !important; }
+
+      /* ===== Main content ===== */
+      body.mobile-preview-mode main {
+        max-width: 390px !important;
+        width: 100% !important;
+        background: #fff !important;
+        overflow-x: hidden !important;
+      }
+
+      /* ===== Hero ===== */
+      body.mobile-preview-mode .hero {
+        height: 60vh !important;
+        min-height: 400px !important;
+        max-height: 500px !important;
+        margin-top: -60px !important;
+        padding-top: 60px !important;
+      }
+      body.mobile-preview-mode .hero-content {
+        padding: 0 20px 40px !important;
+      }
+      body.mobile-preview-mode .hero h1 {
+        font-size: 26px !important;
+        line-height: 1.2 !important;
+      }
+      body.mobile-preview-mode .hero-desc {
+        font-size: 14px !important;
+        margin-bottom: 20px !important;
+      }
+      body.mobile-preview-mode .hero-buttons {
+        flex-direction: column !important;
+        gap: 8px !important;
+      }
+      body.mobile-preview-mode .hero-btn-primary,
+      body.mobile-preview-mode .hero-btn-secondary {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 12px 20px !important;
+        font-size: 13px !important;
+      }
+
+      /* ===== Containers ===== */
+      body.mobile-preview-mode .container {
+        padding: 0 16px !important;
+      }
+      body.mobile-preview-mode .section {
+        padding: 40px 0 !important;
+      }
+
+      /* ===== Grids → single column ===== */
+      body.mobile-preview-mode .products-grid,
+      body.mobile-preview-mode .svc-cards,
+      body.mobile-preview-mode .plans-grid,
+      body.mobile-preview-mode .social-grid,
+      body.mobile-preview-mode .contact-grid,
+      body.mobile-preview-mode .about-grid,
+      body.mobile-preview-mode .f-row,
+      body.mobile-preview-mode .contact-page-grid,
+      body.mobile-preview-mode .contact-offices,
+      body.mobile-preview-mode .ceo-grid,
+      body.mobile-preview-mode .philosophy-grid,
+      body.mobile-preview-mode .culture-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+
+      /* About stats → 2 columns on mobile */
+      body.mobile-preview-mode .about-stats {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+      }
+      body.mobile-preview-mode .stat-number {
+        font-size: 36px !important;
+      }
+      body.mobile-preview-mode .about-section-title {
+        font-size: 24px !important;
+      }
+      body.mobile-preview-mode .about-section-sub {
+        font-size: 14px !important;
+      }
+      body.mobile-preview-mode .ceo-quote {
+        font-size: 18px !important;
+      }
+      body.mobile-preview-mode .ceo-message p {
+        font-size: 14px !important;
+      }
+
+      /* Contact page image order */
+      body.mobile-preview-mode .contact-page-grid .overflow-hidden {
+        order: -1 !important;
+      }
+
+      /* ===== Featured/Products ===== */
+      body.mobile-preview-mode .featured-top {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+      }
+      body.mobile-preview-mode .featured-top h2 {
+        font-size: 24px !important;
+      }
+      body.mobile-preview-mode .p-card .p-name {
+        font-size: 13px !important;
+        white-space: normal !important;
+        line-height: 1.3 !important;
+      }
+      body.mobile-preview-mode .p-card .p-price {
+        font-size: 11px !important;
+        white-space: normal !important;
+      }
+
+      /* ===== Solution Cards ===== */
+      body.mobile-preview-mode .s-card h3 {
+        font-size: 18px !important;
+      }
+      body.mobile-preview-mode .s-card .s-subtitle {
+        font-size: 15px !important;
+      }
+      body.mobile-preview-mode .s-card .s-desc {
+        font-size: 13px !important;
+      }
+
+      /* ===== Services / Accordion ===== */
+      body.mobile-preview-mode .svc-layout {
+        flex-direction: column !important;
+        gap: 24px !important;
+      }
+      body.mobile-preview-mode .svc-text h2 {
+        font-size: 28px !important;
+      }
+      body.mobile-preview-mode .svc-text .desc {
+        font-size: 14px !important;
+      }
+      body.mobile-preview-mode .svc-img {
+        width: 100% !important;
+      }
+      body.mobile-preview-mode .acc-title {
+        font-size: 16px !important;
+        padding: 14px 8px !important;
+      }
+
+      /* ===== Consultation ===== */
+      body.mobile-preview-mode .consult-inner h2 {
+        font-size: 24px !important;
+      }
+      body.mobile-preview-mode .consult-inner p {
+        font-size: 14px !important;
+      }
+
+      /* ===== Plans / Steps ===== */
+      body.mobile-preview-mode .plan-card {
+        padding: 20px !important;
+      }
+
+      /* ===== About ===== */
+      body.mobile-preview-mode .about-img {
+        height: 250px !important;
+      }
+
+      /* ===== Headings ===== */
+      body.mobile-preview-mode .heading-page {
+        font-size: 24px !important;
+      }
+      body.mobile-preview-mode .heading-sub {
+        font-size: 14px !important;
+      }
+
+      /* ===== Catalog ===== */
+      body.mobile-preview-mode .cat-section-title {
+        font-size: 16px !important;
+        padding: 8px 12px !important;
+        margin: 24px 0 12px !important;
+      }
+      body.mobile-preview-mode .cat-toc {
+        gap: 4px 10px !important;
+        font-size: 12px !important;
+      }
+      body.mobile-preview-mode .p-features {
+        font-size: 10px !important;
+      }
+
+      /* ===== Footer ===== */
+      body.mobile-preview-mode .site-footer {
+        max-width: 390px !important;
+        width: 100% !important;
+        background: #0a0a0a !important;
+      }
+      body.mobile-preview-mode .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+
+      /* ===== Buttons ===== */
+      body.mobile-preview-mode .btn-primary,
+      body.mobile-preview-mode .btn-secondary,
+      body.mobile-preview-mode .btn-light,
+      body.mobile-preview-mode .btn-book {
+        font-size: 12px !important;
+        padding: 12px 20px !important;
+      }
+
+      /* ===== Chat Widget ===== */
+      body.mobile-preview-mode .chat-pill {
+        bottom: 16px !important;
+        right: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        max-width: 360px !important;
+      }
+      body.mobile-preview-mode .chat-panel {
+        max-width: 390px !important;
+        width: 100% !important;
+        right: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+      }
+
+      /* ===== Back to Top ===== */
+      body.mobile-preview-mode .back-to-top {
+        max-width: none !important;
+        width: auto !important;
+      }
+
+      /* ===== Admin Bar ===== */
+      body.mobile-preview-mode .admin-bar {
+        max-width: 390px !important;
+        width: 100% !important;
+      }
+      body.mobile-preview-mode .admin-bar-inner {
+        padding: 6px 12px !important;
+        font-size: 11px !important;
+      }
+      body.mobile-preview-mode .admin-btn {
+        font-size: 10px !important;
+        padding: 4px 8px !important;
+      }
+
+      /* ===== Login Form ===== */
+      body.mobile-preview-mode .login-form {
+        max-width: 100% !important;
+      }
+
+      /* ===== Access Request Banner ===== */
+      body.mobile-preview-mode .access-request-banner {
+        padding: 16px !important;
+      }
+      body.mobile-preview-mode .access-request-banner p {
+        font-size: 13px !important;
+      }
+
+      /* ===== PT Page ===== */
+      body.mobile-preview-mode .pt-page-lg {
+        padding-top: 80px !important;
+      }
+
+      /* ===== Mobile Menu Overlay — 390px 내에서 작동 ===== */
+      body.mobile-preview-mode .mobile-menu {
+        max-width: 390px !important;
+        width: 390px !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+      }
+      body.mobile-preview-mode .mobile-menu .mob-link {
+        font-size: 22px !important;
+      }
+      /* 모바일 미리보기에서 메뉴 닫기 버튼 */
+      .mobile-menu-close {
+        display: none;
+      }
+      body.mobile-preview-mode .mobile-menu.open .mobile-menu-close {
+        display: flex !important;
+        position: absolute !important;
+        top: 20px !important;
+        right: 20px !important;
+        width: 40px !important;
+        height: 40px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: none !important;
+        border: none !important;
+        font-size: 28px !important;
+        cursor: pointer !important;
+        color: #000 !important;
+        z-index: 10 !important;
+      }
+    </style>
+
+    <script>
+      // Desktop / Mobile preview toggle (localStorage로 페이지 이동 시 모드 유지)
+      const desktopBtn = document.getElementById('desktop-view-btn');
+      const mobileBtn = document.getElementById('mobile-view-btn');
+
+      function switchView(mode: string, scroll = true) {
+        if (!desktopBtn || !mobileBtn) return;
+        if (mode === 'mobile') {
+          document.body.classList.add('mobile-preview-mode');
+          desktopBtn.classList.remove('active');
+          mobileBtn.classList.add('active');
+          mobileBtn.setAttribute('aria-pressed', 'true');
+          desktopBtn.setAttribute('aria-pressed', 'false');
+        } else {
+          document.body.classList.remove('mobile-preview-mode');
+          desktopBtn.classList.add('active');
+          mobileBtn.classList.remove('active');
+          desktopBtn.setAttribute('aria-pressed', 'true');
+          mobileBtn.setAttribute('aria-pressed', 'false');
+        }
+        try { localStorage.setItem('viewMode', mode); } catch {}
+        if (scroll) window.scrollTo(0, 0);
+      }
+
+      desktopBtn?.addEventListener('click', () => switchView('desktop'));
+      mobileBtn?.addEventListener('click', () => switchView('mobile'));
+
+      // 페이지 로드 시 저장된 모드 복원
+      try {
+        const saved = localStorage.getItem('viewMode');
+        if (saved === 'mobile') switchView('mobile', false);
+      } catch {}
     </script>
   </body>
 </html>
