@@ -118,7 +118,7 @@ import Base from '../layouts/Base.astro';
 
   const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  document.querySelector('[data-action="signin"]')?.addEventListener('click', () => {
+  document.querySelector('[data-action="signin"]')?.addEventListener('click', async () => {
     const emailInput = document.getElementById('login-email') as HTMLInputElement;
     const passInput = document.getElementById('login-pass') as HTMLInputElement;
     let valid = true;
@@ -136,7 +136,35 @@ import Base from '../layouts/Base.astro';
       }
     });
 
-    showToast(valid ? 'Login feature coming soon!' : 'Please fill in all fields.', !valid);
+    if (!valid) {
+      showToast('모든 항목을 입력해주세요.', true);
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailInput.value.trim(), password: passInput.value }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        showToast('로그인 성공!');
+        window.location.href = '/';
+      } else {
+        showToast(data.error || '로그인에 실패했습니다.', true);
+      }
+    } catch {
+      showToast('서버 연결에 실패했습니다.', true);
+    }
+  });
+
+  // Enter 키로 로그인
+  document.querySelector('.login-form')?.addEventListener('keydown', (e) => {
+    if ((e as KeyboardEvent).key === 'Enter') {
+      e.preventDefault();
+      (document.querySelector('[data-action="signin"]') as HTMLElement)?.click();
+    }
   });
 
   document.querySelector('[data-action="forgot-pw"]')?.addEventListener('click', (e) => {

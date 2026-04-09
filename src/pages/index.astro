@@ -4,11 +4,14 @@ export const prerender = false;
 import Base from '../layouts/Base.astro';
 import ContactForm from '../components/ContactForm.astro';
 import AdminInline from '../components/AdminInline.astro';
-import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import { verifySession, getSessionIdFromCookie, getUserInfo } from '../lib/auth';
 import fs from 'fs';
 import path from 'path';
 const cookie = Astro.request.headers.get('cookie');
-const isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+const sessionId = verifySession(getSessionIdFromCookie(cookie));
+const userInfo = sessionId ? getUserInfo(sessionId) : null;
+const userRole = userInfo?.role || '';
+const isAdmin = userRole === 'admin';
 
 const root = process.cwd();
 const h = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'home.json'), 'utf-8'));
@@ -598,7 +601,7 @@ const accI18nKeys = [
   .svc-layout {
     display: flex;
     gap: var(--spacing-3xl);
-    align-items: flex-start;
+    align-items: center;
   }
   .svc-text {
     flex: 1;
@@ -664,13 +667,13 @@ const accI18nKeys = [
   .svc-img {
     width: 50%;
     flex-shrink: 0;
-    height: 500px;
     overflow: hidden;
+    border-radius: var(--radius-md);
   }
   .svc-img img {
     width: 100%;
-    height: 500px;
-    object-fit: cover;
+    height: auto;
+    display: block;
   }
   .consult {
     background: var(--color-black);
@@ -864,10 +867,9 @@ const accI18nKeys = [
     }
     .svc-img {
       width: 100%;
-      height: 400px;
     }
     .svc-img img {
-      height: 400px;
+      height: auto;
     }
     .about-grid,
     .contact-grid {
@@ -982,10 +984,9 @@ const accI18nKeys = [
     }
     .svc-layout .svc-img {
       width: 100%;
-      height: 300px;
     }
     .svc-img img {
-      height: 300px;
+      height: auto;
     }
     .consult-inner {
       padding: var(--spacing-3xl) var(--spacing-lg);

@@ -3,12 +3,17 @@ export const prerender = false;
 
 import Base from '../layouts/Base.astro';
 import AdminInline from '../components/AdminInline.astro';
-import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import { verifySession, getSessionIdFromCookie, getUserInfo, hasDetailAccess } from '../lib/auth';
 import fs from 'fs';
 import path from 'path';
 
 const cookie = Astro.request.headers.get('cookie');
-const isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+const sessionId = verifySession(getSessionIdFromCookie(cookie));
+const userInfo = sessionId ? getUserInfo(sessionId) : null;
+const userRole = userInfo?.role || '';
+const isAdmin = userRole === 'admin';
+const canViewDetails = sessionId ? hasDetailAccess(sessionId) : false;
+const hideDetails = !isAdmin && !canViewDetails;
 
 const root = process.cwd();
 const catalog = JSON.parse(
@@ -85,7 +90,12 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
                   />
                 </div>
                 <div class="p-name" {...e(`categories[${ci}].products[${pi}].name`)}>{prod.name}</div>
-                {prod.features.length > 0 && (
+                {hideDetails ? (
+                  <div class="p-locked">
+                    <span class="p-locked-icon">🔒</span>
+                    <span class="p-locked-text">상세 설명은 승인된 사용자만 볼 수 있습니다</span>
+                  </div>
+                ) : prod.features.length > 0 && (
                   <ul class="p-features" {...e(`categories[${ci}].products[${pi}].featuresHtml`)}>
                     {prod.features.map((f: string) => <li>{f}</li>)}
                   </ul>
@@ -109,6 +119,19 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
       ))}
 
     </div>
+
+    {!isAdmin && !canViewDetails && userRole && (
+      <div class="access-request-banner">
+        <p>제품 상세 설명을 보려면 열람 권한이 필요합니다.</p>
+        <button class="btn-request-access" id="requestAccessBtn">설명 보기 요청</button>
+      </div>
+    )}
+    {!isAdmin && !canViewDetails && !userRole && (
+      <div class="access-request-banner">
+        <p>제품 상세 설명을 보려면 로그인이 필요합니다.</p>
+        <a href="/login" class="btn-request-access" style="text-decoration:none;display:inline-block;">로그인</a>
+      </div>
+    )}
   </section>
 </Base>
 
@@ -139,17 +162,18 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
     background: var(--color-gray-100);
     border: 1px solid var(--color-gray-300);
     border-radius: 8px;
-    padding: 14px 18px;
+    padding: 16px 20px;
     margin: 20px 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 6px 14px;
+    gap: 8px 18px;
     align-items: center;
+    font-size: 16px;
   }
   .cat-toc-link {
     color: var(--color-black);
     text-decoration: none;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 500;
   }
   .cat-toc-link:hover {
@@ -227,6 +251,48 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
   @media (max-width: 1024px) {
     .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
+  /* 잠금 표시 */
+  .p-locked {
+    margin-top: 8px;
+    padding: 8px 10px;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 11px;
+    color: #94a3b8;
+  }
+  .p-locked-icon { font-size: 14px; }
+  .p-locked-text { display: block; margin-top: 2px; }
+
+  /* 요청 배너 */
+  .access-request-banner {
+    margin-top: 40px;
+    padding: 24px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .access-request-banner p {
+    font-size: 15px;
+    color: #1e40af;
+    margin-bottom: 12px;
+  }
+  .btn-request-access {
+    padding: 10px 28px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-request-access:hover { background: #1d4ed8; }
+  .btn-request-access:disabled { background: #94a3b8; cursor: not-allowed; }
+
   @media (max-width: 768px) {
     .products-grid { grid-template-columns: 1fr; }
     .cat-toc { gap: 4px 10px; }
@@ -242,4 +308,26 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
       if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
+
+  // 설명 보기 요청 버튼
+  const reqBtn = document.getElementById('requestAccessBtn');
+  if (reqBtn) {
+    reqBtn.addEventListener('click', async () => {
+      reqBtn.setAttribute('disabled', '');
+      reqBtn.textContent = '요청 중...';
+      try {
+        const res = await fetch('/api/access-request', { method: 'POST' });
+        const data = await res.json();
+        if (data.ok) {
+          reqBtn.textContent = '요청 완료 — 관리자 승인 대기 중';
+        } else {
+          reqBtn.textContent = data.error || '요청 실패';
+          setTimeout(() => { reqBtn.removeAttribute('disabled'); reqBtn.textContent = '설명 보기 요청'; }, 3000);
+        }
+      } catch {
+        reqBtn.textContent = '서버 연결 실패';
+        setTimeout(() => { reqBtn.removeAttribute('disabled'); reqBtn.textContent = '설명 보기 요청'; }, 3000);
+      }
+    });
+  }
 </script>

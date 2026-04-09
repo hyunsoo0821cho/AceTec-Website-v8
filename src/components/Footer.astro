@@ -2,7 +2,7 @@
 /**
  * Footer - JSON 기반 + 관리자 인라인 편집
  */
-import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import { verifySession, getSessionIdFromCookie, getUserInfo } from '../lib/auth';
 import fs from 'fs';
 import path from 'path';
 let isAdmin = false;
@@ -10,7 +10,11 @@ let d: any = null;
 
 try {
   const cookie = Astro.request.headers.get('cookie');
-  isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+  const sessionId = verifySession(getSessionIdFromCookie(cookie));
+  if (sessionId) {
+    const userInfo = getUserInfo(sessionId);
+    isAdmin = userInfo?.role === 'admin';
+  }
   const root = process.cwd();
   d = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'footer.json'), 'utf-8'));
 } catch {
@@ -21,6 +25,27 @@ try {
 function e(p: string) {
   return isAdmin ? { 'data-edit': p, 'data-edit-page': 'footer' } : {};
 }
+
+// href → i18n key for footer solution links
+const solI18n: Record<string, string> = {
+  '/products/military': 'products.military',
+  '/products/railway': 'products.railway',
+  '/products/industrial': 'products.industrial',
+  '/products/telecom': 'products.telecom',
+  '/products/sensor': 'products.sensor',
+  '/products/hpc': 'products.hpc',
+  '/products/ipc': 'products.ipc',
+  '/products/radar': 'products.radar',
+  '/products/interconnect': 'products.interconnect',
+};
+// href → i18n key for footer company links
+const compI18n: Record<string, string> = {
+  '/solutions': 'nav.solutions',
+  '/applications': 'nav.applications',
+  '/about': 'nav.about',
+  '/history': 'nav.history',
+  '/contact': 'nav.contact',
+};
 ---
 
 <footer class="site-footer">
@@ -29,9 +54,9 @@ function e(p: string) {
       <h4>AceTec</h4>
       {
         d ? (
-          <p {...e('companyDescription')}>{d.companyDescription}</p>
+          <p {...e('companyDescription')} data-i18n="home.companyDesc">{d.companyDescription}</p>
         ) : (
-          <p>
+          <p data-i18n="home.companyDesc">
             Trusted for over 30 years in embedded computing, industrial PCs, and safety-critical systems — serving
             defense, aerospace, railway, and industrial markets.
           </p>
@@ -45,7 +70,7 @@ function e(p: string) {
           <>
             {d.solutionLinks.map((link: any, i: number) => (
               <div class="footer-link-row">
-                <a href={link.href} {...e(`solutionLinks[${i}].label`)}>{link.label}</a>
+                <a href={link.href} {...e(`solutionLinks[${i}].label`)} {...(solI18n[link.href] ? {'data-i18n': solI18n[link.href]} : {})}>{link.label}</a>
                 {isAdmin && <button class="footer-del-btn" data-admin-delete={`solutionLinks[${i}]`} data-edit-page="footer">&times;</button>}
               </div>
             ))}
@@ -80,7 +105,7 @@ function e(p: string) {
           <>
             {d.companyLinks.map((link: any, i: number) => (
               <div class="footer-link-row">
-                <a href={link.href} {...e(`companyLinks[${i}].label`)}>{link.label}</a>
+                <a href={link.href} {...e(`companyLinks[${i}].label`)} {...(compI18n[link.href] ? {'data-i18n': compI18n[link.href]} : {})}>{link.label}</a>
                 {isAdmin && <button class="footer-del-btn" data-admin-delete={`companyLinks[${i}]`} data-edit-page="footer">&times;</button>}
               </div>
             ))}
@@ -140,19 +165,19 @@ function e(p: string) {
       }
     </div>
     <div class="footer-col">
-      <h4>CONTACT</h4>
+      <h4 data-i18n="footer.contact">CONTACT</h4>
       {
         d?.contact ? (
           <>
             <p>
-              <strong {...e('contact.seoulLabel')}>{d.contact.seoulLabel}</strong><br />
+              <strong {...e('contact.seoulLabel')} data-i18n="footer.seoulHQ">{d.contact.seoulLabel}</strong><br />
               <span {...e('contact.seoulEmail')}>{d.contact.seoulEmail}</span><br />
               <span {...e('contact.seoulPhone')}>{d.contact.seoulPhone}</span><br />
               <span {...e('contact.seoulFax')}>{d.contact.seoulFax}</span>
             </p>
             <p>
-              <strong {...e('contact.daejeonLabel')}>{d.contact.daejeonLabel}</strong><br />
-              <span {...e('contact.daejeonAddress')}>{d.contact.daejeonAddress}</span><br />
+              <strong {...e('contact.daejeonLabel')} data-i18n="footer.daejeonBranch">{d.contact.daejeonLabel}</strong><br />
+              <span {...e('contact.daejeonAddress')} data-i18n="footer.daejeonAddr">{d.contact.daejeonAddress}</span><br />
               <span {...e('contact.daejeonPhone')}>{d.contact.daejeonPhone}</span><br />
               <span {...e('contact.daejeonFax')}>{d.contact.daejeonFax}</span>
             </p>
@@ -180,7 +205,7 @@ function e(p: string) {
     {
       d?.copyright ? (
         <>
-          <span {...e('copyright.company')}>{d.copyright.company}</span> &middot; CEO: <span {...e('copyright.ceo')}>{d.copyright.ceo}</span> &middot; Biz No: <span {...e('copyright.bizNo')}>{d.copyright.bizNo}</span>
+          <span {...e('copyright.company')} data-i18n="footer.corpName">{d.copyright.company}</span> &middot; <span data-i18n="footer.ceoLabel">CEO</span>: <span {...e('copyright.ceo')} data-i18n="footer.ceoName">{d.copyright.ceo}</span> &middot; <span data-i18n="footer.bizLabel">Biz No</span>: <span {...e('copyright.bizNo')}>{d.copyright.bizNo}</span>
           <br />
           &copy; {new Date().getFullYear()} {d.copyright.company} All rights reserved.
         </>

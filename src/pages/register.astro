@@ -250,6 +250,14 @@ import Base from '../layouts/Base.astro';
     }
   });
 
+  // Enter 키 지원
+  document.getElementById('step2')!.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); document.getElementById('sendCodeBtn')!.click(); }
+  });
+  document.getElementById('step3')!.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); document.getElementById('registerBtn')!.click(); }
+  });
+
   // Step 3: 회원가입 완료
   document.getElementById('registerBtn')!.addEventListener('click', async () => {
     const code = (document.getElementById('verifyCode') as HTMLInputElement).value.trim();

@@ -321,6 +321,10 @@
     background: var(--color-black);
     color: var(--color-white);
     flex-shrink: 0;
+    cursor: grab;
+  }
+  .chat-header:active {
+    cursor: grabbing;
   }
 
   .chat-header-title {
@@ -1083,6 +1087,74 @@
     localStorage.setItem('acetec-chat-w', String(panel.offsetWidth));
     localStorage.setItem('acetec-chat-h', String(panel.offsetHeight));
   });
+
+  // 드래그 이동 (헤더를 잡고 이동)
+  const header = panel.querySelector('.chat-header') as HTMLElement;
+  let isDragging = false;
+  let dragStartX = 0, dragStartY = 0, panelStartX = 0, panelStartY = 0;
+
+  // 저장된 위치 복원
+  const savedPosX = localStorage.getItem('acetec-chat-x');
+  const savedPosY = localStorage.getItem('acetec-chat-y');
+  if (savedPosX && savedPosY) {
+    panel.style.right = 'auto';
+    panel.style.bottom = 'auto';
+    panel.style.left = savedPosX + 'px';
+    panel.style.top = savedPosY + 'px';
+  }
+
+  function onDragStart(clientX: number, clientY: number) {
+    isDragging = true;
+    dragStartX = clientX;
+    dragStartY = clientY;
+    const rect = panel.getBoundingClientRect();
+    panelStartX = rect.left;
+    panelStartY = rect.top;
+    document.body.style.userSelect = 'none';
+  }
+  function onDragMove(clientX: number, clientY: number) {
+    if (!isDragging) return;
+    const dx = clientX - dragStartX;
+    const dy = clientY - dragStartY;
+    let newX = panelStartX + dx;
+    let newY = panelStartY + dy;
+    // 화면 밖으로 나가지 않도록 제한
+    newX = Math.max(0, Math.min(window.innerWidth - 60, newX));
+    newY = Math.max(0, Math.min(window.innerHeight - 40, newY));
+    panel.style.right = 'auto';
+    panel.style.bottom = 'auto';
+    panel.style.left = newX + 'px';
+    panel.style.top = newY + 'px';
+  }
+  function onDragEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    document.body.style.userSelect = '';
+    const rect = panel.getBoundingClientRect();
+    localStorage.setItem('acetec-chat-x', String(rect.left));
+    localStorage.setItem('acetec-chat-y', String(rect.top));
+  }
+
+  header.addEventListener('mousedown', (e: MouseEvent) => {
+    // 버튼 클릭은 드래그하지 않음
+    if ((e.target as HTMLElement).closest('button')) return;
+    e.preventDefault();
+    onDragStart(e.clientX, e.clientY);
+  });
+  document.addEventListener('mousemove', (e: MouseEvent) => { onDragMove(e.clientX, e.clientY); });
+  document.addEventListener('mouseup', onDragEnd);
+
+  header.addEventListener('touchstart', (e: TouchEvent) => {
+    if ((e.target as HTMLElement).closest('button')) return;
+    const t = e.touches[0];
+    onDragStart(t.clientX, t.clientY);
+  }, { passive: true });
+  document.addEventListener('touchmove', (e: TouchEvent) => {
+    if (!isDragging) return;
+    const t = e.touches[0];
+    onDragMove(t.clientX, t.clientY);
+  }, { passive: true });
+  document.addEventListener('touchend', onDragEnd);
 
   // 사이드바 토글
   const overlay = document.getElementById('chatSidebarOverlay')!;

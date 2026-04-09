@@ -1,7 +1,7 @@
 """
 AceTec 통합 AI 엔진
 - RAG 지식 검색 (Qdrant + Ollama)
-- DB 데이터 분석 (Gemini + PostgreSQL)
+- DB 데이터 분석 (Ollama + PostgreSQL)
 
 사용법:
   python prompt.py          # RAG 모드 (기본)
@@ -264,10 +264,10 @@ def format_rag_response(result: dict) -> str:
 
 
 # ============================================================
-# DB 분석 엔진 (Gemini + PostgreSQL)
+# DB 분석 엔진 (Ollama + PostgreSQL)
 # ============================================================
-def run_db_analyzer(engine: object, gemini_client: object, target_schema: str = "public") -> None:
-    """DB 기반 질문-응답 루프"""
+def run_db_analyzer(engine: object, target_schema: str = "public") -> None:
+    """DB 기반 질문-응답 루프 (Ollama)"""
     schema_context = "\n".join(
         f"- {s['table_name']}: {s['description']} ({s['columns']})" for s in DB_SCHEMAS
     )
@@ -300,9 +300,7 @@ def run_db_analyzer(engine: object, gemini_client: object, target_schema: str = 
         try:
             from sqlalchemy import text
 
-            response = gemini_client.models.generate_content(
-                model="gemini-1.5-flash", contents=sql_prompt
-            ).text.strip()
+            response = call_ollama(sql_prompt).strip()
 
             if "REJECT" in response:
                 print_acetec_guide()
@@ -321,9 +319,7 @@ def run_db_analyzer(engine: object, gemini_client: object, target_schema: str = 
 위 데이터를 바탕으로 사용자에게 답변하세요.
 에이스테크의 사업 특성만 반영하되, 납기 관리 제언이나 추가적인 비즈니스 인사이트는 절대 포함하지 말고 데이터 요약만 하세요."""
 
-            final = gemini_client.models.generate_content(
-                model="gemini-1.5-flash", contents=summary_prompt
-            ).text.strip()
+            final = call_ollama(summary_prompt).strip()
             print("\n" + "-" * 60)
             print(final)
             print("-" * 60)
@@ -383,18 +379,16 @@ def run_rag_mode() -> None:
 
 
 def run_db_mode() -> None:
-    """DB 분석 모드 (Gemini + PostgreSQL 필요)"""
+    """DB 분석 모드 (Ollama + PostgreSQL 필요)"""
     try:
         from sqlalchemy import create_engine
-        import google.generativeai as genai
 
-        gemini_client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY", "YOUR_GEMINI_API_KEY"))
         db_url = os.environ.get("DATABASE_URL", "postgresql://user:pass@localhost:5432/acetec")
         engine = create_engine(db_url)
-        run_db_analyzer(engine, gemini_client)
+        run_db_analyzer(engine)
     except ImportError as e:
         print(f"  필요한 패키지가 없습니다: {e}")
-        print("  pip install sqlalchemy google-generativeai")
+        print("  pip install sqlalchemy")
     except Exception as e:
         print(f"  DB 엔진 구동 실패: {e}")
 
