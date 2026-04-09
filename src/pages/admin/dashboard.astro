@@ -1,10 +1,12 @@
 ---
 export const prerender = false;
-import { verifySession, getSessionIdFromCookie } from '../../lib/auth';
+import { verifySession, getSessionIdFromCookie, getUserInfo } from '../../lib/auth';
 
 const cookie = Astro.request.headers.get('cookie');
 const session = verifySession(getSessionIdFromCookie(cookie));
 if (!session) return Astro.redirect('/login');
+const currentUser = getUserInfo(session);
+if (!currentUser || currentUser.role !== 'admin') return Astro.redirect('/');
 ---
 
 <!DOCTYPE html>
@@ -52,6 +54,18 @@ if (!session) return Astro.redirect('/login');
     .role-admin { background: #dbeafe; color: #1d4ed8; }
     .role-sales { background: #dcfce7; color: #16a34a; }
     .role-customer { background: #fef3c7; color: #d97706; }
+    .role-person { background: #f1f5f9; color: #64748b; }
+
+    /* Access request badges */
+    .status-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+    .status-pending { background: #fef3c7; color: #d97706; }
+    .status-approved { background: #dcfce7; color: #16a34a; }
+    .status-rejected { background: #fee2e2; color: #dc2626; }
+    .btn-approve { background: #16a34a; color: #fff; }
+    .btn-approve:hover { background: #15803d; }
+    .btn-reject { background: #ef4444; color: #fff; }
+    .btn-reject:hover { background: #dc2626; }
+    .pending-count { background: #ef4444; color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-left: 8px; font-weight: 600; }
 
     /* Buttons */
     .btn { padding: 7px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; border: none; transition: all 0.15s; }
@@ -113,6 +127,21 @@ if (!session) return Astro.redirect('/login');
       <div class="stat-card"><div class="label">Today Page Views</div><div class="value" id="statViews">-</div><div class="sub">Total requests</div></div>
     </div>
 
+    <!-- Access Requests -->
+    <div class="section">
+      <div class="section-header">
+        <h2>열람 권한 요청 <span id="pendingCount"></span></h2>
+      </div>
+      <table>
+        <thead>
+          <tr><th>ID</th><th>Username</th><th>Display Name</th><th>Email</th><th>Status</th><th>요청일</th><th>Actions</th></tr>
+        </thead>
+        <tbody id="requestTableBody">
+          <tr><td colspan="7" style="text-align:center;color:#94a3b8;">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
     <!-- User Management -->
     <div class="section">
       <div class="section-header">
@@ -133,6 +162,10 @@ if (!session) return Astro.redirect('/login');
     <div class="section">
       <div class="section-header">
         <h2>Activity Logs</h2>
+        <div class="btn-group">
+          <button class="btn btn-edit" id="refreshLogsBtn">↻ Refresh</button>
+          <button class="btn btn-danger" id="clearLogsBtn">Clear All</button>
+        </div>
       </div>
       <div id="logsContainer">
         <div style="text-align:center;color:#94a3b8;padding:20px;">Loading...</div>
@@ -291,9 +324,88 @@ if (!session) return Astro.redirect('/login');
       }
     });
 
+    // Access Requests
+    const requestTable = document.getElementById('requestTableBody')!;
+    const pendingCount = document.getElementById('pendingCount')!;
+
+    async function loadRequests() {
+      try {
+        const res = await fetch('/api/admin/access-requests');
+        if (!res.ok) return;
+        const requests = await res.json();
+        const pending = requests.filter((r: any) => r.status === 'pending');
+        pendingCount.innerHTML = pending.length > 0 ? `<span class="pending-count">${pending.length}</span>` : '';
+
+        if (requests.length === 0) {
+          requestTable.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#94a3b8;">요청 없음</td></tr>';
+          return;
+        }
+        requestTable.innerHTML = requests.map((r: any) => {
+          const dt = new Date(r.created_at);
+          const ts = `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')} ${String(dt.getHours()).padStart(2,'0')}:${String(dt.getMinutes()).padStart(2,'0')}`;
+          const actions = r.status === 'pending'
+            ? `<div class="btn-group">
+                <button class="btn btn-sm btn-approve" onclick="handleRequest(${r.id}, 'approve')">승인</button>
+                <button class="btn btn-sm btn-reject" onclick="handleRequest(${r.id}, 'reject')">거절</button>
+               </div>`
+            : '-';
+          return `<tr>
+            <td>${r.id}</td>
+            <td><strong>${esc(r.username)}</strong></td>
+            <td>${esc(r.display_name || '-')}</td>
+            <td>${esc(r.email || '-')}</td>
+            <td><span class="status-badge status-${r.status}">${r.status}</span></td>
+            <td>${ts}</td>
+            <td>${actions}</td>
+          </tr>`;
+        }).join('');
+      } catch {}
+    }
+
+    // @ts-ignore
+    window.handleRequest = async (requestId: number, action: string) => {
+      const label = action === 'approve' ? '승인' : '거절';
+      if (!confirm(`이 요청을 ${label}하시겠습니까?`)) return;
+      try {
+        const res = await fetch('/api/admin/access-requests', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ requestId, action }),
+        });
+        if (res.ok) {
+          loadRequests();
+          loadUsers();
+          loadStats();
+        } else {
+          const err = await res.json();
+          alert(err.error || '처리 실패');
+        }
+      } catch { alert('서버 연결 실패'); }
+    };
+
+    // Refresh logs button
+    document.getElementById('refreshLogsBtn')!.addEventListener('click', () => {
+      logsContainer.innerHTML = '<div style="text-align:center;color:#94a3b8;padding:20px;">Loading...</div>';
+      loadStats();
+    });
+
+    // Clear logs button
+    document.getElementById('clearLogsBtn')!.addEventListener('click', async () => {
+      if (!confirm('모든 Activity Logs를 초기화하시겠습니까?')) return;
+      try {
+        const res = await fetch('/api/admin/logs', { method: 'DELETE' });
+        if (res.ok) {
+          loadStats();
+        } else {
+          alert('초기화 실패');
+        }
+      } catch { alert('서버 연결 실패'); }
+    });
+
     // Init
     loadStats();
     loadUsers();
+    loadRequests();
   </script>
 </body>
 </html>
