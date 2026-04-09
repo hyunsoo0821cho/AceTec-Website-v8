@@ -60,6 +60,17 @@ function getDb(): InstanceType<typeof Database> {
       used INTEGER NOT NULL DEFAULT 0
     );
 
+    CREATE TABLE IF NOT EXISTS access_requests (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      status TEXT NOT NULL DEFAULT 'pending',
+      created_at INTEGER NOT NULL,
+      resolved_at INTEGER,
+      resolved_by INTEGER,
+      FOREIGN KEY (user_id) REFERENCES admins(id),
+      FOREIGN KEY (resolved_by) REFERENCES admins(id)
+    );
+
     CREATE TABLE IF NOT EXISTS conversations (
       id TEXT PRIMARY KEY,
       visitor_id TEXT NOT NULL,
@@ -93,6 +104,11 @@ function getDb(): InstanceType<typeof Database> {
   try {
     _db.exec(`ALTER TABLE admins ADD COLUMN email TEXT`);
   } catch { /* 이미 존재하면 무시 */ }
+
+  // 프로필 컬럼 추가
+  try { _db.exec(`ALTER TABLE admins ADD COLUMN phone TEXT`); } catch {}
+  try { _db.exec(`ALTER TABLE admins ADD COLUMN bio TEXT`); } catch {}
+  try { _db.exec(`ALTER TABLE admins ADD COLUMN avatar_url TEXT`); } catch {}
 
   return _db;
 }

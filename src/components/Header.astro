@@ -5,7 +5,7 @@
  * 메가메뉴 데이터는 megamenu.json에서 로드 (관리자 인라인 편집 지원)
  */
 import LangSwitcher from './LangSwitcher.astro';
-import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import { verifySession, getSessionIdFromCookie, getUserInfo } from '../lib/auth';
 import fs from 'fs';
 import path from 'path';
 
@@ -15,11 +15,15 @@ interface Props {
 
 const { currentPath = '/' } = Astro.props;
 
-// 관리자 여부 확인
+// 관리자 여부 확인 (admin 역할만)
 let isAdmin = false;
 try {
   const cookie = Astro.request.headers.get('cookie');
-  isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+  const sessionId = verifySession(getSessionIdFromCookie(cookie));
+  if (sessionId) {
+    const userInfo = getUserInfo(sessionId);
+    isAdmin = userInfo?.role === 'admin';
+  }
 } catch { /* prerender 페이지에서는 무시 */ }
 
 const navLinks = [
@@ -112,6 +116,29 @@ const megaMenuCols = megaData.columns || [];
     });
   </script>
 )}
+
+<script>
+  // 로그인 상태면 "로그인" → "내정보" 로 변경
+  fetch('/api/auth/me').then(r => {
+    if (!r.ok) return;
+    r.json().then(user => {
+      // 데스크톱 nav
+      document.querySelectorAll<HTMLAnchorElement>('a.nav-link[href="/login"]').forEach(el => {
+        el.href = '/account';
+        el.textContent = user.displayName || '내정보';
+        el.removeAttribute('data-i18n');
+      });
+      // 모바일 메뉴
+      document.querySelectorAll<HTMLAnchorElement>('a[href="/login"]').forEach(el => {
+        if (el.classList.contains('nav-link') || el.closest('.mobile-menu')) {
+          el.href = '/account';
+          el.textContent = user.displayName || '내정보';
+          el.removeAttribute('data-i18n');
+        }
+      });
+    });
+  }).catch(() => {});
+</script>
 
 <style>
   .header {
