@@ -48,6 +48,10 @@ import Base from '../layouts/Base.astro';
         <label>이름</label>
         <input type="text" id="displayName" placeholder="홍길동" />
       </div>
+      <div class="field">
+        <label>전화번호</label>
+        <input type="tel" id="regPhone" placeholder="01012345678" />
+      </div>
       <button class="btn-full" id="sendCodeBtn">인증 코드 받기</button>
       <div id="step2Msg" class="msg"></div>
       <div class="reg-footer">
@@ -220,8 +224,19 @@ import Base from '../layouts/Base.astro';
   // Step 2: 인증 코드 발송
   document.getElementById('sendCodeBtn')!.addEventListener('click', async () => {
     const user = (document.getElementById('emailUser') as HTMLInputElement).value.trim();
+    const displayName = (document.getElementById('displayName') as HTMLInputElement).value.trim();
+    const phone = (document.getElementById('regPhone') as HTMLInputElement).value.trim();
     const msg = document.getElementById('step2Msg')!;
-    if (!user || !user.includes('@')) { msg.textContent = '올바른 이메일을 입력해주세요'; msg.className = 'msg error'; return; }
+
+    // 이메일: @ 포함 필수
+    if (!user || !user.includes('@')) { msg.textContent = '올바른 이메일을 입력해주세요 (@를 포함해야 합니다)'; msg.className = 'msg error'; return; }
+    // 이름: 필수, 숫자 불가
+    if (!displayName) { msg.textContent = '이름을 입력해주세요'; msg.className = 'msg error'; return; }
+    if (/\d/.test(displayName)) { msg.textContent = '이름에 숫자가 포함될 수 없습니다'; msg.className = 'msg error'; return; }
+    // 전화번호: 필수, 숫자만
+    if (!phone) { msg.textContent = '전화번호를 입력해주세요'; msg.className = 'msg error'; return; }
+    if (!/^\d+$/.test(phone)) { msg.textContent = '전화번호는 숫자만 입력해주세요'; msg.className = 'msg error'; return; }
+
     emailFull = user;
 
     msg.textContent = '발송 중...';
@@ -276,7 +291,7 @@ import Base from '../layouts/Base.astro';
     const res = await fetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: emailFull, code, password: pw, displayName }),
+      body: JSON.stringify({ email: emailFull, code, password: pw, displayName, phone: (document.getElementById('regPhone') as HTMLInputElement).value.trim() }),
     });
     const data = await res.json();
 

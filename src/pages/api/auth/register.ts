@@ -6,7 +6,7 @@ export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   const body = await request.json();
-  const { email, code, password, displayName } = body;
+  const { email, code, password, displayName, phone } = body;
 
   if (!email || !code || !password) {
     return Response.json({ error: 'All fields required' }, { status: 400 });
@@ -40,8 +40,8 @@ export const POST: APIRoute = async ({ request }) => {
   const role = record.role || 'person';
 
   getDb().prepare(
-    'INSERT INTO admins (username, password_hash, role, display_name, email) VALUES (?, ?, ?, ?, ?)'
-  ).run(username, hash, role, displayName || username, email);
+    'INSERT INTO admins (username, password_hash, role, display_name, email, phone) VALUES (?, ?, ?, ?, ?, ?)'
+  ).run(username, hash, role, displayName || username, email, phone || '');
 
   // 감사 로그
   getDb().prepare('INSERT INTO audit_logs (action, detail, created_at) VALUES (?, ?, ?)').run(
