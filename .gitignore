@@ -19,6 +19,12 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+._*
+**/._*
 
 # jetbrains setting folder
 .idea/
+
+# runtime data (SQLite, vector store, logs) — never commit
+data/
+

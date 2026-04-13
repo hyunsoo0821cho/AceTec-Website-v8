@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { verifySession, getSessionIdFromCookie } from '../../../lib/auth';
 import getDb from '../../../lib/db';
 import bcrypt from 'bcryptjs';
+import { maskAdminRow, type AdminRow } from '../../../lib/pii-mask';
 
 export const prerender = false;
 
@@ -10,11 +11,36 @@ function auth(request: Request) {
   return verifySession(getSessionIdFromCookie(cookie));
 }
 
-// 사용자 목록
+// 사용자 목록(마스킹) / 단일 상세(언마스킹 + 감사 로그)
+// GET                  → 전체 목록 (이메일·전화 마스킹)
+// GET ?id=X            → ID X 상세 (언마스킹 + audit_logs 기록)
+// GET ?unmask=1        → 전체 목록 언마스킹 (편집 화면 등, audit_logs 기록)
 export const GET: APIRoute = async ({ request }) => {
-  if (!auth(request)) return Response.json({ error: 'Unauthorized' }, { status: 401 });
-  const users = getDb().prepare('SELECT id, username, role, display_name, email, phone, bio, avatar_url FROM admins ORDER BY id').all();
-  return Response.json(users);
+  const adminId = auth(request);
+  if (!adminId) return Response.json({ error: 'Unauthorized' }, { status: 401 });
+
+  const url = new URL(request.url);
+  const detailId = url.searchParams.get('id');
+  const unmask = url.searchParams.get('unmask') === '1';
+  const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
+
+  if (detailId) {
+    const row = getDb().prepare('SELECT id, username, role, display_name, email, phone, bio, avatar_url FROM admins WHERE id = ?').get(detailId) as AdminRow | undefined;
+    if (!row) return Response.json({ error: 'Not found' }, { status: 404 });
+    getDb().prepare('INSERT INTO audit_logs (admin_id, action, detail, created_at) VALUES (?, ?, ?, ?)').run(
+      adminId, 'pii_unmask_read', `target_user_id=${detailId} | IP: ${ip}`, Date.now()
+    );
+    return Response.json(row);
+  }
+
+  const rows = getDb().prepare('SELECT id, username, role, display_name, email, phone, bio, avatar_url FROM admins ORDER BY id').all() as AdminRow[];
+  if (unmask) {
+    getDb().prepare('INSERT INTO audit_logs (admin_id, action, detail, created_at) VALUES (?, ?, ?, ?)').run(
+      adminId, 'pii_unmask_list', `count=${rows.length} | IP: ${ip}`, Date.now()
+    );
+    return Response.json(rows);
+  }
+  return Response.json(rows.map((r) => maskAdminRow(r)));
 };
 
 // 사용자 생성

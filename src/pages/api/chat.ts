@@ -32,12 +32,24 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 
+  // JSON 파싱 실패는 500이 아니라 400으로 반환
+  let body: unknown;
   try {
-    const body = await request.json();
+    body = await request.json();
+  } catch {
+    return new Response(JSON.stringify({ error: '요청 본문이 올바른 JSON이 아닙니다' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  try {
     const parsed = ChatRequestSchema.safeParse(body);
 
     if (!parsed.success) {
-      return new Response(JSON.stringify({ error: 'Invalid request', details: parsed.error.flatten() }), {
+      // 스키마 상세는 서버 로그에만 남기고, 클라이언트에는 일반 메시지만 반환
+      console.warn('[chat] invalid request schema');
+      return new Response(JSON.stringify({ error: '요청 형식이 올바르지 않습니다' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
@@ -74,13 +86,12 @@ export const POST: APIRoute = async ({ request }) => {
       headers: { 'Content-Type': 'application/json' },
     });
   } catch (err: unknown) {
-    console.error('Chat API error:', err);
-
-    // Ollama 연결 실패 시 친절한 메시지
+    // 상세 에러는 서버 로그에만 기록, 사용자에게는 일반 메시지만 노출 (Ollama 연결 실패 포함)
+    console.error('[chat] api error:', err);
     const isConnectionError = err instanceof TypeError && (err as TypeError & { cause?: { code?: string } }).cause?.code === 'ECONNREFUSED';
     if (isConnectionError) {
       return new Response(JSON.stringify({
-        reply: 'AI 서비스(Ollama)가 실행되고 있지 않습니다. 터미널에서 "ollama serve"를 실행해주세요.',
+        reply: 'AI 서비스에 일시적 문제가 있습니다. 잠시 후 다시 시도하거나 acetec@acetec-korea.co.kr (+82-2-420-2343)으로 문의 바랍니다.',
         sources: [],
         conversationId: null,
       }), {
@@ -89,7 +100,7 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    return new Response(JSON.stringify({ error: 'Internal server error' }), {
+    return new Response(JSON.stringify({ error: '일시적인 오류가 발생했습니다' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });

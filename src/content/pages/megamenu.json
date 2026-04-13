@@ -43,7 +43,7 @@
     {
       "title": "Sensor modeling and simulation",
       "href": "/products/sensor",
-      "items": ["EO/IR Sensor Simulation", "RF Sensor Simulation", "Active EO Sensor Simulation", "GNSS Sensor Simulation", "3D Terrain & Building Generation", "APIs", "Special Effects", "3D Database"]
+      "items": ["EO/IR Sensor Simulation", "RF Sensor Simulation", "Active EO Sensor Simulation", "GNSS Sensor Simulation", "APIs & Integration Tools"]
     },
     {
       "title": "Middleware Software",

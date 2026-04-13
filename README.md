@@ -3,6 +3,10 @@
 AceTec (acetronix.co.kr) - 한국 B2B 임베디드 컴퓨팅 & 산업용 기술 솔루션 기업의 마케팅 웹사이트.
 Astro 6 기반 하이브리드(SSG + SSR) 구조. 로컬 AI 챗봇(RAG), Admin CMS 인라인 편집, 다국어(7개 언어 완전 번역 + 20개 언어 프레임워크), 회원 관리 시스템 포함.
 
+
+
+> 상세 테스트 결과: [test.md](test.md) 참조
+
 ---
 
 ## 1. 프로젝트 개요
@@ -234,13 +238,15 @@ AceTec-Website-v8/
 | `messages.ts` | GET | `/api/messages` | 채팅 메시지 조회. 대화별 메시지 목록 |
 | `admin/stats.ts` | GET | `/api/admin/stats` | 관리자 통계. 방문자 수(일/월/년), 페이지뷰, 감사 로그, 역할별 계정 수 |
 | `admin/users.ts` | GET/POST/PUT/DELETE | `/api/admin/users` | 사용자 관리. 목록 조회, 생성, 수정, 삭제 (감사 로그 자동 기록) |
+| `access-request.ts` | POST | `/api/access-request` | person 사용자가 제품 설명 열람 권한 요청. 중복 요청 방지 |
+| `admin/access-requests.ts` | GET/POST | `/api/admin/access-requests` | 관리자 열람 권한 요청 관리. GET: 요청 목록 조회, POST: 승인/거절 (승인 시 person→customer 자동 변경) |
 
 ### src/lib/ (비즈니스 로직)
 
 | 파일 | 기능 |
 |------|------|
-| `auth.ts` | Admin 인증. bcrypt 비밀번호 검증, UUID 세션 생성/검증/삭제, HttpOnly 쿠키 관리. TTL 24시간 |
-| `db.ts` | SQLite 연결 관리. better-sqlite3로 data/acetec.db 싱글턴 연결. 7개 테이블 자동 생성 (admins, sessions, visitor_logs, audit_logs, verification_codes, conversations, messages) |
+| `auth.ts` | 인증 시스템. bcrypt 비밀번호 검증(username/email 지원), UUID 세션 생성/검증/삭제, HttpOnly 쿠키 관리, getUserInfo()로 역할 조회. TTL 24시간 |
+| `db.ts` | SQLite 연결 관리. better-sqlite3로 data/acetec.db 싱글턴 연결. 8개 테이블 자동 생성 (admins, sessions, visitor_logs, audit_logs, verification_codes, access_requests, conversations, messages) |
 | `email.ts` | 이메일 발송. nodemailer SMTP 트랜스포터, 6자리 인증 코드 생성, HTML 이메일 템플릿 (회원가입/비밀번호 재설정), SMTP 미설정 시 콘솔 출력 fallback |
 | `chat.ts` | Ollama 채팅. ministral-3:14b 모델로 AI 응답 생성, RAG 컨텍스트 주입, 시스템 프롬프트(AceTec 전용), 다국어 자동 감지 |
 | `embeddings.ts` | Ollama 임베딩. nomic-embed-text-v2-moe 모델로 텍스트 → 768차원 벡터 변환 |
@@ -403,6 +409,13 @@ AceTec-Website-v8/
 - 연간 방문자 (365일, 고유 IP)
 - 일간/월간 페이지뷰
 
+**열람 권한 요청 관리** (Access Requests):
+- 대기 중(pending) 요청 수 빨간 배지로 표시
+- 요청 목록 테이블: ID, Username, Display Name, Email, Status, 요청일, Actions
+- 승인 버튼: person → customer로 역할 변경, 제품 설명 열람 가능
+- 거절 버튼: 역할 유지, 요청 상태만 rejected로 변경
+- 처리된 요청도 이력으로 보관 (approved/rejected 상태)
+
 **사용자 관리 테이블**:
 - 전체 사용자 목록 (ID, Username, Display Name, Role)
 - CRUD: 사용자 생성/수정/삭제
@@ -411,7 +424,7 @@ AceTec-Website-v8/
 
 **감사 로그(Audit Logs)**:
 - 최근 30건 활동 기록
-- 기록 대상: user_create, user_update, user_delete, user_register, password_reset
+- 기록 대상: user_create, user_update, user_delete, user_register, password_reset, access_request, access_approve, access_reject
 - 시간, 작업, 상세 내용 표시
 
 ### 6-5. 회원가입 시스템 (`/register`)
@@ -441,6 +454,7 @@ AceTec-Website-v8/
 |------|------|------|
 | 채팅 생성 | ministral-3:14b | Ollama (localhost:11434) |
 | 텍스트 임베딩 | nomic-embed-text-v2-moe | Ollama (localhost:11434) |
+| 리랭킹 | jina-reranker-v2-base-multilingual | 로컬 서버 (localhost:8787) |
 | 벡터 저장/검색 | - | Qdrant (localhost:6333) |
 
 ### 7-2. RAG 파이프라인
@@ -475,9 +489,17 @@ AceTec-Website-v8/
 [POST /api/chat]
        │
        ├── 1. 메시지 임베딩 생성 (nomic-embed-text-v2-moe)
-       ├── 2. Qdrant 벡터 검색 (top 5, cosine similarity ≥ 0.3)
-       ├── 3. 관련 문서 컨텍스트 구성
-       ├── 4. 시스템 프롬프트 + 컨텍스트 + 대화 히스토리(최근 6턴) + 사용자 메시지
+       │
+       ├── 2. 1차 후보군 검색 (Qdrant Search)
+       │    └── top 20 후보 확보 (cosine similarity ≥ 0.15, 리랭킹용 넉넉히)
+       │
+       ├── 3. 로컬 리랭킹 (Jina Reranker v2-Base Multilingual)
+       │    ├── 쿼리와 20개의 문서를 비교하여 재점수화
+       │    └── 가장 관련성 높은 상위 5개만 최종 선별
+       │
+       ├── 4. 정제된 컨텍스트 구성 (LLM에게 전달할 고순도 데이터)
+       │
+       ├── 5. 시스템 프롬프트 + 최종 컨텍스트 + 대화 히스토리(최근 6턴) + 사용자 메시지
        │
        ▼
 [Ollama ministral-3:14b]
@@ -486,7 +508,7 @@ AceTec-Website-v8/
        ├── 2.5분 타임아웃
        │
        ▼
-[AI 응답 + 참조 소스 목록]
+[AI 응답 + 리랭킹된 참조 소스 목록]
        │
        └── 클라이언트에 JSON 반환
 ```
@@ -628,14 +650,45 @@ npm run ingest
   → sessions 삭제 → admins 삭제 → audit_logs 기록
 ```
 
-### 9-4. 역할(Roles)
+### 9-4. 역할(Roles) 및 권한
 
-| 역할 | 색상 | 설명 |
-|------|------|------|
-| `admin` | 빨간색 배지 | 최고 관리자. 모든 기능 접근 |
-| `sales` | 파란색 배지 | 영업 담당자 |
-| `customer` | 초록색 배지 | 고객 계정 |
-| `person` | 회색 배지 | 일반 사용자 (self-register 기본값) |
+| 역할 | 배지 색상 | 제품 설명 열람 | 관리자 도구 (AdminInline) | 대시보드 접근 | 설명 |
+|------|----------|--------------|--------------------------|--------------|------|
+| `admin` | 파란색 | 전체 보기 + 편집 | 표시 | 접근 가능 | 최고 관리자. 모든 기능 접근 |
+| `sales` | 초록색 | 전체 보기 | 숨김 | 접근 불가 | 영업 담당자 |
+| `customer` | 노란색 | 전체 보기 | 숨김 | 접근 불가 | 고객 계정 (승인된 사용자) |
+| `person` | 회색 | 🔒 숨김 (잠금) | 숨김 | 접근 불가 | 일반 사용자 (self-register 기본값) |
+
+#### 역할별 제품 페이지 동작
+
+- **admin**: 제품 이미지, 이름, 설명(features/specs) 모두 보이며, AdminInline 도구로 인라인 편집 가능
+- **customer / sales**: 제품 이미지, 이름, 설명 모두 보이지만 편집 불가. 관리자 도구 숨김
+- **person**: 제품 이미지와 이름은 보이지만, **설명(features/specs)은 🔒 잠금 처리**. "설명 보기 요청" 버튼으로 열람 권한 요청 가능
+
+#### 열람 권한 요청 흐름
+
+```
+[person 사용자]                          [관리자 대시보드]
+      │                                        │
+      ├── 제품 페이지 접속                       │
+      │   └── 설명 대신 🔒 잠금 표시              │
+      │                                        │
+      ├── "설명 보기 요청" 버튼 클릭              │
+      │   └── POST /api/access-request         │
+      │                                        │
+      │                              ┌─────────┤
+      │                              │ 요청 목록에 표시 (빨간 카운트 배지)
+      │                              │         │
+      │                              │  [승인] → person → customer로 역할 변경
+      │                              │         │  └── 이후 설명 열람 가능
+      │                              │  [거절] → 역할 유지 (person 그대로)
+      │                              └─────────┤
+      │                                        │
+```
+
+- 중복 요청 방지: 이미 대기 중(pending)인 요청이 있으면 재요청 불가
+- 승인 시 `admins.role`이 `person` → `customer`로 자동 변경
+- 모든 요청/승인/거절 이력은 `audit_logs`에 기록
 
 ### 9-5. 방문자 로깅
 
@@ -652,6 +705,9 @@ npm run ingest
 | `user_delete` | Admin이 사용자 삭제 |
 | `user_register` | 사용자가 /register에서 자가 등록 |
 | `password_reset` | 사용자가 /forgot-password에서 비밀번호 변경 |
+| `access_request` | person 사용자가 제품 설명 열람 권한 요청 |
+| `access_approve` | Admin이 열람 권한 요청 승인 (person → customer) |
+| `access_reject` | Admin이 열람 권한 요청 거절 |
 
 ---
 
@@ -669,6 +725,9 @@ SQLite 데이터베이스: `data/acetec.db` (better-sqlite3, WAL 모드)
 | `role` | TEXT NOT NULL DEFAULT 'admin' | 역할 (admin/sales/customer/person) |
 | `display_name` | TEXT | 표시 이름 |
 | `email` | TEXT | 이메일 주소 |
+| `phone` | TEXT | 전화번호 |
+| `bio` | TEXT | 자기소개 |
+| `avatar_url` | TEXT | 프로필 이미지 경로 |
 
 ### sessions (로그인 세션)
 
@@ -709,6 +768,17 @@ SQLite 데이터베이스: `data/acetec.db` (better-sqlite3, WAL 모드)
 | `action` | TEXT NOT NULL | 작업 유형 (user_create, user_update 등) |
 | `detail` | TEXT | 상세 내용 |
 | `created_at` | INTEGER NOT NULL | 타임스탬프 (Unix ms) |
+
+### access_requests (열람 권한 요청)
+
+| 컬럼 | 타입 | 설명 |
+|------|------|------|
+| `id` | INTEGER PK AUTOINCREMENT | 요청 ID |
+| `user_id` | INTEGER NOT NULL FK | admins.id 참조 (요청한 사용자) |
+| `status` | TEXT NOT NULL DEFAULT 'pending' | 상태 (pending / approved / rejected) |
+| `created_at` | INTEGER NOT NULL | 요청 시간 (Unix ms) |
+| `resolved_at` | INTEGER | 처리 시간 (Unix ms) |
+| `resolved_by` | INTEGER FK | admins.id 참조 (처리한 관리자) |
 
 ### conversations (채팅 대화)
 
@@ -790,7 +860,7 @@ npm run sync
 | 언어 | TypeScript | strict 모드 |
 | 런타임 | Node.js | >= 22.12.0 |
 | 서버 어댑터 | @astrojs/node | standalone 모드 |
-| DB | better-sqlite3 | SQLite (WAL 모드, 7개 테이블) |
+| DB | better-sqlite3 | SQLite (WAL 모드, 8개 테이블) |
 | AI 채팅 | Ollama | ministral-3:14b |
 | AI 임베딩 | Ollama | nomic-embed-text-v2-moe (768차원) |
 | 벡터 DB | Qdrant | @qdrant/js-client-rest, Cosine similarity |
@@ -831,4 +901,14 @@ npm run sync
 > 미설정 시 연락처 폼은 정상 작동하되 DB 저장은 건너뜁니다.
 
 ---
+
+
+
+### 즉시 수정 필요 (보안 P0)
+
+1. **세션 쿠키 `Secure` 플래그 추가** — `src/lib/auth.ts`
+2. **CSRF 보호 활성화** — `astro.config.mjs`의 `checkOrigin: false` 제거
+3. **인증 코드 클라이언트 노출 제거** — `src/pages/api/auth/send-code.ts`의 `devCode` 응답 제거
+4. **Admin API role 검증 추가** — `src/pages/api/admin/users.ts`에 admin role 확인
+
 

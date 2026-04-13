@@ -5,7 +5,7 @@ export async function generateEmbedding(text: string): Promise<number[]> {
   const res = await fetch(`${OLLAMA_URL}/api/embeddings`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model: EMBED_MODEL, prompt: text }),
+    body: JSON.stringify({ model: EMBED_MODEL, prompt: text, keep_alive: '5m' }),
   });
 
   if (!res.ok) throw new Error(`Ollama embedding failed: ${res.status}`);

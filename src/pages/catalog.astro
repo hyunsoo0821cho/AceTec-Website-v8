@@ -12,7 +12,7 @@ const sessionId = verifySession(getSessionIdFromCookie(cookie));
 const userInfo = sessionId ? getUserInfo(sessionId) : null;
 const userRole = userInfo?.role || '';
 const isAdmin = userRole === 'admin';
-const canViewDetails = sessionId ? hasDetailAccess(sessionId) : false;
+const canViewDetails = sessionId ? hasDetailAccess(sessionId, 'catalog') : false;
 const hideDetails = !isAdmin && !canViewDetails;
 
 const root = process.cwd();
@@ -38,7 +38,34 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
       <h1 class="heading-page" data-i18n="catalog.title">{catalog.title}</h1>
       <p class="heading-sub color-muted" data-i18n="catalog.desc">{catalog.description}</p>
 
-      <!-- 카테고리 통계 -->
+      {!isAdmin && !canViewDetails && userRole && (
+        <div class="access-request-banner access-request-banner--top">
+          <div class="arb-inner">
+            <div class="arb-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div class="arb-text">
+              <strong>제품 상세 설명을 보려면 열람 권한이 필요합니다.</strong>
+              <span>관리자 승인 후 제품 사양, 기술 스펙을 열람할 수 있습니다.</span>
+            </div>
+            <button class="btn-request-access" id="requestAccessBtnTop">설명 보기 요청</button>
+          </div>
+        </div>
+      )}
+      {!isAdmin && !canViewDetails && !userRole && (
+        <div class="access-request-banner access-request-banner--top">
+          <div class="arb-inner">
+            <div class="arb-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div class="arb-text">
+              <strong>제품 상세 설명을 보려면 로그인이 필요합니다.</strong>
+              <span>로그인 후 열람 권한을 요청하실 수 있습니다.</span>
+            </div>
+            <a href="/login" class="btn-request-access">로그인</a>
+          </div>
+        </div>
+      )}
 
       <!-- 카테고리 목차 -->
       <div class="cat-toc">
@@ -119,20 +146,16 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
       ))}
 
     </div>
-
-    {!isAdmin && !canViewDetails && userRole && (
-      <div class="access-request-banner">
-        <p>제품 상세 설명을 보려면 열람 권한이 필요합니다.</p>
-        <button class="btn-request-access" id="requestAccessBtn">설명 보기 요청</button>
-      </div>
-    )}
-    {!isAdmin && !canViewDetails && !userRole && (
-      <div class="access-request-banner">
-        <p>제품 상세 설명을 보려면 로그인이 필요합니다.</p>
-        <a href="/login" class="btn-request-access" style="text-decoration:none;display:inline-block;">로그인</a>
-      </div>
-    )}
   </section>
+
+  <!-- 확대 모달 오버레이 -->
+  <div class="p-detail-overlay" id="detailOverlay">
+    <div class="p-detail-modal">
+      <button class="p-detail-modal-close" id="detailModalClose">&times;</button>
+      <div class="p-detail-modal-title" id="detailModalTitle"></div>
+      <ul class="p-detail-modal-list" id="detailModalList"></ul>
+    </div>
+  </div>
 </Base>
 
 <style>
@@ -218,7 +241,7 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
     transition: opacity var(--transition-slow);
   }
   .p-card .p-name {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
     margin-top: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -228,14 +251,22 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
   .p-features {
     margin-top: 8px;
     padding: 0 0 0 16px;
-    font-size: 11px;
-    line-height: 1.6;
-    color: #555;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #444;
     list-style: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .p-features:hover {
+    background: #f1f5f9;
   }
   .p-features li {
     position: relative;
-    padding-left: 10px;
+    padding-left: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
   }
   .p-features li::before {
     content: "·";
@@ -243,6 +274,89 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
     left: 0;
     color: #999;
     font-weight: 700;
+  }
+
+  /* 설명 확대 모달 오버레이 */
+  .p-detail-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+  }
+  .p-detail-overlay.active {
+    display: flex;
+  }
+  .p-detail-modal {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px 36px;
+    max-width: 640px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    animation: modalIn 0.25s ease-out;
+    position: relative;
+  }
+  .p-detail-modal-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+    color: #1e293b;
+  }
+  .p-detail-modal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #334155;
+  }
+  .p-detail-modal-list li {
+    position: relative;
+    padding: 6px 0 6px 18px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .p-detail-modal-list li:last-child {
+    border-bottom: none;
+  }
+  .p-detail-modal-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #2563eb;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .p-detail-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .p-detail-modal-close:hover {
+    background: #f1f5f9;
+    color: #334155;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
   }
   @media (hover: hover) {
     .p-card:hover { transform: translateY(-4px); }
@@ -267,20 +381,49 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
 
   /* 요청 배너 */
   .access-request-banner {
-    margin-top: 40px;
-    padding: 24px;
-    background: #eff6ff;
+    margin: 24px 0 32px;
+    padding: 0;
+    background: linear-gradient(135deg, #eff6ff 0%, #e0ecff 100%);
     border: 1px solid #bfdbfe;
-    border-radius: 12px;
-    text-align: center;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(37, 99, 235, 0.08);
   }
-  .access-request-banner p {
+  .arb-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 24px;
+  }
+  .arb-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 10px;
+    color: #2563eb;
+  }
+  .arb-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .arb-text strong {
     font-size: 15px;
-    color: #1e40af;
-    margin-bottom: 12px;
+    color: #1e3a5f;
+    font-weight: 600;
+  }
+  .arb-text span {
+    font-size: 13px;
+    color: #4b6a8a;
   }
   .btn-request-access {
-    padding: 10px 28px;
+    flex-shrink: 0;
+    padding: 10px 24px;
     background: #2563eb;
     color: #fff;
     border: none;
@@ -288,14 +431,42 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: all 0.15s;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
   }
-  .btn-request-access:hover { background: #1d4ed8; }
-  .btn-request-access:disabled { background: #94a3b8; cursor: not-allowed; }
+  .btn-request-access:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+  .btn-request-access:disabled { background: #94a3b8; cursor: not-allowed; transform: none; box-shadow: none; }
+
+  @media (max-width: 768px) {
+    .arb-inner {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px 16px;
+      gap: 12px;
+    }
+    .arb-text { align-items: center; }
+    .btn-request-access { width: 100%; text-align: center; }
+  }
 
   @media (max-width: 768px) {
     .products-grid { grid-template-columns: 1fr; }
     .cat-toc { gap: 4px 10px; }
+    .p-card .p-name {
+      font-size: 15px;
+      white-space: normal;
+      line-height: 1.3;
+    }
+    .p-features {
+      font-size: 12px;
+    }
+    .p-detail-modal {
+      padding: 24px 20px;
+    }
+    .p-detail-modal-list {
+      font-size: 14px;
+    }
   }
 </style>
 
@@ -309,14 +480,18 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
     });
   });
 
-  // 설명 보기 요청 버튼
-  const reqBtn = document.getElementById('requestAccessBtn');
+  // 설명 보기 요청 버튼 (catalog 페이지 전용)
+  const reqBtn = document.getElementById('requestAccessBtnTop');
   if (reqBtn) {
     reqBtn.addEventListener('click', async () => {
       reqBtn.setAttribute('disabled', '');
       reqBtn.textContent = '요청 중...';
       try {
-        const res = await fetch('/api/access-request', { method: 'POST' });
+        const res = await fetch('/api/access-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ page: 'catalog' }),
+        });
         const data = await res.json();
         if (data.ok) {
           reqBtn.textContent = '요청 완료 — 관리자 승인 대기 중';
@@ -330,4 +505,47 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
       }
     });
   }
+
+  // 설명칸 클릭 시 확대 모달
+  const overlay = document.getElementById('detailOverlay');
+  const modalTitle = document.getElementById('detailModalTitle');
+  const modalList = document.getElementById('detailModalList');
+  const modalClose = document.getElementById('detailModalClose');
+
+  function openDetailModal(productName: string, items: string[]) {
+    if (!overlay || !modalTitle || !modalList) return;
+    modalTitle.textContent = productName;
+    modalList.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDetailModal() {
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // p-features (ul) 클릭 시 모달 열기
+  document.querySelectorAll('.p-features').forEach(ul => {
+    ul.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      const card = ul.closest('.p-card');
+      if (!card) return;
+      const nameEl = card.querySelector('.p-name');
+      const productName = nameEl?.textContent?.trim() || 'Product Details';
+      const features = Array.from(ul.querySelectorAll('li')).map(li => li.textContent || '');
+      openDetailModal(productName, features);
+    });
+  });
+
+  // 모달 닫기
+  modalClose?.addEventListener('click', closeDetailModal);
+  overlay?.addEventListener('click', (ev) => {
+    if (ev.target === overlay) closeDetailModal();
+  });
+  document.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Escape') closeDetailModal();
+  });
 </script>

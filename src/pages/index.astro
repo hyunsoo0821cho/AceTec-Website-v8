@@ -110,8 +110,7 @@ const accI18nKeys = [
         isAdmin && (
           <button
             class="admin-add-btn"
-            data-admin-add="solutionCards"
-            data-admin-template='{"title":"New Solution","subtitle":"Description","description":"Details here","image":"","href":"/solutions"}'
+            id="addSolutionBtn"
             style="margin-top:16px;"
           >
             + Add Solution
@@ -120,6 +119,26 @@ const accI18nKeys = [
       }
     </div>
   </section>
+
+  {/* 새 솔루션 생성 모달 */}
+  {isAdmin && (
+    <div id="newSolutionOverlay" class="ns-overlay">
+      <div class="ns-modal">
+        <h3 class="ns-title">새 솔루션 생성</h3>
+        <label class="ns-label">제목 (카테고리명) <span class="ns-required">*</span></label>
+        <input type="text" id="nsTitle" class="ns-input" placeholder="예: 드론시스템분야" />
+        <label class="ns-label">부제목</label>
+        <input type="text" id="nsSubtitle" class="ns-input" placeholder="예: 무인항공 솔루션" />
+        <label class="ns-label">설명</label>
+        <textarea id="nsDesc" class="ns-textarea" rows="3" placeholder="간단한 설명을 입력하세요"></textarea>
+        <div class="ns-actions">
+          <button type="button" id="nsCancel" class="ns-btn ns-btn-cancel">취소</button>
+          <button type="button" id="nsCreate" class="ns-btn ns-btn-create">생성</button>
+        </div>
+        <div id="nsStatus" class="ns-status"></div>
+      </div>
+    </div>
+  )}
 
   <section class="featured section">
     <div class="container">
@@ -313,7 +332,7 @@ const accI18nKeys = [
       <div class="social-grid">
         {
           h.partners.map((p: any, i: number) => (
-            <div style="position:relative;">
+            <div class="partner-card" style="position:relative;">
               {isAdmin && (
                 <button class="admin-delete-btn" data-admin-delete={`partners[${i}]`} title="Delete">
                   &times;
@@ -814,17 +833,30 @@ const accI18nKeys = [
     text-align: center;
   }
   .social-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     gap: 24px;
     margin-bottom: var(--spacing-2xl);
   }
+  .partner-card {
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    border-radius: 4px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+  }
   .social-grid img {
+    display: block;
     width: 100%;
-    max-width: 180px;
-    height: 55px;
-    margin: 0 auto;
+    max-width: 160px;
+    height: 50px;
+    min-height: 0 !important;
+    background: transparent !important;
     object-fit: contain;
     cursor: pointer;
     transition:
@@ -888,9 +920,6 @@ const accI18nKeys = [
       grid-template-columns: 1fr;
       max-width: 500px;
       margin: 0 auto;
-    }
-    .social-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .consult-inner h2 {
       font-size: 36px;
@@ -966,8 +995,12 @@ const accI18nKeys = [
       gap: var(--spacing-md);
     }
     .social-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
+    }
+    .partner-card {
+      width: calc(33.333% - 10px);
+      min-width: 0;
+      padding: 10px 12px;
     }
     .svc-cards {
       grid-template-columns: 1fr;
@@ -1008,8 +1041,8 @@ const accI18nKeys = [
     .products-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .social-grid {
-      grid-template-columns: repeat(2, 1fr);
+    .partner-card {
+      width: calc(50% - 5px);
     }
     .featured-top h2 {
       font-size: var(--font-size-3xl);
@@ -1024,7 +1057,96 @@ const accI18nKeys = [
       font-size: var(--font-size-3xl);
     }
   }
+
+  /* 새 솔루션 생성 모달 */
+  .ns-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 100000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+  }
+  .ns-overlay.active { display: flex; }
+  .ns-modal {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  }
+  .ns-title { font-size: 20px; font-weight: 700; margin: 0 0 20px; }
+  .ns-label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 4px; margin-top: 12px; }
+  .ns-required { color: #ef4444; }
+  .ns-input, .ns-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s;
+    box-sizing: border-box;
+  }
+  .ns-input:focus, .ns-textarea:focus { border-color: #2563eb; }
+  .ns-textarea { resize: vertical; }
+  .ns-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
+  .ns-btn { padding: 10px 24px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  .ns-btn-cancel { background: #f3f4f6; color: #374151; }
+  .ns-btn-cancel:hover { background: #e5e7eb; }
+  .ns-btn-create { background: #2563eb; color: #fff; }
+  .ns-btn-create:hover { background: #1d4ed8; }
+  .ns-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .ns-status { font-size: 13px; margin-top: 8px; text-align: center; }
 </style>
+
+<script>
+  // 새 솔루션 생성 모달
+  const addBtn = document.getElementById('addSolutionBtn');
+  const nsOverlay = document.getElementById('newSolutionOverlay');
+  const nsCancel = document.getElementById('nsCancel');
+  const nsCreate = document.getElementById('nsCreate');
+  const nsStatus = document.getElementById('nsStatus');
+
+  if (addBtn && nsOverlay) {
+    addBtn.addEventListener('click', () => { nsOverlay.classList.add('active'); });
+    nsCancel?.addEventListener('click', () => { nsOverlay.classList.remove('active'); });
+    nsOverlay.addEventListener('click', (ev) => { if (ev.target === nsOverlay) nsOverlay.classList.remove('active'); });
+
+    nsCreate?.addEventListener('click', async () => {
+      const title = (document.getElementById('nsTitle') as HTMLInputElement).value.trim();
+      const subtitle = (document.getElementById('nsSubtitle') as HTMLInputElement).value.trim();
+      const desc = (document.getElementById('nsDesc') as HTMLTextAreaElement).value.trim();
+      if (!title) { if (nsStatus) { nsStatus.textContent = '제목을 입력해주세요.'; nsStatus.style.color = '#ef4444'; } return; }
+
+      nsCreate.setAttribute('disabled', '');
+      if (nsStatus) { nsStatus.textContent = '생성 중...'; nsStatus.style.color = '#2563eb'; }
+
+      try {
+        const res = await fetch('/api/admin/create-solution', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ title, subtitle, description: desc }),
+        });
+        const data = await res.json();
+        if (data.ok) {
+          if (nsStatus) { nsStatus.textContent = '생성 완료! 페이지 이동 중...'; nsStatus.style.color = '#16a34a'; }
+          window.location.href = data.href;
+        } else {
+          if (nsStatus) { nsStatus.textContent = data.error || '생성 실패'; nsStatus.style.color = '#ef4444'; }
+          nsCreate.removeAttribute('disabled');
+        }
+      } catch {
+        if (nsStatus) { nsStatus.textContent = '서버 연결 실패'; nsStatus.style.color = '#ef4444'; }
+        nsCreate.removeAttribute('disabled');
+      }
+    });
+  }
+</script>
 
 <script>
   // Accordion toggle for home page

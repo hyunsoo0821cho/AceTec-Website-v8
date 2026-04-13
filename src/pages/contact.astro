@@ -4,11 +4,14 @@ export const prerender = false;
 import Base from '../layouts/Base.astro';
 import ContactForm from '../components/ContactForm.astro';
 import AdminInline from '../components/AdminInline.astro';
-import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import { verifySession, getSessionIdFromCookie, getUserInfo } from '../lib/auth';
 import fs from 'fs';
 import path from 'path';
 const cookie = Astro.request.headers.get('cookie');
-const isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+const sessionId = verifySession(getSessionIdFromCookie(cookie));
+const userInfo = sessionId ? getUserInfo(sessionId) : null;
+const userRole = userInfo?.role || '';
+const isAdmin = userRole === 'admin';
 const root = process.cwd();
 const d = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'contact.json'), 'utf-8'));
 function e(p: string) {
@@ -153,6 +156,79 @@ const branch = d.offices[1];
     margin-bottom: 0;
   }
 
+  /* 메일 서비스 선택 모달 */
+  #mail-modal { display: none; }
+  #mail-modal.active { display: block; }
+
+  .mail-modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 9998;
+  }
+
+  .mail-modal-content {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    border-radius: var(--radius-lg, 12px);
+    padding: 32px;
+    z-index: 9999;
+    min-width: 340px;
+    max-width: 420px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    text-align: center;
+  }
+
+  .mail-modal-content h3 {
+    font-size: var(--font-size-xl, 20px);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .mail-modal-content p {
+    font-size: var(--font-size-base, 15px);
+    color: var(--color-gray-600, #666);
+    margin-bottom: 24px;
+  }
+
+  .mail-modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .mail-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border: 2px solid var(--color-gray-200, #e5e7eb);
+    border-radius: var(--radius-md, 8px);
+    background: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .15s;
+  }
+
+  .mail-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,.1); }
+  .mail-btn-gmail:hover { border-color: #EA4335; color: #EA4335; }
+  .mail-btn-naver:hover { border-color: #03C75A; color: #03C75A; }
+  .mail-btn-outlook:hover { border-color: #0078D4; color: #0078D4; }
+
+  .mail-modal-close {
+    background: none;
+    border: none;
+    color: var(--color-gray-500, #888);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 8px 16px;
+  }
+  .mail-modal-close:hover { color: var(--color-gray-800, #333); }
+
   @media (max-width: 768px) {
     h1 {
       font-size: var(--font-size-5xl);
@@ -207,31 +283,84 @@ const branch = d.offices[1];
     } catch { /* ignore */ }
   });
 
-  // SUBMIT 시 Outlook mailto 열기
+  // SUBMIT 시 메일 서비스 선택 모달
   document.addEventListener('DOMContentLoaded', () => {
+    const TO = 'acetec@acetec-korea.co.kr';
     const form = document.querySelector('[data-contact-form="ct"]') as HTMLFormElement;
     if (!form) return;
 
     const submitBtn = form.querySelector('[data-action="submit"]');
     if (!submitBtn) return;
 
+    // 모달 생성
+    const modal = document.createElement('div');
+    modal.id = 'mail-modal';
+    modal.innerHTML = `
+      <div class="mail-modal-backdrop"></div>
+      <div class="mail-modal-content">
+        <h3>메일 서비스 선택</h3>
+        <p>어떤 메일로 문의를 보내시겠습니까?</p>
+        <div class="mail-modal-buttons">
+          <button type="button" data-mail="gmail" class="mail-btn mail-btn-gmail">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" fill="#EA4335"/></svg>
+            Gmail
+          </button>
+          <button type="button" data-mail="naver" class="mail-btn mail-btn-naver">
+            <svg viewBox="0 0 24 24" width="20" height="20"><rect width="24" height="24" rx="4" fill="#03C75A"/><text x="12" y="16.5" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">N</text></svg>
+            네이버 메일
+          </button>
+          <button type="button" data-mail="outlook" class="mail-btn mail-btn-outlook">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" fill="#0078D4"/></svg>
+            Outlook
+          </button>
+        </div>
+        <button type="button" class="mail-modal-close">취소</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    let mailSubject = '';
+    let mailBody = '';
+
+    // SUBMIT 클릭 → 유효성 검사 → 모달 열기
     submitBtn.addEventListener('click', () => {
-      const fname = (form.querySelector('#ct-fname') as HTMLInputElement)?.value || '';
-      const lname = (form.querySelector('#ct-lname') as HTMLInputElement)?.value || '';
-      const email = (form.querySelector('#ct-email') as HTMLInputElement)?.value || '';
-      const phone = (form.querySelector('#ct-phone') as HTMLInputElement)?.value || '';
-      const msg = (form.querySelector('#ct-msg') as HTMLTextAreaElement)?.value || '';
+      const fname = (form.querySelector('#ct-fname') as HTMLInputElement)?.value.trim() || '';
+      const lname = (form.querySelector('#ct-lname') as HTMLInputElement)?.value.trim() || '';
+      const email = (form.querySelector('#ct-email') as HTMLInputElement)?.value.trim() || '';
+      const phone = (form.querySelector('#ct-phone') as HTMLInputElement)?.value.trim() || '';
+      const msg = (form.querySelector('#ct-msg') as HTMLTextAreaElement)?.value.trim() || '';
 
-      if (!fname || !email || !msg) return; // 기본 유효성
+      if (!fname || !email || !msg) return;
 
-      const subject = encodeURIComponent(`[AceTec 문의] ${lname}${fname} - 제품 문의`);
-      const body = encodeURIComponent(
-        `성명: ${lname} ${fname}\n` +
-        `이메일: ${email}\n` +
-        `전화번호: ${phone}\n` +
-        `\n${msg}`
-      );
-      window.location.href = `mailto:acetec@acetec-korea.co.kr?subject=${subject}&body=${body}`;
+      mailSubject = `[AceTec 문의] ${lname}${fname} - 제품 문의`;
+      mailBody = `성명: ${lname} ${fname}\n이메일: ${email}\n전화번호: ${phone}\n\n${msg}`;
+      modal.classList.add('active');
     });
+
+    // 메일 서비스별 URL 생성 + 열기
+    modal.addEventListener('click', (ev) => {
+      const target = (ev.target as HTMLElement).closest('[data-mail]') as HTMLElement;
+      if (!target) return;
+
+      const service = target.dataset.mail;
+      const s = encodeURIComponent(mailSubject);
+      const b = encodeURIComponent(mailBody);
+      let url = '';
+
+      if (service === 'gmail') {
+        url = `https://mail.google.com/mail/?view=cm&to=${TO}&su=${s}&body=${b}`;
+      } else if (service === 'naver') {
+        url = `https://mail.naver.com/write?to=${TO}&subject=${s}&body=${b}`;
+      } else if (service === 'outlook') {
+        url = `https://outlook.live.com/mail/0/deeplink/compose?to=${TO}&subject=${s}&body=${b}`;
+      }
+
+      if (url) window.open(url, '_blank');
+      modal.classList.remove('active');
+    });
+
+    // 닫기
+    modal.querySelector('.mail-modal-close')?.addEventListener('click', () => modal.classList.remove('active'));
+    modal.querySelector('.mail-modal-backdrop')?.addEventListener('click', () => modal.classList.remove('active'));
   });
 </script>

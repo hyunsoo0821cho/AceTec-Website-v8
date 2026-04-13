@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import getDb from '../../../lib/db';
 import bcrypt from 'bcryptjs';
+import { validatePassword } from '../../../lib/password-policy';
 
 export const prerender = false;
 
@@ -12,8 +13,9 @@ export const POST: APIRoute = async ({ request }) => {
     return Response.json({ error: 'All fields required' }, { status: 400 });
   }
 
-  if (password.length < 6) {
-    return Response.json({ error: '비밀번호는 6자 이상이어야 합니다' }, { status: 400 });
+  const pwCheck = validatePassword(password);
+  if (!pwCheck.ok) {
+    return Response.json({ error: pwCheck.error }, { status: 400 });
   }
 
   // 인증 코드 확인

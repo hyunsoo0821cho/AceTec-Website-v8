@@ -180,7 +180,19 @@
   },
   "history": {
     "title": "Geschichte und Referenzen",
-    "desc": "Über 30 Jahre Innovation in Embedded Computing, Verteidigungssystemen und Industrietechnologie — von 1994 bis heute."
+    "desc": "Über 30 Jahre Innovation in Embedded Computing, Verteidigungssystemen und Industrietechnologie — von 1994 bis heute.",
+    "monthJan": "Jan.",
+    "monthFeb": "Feb.",
+    "monthMar": "März",
+    "monthApr": "Apr.",
+    "monthMay": "Mai",
+    "monthJun": "Juni",
+    "monthJul": "Juli",
+    "monthAug": "Aug.",
+    "monthSep": "Sept.",
+    "monthOct": "Okt.",
+    "monthNov": "Nov.",
+    "monthDec": "Dez."
   },
   "contact": {
     "title": "Kontakt",

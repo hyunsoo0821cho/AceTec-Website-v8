@@ -180,7 +180,19 @@
   },
   "history": {
     "title": "Historia y referencias",
-    "desc": "Más de 30 años de innovación en computación embebida, sistemas de defensa y tecnología industrial — desde 1994 hasta hoy."
+    "desc": "Más de 30 años de innovación en computación embebida, sistemas de defensa y tecnología industrial — desde 1994 hasta hoy.",
+    "monthJan": "Ene.",
+    "monthFeb": "Feb.",
+    "monthMar": "Mar.",
+    "monthApr": "Abr.",
+    "monthMay": "May.",
+    "monthJun": "Jun.",
+    "monthJul": "Jul.",
+    "monthAug": "Ago.",
+    "monthSep": "Sep.",
+    "monthOct": "Oct.",
+    "monthNov": "Nov.",
+    "monthDec": "Dic."
   },
   "contact": {
     "title": "Contáctenos",

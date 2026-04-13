@@ -84,13 +84,14 @@ const { page, isAdmin } = Astro.props;
         wrapper.style.cssText = 'position:relative;display:inline-block;';
 
         const imgPos = getComputedStyle(imgEl).position;
-        if (imgPos === 'absolute') {
-          // Image is absolute (e.g. .p-img with padding-bottom trick) — use parent
-          const parent = imgEl.parentElement;
-          if (parent) {
-            if (getComputedStyle(parent).position === 'static') parent.style.position = 'relative';
-            parent.appendChild(badge);
-            wrapper = parent; // reuse existing parent as container
+        const parentEl = imgEl.parentElement;
+        const parentPos = parentEl ? getComputedStyle(parentEl).position : 'static';
+        if (imgPos === 'absolute' || parentPos === 'absolute' || parentPos === 'fixed') {
+          // Image or parent is absolute/fixed (e.g. .hero-bg, .p-img) — don't wrap
+          if (parentEl) {
+            if (parentPos === 'static') parentEl.style.position = 'relative';
+            parentEl.appendChild(badge);
+            wrapper = parentEl;
           }
         } else {
           // Normal flow image — wrap it

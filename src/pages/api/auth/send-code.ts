@@ -42,13 +42,17 @@ export const POST: APIRoute = async ({ request }) => {
   getDb().prepare('INSERT INTO verification_codes (email, code, purpose, role, expires_at) VALUES (?, ?, ?, ?, ?)').run(email, code, purpose, role || null, expiresAt);
 
   // 이메일 발송
+  const smtpConfigured = !!(process.env.SMTP_USER && process.env.SMTP_PASS);
   const sent = await sendVerificationEmail(email, code, purpose);
 
-  // SMTP 미설정 시 코드를 응답에 포함 (개발용)
-  const smtpConfigured = !!(process.env.SMTP_USER && process.env.SMTP_PASS);
-  if (smtpConfigured) {
+  if (smtpConfigured && sent) {
     return Response.json({ ok: true, message: '인증 코드가 이메일로 발송되었습니다' });
+  } else if (smtpConfigured && !sent) {
+    // SMTP 설정됐으나 발송 실패 — 코드를 응답에 포함하여 사용자가 확인 가능
+    console.warn(`[SEND-CODE] SMTP configured but email send failed for ${email}`);
+    return Response.json({ ok: true, message: '이메일 발송에 실패했습니다. 아래 코드를 사용하세요.', devCode: code });
   } else {
+    // SMTP 미설정 (개발용)
     return Response.json({ ok: true, message: '인증 코드가 생성되었습니다', devCode: code });
   }
 };

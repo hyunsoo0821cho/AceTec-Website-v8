@@ -20,6 +20,25 @@ const { year, months, isAdmin = false, periodIndex = 0, yearIndex = 0 } = Astro.
 function e(p: string) {
   return isAdmin ? { 'data-edit': p } : {};
 }
+
+/** 월 약어 -> i18n 키 매핑 */
+const monthI18nMap: Record<string, string> = {
+  'Jan.': 'history.monthJan',
+  'Feb.': 'history.monthFeb',
+  'Mar.': 'history.monthMar',
+  'Apr.': 'history.monthApr',
+  'May.': 'history.monthMay',
+  'Jun.': 'history.monthJun',
+  'Jul.': 'history.monthJul',
+  'Aug.': 'history.monthAug',
+  'Sep.': 'history.monthSep',
+  'Oct.': 'history.monthOct',
+  'Nov.': 'history.monthNov',
+  'Dec.': 'history.monthDec',
+};
+function getMonthI18nKey(month: string): string | undefined {
+  return monthI18nMap[month] || monthI18nMap[month.replace(/\.$/, '') + '.'];
+}
 ---
 
 <div class="history-year-group">
@@ -28,7 +47,7 @@ function e(p: string) {
     {
       months.map((m, mi) => (
         <div class="h-month-group">
-          <div class="h-month">{m.month}</div>
+          <div class="h-month" {...(getMonthI18nKey(m.month) ? { 'data-i18n': getMonthI18nKey(m.month) } : {})}>{m.month}</div>
           <div class="h-month-items">
             {m.entries.map((entry, ei) => (
               <div class="h-entry" style="position:relative;">

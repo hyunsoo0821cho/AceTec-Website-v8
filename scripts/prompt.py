@@ -1,7 +1,7 @@
 """
 AceTec 통합 AI 엔진
 - RAG 지식 검색 (Qdrant + Ollama)
-- DB 데이터 분석 (Ollama + PostgreSQL)
+- DB 데이터 분석 (Ollama + SQLite)
 
 사용법:
   python prompt.py          # RAG 모드 (기본)
@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # ============================================================
 QDRANT_URL = "http://localhost:6333"
 OLLAMA_URL = "http://192.168.10.182:11434"
-COLLECTION = "acetronix_knowledge"
+COLLECTION = "acetec_knowledge"
 EMBED_MODEL = "nomic-embed-text-v2-moe"
 LLM_MODEL = "ministral-3:14b"
 
@@ -44,12 +44,14 @@ ACETEC_INFO = {
 }
 
 DB_SCHEMAS = [
-    {"table_name": "products", "description": "SBC, COM, 산업용 PC 등 제품 마스터", "columns": "part_number, description, category, specs"},
-    {"table_name": "sales_orders", "description": "고객사 납품 및 매출 실적", "columns": "order_id, sale_date, sale_quantity, actual_selling_price, part_number, vendor_id"},
-    {"table_name": "purchase_orders", "description": "부품 매입 및 수급 이력", "columns": "purchase_id, purchase_date, purchase_quantity, actual_unit_cost, part_number, manufacturer_id"},
-    {"table_name": "current_products", "description": "실시간 창고 현재고 현황", "columns": "part_number, current_quantity, last_updated"},
-    {"table_name": "vendors", "description": "방산업체, 철도 운영사 등 고객사 마스터", "columns": "vendor_id, vendor_name, industry_sector"},
-    {"table_name": "manufacturers", "description": "제조사 및 공급처 마스터", "columns": "manufacturer_id, name"},
+    {"table_name": "admins", "description": "관리자/사용자 계정", "columns": "id, username, password_hash, role, display_name, email, phone, bio, avatar_url"},
+    {"table_name": "sessions", "description": "로그인 세션", "columns": "id, admin_id, expires_at"},
+    {"table_name": "visitor_logs", "description": "방문자 접속 로그", "columns": "id, ip, path, user_agent, created_at"},
+    {"table_name": "audit_logs", "description": "관리자 활동 감사 로그", "columns": "id, admin_id, action, detail, created_at"},
+    {"table_name": "verification_codes", "description": "이메일 인증 코드", "columns": "id, email, code, purpose, role, expires_at, used"},
+    {"table_name": "access_requests", "description": "페이지별 열람 권한 요청", "columns": "id, user_id, page, status, created_at, resolved_at, resolved_by"},
+    {"table_name": "conversations", "description": "챗봇 대화 세션", "columns": "id, visitor_id, title, created_at, updated_at"},
+    {"table_name": "messages", "description": "챗봇 메시지 내역", "columns": "id, conversation_id, role, content, sources, created_at"},
 ]
 
 # --- HTTP 세션 (연결 풀링) ---
@@ -264,10 +266,12 @@ def format_rag_response(result: dict) -> str:
 
 
 # ============================================================
-# DB 분석 엔진 (Ollama + PostgreSQL)
+# DB 분석 엔진 (Ollama + SQLite)
 # ============================================================
-def run_db_analyzer(engine: object, target_schema: str = "public") -> None:
-    """DB 기반 질문-응답 루프 (Ollama)"""
+def run_db_analyzer(db_path: str) -> None:
+    """DB 기반 질문-응답 루프 (Ollama + SQLite)"""
+    import sqlite3
+
     schema_context = "\n".join(
         f"- {s['table_name']}: {s['description']} ({s['columns']})" for s in DB_SCHEMAS
     )
@@ -286,20 +290,19 @@ def run_db_analyzer(engine: object, target_schema: str = "public") -> None:
 [에이스테크 사업 영역]
 {', '.join(ACETEC_INFO['sectors'])}
 
-[DB 스키마 정보]
+[DB 스키마 정보 (SQLite)]
 {schema_context}
 
 [작성 규칙]
 1. 관련 없는 질문은 무조건 'REJECT' 출력.
-2. 관련 질문인 경우, PostgreSQL SQL 하나만 출력 (설명/주석 금지).
-3. 테이블명은 '{target_schema}.테이블명' 형식을 사용.
+2. 관련 질문인 경우, SQLite SQL 하나만 출력 (설명/주석 금지).
+3. SELECT 문만 허용 (INSERT/UPDATE/DELETE/DROP 금지).
+4. password_hash 컬럼은 절대 조회하지 마세요.
 
 질문: {query}
 결과:"""
 
         try:
-            from sqlalchemy import text
-
             response = call_ollama(sql_prompt).strip()
 
             if "REJECT" in response:
@@ -307,11 +310,22 @@ def run_db_analyzer(engine: object, target_schema: str = "public") -> None:
                 continue
 
             generated_sql = clean_sql(response)
+
+            # SELECT만 허용 (안전장치)
+            if not generated_sql.upper().startswith("SELECT"):
+                print("  보안: SELECT 문만 실행 가능합니다.")
+                continue
+
             print(f"  실행 SQL: {generated_sql}")
 
-            with engine.connect() as conn:
-                result = conn.execute(text(generated_sql))
-                db_data = [dict(r._mapping) for r in result.fetchmany(10)]
+            conn = sqlite3.connect(db_path)
+            conn.row_factory = sqlite3.Row
+            try:
+                cursor = conn.execute(generated_sql)
+                rows = cursor.fetchmany(10)
+                db_data = [dict(row) for row in rows]
+            finally:
+                conn.close()
 
             summary_prompt = f"""질문: {query}
 조회된 데이터: {db_data}
@@ -379,16 +393,14 @@ def run_rag_mode() -> None:
 
 
 def run_db_mode() -> None:
-    """DB 분석 모드 (Ollama + PostgreSQL 필요)"""
+    """DB 분석 모드 (Ollama + SQLite)"""
+    db_path = os.path.join(BASE_DIR, "data", "acetec.db")
+    if not os.path.exists(db_path):
+        print(f"  DB 파일 없음: {db_path}")
+        print("  먼저 웹서버를 실행하여 DB를 초기화하세요.")
+        return
     try:
-        from sqlalchemy import create_engine
-
-        db_url = os.environ.get("DATABASE_URL", "postgresql://user:pass@localhost:5432/acetec")
-        engine = create_engine(db_url)
-        run_db_analyzer(engine)
-    except ImportError as e:
-        print(f"  필요한 패키지가 없습니다: {e}")
-        print("  pip install sqlalchemy")
+        run_db_analyzer(db_path)
     except Exception as e:
         print(f"  DB 엔진 구동 실패: {e}")
 

@@ -67,11 +67,11 @@ export async function sendVerificationEmail(to: string, code: string, purpose: '
 
   try {
     await t.sendMail({ from: SMTP_FROM, to, subject, html });
+    console.log(`[EMAIL] Sent successfully to: ${to}`);
     return true;
   } catch (err) {
     console.error('[EMAIL] Send failed:', err);
-    // 실패해도 코드는 DB에 저장됨 — 콘솔에서 확인 가능
     console.log(`[EMAIL FALLBACK] To: ${to} | Code: ${code}`);
-    return true;
+    return false;
   }
 }

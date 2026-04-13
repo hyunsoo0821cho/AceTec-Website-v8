@@ -3,11 +3,14 @@ export const prerender = false;
 
 import Base from '../layouts/Base.astro';
 import AdminInline from '../components/AdminInline.astro';
-import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import { verifySession, getSessionIdFromCookie, getUserInfo } from '../lib/auth';
 import fs from 'fs';
 import path from 'path';
 const cookie = Astro.request.headers.get('cookie');
-const isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+const sessionId = verifySession(getSessionIdFromCookie(cookie));
+const userInfo = sessionId ? getUserInfo(sessionId) : null;
+const userRole = userInfo?.role || '';
+const isAdmin = userRole === 'admin';
 const root = process.cwd();
 const d = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'applications.json'), 'utf-8'));
 function e(p: string) {

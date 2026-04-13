@@ -110,6 +110,13 @@ function getDb(): InstanceType<typeof Database> {
   try { _db.exec(`ALTER TABLE admins ADD COLUMN bio TEXT`); } catch {}
   try { _db.exec(`ALTER TABLE admins ADD COLUMN avatar_url TEXT`); } catch {}
 
+  // access_requests에 page 컬럼 추가 (페이지별 열람 권한)
+  try { _db.exec(`ALTER TABLE access_requests ADD COLUMN page TEXT NOT NULL DEFAULT 'all'`); } catch {}
+
+  // 로그인 잠금 (무차별 대입 방어)
+  try { _db.exec(`ALTER TABLE admins ADD COLUMN failed_attempts INTEGER NOT NULL DEFAULT 0`); } catch {}
+  try { _db.exec(`ALTER TABLE admins ADD COLUMN lock_until INTEGER NOT NULL DEFAULT 0`); } catch {}
+
   return _db;
 }
 

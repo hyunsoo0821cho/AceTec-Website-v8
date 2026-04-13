@@ -76,8 +76,8 @@
   --shadow-header: 0 2px 20px rgba(0, 0, 0, 0.08);
 
   /* Chat Widget */
-  --chat-panel-width: 420px;
-  --chat-panel-height: 560px;
+  --chat-panel-width: 800px;
+  --chat-panel-height: 1200px;
   --chat-send-size: 38px;
   --chat-pill-mobile-size: 52px;
   --z-chat: 99998;

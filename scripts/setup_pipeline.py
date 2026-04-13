@@ -15,7 +15,7 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 
 QDRANT_URL = "http://localhost:6333"
 OLLAMA_URL = "http://192.168.10.182:11434"
-COLLECTION = "acetronix_knowledge"
+COLLECTION = "acetec_knowledge"
 EMBED_MODEL = "nomic-embed-text-v2-moe"
 
 # 파일 경로
@@ -25,6 +25,7 @@ PAGES_DIR = os.path.join(CONTENT_DIR, "pages")
 CHUNKS_PATH = os.path.join(DATA_DIR, "website_chunks.json")
 QUESTIONS_PATH = os.path.join(DATA_DIR, "base_questions.json")
 PARAPHRASED_PATH = os.path.join(DATA_DIR, "paraphrased_qa.json")
+CHECKPOINT_PATH = os.path.join(DATA_DIR, "paraphrase_checkpoint.json")
 
 # HTTP 세션 재사용 (연결 풀링)
 session = requests.Session()
@@ -272,10 +273,19 @@ JSON 배열로만 답하세요: ["질문1", "질문2", ...]"""
 # ============================================================
 def phase4_paraphrases(questions: list[dict]) -> list[dict]:
     print(f"\n[Phase 4] 패러프레이즈 생성 ({len(questions)}개 질문)")
-    results = []
     batch_size = 5
 
-    for i in range(0, len(questions), batch_size):
+    # 체크포인트 복구 (중단 시 이어서 재개)
+    results = []
+    start_idx = 0
+    if os.path.exists(CHECKPOINT_PATH):
+        with open(CHECKPOINT_PATH, "r", encoding="utf-8") as f:
+            checkpoint = json.load(f)
+            results = checkpoint.get("results", [])
+            start_idx = checkpoint.get("next_idx", 0)
+        print(f"  체크포인트 복원: {start_idx}번부터 재개 ({len(results)}개 완료)")
+
+    for i in range(start_idx, len(questions), batch_size):
         batch = questions[i:i + batch_size]
         q_list = "\n".join([f'{j+1}. "{q["question"]}"' for j, q in enumerate(batch)])
 
@@ -305,10 +315,21 @@ JSON으로만: {{"1": ["변형1", ...], "2": [...], ...}}"""
 
         done = min(i + batch_size, len(questions))
         print(f"  [{done}/{len(questions)}] 완료", flush=True)
+
+        # 20개마다 체크포인트 저장
+        if done % 20 == 0 or done >= len(questions):
+            with open(CHECKPOINT_PATH, "w", encoding="utf-8") as f:
+                json.dump({"results": results, "next_idx": done}, f, ensure_ascii=False)
+
         time.sleep(0.3)
 
     with open(PARAPHRASED_PATH, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
+
+    # 체크포인트 정리
+    if os.path.exists(CHECKPOINT_PATH):
+        os.remove(CHECKPOINT_PATH)
+
     total_p = sum(len(r["paraphrases"]) for r in results)
     print(f"  패러프레이즈 총 {total_p}개 저장")
     return results

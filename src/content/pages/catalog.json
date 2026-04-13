@@ -133,7 +133,7 @@
           "name": "ACE-Sever-2U-Xeon-E5-F",
           "image": "/images/catalog/ACE-Sever-2U-Xeon-E5-F.png",
           "features": [
-            "2U Rack Mounting (Ȯ强  )",
+            "2U Rack Mounting (Ȯ强 )",
             "Support Intel Xeon E5 Series Processor (Dual Socket )",
             "Support up to 256GB System Memory",
             "Support 4 x Gigabit LAN Ports (Network Redundancy)",
@@ -871,6 +871,12 @@
           ]
         }
       ]
+    },
+    {
+      "id": "cs-new",
+      "icon": "📁",
+      "title": "New Category",
+      "products": []
     }
   ]
 }

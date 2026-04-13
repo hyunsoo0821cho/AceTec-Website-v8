@@ -23,6 +23,7 @@ const navLinks = [
 ---
 
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation" aria-hidden="true" inert>
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
   {
     navLinks.map(({ href, label, i18nKey }) => (
       <a class:list={['mob-link', { active: currentPath === href }]} href={href} {...(i18nKey ? { 'data-i18n': i18nKey } : {})}>

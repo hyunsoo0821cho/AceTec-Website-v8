@@ -3,10 +3,13 @@ export const prerender = false;
 
 import Base from '../layouts/Base.astro';
 import AdminInline from '../components/AdminInline.astro';
-import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import { verifySession, getSessionIdFromCookie, getUserInfo } from '../lib/auth';
 
 const cookie = Astro.request.headers.get('cookie');
-const isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+const sessionId = verifySession(getSessionIdFromCookie(cookie));
+const userInfo = sessionId ? getUserInfo(sessionId) : null;
+const userRole = userInfo?.role || '';
+const isAdmin = userRole === 'admin';
 import HistoryYearGroup from '../components/HistoryYearGroup.astro';
 import fs from 'fs';
 import path from 'path';
@@ -284,6 +287,10 @@ const timeline = JSON.parse(fs.readFileSync(timelinePath, 'utf-8'));
             g.classList.remove('visible');
             historyObserver.observe(g);
           });
+          // 탭 전환 시 새 패널 번역 적용
+          if (typeof (window as any).__translateHistoryPanel === 'function') {
+            (window as any).__translateHistoryPanel();
+          }
         });
       });
     }

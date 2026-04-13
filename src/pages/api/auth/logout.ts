@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { verifySession, getSessionIdFromCookie, getUserInfo } from '../../../lib/auth';
+import { verifySession, getSessionIdFromCookie, getUserInfo, clearCookie } from '../../../lib/auth';
 import getDb from '../../../lib/db';
 
 export const POST: APIRoute = async ({ request }) => {
@@ -20,7 +20,7 @@ export const POST: APIRoute = async ({ request }) => {
     status: 302,
     headers: {
       Location: '/',
-      'Set-Cookie': 'sid=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0',
+      'Set-Cookie': clearCookie(),
     },
   });
 };

@@ -1,29 +1,29 @@
 {
   "hero": {
-    "title": "미션 크리티컬 임베디드 컴퓨팅 & 산업 솔루션",
-    "description": "30년 이상의 전문성으로 국방, 항공우주, 철도, 산업 분야의 임베디드 컴퓨팅, 산업용 PC, 안전 필수 시스템을 제공합니다.",
-    "image": "/uploads/hero/1775629832284------------.webp",
-    "btnPrimary": "솔루션 보기",
+    "title": "미션 크리티컬 임베디드 컴퓨팅 & 산업용 솔루션",
+    "description": "30년 이상의 전문성으로 국방, 항공우주, 철도, 산업 분야에 임베디드 컴퓨팅, 산업용 PC, 안전 필수 시스템을 제공합니다.",
+    "image": "/uploads/hero/1775698202846-hero-main.webp",
+    "btnPrimary": "솔루션 살펴보기",
     "btnSecondary": "견적 요청"
   },
   "solutions": {
-    "title": "우리의 솔루션",
-    "description": "자체 R&D 센터와 수십 년의 도메인 전문성을 바탕으로, 에이스텍은 국방, 항공우주, 철도, 산업 자동화를 위한 맞춤형 기술 솔루션을 제공합니다 — 모두 KC 인증 및 ISO 9001 준수.",
+    "title": "주요 솔루션",
+    "description": "자체 R&D 센터와 수십 년의 도메인 전문성을 바탕으로 국방, 항공우주, 철도, 산업 자동화를 위한 맞춤형 기술 솔루션을 제공합니다 — KC 인증 및 ISO 9001 준수.",
     "items": [
       {
         "title": "임베디드 컴퓨팅",
-        "description": "Jade, Cobalt, Onyx, Talon, Flexor, Spark 플랫폼을 포함한 보드 레벨 신호 처리 시스템 — 가혹한 국방 및 항공우주 환경을 위해 설계."
+        "description": "Jade, Cobalt, Onyx, Talon, Flexor, Spark 플랫폼을 포함한 보드급 신호 처리 시스템 — 고난도 국방 및 항공우주 환경에 최적화."
       },
       {
-        "title": "산업용 & 네트워크",
-        "description": "KC 인증, ISO 9001 준수 팬리스 PC, 랙마운트 서버, 네트워크 어플라이언스 — 24시간 365일 연속 가동을 위해 제작."
+        "title": "산업 & 네트워크",
+        "description": "KC 인증, ISO 9001 준수 팬리스 PC, 랙마운트 서버, 네트워크 어플라이언스 — 24시간 365일 연속 운영 산업 환경용."
       },
       {
         "title": "안전 필수 시스템",
-        "description": "TÜV SÜD SIL4 인증 HIMA ControlSafe™ 플랫폼 — 페일세이프, 폴트톨러런트 설계로 최고 수준의 운영 안전성 보장."
+        "description": "TÜV SÜD SIL4 인증 HIMA ControlSafe™ 플랫폼 — 철도 신호 및 열차 제어용 페일세이프, 이중화 아키텍처."
       },
       {
-        "title": "통신 & 네트워킹",
+        "title": "통신 & 네트워크",
         "description": "방화벽, VPN, UTM, 로드밸런싱용 Intel/AMD 기반 네트워크 어플라이언스 및 고성능 NIC."
       },
       {
@@ -31,59 +31,59 @@
         "description": "OKTAL-SE 고충실도 EO/IR/RF 센서 시뮬레이션 — HIL, MITL, 훈련 시뮬레이션 환경용."
       },
       {
-        "title": "슈퍼 컴퓨팅시스템",
-        "description": "Big Data, UHD/FHD, Simulation 등의 대용량 자료 처리를 위한 고밀도 GPU 서버 및 HPC 시스템."
+        "title": "슈퍼컴퓨팅 시스템",
+        "description": "Big Data, UHD/FHD, Simulation 등의 대용량 데이터 증가에 따라 HPC 수요가 공공기관, 학교, 연구소에서 증가하고 있습니다. GPU 기반 고밀도 컴퓨팅 가속기로 차별화된 HPC를 제공합니다."
       },
       {
         "title": "산업용 컴퓨터",
-        "description": "관공서 업무용 장비부터 특수목적 컴퓨팅, 국방용 시스템, 산업용 HMI, 반도체 품질 검사 장비까지 포괄적인 기술 솔루션을 제공합니다."
+        "description": "관공서 업무기기부터 특수목적 컴퓨팅, 국방 시스템, 산업용 HMI, 반도체 품질검사 장비까지 종합 기술 솔루션을 제공합니다."
       },
       {
         "title": "레이더",
-        "description": "레이더 신호의 생성과 획득부터 정밀 분석, 타겟 추적, 다채널 데이터 기록 및 통합 상황 시각화까지 레이더 데이터 처리의 전 과정을 지원하는 종합 솔루션입니다."
+        "description": "레이더 신호 생성·취득부터 정밀 분석, 표적 추적, 다채널 기록, 통합 상황 시각화까지 엔드투엔드 레이더 데이터 처리."
       },
       {
         "title": "초고속 데이터 인터커넥트",
-        "description": "PCIe 기반의 독자적인 통신 프로토콜을 활용하여 서버, GPU, 스토리지 간의 데이터 전송 지연을 극소화하고, 여러 대의 노드를 하나의 단일 시스템처럼 작동시키는 초고속 연산 클러스터를 구축합니다."
+        "description": "PCIe 기반 독자 통신 프로토콜로 서버, GPU, 스토리지 간 데이터 전송 지연을 극소화하고 복수 노드를 단일 시스템처럼 운영하는 초고속 컴퓨팅 클러스터를 구축합니다."
       }
     ],
-    "image": "/uploads/services/1775463385832-hero-main.webp"
+    "image": "/uploads/services/1775709991803--------2.webp"
   },
   "consult": {
     "title": "맞춤형 솔루션이 필요하신가요?",
-    "description": "플랫폼 선정부터 시스템 설계, 배포, 지속적 지원까지 엔드투엔드 컨설팅을 제공합니다.",
+    "description": "플랫폼 선정부터 시스템 설계, 구축, 지속적인 지원까지 — 미션 크리티컬 애플리케이션을 위한 엔드투엔드 컨설팅을 제공합니다.",
     "image": "/images/misc/consult-bg.png"
   },
   "servicePlan": {
     "title": "토탈 서비스 솔루션",
-    "subtitle": "프로젝트의 모든 단계를 지원합니다 — 초기 시스템 컨설팅부터 최종 납품까지.",
+    "subtitle": "초기 시스템 컨설팅부터 최종 납품까지 프로젝트의 모든 단계를 지원합니다.",
     "steps": [
       {
         "title": "컨설팅 & 설계",
         "step": "Step 1–2",
         "period": "고객 컨설팅 · 설계 컨설팅",
-        "description": "프로젝트 요구사항을 평가하고 최적의 하드웨어, 소프트웨어, 통합 접근 방식으로 맞춤형 시스템 설계를 구축합니다.",
+        "description": "프로젝트 요구사항을 분석하고 최적의 하드웨어, 소프트웨어, 통합 방안을 포함한 맞춤형 시스템 설계를 수립합니다.",
         "image": "/images/plans/plan-standard.png"
       },
       {
         "title": "구축 & 지원",
         "step": "Step 3–4",
         "period": "시스템 구축 · 기술 지원",
-        "description": "조달 및 시스템 구축을 안내하고 프로젝트 수명주기 전반에 걸쳐 기술 지원을 제공합니다.",
+        "description": "조달 및 시스템 구축을 지원하고 프로젝트 전 과정에 걸쳐 기술 지원을 제공합니다.",
         "image": "/images/plans/plan-premium.png"
       },
       {
         "title": "검증 & 검사",
         "step": "Step 5",
         "period": "제품 평가 · 품질 보증",
-        "description": "모든 납품 시스템이 프로젝트 사양, 산업 표준, 성능 벤치마크를 충족하는지 확인하는 엄격한 테스트와 평가.",
+        "description": "엄격한 테스트와 평가를 통해 모든 납품 시스템이 프로젝트 사양, 산업 표준, 성능 기준을 충족하는지 확인합니다.",
         "image": "/images/plans/plan-enterprise.png"
       }
     ]
   },
   "about": {
-    "title": "회사 소개",
-    "description": "에이스텍은 1994년부터 임베디드 컴퓨팅 및 산업 기술 솔루션의 신뢰받는 파트너입니다.",
+    "title": "에이스텍 소개",
+    "description": "에이스텍은 1994년부터 임베디드 컴퓨팅과 산업 기술 솔루션의 신뢰받는 파트너입니다. \n30년 이상 에이스텍은 글로벌 임베디드 기술과 한국의 가장 까다로운 산업의 접점에 서 있었습니다. 전문 유통업체로 시작하여, 현재는 자체 R&D 센터를 통해 세계적 수준의 하드웨어와 소프트웨어를 공급할 뿐만 아니라 처음부터 맞춤형 솔루션을 설계하는 풀스펙트럼 기술 파트너로 진화했습니다.\n\n한국 최초의 데스크톱형 팬리스 산업용 PC를 개발하여 오늘날에도 여전히 우리의 접근 방식을 정의하는 업계 벤치마크를 수립했습니다. 현재 당사의 플랫폼은 해군 전투 시스템, 철도 연동 네트워크, 제철소 생산 라인, 국방 시뮬레이션 환경에서 운영되고 있습니다.\n\nAbaco Systems, HIMA, Wind River, RTI, OKTAL-SE, Cambridge Pixel, OneStopSystems, Pentek, SMART Embedded Computing과의 전략적 파트너십을 통해 검증된 글로벌 기술과 깊은 현지 엔지니어링 전문성을 제공합니다. 국방과학연구소부터 포스코, 현대, 한화시스템즈에 이르는 고객들이 제품이 아닌 성과를 제공하기에 저희를 신뢰합니다.",
     "image": "/uploads/about/1775629504150------------.webp"
   },
   "featuredProducts": [
@@ -138,15 +138,15 @@
   ],
   "contact": {
     "title": "문의하기",
-    "description": "제품 견적, 기술 상담, 파트너십을 원하시면 저희 엔지니어링 팀이 도와드리겠습니다."
+    "description": "제품 견적, 기술 상담, 파트너십에 대해 문의하세요. 엔지니어링 팀이 도와드립니다."
   },
   "solutionCards": [
     {
-      "title": "Military & Aerospace",
-      "subtitle": "Defense-Grade Computing",
+      "title": "군수항공분야",
+      "subtitle": "국방급 컴퓨팅",
       "image": "/images/services/military-aerospace.png",
       "href": "/products/military",
-      "description": "Rugged VPX/VME boards and signal processing platforms purpose-built for precision strike, C2, surveillance, and unmanned systems in the most demanding operational environments.",
+      "description": "정밀 타격, C2, 감시, 무인 시스템을 위해 설계된 견고한 VPX/VME 보드 및 신호 처리 플랫폼. 가장 가혹한 운용 환경에 대응합니다.",
       "subcategories": [
         "Form Factor — Abaco",
         "Middleware Software",
@@ -154,11 +154,11 @@
       ]
     },
     {
-      "title": "Rail Transportation",
-      "subtitle": "SIL4 Safety Systems",
+      "title": "철도분야",
+      "subtitle": "SIL4 안전 시스템",
       "image": "/images/services/railway.png",
       "href": "/products/railway",
-      "description": "TÜV SÜD SIL4 certified HIMA ControlSafe™ platforms for CBTC, interlocking, and train control — delivering the highest safety integrity levels in rail signaling.",
+      "description": "CBTC, 연동장치, 열차 제어에서 최고 수준의 안전성을 제공하는 TÜV SÜD SIL4 인증 HIMA ControlSafe™ 플랫폼.",
       "subcategories": [
         "HIMA SIL4 Railway System",
         "HiMax System",
@@ -166,22 +166,22 @@
       ]
     },
     {
-      "title": "Industrial Automation",
-      "subtitle": "Industrial-Grade Platforms",
+      "title": "자동화분야",
+      "subtitle": "산업급 플랫폼",
       "image": "/images/services/industrial.png",
       "href": "/products/industrial",
-      "description": "Fanless industrial PCs, network appliances, and IoT platforms for factory automation, process control, semiconductor manufacturing, and quality inspection.",
+      "description": "공장 자동화, 공정 제어, 반도체 제조, 품질 검사를 위한 팬리스 산업용 PC, 네트워크 어플라이언스, IoT 플랫폼.",
       "subcategories": [
         "Device Cloud (IoT)",
         "Real-Time Operating System"
       ]
     },
     {
-      "title": "Telecom & Networking",
-      "subtitle": "Network Infrastructure",
+      "title": "정보통신분야",
+      "subtitle": "네트워크 인프라",
       "image": "/images/services/telecom.png",
       "href": "/products/telecom",
-      "description": "Intel/AMD-based network appliances for firewall, VPN, UTM, and load balancing — along with high-performance NIC adapters for data center and telecom infrastructure.",
+      "description": "방화벽, VPN, UTM, 로드밸런싱용 Intel/AMD 기반 네트워크 어플라이언스 및 데이터센터·통신 인프라용 고성능 NIC 어댑터.",
       "subcategories": [
         "Entry/Middle/High-end Network Appliance",
         "Server Network Appliance",
@@ -189,33 +189,34 @@
       ]
     },
     {
-      "title": "Supercomputing Systems",
-      "subtitle": "High Performance Computing",
+      "title": "슈퍼컴퓨팅시스템분야",
+      "subtitle": "고성능 컴퓨팅",
       "image": "/images/products/sensor/satellite.png",
       "href": "/products/sensor",
-      "description": "As Big Data, UHD/FHD, and Simulation demands grow, HPC requirements are increasing across government, academia, and research labs. High Density Compute Accelerators deliver differentiated HPC through GPU-based processing.",
+      "description": "Big Data, UHD/FHD, Simulation 등의 대용량 데이터 증가에 따라 HPC 수요가 공공기관, 학교, 연구소에서 증가하고 있습니다. GPU 기반 High Density Compute Accelerator로 차별화된 HPC를 제공합니다.",
       "subcategories": [
         "EO/IR Sensor Simulation",
         "RF Sensor Simulation",
         "Active EO Sensor Simulation",
         "GNSS Sensor Simulation",
-        "3D Terrain & Building Generation"
+        "3D Terrain & Building Generation",
+        "APIs & Integration Tools"
       ]
     },
     {
-      "title": "Industrial PCs & Fanless Systems",
-      "subtitle": "Industrial Computer",
+      "title": "산업용컴퓨터분야",
+      "subtitle": "산업용 컴퓨터",
       "image": "/images/services/ai-center.png",
       "href": "",
       "i18nKey": "lab",
-      "description": "Boxtype, rackmount, server, desktop, wall-mount, and panel PCs for 24/7 industrial operation — fanless designs, wide temperature, and KC/ISO certified."
+      "description": "24시간 365일 산업 환경을 위한 박스형, 랙마운트, 서버, 데스크톱, 벽걸이, 패널 PC — 팬리스 설계, 광온도, KC/ISO 인증."
     },
     {
-      "title": "Supercomputing Systems",
-      "subtitle": "High Performance Computing",
+      "title": "슈퍼컴퓨팅시스템분야",
+      "subtitle": "고성능 컴퓨팅",
       "image": "/images/services/hpc.png",
       "href": "/products/hpc",
-      "description": "As Big Data, UHD/FHD, and Simulation demands grow, HPC requirements are increasing across government, academia, and research labs. High Density Compute Accelerators deliver differentiated HPC through GPU-based processing.",
+      "description": "Big Data, UHD/FHD, Simulation 등의 대용량 데이터 증가에 따라 HPC 수요가 공공기관, 학교, 연구소에서 증가하고 있습니다. GPU 기반 High Density Compute Accelerator로 차별화된 HPC를 제공합니다.",
       "subcategories": [
         "Servers",
         "Desktop Computing Appliances",
@@ -225,9 +226,9 @@
       ]
     },
     {
-      "title": "Industrial PCs & Fanless Systems",
-      "subtitle": "Industrial Computer",
-      "description": "Boxtype, rackmount, server, desktop, wall-mount, and panel PCs for 24/7 industrial operation — fanless designs, wide temperature, and KC/ISO certified.",
+      "title": "산업용컴퓨터분야",
+      "subtitle": "산업용 컴퓨터",
+      "description": "24시간 365일 산업 환경을 위한 박스형, 랙마운트, 서버, 데스크톱, 벽걸이, 패널 PC — 팬리스 설계, 광온도, KC/ISO 인증.",
       "image": "/images/services/ipc.png",
       "href": "/products/ipc",
       "subcategories": [
@@ -240,25 +241,14 @@
       ]
     },
     {
-      "title": "Radar Processing & Display",
-      "subtitle": "Cambridge Pixel Solutions",
-      "description": "High-performance radar scan conversion, target tracking, and display solutions from Cambridge Pixel — SPx Server, HPx acquisition cards, and integrated radar visualization systems.",
+      "title": "레이더 처리 & 디스플레이",
+      "subtitle": "Cambridge Pixel 솔루션",
+      "description": "Cambridge Pixel의 고성능 레이더 스캔 변환, 표적 추적, 디스플레이 솔루션 — SPx Server, HPx 취득 카드, 통합 레이더 시각화 시스템.",
       "image": "/images/services/radar.png",
       "href": "/products/radar",
       "subcategories": [
         "SPx Software Family",
         "HPx Hardware Family"
-      ]
-    },
-    {
-      "title": "High-Speed Data Interconnect",
-      "subtitle": "PCIe Fabric & Low Latency Networking",
-      "description": "Utilizing proprietary PCIe-based communication protocols to minimize data transfer latency between servers, GPUs, and storage, building ultra-fast computing clusters that operate multiple nodes as a single unified system.",
-      "image": "/uploads/services/1775193405048-dolphin---.webp",
-      "href": "/products/interconnect",
-      "subcategories": [
-        "PCIe Network Adapter",
-        "Superfast Interconnect Switch"
       ]
     }
   ],
@@ -278,14 +268,6 @@
     {
       "name": "New Partner",
       "image": "/uploads/partners/1775551639390-iwave.png"
-    },
-    {
-      "name": "New Partner",
-      "image": "/uploads/partners/1775634543765-nvidia-logo.webp"
-    },
-    {
-      "name": "New Partner",
-      "image": "/uploads/partners/1775634720848-intel.webp"
     }
   ],
   "companyDescription": "Trusted for over 30 years in embedded computing, industrial PCs, and safety-critical systems — serving defense, aerospace, railway, and industrial markets."

@@ -180,7 +180,19 @@
   },
   "history": {
     "title": "Historique et références",
-    "desc": "Plus de 30 ans d'innovation dans l'informatique embarquée, les systèmes de défense et la technologie industrielle — de 1994 à aujourd'hui."
+    "desc": "Plus de 30 ans d'innovation dans l'informatique embarquée, les systèmes de défense et la technologie industrielle — de 1994 à aujourd'hui.",
+    "monthJan": "Janv.",
+    "monthFeb": "Févr.",
+    "monthMar": "Mars",
+    "monthApr": "Avr.",
+    "monthMay": "Mai",
+    "monthJun": "Juin",
+    "monthJul": "Juil.",
+    "monthAug": "Août",
+    "monthSep": "Sept.",
+    "monthOct": "Oct.",
+    "monthNov": "Nov.",
+    "monthDec": "Déc."
   },
   "contact": {
     "title": "Contactez-nous",

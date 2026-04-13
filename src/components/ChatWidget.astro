@@ -289,8 +289,9 @@
     position: fixed;
     bottom: var(--spacing-xl);
     right: var(--spacing-xl);
-    width: var(--chat-panel-width);
-    height: var(--chat-panel-height);
+    width: min(var(--chat-panel-width), calc(100vw - 48px));
+    height: min(var(--chat-panel-height), calc(100vh - 48px));
+    height: min(var(--chat-panel-height), calc(100dvh - 48px));
     background: var(--color-white);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
@@ -941,6 +942,54 @@
     return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
   }
 
+  // 경로 → 사용자 친화적 설명 (약어는 풀어서)
+  function getPageLabel(path: string): string {
+    const map: Record<string, string> = {
+      '/products/military': '군수·항공 분야 (Military / Aerospace)',
+      '/products/railway': '철도 분야 (Railway Safety Systems)',
+      '/products/industrial': '산업 자동화 분야 (Industrial Automation)',
+      '/products/telecom': '정보통신 분야 (Telecom / Networking)',
+      '/products/sensor': '모델링 & 시뮬레이션 분야 (Sensor Simulation)',
+      '/products/hpc': '슈퍼컴퓨팅 분야 (HPC — High Performance Computing)',
+      '/products/ipc': '산업용 컴퓨터 분야 (IPC — Industrial PC)',
+      '/products/radar': '레이더 처리 & 디스플레이 (Radar Processing)',
+      '/products/interconnect': '초고속 데이터 인터커넥트 (PCIe Interconnect)',
+      '/catalog': '전체 제품 카탈로그',
+      '/contact': '문의하기 (Contact Us)',
+      '/about': '회사 소개 (About AceTec)',
+      '/solutions': '솔루션 / 적용 사례',
+      '/': '홈 (Home)',
+    };
+    return map[path] || path;
+  }
+
+  function askNavigationConfirm(path: string) {
+    const label = getPageLabel(path);
+    const card = document.createElement('div');
+    card.className = 'chat-msg assistant';
+    card.innerHTML = `<div class="chat-msg-content chat-summary-card">
+<div class="chat-summary-title">다음 페이지로 이동할까요?</div>
+<div class="chat-summary-fields">
+  <div class="chat-summary-row"><span class="chat-summary-icon">📄</span><span>${escapeHtml(label)}</span></div>
+  <div class="chat-summary-row"><span class="chat-summary-icon">🔗</span><span>${escapeHtml(path)}</span></div>
+</div>
+<div class="chat-action-btns">
+  <button class="chat-action-btn chat-action-btn--primary" data-nav-yes>✅ 네, 이동</button>
+  <button class="chat-action-btn chat-action-btn--danger" data-nav-no>✕ 아니요, 다시 질문</button>
+</div>
+</div>`;
+    messagesEl.appendChild(card);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+
+    card.querySelector('[data-nav-yes]')?.addEventListener('click', () => {
+      renderMessage('assistant', `${label} 페이지로 이동합니다...`, undefined, true);
+      setTimeout(() => { window.location.href = path; }, 500);
+    });
+    card.querySelector('[data-nav-no]')?.addEventListener('click', () => {
+      renderMessage('assistant', '알겠습니다. 원하시는 내용을 다시 질문해 주세요.', undefined, true);
+    });
+  }
+
   async function sendMessage() {
     const message = input.value.trim();
     if (!message || isLoading) return;
@@ -993,7 +1042,18 @@
         localStorage.setItem(CONV_KEY, currentConvId!);
         renderHistory();
       }
-      addMessage('assistant', data.reply, data.sources);
+
+      // [NAVIGATE:/path] 태그 파싱: 표시 전 본문에서 제거, 확인 카드로 사용자 의도 재확인 후 이동
+      const reply: string = data.reply || '';
+      const navMatch = reply.match(/\[NAVIGATE:(\/[^\]]+)\]/);
+      const cleanedReply = navMatch ? reply.replace(navMatch[0], '').trim() : reply;
+      addMessage('assistant', cleanedReply, data.sources);
+      if (navMatch) {
+        const targetPath = navMatch[1];
+        if (/^\/[A-Za-z0-9/_-]*$/.test(targetPath)) {
+          askNavigationConfirm(targetPath);
+        }
+      }
     } catch {
       typingEl.remove();
       addMessage('assistant', 'Connection error. Please check your network and try again.');
@@ -1024,13 +1084,11 @@
   let isResizing = false;
   let startX = 0, startY = 0, startW = 0, startH = 0;
 
-  // 저장된 크기 복원
-  const savedW = localStorage.getItem('acetec-chat-w');
-  const savedH = localStorage.getItem('acetec-chat-h');
-  if (savedW && savedH) {
-    panel.style.width = savedW + 'px';
-    panel.style.height = savedH + 'px';
-  }
+  // 항상 CSS 기본값 사용 — 기존 저장값 제거
+  localStorage.removeItem('acetec-chat-w');
+  localStorage.removeItem('acetec-chat-h');
+  localStorage.removeItem('acetec-chat-x');
+  localStorage.removeItem('acetec-chat-y');
 
   resizeHandle.addEventListener('mousedown', (e: MouseEvent) => {
     e.preventDefault();
@@ -1056,8 +1114,6 @@
     if (!isResizing) return;
     isResizing = false;
     document.body.style.userSelect = '';
-    localStorage.setItem('acetec-chat-w', String(panel.offsetWidth));
-    localStorage.setItem('acetec-chat-h', String(panel.offsetHeight));
   });
 
   // 터치 리사이즈
@@ -1084,8 +1140,6 @@
   document.addEventListener('touchend', () => {
     if (!isResizing) return;
     isResizing = false;
-    localStorage.setItem('acetec-chat-w', String(panel.offsetWidth));
-    localStorage.setItem('acetec-chat-h', String(panel.offsetHeight));
   });
 
   // 드래그 이동 (헤더를 잡고 이동)
@@ -1093,15 +1147,7 @@
   let isDragging = false;
   let dragStartX = 0, dragStartY = 0, panelStartX = 0, panelStartY = 0;
 
-  // 저장된 위치 복원
-  const savedPosX = localStorage.getItem('acetec-chat-x');
-  const savedPosY = localStorage.getItem('acetec-chat-y');
-  if (savedPosX && savedPosY) {
-    panel.style.right = 'auto';
-    panel.style.bottom = 'auto';
-    panel.style.left = savedPosX + 'px';
-    panel.style.top = savedPosY + 'px';
-  }
+  // 위치 저장/복원 없음 — 항상 CSS 기본값(bottom-right)
 
   function onDragStart(clientX: number, clientY: number) {
     isDragging = true;
@@ -1130,9 +1176,6 @@
     if (!isDragging) return;
     isDragging = false;
     document.body.style.userSelect = '';
-    const rect = panel.getBoundingClientRect();
-    localStorage.setItem('acetec-chat-x', String(rect.left));
-    localStorage.setItem('acetec-chat-y', String(rect.top));
   }
 
   header.addEventListener('mousedown', (e: MouseEvent) => {

@@ -4,14 +4,18 @@ export const prerender = false;
 import Base from '../../layouts/Base.astro';
 import ProductGrid from '../../components/ProductGrid.astro';
 import AdminInline from '../../components/AdminInline.astro';
-import { verifySession, getSessionIdFromCookie } from '../../lib/auth';
+import { verifySession, getSessionIdFromCookie, getUserInfo, hasDetailAccess } from '../../lib/auth';
 import fs from 'fs';
 import path from 'path';
 const cookie = Astro.request.headers.get('cookie');
-const isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+const sessionId = verifySession(getSessionIdFromCookie(cookie));
+const userInfo = sessionId ? getUserInfo(sessionId) : null;
+const userRole = userInfo?.role || '';
+const isAdmin = userRole === 'admin';
+const category = Astro.params.category ?? '';
+const canViewDetails = sessionId ? hasDetailAccess(sessionId, category) : false;
 
 const root = process.cwd();
-const category = Astro.params.category ?? '';
 const filePath = path.join(root, 'src', 'content', 'products', `${category}.json`);
 
 if (!fs.existsSync(filePath)) {
@@ -30,11 +34,113 @@ function e(p: string) {
     <div class="container">
       <h1 class="heading-page" {...e('title')} data-i18n={`productDetail.${category}Title`}>{product.title}</h1>
       <p class="heading-sub color-muted" {...e('description')} data-i18n={`productDetail.${category}Desc`}>{product.description}</p>
-      <ProductGrid items={product.items} sections={product.sections} isAdmin={isAdmin} category={category} />
+
+      {!isAdmin && !canViewDetails && userRole && (
+        <div class="access-request-banner">
+          <div class="arb-inner">
+            <div class="arb-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div class="arb-text">
+              <strong>제품 상세 설명을 보려면 열람 권한이 필요합니다.</strong>
+              <span>관리자 승인 후 제품 사양, 기술 스펙을 열람할 수 있습니다.</span>
+            </div>
+            <button class="btn-request-access" id="requestAccessBtn">설명 보기 요청</button>
+          </div>
+        </div>
+      )}
+      {!isAdmin && !canViewDetails && !userRole && (
+        <div class="access-request-banner">
+          <div class="arb-inner">
+            <div class="arb-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div class="arb-text">
+              <strong>제품 상세 설명을 보려면 로그인이 필요합니다.</strong>
+              <span>로그인 후 열람 권한을 요청하실 수 있습니다.</span>
+            </div>
+            <a href="/login" class="btn-request-access">로그인</a>
+          </div>
+        </div>
+      )}
+
+      <ProductGrid items={product.items} sections={product.sections} isAdmin={isAdmin} category={category} userRole={userRole} canViewDetails={canViewDetails} />
+
       <div class="mt-xl"><a href="/" class="btn-secondary" data-i18n="products.backToHome">&larr; 홈페이지로 돌아가기</a></div>
     </div>
   </section>
 </Base>
+<style>
+  .access-request-banner {
+    margin: 24px 0 32px;
+    padding: 0;
+    background: linear-gradient(135deg, #eff6ff 0%, #e0ecff 100%);
+    border: 1px solid #bfdbfe;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(37, 99, 235, 0.08);
+  }
+  .arb-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 24px;
+  }
+  .arb-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 10px;
+    color: #2563eb;
+  }
+  .arb-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .arb-text strong {
+    font-size: 15px;
+    color: #1e3a5f;
+    font-weight: 600;
+  }
+  .arb-text span {
+    font-size: 13px;
+    color: #4b6a8a;
+  }
+  .btn-request-access {
+    flex-shrink: 0;
+    padding: 10px 24px;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .btn-request-access:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+  .btn-request-access:disabled { background: #94a3b8; cursor: not-allowed; transform: none; box-shadow: none; }
+
+  @media (max-width: 768px) {
+    .arb-inner {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px 16px;
+      gap: 12px;
+    }
+    .arb-text { align-items: center; }
+    .btn-request-access { width: 100%; text-align: center; }
+  }
+</style>
 <script>
   // URL 해시로 접근 시 해당 섹션으로 스크롤
   if (window.location.hash) {
@@ -42,5 +148,32 @@ function e(p: string) {
       const el = document.querySelector(window.location.hash);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 300);
+  }
+
+  // 설명 보기 요청 버튼 (페이지별 권한)
+  const reqBtn = document.getElementById('requestAccessBtn');
+  if (reqBtn) {
+    const pageName = window.location.pathname.split('/').pop() || '';
+    reqBtn.addEventListener('click', async () => {
+      reqBtn.setAttribute('disabled', '');
+      reqBtn.textContent = '요청 중...';
+      try {
+        const res = await fetch('/api/access-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ page: pageName }),
+        });
+        const data = await res.json();
+        if (data.ok) {
+          reqBtn.textContent = '요청 완료 — 관리자 승인 대기 중';
+        } else {
+          reqBtn.textContent = data.error || '요청 실패';
+          setTimeout(() => { reqBtn.removeAttribute('disabled'); reqBtn.textContent = '설명 보기 요청'; }, 3000);
+        }
+      } catch {
+        reqBtn.textContent = '서버 연결 실패';
+        setTimeout(() => { reqBtn.removeAttribute('disabled'); reqBtn.textContent = '설명 보기 요청'; }, 3000);
+      }
+    });
   }
 </script>

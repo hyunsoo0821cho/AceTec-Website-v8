@@ -4,26 +4,20 @@ export const prerender = false;
 import Base from '../layouts/Base.astro';
 import ContactForm from '../components/ContactForm.astro';
 import AdminInline from '../components/AdminInline.astro';
-import { verifySession, getSessionIdFromCookie } from '../lib/auth';
+import { verifySession, getSessionIdFromCookie, getUserInfo } from '../lib/auth';
 import fs from 'fs';
 import path from 'path';
 const cookie = Astro.request.headers.get('cookie');
-const isAdmin = !!verifySession(getSessionIdFromCookie(cookie));
+const sessionId = verifySession(getSessionIdFromCookie(cookie));
+const userInfo = sessionId ? getUserInfo(sessionId) : null;
+const userRole = userInfo?.role || '';
+const isAdmin = userRole === 'admin';
 const root = process.cwd();
 const d = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'solutions.json'), 'utf-8'));
-const home = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'pages', 'home.json'), 'utf-8'));
-// Solutions 카드는 home.json의 solutionCards를 사용 (Home과 동기화)
-const cards = home.solutionCards;
+// Solutions 페이지는 자체 solutionCards 사용 (home과 독립)
+const cards = d.solutionCards;
 function e(p: string) {
   return isAdmin ? { 'data-edit': p } : {};
-}
-// home.json 기준으로 편집
-function eHome(p: string) {
-  return isAdmin ? { 'data-edit': p, 'data-edit-page': 'home' } : {};
-}
-// solutions.json 기준으로 편집
-function eSol(p: string) {
-  return isAdmin ? { 'data-edit': p, 'data-edit-page': 'solutions' } : {};
 }
 function img(p: string, preset: string) {
   return isAdmin ? { 'data-img': p, 'data-preset': preset } : {};
@@ -44,14 +38,13 @@ function cardKey(href: string): string {
 ---
 
 <Base title="Solutions - AceTec">
-  <!-- Cards use home.json (synced with Home page), header uses solutions.json -->
-  <AdminInline page="home" isAdmin={isAdmin} />
+  <AdminInline page="solutions" isAdmin={isAdmin} />
 
   <section class="section pt-page">
     <div class="container">
       <div class="svc-header-grid">
-        <h1 class="text-6xl" {...eSol('title')} data-i18n="solutions.title">{d.title}</h1>
-        <p class="text-lg" {...eSol('description')} data-i18n="solutions.desc">{d.description}</p>
+        <h1 class="text-6xl" {...e('title')} data-i18n="solutions.title">{d.title}</h1>
+        <p class="text-lg" {...e('description')} data-i18n="solutions.desc">{d.description}</p>
       </div>
       <div class={`svc-cards ${isAdmin ? 'is-admin' : ''}`}>
         {
@@ -62,42 +55,58 @@ function cardKey(href: string): string {
                   &times;
                 </button>
               )}
-              {item.image ? (
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  {...img(`solutionCards[${i}].image`, 'service')}
-                />
-              ) : (
-                <div class="img-placeholder" {...img(`solutionCards[${i}].image`, 'service')}>
-                  Click to add image
-                </div>
-              )}
+              <div class="s-card-img-wrap">
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    {...img(`solutionCards[${i}].image`, 'service')}
+                  />
+                ) : (
+                  <div class="img-placeholder" {...img(`solutionCards[${i}].image`, 'service')}>
+                    Click to add image
+                  </div>
+                )}
+                {item.href && <a href={item.href} class="s-card-img-link" aria-label={`Go to ${item.title}`}></a>}
+              </div>
               <h3 {...e(`solutionCards[${i}].title`)} {...((item.i18nKey || cardKey(item.href)) ? {'data-i18n': `solutionCards.${item.i18nKey || cardKey(item.href)}`} : {})}>{item.title}</h3>
               <div class="s-subtitle" {...e(`solutionCards[${i}].subtitle`)} {...((item.i18nKey || cardKey(item.href)) ? {'data-i18n': `solutionCards.${item.i18nKey || cardKey(item.href)}Sub`} : {})}>
                 {item.subtitle}
               </div>
-              <p class="s-desc" style={item.href === '/products/hpc' ? 'font-size:13px;' : ''} {...e(`solutionCards[${i}].description`)} {...((item.i18nKey || cardKey(item.href)) ? {'data-i18n': `solutionCards.${item.i18nKey || cardKey(item.href)}Desc`} : {})}>{item.description}</p>
-              {item.subcategories && item.subcategories.length > 0 && (
-                <ul class="s-subcats">
-                  {item.subcategories.map((sub: string, si: number) => (
-                    <li>
-                      <a href={`${item.href}#section-${si}`} class="s-subcat-link" {...e(`solutionCards[${i}].subcategories[${si}]`)}>{sub}</a>
-                      {isAdmin && (
-                        <button class="subcat-delete-btn" data-admin-delete={`solutionCards[${i}].subcategories[${si}]`} title="Delete">&times;</button>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {isAdmin && (
-                <button
-                  class="admin-add-btn subcat-add-btn"
-                  data-admin-add={`solutionCards[${i}].subcategories`}
-                  data-admin-template='"New Item"'
-                >+ Add</button>
-              )}
+              <div class="s-content-area">
+                <div class="s-tabs">
+                  <button type="button" class="s-tab active" data-tab="desc" data-i18n="ui.descTab">설명</button>
+                  <button type="button" class="s-tab" data-tab="cats" data-i18n="ui.catsTab">분야</button>
+                </div>
+                <div class="s-panel-wrap">
+                  <div class="s-panel s-panel--desc active" data-panel="desc">
+                    <p class="s-desc-full" {...e(`solutionCards[${i}].description`)} {...((item.i18nKey || cardKey(item.href)) ? {'data-i18n': `solutionCards.${item.i18nKey || cardKey(item.href)}Desc`} : {})}>{item.description}</p>
+                  </div>
+                  <div class="s-panel s-panel--cats" data-panel="cats">
+                    {item.subcategories && item.subcategories.length > 0 && (
+                      <ul class="s-subcats">
+                        {item.subcategories.map((sub: string, si: number) => (
+                          <li>
+                            <a href={`${item.href}#section-${si}`} class="s-subcat-link" {...e(`solutionCards[${i}].subcategories[${si}]`)}>{sub}</a>
+                            {isAdmin && (
+                              <button class="subcat-delete-btn" data-admin-delete={`solutionCards[${i}].subcategories[${si}]`} title="Delete">&times;</button>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {isAdmin && (
+                      <button
+                        class="admin-add-btn subcat-add-btn"
+                        data-admin-add={`solutionCards[${i}].subcategories`}
+                        data-admin-template='"New Item"'
+                      >+ Add</button>
+                    )}
+                  </div>
+                  <div class="s-resize-handle" title="Drag to resize"></div>
+                </div>
+              </div>
             </div>
           ))
         }
@@ -121,8 +130,8 @@ function cardKey(href: string): string {
     <div class="container">
       <div class="contact-grid">
         <div class="contact-txt">
-          <h2 {...eSol('quoteCta.title')} data-i18n="solutions.requestQuote">{d.quoteCta.title}</h2>
-          <p {...eSol('quoteCta.description')} data-i18n="solutions.requestQuoteDesc">{d.quoteCta.description}</p>
+          <h2 {...e('quoteCta.title')} data-i18n="solutions.requestQuote">{d.quoteCta.title}</h2>
+          <p {...e('quoteCta.description')} data-i18n="solutions.requestQuoteDesc">{d.quoteCta.description}</p>
         </div>
         <ContactForm prefix="svc" />
       </div>
@@ -131,14 +140,65 @@ function cardKey(href: string): string {
 </Base>
 
 <script>
-  // 카드 클릭 시 href로 이동 (서브카테고리 링크 클릭은 제외)
+  // 카드 클릭 시 href로 이동 (인터랙티브 영역 제외)
   document.querySelectorAll('.s-card[data-href]').forEach(card => {
     card.addEventListener('click', (ev) => {
       const target = ev.target as HTMLElement;
-      if (target.closest('.s-subcat-link') || target.closest('.admin-delete-btn') || target.closest('[data-edit]') || target.closest('[data-img]')) return;
+      if (target.closest('.s-subcat-link') || target.closest('.admin-delete-btn') || target.closest('[data-edit]') || target.closest('[data-img]') || target.closest('.s-tab') || target.closest('.s-resize-handle') || target.closest('.s-panel')) return;
       const href = card.getAttribute('data-href');
       if (href) window.location.href = href;
     });
+  });
+
+  // 탭 토글
+  document.querySelectorAll('.s-content-area').forEach(area => {
+    const tabs = area.querySelectorAll('.s-tab');
+    const panels = area.querySelectorAll('.s-panel');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        const t = (tab as HTMLElement).getAttribute('data-tab');
+        tabs.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        area.querySelector(`.s-panel[data-panel="${t}"]`)?.classList.add('active');
+      });
+    });
+  });
+
+  // 드래그 리사이즈
+  document.querySelectorAll('.s-resize-handle').forEach(handle => {
+    let startY = 0, startH = 0;
+    const wrap = handle.parentElement as HTMLElement;
+
+    function onMove(e: MouseEvent | TouchEvent) {
+      e.preventDefault();
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      const newH = Math.max(60, Math.min(400, startH + (clientY - startY)));
+      wrap.style.height = newH + 'px';
+    }
+    function onUp() {
+      document.removeEventListener('mousemove', onMove as EventListener);
+      document.removeEventListener('mouseup', onUp);
+      document.removeEventListener('touchmove', onMove as EventListener);
+      document.removeEventListener('touchend', onUp);
+      document.body.style.userSelect = '';
+      document.body.style.cursor = '';
+    }
+    function onDown(e: MouseEvent | TouchEvent) {
+      e.preventDefault();
+      e.stopPropagation();
+      startY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      startH = wrap.offsetHeight;
+      document.body.style.userSelect = 'none';
+      document.body.style.cursor = 'ns-resize';
+      document.addEventListener('mousemove', onMove as EventListener);
+      document.addEventListener('mouseup', onUp);
+      document.addEventListener('touchmove', onMove as EventListener, { passive: false });
+      document.addEventListener('touchend', onUp);
+    }
+    handle.addEventListener('mousedown', onDown as EventListener);
+    handle.addEventListener('touchstart', onDown as EventListener, { passive: false });
   });
 </script>
 
@@ -174,6 +234,9 @@ function cardKey(href: string): string {
   .s-card:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
+  .s-card-img-wrap {
+    position: relative;
+  }
   .s-card img {
     width: 100%;
     aspect-ratio: 4/3;
@@ -183,6 +246,12 @@ function cardKey(href: string): string {
   }
   .s-card:hover img {
     opacity: 0.9;
+  }
+  .s-card-img-link {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    cursor: pointer;
   }
   .s-card h3 {
     font-size: 25px;
@@ -208,6 +277,89 @@ function cardKey(href: string): string {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  /* ===== Content Area: Tabs + Resizable Panel ===== */
+  .s-content-area {
+    padding: 0 14px 14px;
+  }
+  .s-tabs {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .s-tab {
+    flex: 1;
+    padding: 6px 0;
+    border: none;
+    background: none;
+    font-size: 12px;
+    font-weight: 500;
+    color: #94a3b8;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    text-align: center;
+  }
+  .s-tab:hover { color: #475569; }
+  .s-tab.active {
+    color: #0f172a;
+    border-bottom-color: #0f172a;
+  }
+  .s-panel-wrap {
+    position: relative;
+    height: 120px;
+    min-height: 60px;
+    max-height: 400px;
+    overflow: hidden;
+  }
+  .s-panel {
+    display: none;
+    height: 100%;
+    overflow-y: auto;
+    padding-top: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+  .s-panel::-webkit-scrollbar { width: 4px; }
+  .s-panel::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+  .s-panel.active { display: block; }
+  .s-desc-full {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .s-panel--cats .s-subcats {
+    padding: 0;
+  }
+
+  /* Resize handle */
+  .s-resize-handle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    cursor: ns-resize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    z-index: 2;
+  }
+  .s-resize-handle::after {
+    content: '';
+    width: 32px;
+    height: 3px;
+    border-radius: 2px;
+    background: #cbd5e1;
+    transition: background 0.15s;
+  }
+  .s-resize-handle:hover::after {
+    background: #94a3b8;
+  }
+
   .s-subcats {
     margin: 0;
     padding: 0 14px 14px;
@@ -240,7 +392,7 @@ function cardKey(href: string): string {
   .s-subcats li:hover .subcat-delete-btn { opacity: 1; }
   .subcat-delete-btn:hover { background: #dc2626; }
   .subcat-add-btn {
-    margin: 0 14px 14px !important;
+    margin: 8px 0 4px !important;
     font-size: 12px !important;
     padding: 4px 10px !important;
   }

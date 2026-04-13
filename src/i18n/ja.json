@@ -180,7 +180,19 @@
   },
   "history": {
     "title": "沿革・実績",
-    "desc": "1994年から現在まで、組込みコンピューティング、防衛システム、産業技術における30年以上のイノベーション。"
+    "desc": "1994年から現在まで、組込みコンピューティング、防衛システム、産業技術における30年以上のイノベーション。",
+    "monthJan": "1月",
+    "monthFeb": "2月",
+    "monthMar": "3月",
+    "monthApr": "4月",
+    "monthMay": "5月",
+    "monthJun": "6月",
+    "monthJul": "7月",
+    "monthAug": "8月",
+    "monthSep": "9月",
+    "monthOct": "10月",
+    "monthNov": "11月",
+    "monthDec": "12月"
   },
   "contact": {
     "title": "お問い合わせ",

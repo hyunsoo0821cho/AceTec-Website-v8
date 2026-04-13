@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "node scripts/ensure-ollama.mjs && astro dev",
     "build": "astro build",
+    "deploy": "node scripts/deploy.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",

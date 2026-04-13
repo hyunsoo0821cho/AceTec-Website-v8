@@ -180,7 +180,19 @@
   },
   "history": {
     "title": "History & Reference",
-    "desc": "Over 30 years of innovation in embedded computing, defense systems, and industrial technology — from 1994 to today."
+    "desc": "Over 30 years of innovation in embedded computing, defense systems, and industrial technology — from 1994 to today.",
+    "monthJan": "Jan.",
+    "monthFeb": "Feb.",
+    "monthMar": "Mar.",
+    "monthApr": "Apr.",
+    "monthMay": "May.",
+    "monthJun": "Jun.",
+    "monthJul": "Jul.",
+    "monthAug": "Aug.",
+    "monthSep": "Sep.",
+    "monthOct": "Oct.",
+    "monthNov": "Nov.",
+    "monthDec": "Dec."
   },
   "contact": {
     "title": "Contact Us",

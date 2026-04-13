@@ -101,6 +101,33 @@ function buildChunks(): DocumentChunk[] {
     metadata: { type: 'partners' },
   });
 
+  // 제품 페이지 열람 권한 안내
+  chunks.push({
+    id: 'guide-access-request',
+    title: '제품 상세 설명 열람 권한 안내',
+    content: `AceTec 웹사이트의 제품 상세 설명(사양, 기술 스펙)은 열람 권한이 필요합니다. 각 제품 페이지별로 개별 열람 권한을 요청해야 합니다. 관리자가 승인한 페이지만 열람 가능합니다.
+
+열람 권한 요청 방법:
+1. 먼저 회원가입 후 로그인합니다. (/register 에서 가입, /login 에서 로그인)
+2. 열람하고 싶은 제품 페이지로 이동합니다.
+3. 페이지 상단에 표시되는 "설명 보기 요청" 버튼을 클릭합니다.
+4. 관리자가 승인하면 해당 페이지의 제품 상세 설명을 볼 수 있습니다.
+5. 다른 페이지의 제품도 보려면 각 페이지에서 별도로 요청해야 합니다.
+
+제품 페이지 목록:
+- 군수항공분야: /products/military (군용/항공우주 임베디드 컴퓨팅, VME, VPX, 레이더 처리)
+- 철도분야: /products/railway (HIMA 철도 안전 시스템, ControlSafe 플랫폼)
+- 자동화분야: /products/industrial (산업 자동화, IoT, Wind River 플랫폼)
+- 정보통신분야: /products/telecom (통신/네트워크, RTOS, DDS 미들웨어)
+- 모델링 & 시뮬레이션 분야: /products/sensor (OKTAL-SE EO/IR/RF 센서 시뮬레이션)
+- 슈퍼컴퓨팅시스템분야: /products/hpc (고성능 컴퓨팅, GPU 서버)
+- 산업용컴퓨터분야: /products/ipc (팬리스 산업용 PC, 랙마운트 서버, 패널 PC)
+- 레이더: /products/radar (Cambridge Pixel 레이더 프로세싱 & 디스플레이)
+- 초고속 데이터 인터커넥트: /products/interconnect (PCIe 네트워크 어댑터, 스위치)
+- 전체 제품 카탈로그: /catalog (모든 카테고리 제품 한눈에 보기)`,
+    metadata: { type: 'guide' },
+  });
+
   return chunks;
 }
 
@@ -151,10 +178,18 @@ async function ingest() {
       vectors: { size: dim, distance: 'Cosine' },
     });
 
+    // ⚠️ 보안: metadata spread 금지. 화이트리스트 필드만 payload 포함.
+    // category / type 은 검색 필터링 용도, 그 외 partner/badge 등 내부성 필드는 제외.
     const points = results.map((doc: any, i: number) => ({
       id: i + 1,
       vector: doc.embedding,
-      payload: { doc_id: doc.id, title: doc.title, content: doc.content, ...doc.metadata },
+      payload: {
+        doc_id: doc.id,
+        title: doc.title,
+        content: doc.content,
+        category: doc.metadata?.category ?? null,
+        type: doc.metadata?.type ?? null,
+      },
     }));
 
     for (let i = 0; i < points.length; i += 100) {
