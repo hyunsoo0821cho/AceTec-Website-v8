@@ -18,7 +18,7 @@
     "exploreBtn": "EXPLORAR SOLUCIONES",
     "quoteBtn": "SOLICITAR PRESUPUESTO",
     "solutions": "Soluciones",
-    "viewAll": "VER TODAS LAS SOLUCIONES",
+    "viewAll": "Elegir mis soluciones",
     "featuredProducts": "Productos destacados",
     "ourSolutions": "Nuestras soluciones",
     "consultTitle": "¿Necesita una solución personalizada?",
@@ -90,10 +90,10 @@
     "sensorSub": "Soluciones OKTAL-SE",
     "sensorDesc": "Simulación de sensores EO/IR/RF de alta fidelidad de OKTAL-SE para entornos HWIL, MITL y de entrenamiento.",
     "lab": "Centro de I+D",
-    "labSub": "AI, R&D Center",
+    "labSub": "IA, Centro de I+D",
     "labDesc": "Desde el diseño de hardware embebido hasta algoritmos de software, investigamos todo el proceso de sistemas de control especializados y logramos la internalización tecnológica.",
     "hpc": "Sistemas de supercomputación",
-    "hpcSub": "High Performance Computing",
+    "hpcSub": "Computación de alto rendimiento",
     "hpcDesc": "Con el crecimiento de Big Data, UHD/FHD y simulación, los requisitos de HPC aumentan en organismos públicos, universidades y laboratorios. Los aceleradores de alta densidad ofrecen HPC diferenciado mediante procesamiento GPU.",
     "ai": "Centro de IA",
     "aiSub": "Servicio de IA",
@@ -124,7 +124,7 @@
     "ch5Title": "Modelado y simulación de sensores",
     "ch5Meta": "EO/IR · RF · EO activo · GNSS · HWIL · MITL",
     "ch6Title": "Sistemas de supercomputación",
-    "ch6Meta": "HPC · GPU · Big Data · Simulation",
+    "ch6Meta": "HPC · GPU · Big Data · Simulación",
     "ch7Title": "Centro de I+D",
     "ch7Meta": "Procesamiento de imágenes · GPU · FPGA · Diseño embebido",
     "faq1Q": "¿Qué industrias atiende AceTec?",
@@ -249,7 +249,8 @@
     "newChat": "Nuevo chat",
     "send": "Enviar",
     "close": "Cerrar",
-    "assistant": "Asistente de IA AceTec"
+    "assistant": "Asistente de IA AceTec",
+    "pickSolutions": "♡ Elegir mis soluciones"
   },
   "form": {
     "name": "Nombre",
@@ -628,5 +629,12 @@
     "descTab": "Descripción",
     "catsTab": "Categorías",
     "detailsBtn": "Detalles"
+  },
+  "admin": {
+    "editing": "Editando",
+    "save": "Guardar",
+    "dashboard": "Panel",
+    "logout": "Cerrar sesión",
+    "survey": "Canal de ventas"
   }
 }

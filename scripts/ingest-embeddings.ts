@@ -63,8 +63,26 @@ function buildChunks(): DocumentChunk[] {
         id: `${data.category}-${i}`,
         title: item.name,
         content: parts.join(' '),
-        metadata: { category: data.category, partner: item.partner, badge: item.badge, type: 'product' },
+        metadata: { category: data.category, type: 'product' },
       });
+    }
+
+    // sections 기반 제품도 인덱싱 (items가 비어있는 카테고리 — interconnect 등)
+    const sections = (data as any).sections as Array<{ title: string; products: Array<{ name: string; features?: string[] }> }> | undefined;
+    if (sections) {
+      let si = 0;
+      for (const section of sections) {
+        for (const prod of section.products) {
+          const featureText = prod.features ? prod.features.join(', ') : '';
+          chunks.push({
+            id: `${data.category}-s${si}`,
+            title: prod.name,
+            content: `AceTec sells ${prod.name} in the ${data.title} category. Section: ${section.title}. ${featureText ? 'Features: ' + featureText : ''}`,
+            metadata: { category: data.category, type: 'product' },
+          });
+          si++;
+        }
+      }
     }
   }
 

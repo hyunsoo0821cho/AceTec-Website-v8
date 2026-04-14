@@ -75,7 +75,7 @@
       "products": [
         {
           "name": "ACE-IPC02R-4U-i7-6",
-          "image": "/images/catalog/ACE-IPC01R-4U-i7-3.png",
+          "image": "/images/catalog/Rack1.png",
           "features": [
             "Support 2 x Gigabit LAN Ports",
             "Support up to 64GB system memory",
@@ -87,7 +87,7 @@
         },
         {
           "name": "ACE-IPC02R-4U-Xeon-E3",
-          "image": "/images/catalog/ACE-IPC01R-4U-i7-3.png",
+          "image": "/images/catalog/Rack2.png",
           "features": [
             "Support 2 x Gigabit LAN Ports",
             "Support up to 64GB system memory",
@@ -111,7 +111,7 @@
         },
         {
           "name": "ACE-IPC02R-4U-i7-9",
-          "image": "/images/catalog/ACE-IPC02R-2U-i7-4-F.png",
+          "image": "/images/catalog/Rack3.png",
           "features": [
             "Support 2 x Gigabit LAN Ports",
             "Support up to 64GB system memory",
@@ -168,7 +168,7 @@
         },
         {
           "name": "ACE-IPC02D-i7-4",
-          "image": "/images/catalog/ACE-IPC02D-i7-3.png",
+          "image": "/images/catalog/컴퓨터1.png",
           "features": [
             "Support 2 x Gigabit LAN Ports",
             "DDR3 DIMM 4GB Memory up to 32GB",
@@ -178,7 +178,7 @@
         },
         {
           "name": "ACE-IPC02D-i7-6",
-          "image": "/images/catalog/ACE-IPC02D-i7-3.png",
+          "image": "/images/catalog/컴퓨터2.png",
           "features": [
             "Support 2 x Gigabit LAN Ports",
             "DDR4 DIMM 8GB Memory up to 16GB",

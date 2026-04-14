@@ -15,7 +15,13 @@ Stop-Process -Name "ollama" -Force
 # 또는 아래 명령어로 직접 실행
 # start-process "ollama" -ArgumentList "serve"
 --------------------------------------------------
+#복구 방법
 
+git clone https://github.com/hyunsoo0821cho/AceTec-Website-v8.git
+cd AceTec-Website-v8
+npm install
+npm run build
+npm run deploy
 
 
 

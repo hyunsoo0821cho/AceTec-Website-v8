@@ -18,7 +18,7 @@
     "exploreBtn": "EXPLORE SOLUTIONS",
     "quoteBtn": "REQUEST A QUOTE",
     "solutions": "Key Solutions",
-    "viewAll": "VIEW ALL SOLUTIONS",
+    "viewAll": "Choose My Solutions",
     "featuredProducts": "Featured Products",
     "ourSolutions": "Our Solutions",
     "consultTitle": "Need a customized solution?",
@@ -249,7 +249,8 @@
     "newChat": "New Chat",
     "send": "Send",
     "close": "Close",
-    "assistant": "AceTec AI Assistant"
+    "assistant": "AceTec AI Assistant",
+    "pickSolutions": "♡ Pick My Solutions"
   },
   "form": {
     "name": "Name",
@@ -628,5 +629,12 @@
     "descTab": "Description",
     "catsTab": "Categories",
     "detailsBtn": "Details"
+  },
+  "admin": {
+    "editing": "Editing",
+    "save": "Save",
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "survey": "Sales Channel"
   }
 }

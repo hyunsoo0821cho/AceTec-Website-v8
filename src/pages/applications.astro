@@ -116,7 +116,7 @@ function e(p: string) {
         <div class="acc" role="region" aria-label="Frequently asked questions">
           {
             d.faqs.map((faq: any, fi: number) => (
-              <div class={`acc-item${fi === 0 ? ' open' : ''}`} style="position:relative;">
+              <div class="acc-item" style="position:relative;">
                 {isAdmin && (
                   <button class="admin-delete-btn" data-admin-delete={`faqs[${fi}]`} title="Delete">
                     &times;
@@ -127,7 +127,7 @@ function e(p: string) {
                   id={`faq-q${fi + 1}`}
                   role="button"
                   tabindex="0"
-                  aria-expanded={fi === 0 ? 'true' : 'false'}
+                  aria-expanded="false"
                   aria-controls={`faq-a${fi + 1}`}
                 >
                   <span {...e(`faqs[${fi}].question`)} data-i18n={`applications.faq${fi + 1}Q`}>{faq.question}</span>{' '}

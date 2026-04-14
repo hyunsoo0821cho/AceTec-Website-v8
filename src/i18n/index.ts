@@ -194,6 +194,8 @@ async function autoTranslatePage(lang: string) {
     if (['DIV', 'SECTION', 'ARTICLE', 'MAIN', 'HEADER', 'FOOTER', 'ASIDE', 'NAV', 'FORM', 'BUTTON', 'LABEL', 'SUMMARY'].includes(el.tagName) && el.children.length > 0) return;
     if (el.offsetParent === null && !el.closest('.mega-menu')) return;
     if (el.closest('.admin-add-btn') || el.closest('.admin-delete-btn')) return;
+    // 관리자 툴바/편집 UI는 원문 그대로 (Save/Dashboard 등 영문 용어 유지)
+    if (el.closest('.admin-bar') || el.closest('.admin-btn') || el.closest('#adminBar')) return;
     if (el.hasAttribute('data-edit')) return;
     if (el.closest('.h-entry')) return; // 히스토리는 별도 수집
 

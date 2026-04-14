@@ -77,30 +77,26 @@ const accI18nKeys = [
     <div class="container">
       <div class="featured-top">
         <h2 data-i18n="home.solutions">주요 솔루션</h2>
-        <a href="/solutions" class="btn-secondary" data-i18n="home.viewAll">VIEW ALL SOLUTIONS</a>
+        {isAdmin
+          ? <a href="/solutions" class="btn-secondary" data-i18n="home.viewAll">나만의 솔루션 고르기</a>
+          : <a href="/solutions" class="btn-secondary">모든 솔루션 보기</a>
+        }
       </div>
-      <div class="svc-cards">
+      <div class="svc-cards" id="homeSolutionCards">
         {
-          h.solutionCards.filter((sc: any) => ['/products/military', '/products/railway', '/products/industrial', '/products/telecom', '/products/hpc', '/products/ipc'].includes(sc.href)).map((sc: any, i: number) => (
-            <a href={sc.href || undefined} class="s-card" style={`position:relative;${!sc.href ? 'cursor:default;pointer-events:none;' : ''}`}>
-              {isAdmin && (
-                <button class="admin-delete-btn" data-admin-delete={`solutionCards[${i}]`} title="Delete">
-                  &times;
-                </button>
-              )}
+          h.solutionCards.map((sc: any, i: number) => (
+            <a href={sc.href || undefined} class="s-card" data-sol-index={i} style={`position:relative;display:none;${!sc.href ? 'cursor:default;pointer-events:none;' : ''}`}>
               {sc.image ? (
-                <img src={sc.image} alt={sc.title} loading="lazy" {...img(`solutionCards[${i}].image`, 'service')} />
+                <img src={sc.image} alt={sc.title} loading="lazy" />
               ) : (
-                <div class="img-placeholder" {...img(`solutionCards[${i}].image`, 'service')}>
-                  Click to add image
-                </div>
+                <div class="img-placeholder">Click to add image</div>
               )}
-              <h3 {...e(`solutionCards[${i}].title`)} {...((sc.i18nKey || cardKey(sc.href)) ? {'data-i18n': `solutionCards.${sc.i18nKey || cardKey(sc.href)}`} : {})}>{sc.title}</h3>
-              <div class="s-subtitle" {...e(`solutionCards[${i}].subtitle`)} {...((sc.i18nKey || cardKey(sc.href)) ? {'data-i18n': `solutionCards.${sc.i18nKey || cardKey(sc.href)}Sub`} : {})}>
+              <h3 {...((sc.i18nKey || cardKey(sc.href)) ? {'data-i18n': `solutionCards.${sc.i18nKey || cardKey(sc.href)}`} : {})}>{sc.title}</h3>
+              <div class="s-subtitle" {...((sc.i18nKey || cardKey(sc.href)) ? {'data-i18n': `solutionCards.${sc.i18nKey || cardKey(sc.href)}Sub`} : {})}>
                 {sc.subtitle}
               </div>
               {sc.description && (
-                <p class="s-desc" {...e(`solutionCards[${i}].description`)} {...((sc.i18nKey || cardKey(sc.href)) ? {'data-i18n': `solutionCards.${sc.i18nKey || cardKey(sc.href)}Desc`} : {})}>{sc.description}</p>
+                <p class="s-desc" {...((sc.i18nKey || cardKey(sc.href)) ? {'data-i18n': `solutionCards.${sc.i18nKey || cardKey(sc.href)}Desc`} : {})}>{sc.description}</p>
               )}
             </a>
           ))
@@ -108,37 +104,17 @@ const accI18nKeys = [
       </div>
       {
         isAdmin && (
-          <button
+          <a
+            href="/solutions?add=1"
             class="admin-add-btn"
-            id="addSolutionBtn"
-            style="margin-top:16px;"
+            style="margin-top:16px;display:inline-block;text-align:center;text-decoration:none;"
           >
             + Add Solution
-          </button>
+          </a>
         )
       }
     </div>
   </section>
-
-  {/* 새 솔루션 생성 모달 */}
-  {isAdmin && (
-    <div id="newSolutionOverlay" class="ns-overlay">
-      <div class="ns-modal">
-        <h3 class="ns-title">새 솔루션 생성</h3>
-        <label class="ns-label">제목 (카테고리명) <span class="ns-required">*</span></label>
-        <input type="text" id="nsTitle" class="ns-input" placeholder="예: 드론시스템분야" />
-        <label class="ns-label">부제목</label>
-        <input type="text" id="nsSubtitle" class="ns-input" placeholder="예: 무인항공 솔루션" />
-        <label class="ns-label">설명</label>
-        <textarea id="nsDesc" class="ns-textarea" rows="3" placeholder="간단한 설명을 입력하세요"></textarea>
-        <div class="ns-actions">
-          <button type="button" id="nsCancel" class="ns-btn ns-btn-cancel">취소</button>
-          <button type="button" id="nsCreate" class="ns-btn ns-btn-create">생성</button>
-        </div>
-        <div id="nsStatus" class="ns-status"></div>
-      </div>
-    </div>
-  )}
 
   <section class="featured section">
     <div class="container">
@@ -173,9 +149,6 @@ const accI18nKeys = [
               </div>
               <div class="p-name" {...e(`featuredProducts[${i}].name`)}>
                 {fp.name}
-              </div>
-              <div class="p-price" {...e(`featuredProducts[${i}].specs`)}>
-                {fp.specs}
               </div>
             </a>
           ))
@@ -225,13 +198,13 @@ const accI18nKeys = [
             }
             {
               isAdmin && (
-                <button
+                <a
+                  href="/solutions?add=1"
                   class="admin-add-btn"
-                  data-admin-add="solutions.items"
-                  data-admin-template='{"title":"New Solution","description":"Description here"}'
+                  style="display:inline-block;text-align:center;text-decoration:none;"
                 >
                   + Add Solution
-                </button>
+                </a>
               )
             }
           </div>
@@ -342,9 +315,6 @@ const accI18nKeys = [
                 src={p.image}
                 alt={p.name}
                 loading="lazy"
-                tabindex="0"
-                role="button"
-                aria-label={p.name}
                 {...img(`partners[${i}].image`, 'partner')}
               />
             </div>
@@ -858,7 +828,8 @@ const accI18nKeys = [
     min-height: 0 !important;
     background: transparent !important;
     object-fit: contain;
-    cursor: pointer;
+    cursor: default;
+    pointer-events: none;
     transition:
       transform var(--transition-slow),
       opacity var(--transition-slow);
@@ -1058,97 +1029,29 @@ const accI18nKeys = [
     }
   }
 
-  /* 새 솔루션 생성 모달 */
-  .ns-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 100000;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(2px);
-  }
-  .ns-overlay.active { display: flex; }
-  .ns-modal {
-    background: #fff;
-    border-radius: 12px;
-    padding: 28px 32px;
-    width: 90%;
-    max-width: 480px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-  }
-  .ns-title { font-size: 20px; font-weight: 700; margin: 0 0 20px; }
-  .ns-label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 4px; margin-top: 12px; }
-  .ns-required { color: #ef4444; }
-  .ns-input, .ns-textarea {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: inherit;
-    outline: none;
-    transition: border-color 0.15s;
-    box-sizing: border-box;
-  }
-  .ns-input:focus, .ns-textarea:focus { border-color: #2563eb; }
-  .ns-textarea { resize: vertical; }
-  .ns-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
-  .ns-btn { padding: 10px 24px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; }
-  .ns-btn-cancel { background: #f3f4f6; color: #374151; }
-  .ns-btn-cancel:hover { background: #e5e7eb; }
-  .ns-btn-create { background: #2563eb; color: #fff; }
-  .ns-btn-create:hover { background: #1d4ed8; }
-  .ns-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-  .ns-status { font-size: 13px; margin-top: 8px; text-align: center; }
+
 </style>
 
 <script>
-  // 새 솔루션 생성 모달
-  const addBtn = document.getElementById('addSolutionBtn');
-  const nsOverlay = document.getElementById('newSolutionOverlay');
-  const nsCancel = document.getElementById('nsCancel');
-  const nsCreate = document.getElementById('nsCreate');
-  const nsStatus = document.getElementById('nsStatus');
-
-  if (addBtn && nsOverlay) {
-    addBtn.addEventListener('click', () => { nsOverlay.classList.add('active'); });
-    nsCancel?.addEventListener('click', () => { nsOverlay.classList.remove('active'); });
-    nsOverlay.addEventListener('click', (ev) => { if (ev.target === nsOverlay) nsOverlay.classList.remove('active'); });
-
-    nsCreate?.addEventListener('click', async () => {
-      const title = (document.getElementById('nsTitle') as HTMLInputElement).value.trim();
-      const subtitle = (document.getElementById('nsSubtitle') as HTMLInputElement).value.trim();
-      const desc = (document.getElementById('nsDesc') as HTMLTextAreaElement).value.trim();
-      if (!title) { if (nsStatus) { nsStatus.textContent = '제목을 입력해주세요.'; nsStatus.style.color = '#ef4444'; } return; }
-
-      nsCreate.setAttribute('disabled', '');
-      if (nsStatus) { nsStatus.textContent = '생성 중...'; nsStatus.style.color = '#2563eb'; }
-
+  // ===== 주요 솔루션: 관리자는 localStorage 선택 반영, 사용자는 기본 6개 고정 =====
+  (function () {
+    const PICK_KEY = 'acetec-my-solutions';
+    const DEFAULT_INDICES = [0, 1, 2, 3, 4, 7];
+    const isAdmin = !!document.getElementById('adminBar');
+    let indices = DEFAULT_INDICES;
+    if (isAdmin) {
       try {
-        const res = await fetch('/api/admin/create-solution', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ title, subtitle, description: desc }),
-        });
-        const data = await res.json();
-        if (data.ok) {
-          if (nsStatus) { nsStatus.textContent = '생성 완료! 페이지 이동 중...'; nsStatus.style.color = '#16a34a'; }
-          window.location.href = data.href;
-        } else {
-          if (nsStatus) { nsStatus.textContent = data.error || '생성 실패'; nsStatus.style.color = '#ef4444'; }
-          nsCreate.removeAttribute('disabled');
-        }
-      } catch {
-        if (nsStatus) { nsStatus.textContent = '서버 연결 실패'; nsStatus.style.color = '#ef4444'; }
-        nsCreate.removeAttribute('disabled');
-      }
+        const picks = JSON.parse(localStorage.getItem(PICK_KEY) || '[]');
+        if (picks.length > 0) indices = picks;
+      } catch {}
+    }
+    const cards = document.querySelectorAll('#homeSolutionCards .s-card');
+    cards.forEach(function(card) {
+      const idx = Number(card.getAttribute('data-sol-index'));
+      if (indices.includes(idx)) card.style.display = '';
     });
-  }
-</script>
+  })();
 
-<script>
   // Accordion toggle for home page
   function toggleAccordion(e: Event) {
     const el = e.target as HTMLElement;

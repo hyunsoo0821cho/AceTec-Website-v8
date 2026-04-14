@@ -9,13 +9,16 @@ const { page, isAdmin } = Astro.props;
 {isAdmin && (
   <div class="admin-bar" id="adminBar">
     <div class="admin-bar-inner">
-      <span class="admin-bar-label">Editing: <strong>{page}</strong></span>
+      <div class="admin-bar-label-wrap">
+        <span class="admin-bar-label" data-i18n="admin.editing">Editing</span>:&nbsp;<strong>{page}</strong>
+      </div>
       <div class="admin-bar-actions">
         <span class="admin-bar-status" id="adminStatus"></span>
-        <button class="admin-btn admin-btn-save" id="adminSave">Save</button>
-        <a href="/admin/dashboard" class="admin-btn admin-btn-dash">Dashboard</a>
+        <button class="admin-btn admin-btn-save" id="adminSave" data-i18n="admin.save">Save</button>
+        <a href="/admin/dashboard" class="admin-btn admin-btn-dash" data-i18n="admin.dashboard">Dashboard</a>
+        <a href="https://survey.acetecsurvey.com/survey" target="_blank" rel="noopener" class="admin-btn admin-btn-survey" data-i18n="admin.survey">Sales Channel</a>
         <form method="POST" action="/api/auth/logout" style="display:inline;">
-          <button type="submit" class="admin-btn admin-btn-logout">Logout</button>
+          <button type="submit" class="admin-btn admin-btn-logout" data-i18n="admin.logout">Logout</button>
         </form>
       </div>
     </div>
@@ -25,12 +28,15 @@ const { page, isAdmin } = Astro.props;
   <style>
     .admin-bar { position:fixed; top:0; left:0; right:0; z-index:99999; background:#1e293b; color:#fff; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; box-shadow:0 2px 8px rgba(0,0,0,.2); }
     .admin-bar-inner { max-width:1400px; margin:0 auto; padding:8px 24px; display:flex; justify-content:space-between; align-items:center; }
-    .admin-bar-label { color:#94a3b8; } .admin-bar-label strong { color:#fff; }
+    .admin-bar-label-wrap { color:#94a3b8; display:inline-flex; align-items:center; }
+    .admin-bar-label-wrap strong { color:#fff; font-weight:600; }
+    .admin-bar-label { color:#94a3b8; }
     .admin-bar-actions { display:flex; gap:8px; align-items:center; }
     .admin-bar-status { font-size:12px; margin-right:4px; }
     .admin-btn { padding:5px 12px; border:none; border-radius:4px; font-size:12px; font-weight:600; cursor:pointer; text-decoration:none; display:inline-block; color:#fff; }
     .admin-btn-save { background:#2563eb; } .admin-btn-save:hover { background:#1d4ed8; }
     .admin-btn-dash { background:#334155; color:#cbd5e1; } .admin-btn-dash:hover { background:#475569; }
+    .admin-btn-survey { background:#059669; color:#fff; } .admin-btn-survey:hover { background:#047857; }
     .admin-btn-logout { background:transparent; color:#94a3b8; border:1px solid #475569; } .admin-btn-logout:hover { color:#fff; border-color:#64748b; }
   </style>
 

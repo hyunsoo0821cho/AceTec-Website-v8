@@ -1,0 +1,3107 @@
+{
+  "timestamp": "2026-04-14T11:05:01",
+  "models": {
+    "embed": "nomic-embed-text-v2-moe:latest",
+    "reranker": "jinaai/jina-reranker-v2-base-multilingual (ONNX)",
+    "reranker_path": "C:/Users/user/.cache/hf/jina-reranker-v2/onnx/model.onnx"
+  },
+  "metrics_all": {
+    "n": 43,
+    "vector": {
+      "hit1": 83.7,
+      "hit5": 90.7,
+      "mrr5": 0.868
+    },
+    "jina": {
+      "hit1": 83.7,
+      "hit5": 88.4,
+      "mrr5": 0.853
+    }
+  },
+  "metrics_with_data": {
+    "n": 38,
+    "vector": {
+      "hit1": 92.1,
+      "hit5": 100.0,
+      "mrr5": 0.956
+    },
+    "jina": {
+      "hit1": 92.1,
+      "hit5": 97.4,
+      "mrr5": 0.939
+    }
+  },
+  "regressions": [
+    {
+      "q": "고성능 NIC 카드",
+      "gt": [
+        "telecom"
+      ],
+      "v_top1": "telecom",
+      "j_top1": "radar"
+    }
+  ],
+  "improvements": [
+    {
+      "q": "DIN rail 컴퓨터",
+      "gt": [
+        "industrial",
+        "ipc"
+      ],
+      "v_top1": "railway",
+      "j_top1": "ipc"
+    }
+  ],
+  "rows": [
+    {
+      "query": "GPU 서버",
+      "gt": [
+        "hpc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "GPU Servers",
+          "c": "hpc",
+          "s": 0.518
+        },
+        {
+          "t": "GPU Desktop & Appliances",
+          "c": "hpc",
+          "s": 0.482
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.472
+        },
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.399
+        },
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.397
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "GPU Servers",
+          "c": "hpc",
+          "s": 0.7694
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.6987
+        },
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.4446
+        },
+        {
+          "t": "GPU Desktop & Appliances",
+          "c": "hpc",
+          "s": 0.3813
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.3398
+        }
+      ]
+    },
+    {
+      "query": "HPC 솔루션 소개",
+      "gt": [
+        "hpc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.435
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.429
+        },
+        {
+          "t": "HPx-250",
+          "c": "radar",
+          "s": 0.425
+        },
+        {
+          "t": "HPx-200",
+          "c": "radar",
+          "s": 0.406
+        },
+        {
+          "t": "Radar Processing — Cambridge Pixel",
+          "c": "military",
+          "s": 0.395
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.2282
+        },
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": 0.1893
+        },
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.1826
+        },
+        {
+          "t": "Industrial Automation — Overview",
+          "c": "industrial",
+          "s": 0.1728
+        },
+        {
+          "t": "Radar Processing & Display — Overview",
+          "c": "radar",
+          "s": 0.1586
+        }
+      ]
+    },
+    {
+      "query": "PCIe 확장 섀시",
+      "gt": [
+        "hpc",
+        "interconnect"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.544
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.413
+        },
+        {
+          "t": "HPx-400e",
+          "c": "radar",
+          "s": 0.317
+        },
+        {
+          "t": "ACE-Sever-2U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.315
+        },
+        {
+          "t": "ACE-PPC-17AT",
+          "c": "ipc",
+          "s": 0.309
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.7552
+        },
+        {
+          "t": "ACE-Sever-2U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.3563
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.3201
+        },
+        {
+          "t": "HPx-400e",
+          "c": "radar",
+          "s": 0.1328
+        },
+        {
+          "t": "ACE-PPC-17HT",
+          "c": "ipc",
+          "s": 0.1135
+        }
+      ]
+    },
+    {
+      "query": "AI 학습용 서버",
+      "gt": [
+        "hpc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "GPU Servers",
+          "c": "hpc",
+          "s": 0.453
+        },
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "radar",
+          "s": 0.364
+        },
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.358
+        },
+        {
+          "t": "SPx Radar Image Distribution",
+          "c": "radar",
+          "s": 0.354
+        },
+        {
+          "t": "GPU Desktop & Appliances",
+          "c": "hpc",
+          "s": 0.343
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "GPU Servers",
+          "c": "hpc",
+          "s": 0.6364
+        },
+        {
+          "t": "GPU Desktop & Appliances",
+          "c": "hpc",
+          "s": 0.2581
+        },
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.2424
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.231
+        },
+        {
+          "t": "Radar Processing & Display — Overview",
+          "c": "radar",
+          "s": 0.151
+        }
+      ]
+    },
+    {
+      "query": "GPU desktop workstation",
+      "gt": [
+        "hpc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "GPU Desktop & Appliances",
+          "c": "hpc",
+          "s": 0.645
+        },
+        {
+          "t": "ACE-WS01D-i7-4-F",
+          "c": "ipc",
+          "s": 0.481
+        },
+        {
+          "t": "ACE-WS01D-i7-6-F",
+          "c": "ipc",
+          "s": 0.478
+        },
+        {
+          "t": "GPU Servers",
+          "c": "hpc",
+          "s": 0.449
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.436
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "GPU Desktop & Appliances",
+          "c": "hpc",
+          "s": 0.8109
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.4067
+        },
+        {
+          "t": "GPU Servers",
+          "c": "hpc",
+          "s": 0.2904
+        },
+        {
+          "t": "ACE-WS01D-i7-6-F",
+          "c": "ipc",
+          "s": 0.2698
+        },
+        {
+          "t": "ACE-WS01D-i7-4-F",
+          "c": "ipc",
+          "s": 0.2284
+        }
+      ]
+    },
+    {
+      "query": "High density GPU compute",
+      "gt": [
+        "hpc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "GPU Servers",
+          "c": "hpc",
+          "s": 0.568
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.513
+        },
+        {
+          "t": "GPU Desktop & Appliances",
+          "c": "hpc",
+          "s": 0.494
+        },
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.399
+        },
+        {
+          "t": "HPx-200",
+          "c": "radar",
+          "s": 0.314
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "GPU Servers",
+          "c": "hpc",
+          "s": 0.7531
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.6377
+        },
+        {
+          "t": "GPU Desktop & Appliances",
+          "c": "hpc",
+          "s": 0.2699
+        },
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.2017
+        },
+        {
+          "t": "Video Acceleration Platform",
+          "c": "hpc",
+          "s": 0.0959
+        }
+      ]
+    },
+    {
+      "query": "비디오 가속 플랫폼",
+      "gt": [
+        "hpc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Video Acceleration Platform",
+          "c": "hpc",
+          "s": 0.486
+        },
+        {
+          "t": "VSD (Video Security Display)",
+          "c": "radar",
+          "s": 0.328
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.322
+        },
+        {
+          "t": "SE-FAST-HWIL",
+          "c": "sensor",
+          "s": 0.316
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.298
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Video Acceleration Platform",
+          "c": "hpc",
+          "s": 0.7521
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.4218
+        },
+        {
+          "t": "SPx AIS",
+          "c": "radar",
+          "s": 0.2178
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.1764
+        },
+        {
+          "t": "RDR Data Recorder",
+          "c": "radar",
+          "s": 0.1705
+        }
+      ]
+    },
+    {
+      "query": "One Stop Systems",
+      "gt": [
+        "hpc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.483
+        },
+        {
+          "t": "RTOS — Wind River",
+          "c": "industrial",
+          "s": 0.292
+        },
+        {
+          "t": "RTOS — Wind River",
+          "c": "military",
+          "s": 0.282
+        },
+        {
+          "t": "Embedded Board Signal Processing",
+          "c": "military",
+          "s": 0.272
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.271
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.7244
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.4869
+        },
+        {
+          "t": "About AceTec",
+          "c": "",
+          "s": 0.474
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.3922
+        },
+        {
+          "t": "RTOS — Wind River",
+          "c": "industrial",
+          "s": 0.1648
+        }
+      ]
+    },
+    {
+      "query": "VPX 임베디드 보드",
+      "gt": [
+        "military"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Embedded Board Signal Processing",
+          "c": "military",
+          "s": 0.379
+        },
+        {
+          "t": "HPx-200",
+          "c": "radar",
+          "s": 0.37
+        },
+        {
+          "t": "HPx-250",
+          "c": "radar",
+          "s": 0.362
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.343
+        },
+        {
+          "t": "HPx-346",
+          "c": "radar",
+          "s": 0.342
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Military & Aerospace — Overview",
+          "c": "military",
+          "s": 0.6909
+        },
+        {
+          "t": "Form Factor — Abaco Systems",
+          "c": "military",
+          "s": 0.5468
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.4347
+        },
+        {
+          "t": "Embedded Board Signal Processing",
+          "c": "military",
+          "s": 0.2121
+        },
+        {
+          "t": "Motherboard",
+          "c": "industrial",
+          "s": 0.1506
+        }
+      ]
+    },
+    {
+      "query": "Abaco Systems 제품",
+      "gt": [
+        "military"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Form Factor — Abaco Systems",
+          "c": "military",
+          "s": 0.589
+        },
+        {
+          "t": "Military & Aerospace — Overview",
+          "c": "military",
+          "s": 0.483
+        },
+        {
+          "t": "Embedded Board Signal Processing",
+          "c": "military",
+          "s": 0.452
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.444
+        },
+        {
+          "t": "About AceTec",
+          "c": "",
+          "s": 0.403
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Form Factor — Abaco Systems",
+          "c": "military",
+          "s": 0.7352
+        },
+        {
+          "t": "Military & Aerospace — Overview",
+          "c": "military",
+          "s": 0.7081
+        },
+        {
+          "t": "Embedded Board Signal Processing",
+          "c": "military",
+          "s": 0.5356
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.53
+        },
+        {
+          "t": "About AceTec",
+          "c": "",
+          "s": 0.4308
+        }
+      ]
+    },
+    {
+      "query": "FPGA 신호처리 보드",
+      "gt": [
+        "military"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Embedded Board Signal Processing",
+          "c": "military",
+          "s": 0.392
+        },
+        {
+          "t": "HPx-346",
+          "c": "radar",
+          "s": 0.392
+        },
+        {
+          "t": "Military & Aerospace — Overview",
+          "c": "military",
+          "s": 0.333
+        },
+        {
+          "t": "Video Acceleration Platform",
+          "c": "hpc",
+          "s": 0.321
+        },
+        {
+          "t": "HPx-300",
+          "c": "radar",
+          "s": 0.32
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Embedded Board Signal Processing",
+          "c": "military",
+          "s": 0.3217
+        },
+        {
+          "t": "Military & Aerospace — Overview",
+          "c": "military",
+          "s": 0.2854
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.2614
+        },
+        {
+          "t": "HPx-300",
+          "c": "radar",
+          "s": 0.2384
+        },
+        {
+          "t": "HPx-200",
+          "c": "radar",
+          "s": 0.2251
+        }
+      ]
+    },
+    {
+      "query": "Rugged military SBC",
+      "gt": [
+        "military"
+      ],
+      "n_cands": 13,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Middleware — RTI Connext DDS",
+          "c": "military",
+          "s": 0.209
+        },
+        {
+          "t": "Military & Aerospace — Overview",
+          "c": "military",
+          "s": 0.206
+        },
+        {
+          "t": "Form Factor — Abaco Systems",
+          "c": "military",
+          "s": 0.199
+        },
+        {
+          "t": "Embedded Board Signal Processing",
+          "c": "military",
+          "s": 0.196
+        },
+        {
+          "t": "SPx Radar Image Distribution",
+          "c": "radar",
+          "s": 0.162
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Military & Aerospace — Overview",
+          "c": "military",
+          "s": 0.3948
+        },
+        {
+          "t": "Form Factor — Abaco Systems",
+          "c": "military",
+          "s": 0.3135
+        },
+        {
+          "t": "Radar Processing — Cambridge Pixel",
+          "c": "military",
+          "s": 0.082
+        },
+        {
+          "t": "Embedded Board Signal Processing",
+          "c": "military",
+          "s": 0.0717
+        },
+        {
+          "t": "Middleware — RTI Connext DDS",
+          "c": "military",
+          "s": 0.0632
+        }
+      ]
+    },
+    {
+      "query": "MIL-STD 컴퓨터",
+      "gt": [
+        "military"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": false,
+        "rank5_hit": true,
+        "first_rank": 2
+      },
+      "r_eval": {
+        "rank1_hit": false,
+        "rank5_hit": false,
+        "first_rank": 0
+      },
+      "v_top5": [
+        {
+          "t": "GPU Desktop & Appliances",
+          "c": "hpc",
+          "s": 0.372
+        },
+        {
+          "t": "Middleware — RTI Connext DDS",
+          "c": "military",
+          "s": 0.371
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.345
+        },
+        {
+          "t": "ACE-WS01D-i7-4-F",
+          "c": "ipc",
+          "s": 0.329
+        },
+        {
+          "t": "ACE-WS01D-i7-6-F",
+          "c": "ipc",
+          "s": 0.325
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.2259
+        },
+        {
+          "t": "ACE-WS01D-i7-6-F",
+          "c": "ipc",
+          "s": 0.1906
+        },
+        {
+          "t": "ACE-IPC02D-i7-6",
+          "c": "ipc",
+          "s": 0.1656
+        },
+        {
+          "t": "ACE-IPC02D-i7-3",
+          "c": "ipc",
+          "s": 0.1544
+        },
+        {
+          "t": "ACE-PPC-15HT",
+          "c": "ipc",
+          "s": 0.1484
+        }
+      ]
+    },
+    {
+      "query": "HIMA 철도 안전",
+      "gt": [
+        "railway"
+      ],
+      "n_cands": 15,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": 0.503
+        },
+        {
+          "t": "HIMA ControlSafe™ Platform",
+          "c": "railway",
+          "s": 0.475
+        },
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": 0.461
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.275
+        },
+        {
+          "t": "RTOS — Wind River",
+          "c": "railway",
+          "s": 0.274
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "HIMA ControlSafe™ Platform",
+          "c": "railway",
+          "s": 0.7587
+        },
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": 0.7419
+        },
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": 0.524
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.5062
+        },
+        {
+          "t": "About AceTec",
+          "c": "",
+          "s": 0.2474
+        }
+      ]
+    },
+    {
+      "query": "SIL4 인증 시스템",
+      "gt": [
+        "railway"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "HIMA ControlSafe™ Platform",
+          "c": "railway",
+          "s": 0.424
+        },
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": 0.359
+        },
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": 0.355
+        },
+        {
+          "t": "AceTec Total Service Solution",
+          "c": "",
+          "s": 0.311
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.304
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": 0.586
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.5848
+        },
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": 0.5694
+        },
+        {
+          "t": "HIMA ControlSafe™ Platform",
+          "c": "railway",
+          "s": 0.5507
+        },
+        {
+          "t": "RTOS — Wind River",
+          "c": "military",
+          "s": 0.0879
+        }
+      ]
+    },
+    {
+      "query": "HiMax fail-safe",
+      "gt": [
+        "railway"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": 0.449
+        },
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": 0.381
+        },
+        {
+          "t": "HIMA ControlSafe™ Platform",
+          "c": "railway",
+          "s": 0.373
+        },
+        {
+          "t": "VxWorks 653 Platform",
+          "c": "telecom",
+          "s": 0.272
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.272
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": 0.4162
+        },
+        {
+          "t": "HIMA ControlSafe™ Platform",
+          "c": "railway",
+          "s": 0.3462
+        },
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": 0.2827
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.0836
+        },
+        {
+          "t": "RTOS — Wind River",
+          "c": "military",
+          "s": 0.0611
+        }
+      ]
+    },
+    {
+      "query": "철도 신호제어",
+      "gt": [
+        "railway"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "RTOS — Wind River",
+          "c": "railway",
+          "s": 0.296
+        },
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": 0.295
+        },
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": 0.285
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.265
+        },
+        {
+          "t": "TITANIUM CONTROL",
+          "c": "telecom",
+          "s": 0.253
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "HIMA ControlSafe™ Platform",
+          "c": "railway",
+          "s": 0.4745
+        },
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": 0.4691
+        },
+        {
+          "t": "Industrial PCs for Railway",
+          "c": "railway",
+          "s": 0.4151
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.3426
+        },
+        {
+          "t": "RTOS — Wind River",
+          "c": "railway",
+          "s": 0.3206
+        }
+      ]
+    },
+    {
+      "query": "산업용 팬리스 PC",
+      "gt": [
+        "industrial",
+        "ipc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs",
+          "c": "industrial",
+          "s": 0.504
+        },
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": 0.473
+        },
+        {
+          "t": "ACE-PPC-19HT",
+          "c": "ipc",
+          "s": 0.44
+        },
+        {
+          "t": "ACE-PPC-15HT",
+          "c": "ipc",
+          "s": 0.432
+        },
+        {
+          "t": "Industrial Automation — Overview",
+          "c": "industrial",
+          "s": 0.432
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs",
+          "c": "industrial",
+          "s": 0.7832
+        },
+        {
+          "t": "Industrial Automation — Overview",
+          "c": "industrial",
+          "s": 0.7616
+        },
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": 0.756
+        },
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": 0.715
+        },
+        {
+          "t": "ACE-PPC-19HT",
+          "c": "ipc",
+          "s": 0.6933
+        }
+      ]
+    },
+    {
+      "query": "DIN rail 컴퓨터",
+      "gt": [
+        "industrial",
+        "ipc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": false,
+        "rank5_hit": true,
+        "first_rank": 2
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Industrial PCs for Railway",
+          "c": "railway",
+          "s": 0.437
+        },
+        {
+          "t": "ACE-IPC02D-i7-4",
+          "c": "ipc",
+          "s": 0.396
+        },
+        {
+          "t": "ACE-IPC02D-i7-3",
+          "c": "ipc",
+          "s": 0.383
+        },
+        {
+          "t": "ACE-WS01D-i7-4-F",
+          "c": "ipc",
+          "s": 0.379
+        },
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": 0.377
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": 0.4892
+        },
+        {
+          "t": "Industrial PCs for Railway",
+          "c": "railway",
+          "s": 0.3213
+        },
+        {
+          "t": "ACE-BoxIPC-7110L2D",
+          "c": "ipc",
+          "s": 0.2167
+        },
+        {
+          "t": "ACE-BoxIPC-73L2D",
+          "c": "ipc",
+          "s": 0.2143
+        },
+        {
+          "t": "ACE-BoxIPC-74L2D",
+          "c": "ipc",
+          "s": 0.1803
+        }
+      ]
+    },
+    {
+      "query": "Panel PC HMI",
+      "gt": [
+        "industrial",
+        "ipc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "ACE-PPC-21HT",
+          "c": "ipc",
+          "s": 0.379
+        },
+        {
+          "t": "ACE-PPC-15HT",
+          "c": "ipc",
+          "s": 0.378
+        },
+        {
+          "t": "ACE-PPC-17HT",
+          "c": "ipc",
+          "s": 0.375
+        },
+        {
+          "t": "Industrial PCs for Railway",
+          "c": "railway",
+          "s": 0.366
+        },
+        {
+          "t": "ACE-PPC-19HT",
+          "c": "ipc",
+          "s": 0.365
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "ACE-PPC-21HT",
+          "c": "ipc",
+          "s": 0.3646
+        },
+        {
+          "t": "Industrial PCs for Railway",
+          "c": "railway",
+          "s": 0.3625
+        },
+        {
+          "t": "ACE-PPC-19HT",
+          "c": "ipc",
+          "s": 0.3482
+        },
+        {
+          "t": "ACE-PPC-17HT",
+          "c": "ipc",
+          "s": 0.3471
+        },
+        {
+          "t": "ACE-PPC-15HT",
+          "c": "ipc",
+          "s": 0.347
+        }
+      ]
+    },
+    {
+      "query": "Wind River VxWorks",
+      "gt": [
+        "industrial"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": false,
+        "rank5_hit": true,
+        "first_rank": 3
+      },
+      "r_eval": {
+        "rank1_hit": false,
+        "rank5_hit": true,
+        "first_rank": 5
+      },
+      "v_top5": [
+        {
+          "t": "Wind River VxWorks 6.9",
+          "c": "telecom",
+          "s": 0.624
+        },
+        {
+          "t": "RTOS — Wind River",
+          "c": "railway",
+          "s": 0.528
+        },
+        {
+          "t": "RTOS — Wind River",
+          "c": "industrial",
+          "s": 0.527
+        },
+        {
+          "t": "RTOS — Wind River",
+          "c": "military",
+          "s": 0.5
+        },
+        {
+          "t": "VxWorks 653 Platform",
+          "c": "telecom",
+          "s": 0.495
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "RTOS — Wind River",
+          "c": "military",
+          "s": 0.833
+        },
+        {
+          "t": "VxWorks 653 Platform",
+          "c": "telecom",
+          "s": 0.8207
+        },
+        {
+          "t": "RTOS — Wind River",
+          "c": "railway",
+          "s": 0.8169
+        },
+        {
+          "t": "Wind River VxWorks 6.9",
+          "c": "telecom",
+          "s": 0.8134
+        },
+        {
+          "t": "RTOS — Wind River",
+          "c": "industrial",
+          "s": 0.7925
+        }
+      ]
+    },
+    {
+      "query": "24시간 운영 산업용 PC",
+      "gt": [
+        "industrial",
+        "ipc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs",
+          "c": "industrial",
+          "s": 0.502
+        },
+        {
+          "t": "ACE-WS01D-i7-6-F",
+          "c": "ipc",
+          "s": 0.445
+        },
+        {
+          "t": "Industrial Automation — Overview",
+          "c": "industrial",
+          "s": 0.436
+        },
+        {
+          "t": "ACE-BoxIPC-74L2D",
+          "c": "ipc",
+          "s": 0.431
+        },
+        {
+          "t": "ACE-WS01D-i7-4-F",
+          "c": "ipc",
+          "s": 0.431
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs",
+          "c": "industrial",
+          "s": 0.736
+        },
+        {
+          "t": "ACE-BoxIPC-73L2D",
+          "c": "ipc",
+          "s": 0.364
+        },
+        {
+          "t": "Industrial Automation — Overview",
+          "c": "industrial",
+          "s": 0.3329
+        },
+        {
+          "t": "ACE-PPC-19HT",
+          "c": "ipc",
+          "s": 0.3268
+        },
+        {
+          "t": "ACE-BoxIPC-74L2D",
+          "c": "ipc",
+          "s": 0.314
+        }
+      ]
+    },
+    {
+      "query": "Fanless boxtype industrial",
+      "gt": [
+        "industrial",
+        "ipc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs",
+          "c": "industrial",
+          "s": 0.569
+        },
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": 0.495
+        },
+        {
+          "t": "ACE-BoxIPC-74L2D",
+          "c": "ipc",
+          "s": 0.473
+        },
+        {
+          "t": "ACE-BoxIPC-76L2D",
+          "c": "ipc",
+          "s": 0.471
+        },
+        {
+          "t": "ACE-BoxIPC-7110L2D",
+          "c": "ipc",
+          "s": 0.459
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": 0.8086
+        },
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs",
+          "c": "industrial",
+          "s": 0.7831
+        },
+        {
+          "t": "ACE-BoxIPC-76L2D",
+          "c": "ipc",
+          "s": 0.7659
+        },
+        {
+          "t": "ACE-BoxIPC-74L2D",
+          "c": "ipc",
+          "s": 0.7658
+        },
+        {
+          "t": "ACE-BoxIPC-73L2D",
+          "c": "ipc",
+          "s": 0.7588
+        }
+      ]
+    },
+    {
+      "query": "Network appliance 방화벽",
+      "gt": [
+        "telecom"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Network Appliance",
+          "c": "telecom",
+          "s": 0.42
+        },
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": 0.353
+        },
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": 0.306
+        },
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": 0.303
+        },
+        {
+          "t": "Rackmount & Server Systems",
+          "c": "telecom",
+          "s": 0.302
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": 0.4821
+        },
+        {
+          "t": "Network Appliance",
+          "c": "telecom",
+          "s": 0.4731
+        },
+        {
+          "t": "Rackmount & Server Systems",
+          "c": "telecom",
+          "s": 0.1738
+        },
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": 0.1355
+        },
+        {
+          "t": "ACE-IPC-Wall-i7-6-F",
+          "c": "ipc",
+          "s": 0.1119
+        }
+      ]
+    },
+    {
+      "query": "고성능 NIC 카드",
+      "gt": [
+        "telecom"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": false,
+        "rank5_hit": true,
+        "first_rank": 2
+      },
+      "v_top5": [
+        {
+          "t": "Network Appliance",
+          "c": "telecom",
+          "s": 0.351
+        },
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.339
+        },
+        {
+          "t": "HPx-200",
+          "c": "radar",
+          "s": 0.319
+        },
+        {
+          "t": "HPx-250",
+          "c": "radar",
+          "s": 0.311
+        },
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": 0.296
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "HPx-200",
+          "c": "radar",
+          "s": 0.2842
+        },
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": 0.2789
+        },
+        {
+          "t": "HPx-250",
+          "c": "radar",
+          "s": 0.2177
+        },
+        {
+          "t": "HPx-400e",
+          "c": "radar",
+          "s": 0.212
+        },
+        {
+          "t": "Network Appliance",
+          "c": "telecom",
+          "s": 0.1586
+        }
+      ]
+    },
+    {
+      "query": "UTM 하드웨어",
+      "gt": [
+        "telecom"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": 0.336
+        },
+        {
+          "t": "Network Appliance",
+          "c": "telecom",
+          "s": 0.336
+        },
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.318
+        },
+        {
+          "t": "Middleware — RTI Connext DDS",
+          "c": "military",
+          "s": 0.313
+        },
+        {
+          "t": "ACE-WS01D-i7-4-F",
+          "c": "ipc",
+          "s": 0.309
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": 0.3156
+        },
+        {
+          "t": "Network Appliance",
+          "c": "telecom",
+          "s": 0.2923
+        },
+        {
+          "t": "ACE-IPC02R-4U-i7-9",
+          "c": "ipc",
+          "s": 0.2093
+        },
+        {
+          "t": "ACE-WS01D-i7-6-F",
+          "c": "ipc",
+          "s": 0.2033
+        },
+        {
+          "t": "ACE-IPC02D-i7-6",
+          "c": "ipc",
+          "s": 0.1974
+        }
+      ]
+    },
+    {
+      "query": "AMD 네트워크 어플라이언스",
+      "gt": [
+        "telecom"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Network Appliance",
+          "c": "telecom",
+          "s": 0.491
+        },
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": 0.453
+        },
+        {
+          "t": "SMART Embedded Computing",
+          "c": "telecom",
+          "s": 0.41
+        },
+        {
+          "t": "ACE-WS01D-i7-6-F",
+          "c": "ipc",
+          "s": 0.382
+        },
+        {
+          "t": "Middleware — RTI Connext DDS",
+          "c": "military",
+          "s": 0.378
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Network Appliance",
+          "c": "telecom",
+          "s": 0.7687
+        },
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": 0.7664
+        },
+        {
+          "t": "ACE-IPC02D-i7-6",
+          "c": "ipc",
+          "s": 0.2644
+        },
+        {
+          "t": "ACE-Sever-2U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.2602
+        },
+        {
+          "t": "ACE-WS01D-i7-6-F",
+          "c": "ipc",
+          "s": 0.2276
+        }
+      ]
+    },
+    {
+      "query": "OKTAL SE-Workbench",
+      "gt": [
+        "sensor"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "SE-Workbench-EO",
+          "c": "sensor",
+          "s": 0.641
+        },
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": 0.624
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": 0.465
+        },
+        {
+          "t": "SE-FAST-HWIL",
+          "c": "sensor",
+          "s": 0.413
+        },
+        {
+          "t": "Sensor Modeling & Simulation — OKTAL-SE",
+          "c": "military",
+          "s": 0.413
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "SE-Workbench-EO",
+          "c": "sensor",
+          "s": 0.8741
+        },
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": 0.8604
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": 0.7907
+        },
+        {
+          "t": "Sensor Modeling & Simulation — OKTAL-SE",
+          "c": "military",
+          "s": 0.5767
+        },
+        {
+          "t": "SE-RAY-SAR",
+          "c": "sensor",
+          "s": 0.5359
+        }
+      ]
+    },
+    {
+      "query": "EO IR 시뮬레이션",
+      "gt": [
+        "sensor"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "SE-Workbench-EO",
+          "c": "sensor",
+          "s": 0.498
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": 0.454
+        },
+        {
+          "t": "Sensor Modeling & Simulation — OKTAL-SE",
+          "c": "military",
+          "s": 0.448
+        },
+        {
+          "t": "Active EO & GNSS Simulation",
+          "c": "sensor",
+          "s": 0.425
+        },
+        {
+          "t": "SE-FAST-HWIL",
+          "c": "sensor",
+          "s": 0.335
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": 0.7735
+        },
+        {
+          "t": "SE-Workbench-EO",
+          "c": "sensor",
+          "s": 0.7384
+        },
+        {
+          "t": "Sensor Modeling & Simulation — OKTAL-SE",
+          "c": "military",
+          "s": 0.7289
+        },
+        {
+          "t": "Active EO & GNSS Simulation",
+          "c": "sensor",
+          "s": 0.5692
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.3915
+        }
+      ]
+    },
+    {
+      "query": "RF 시뮬레이션 시스템",
+      "gt": [
+        "sensor"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": 0.473
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": 0.401
+        },
+        {
+          "t": "Sensor Modeling & Simulation — OKTAL-SE",
+          "c": "military",
+          "s": 0.392
+        },
+        {
+          "t": "Wind River Simics",
+          "c": "telecom",
+          "s": 0.364
+        },
+        {
+          "t": "SPx Radar Simulator",
+          "c": "radar",
+          "s": 0.352
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": 0.7164
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": 0.6062
+        },
+        {
+          "t": "Sensor Modeling & Simulation — OKTAL-SE",
+          "c": "military",
+          "s": 0.5715
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.4154
+        },
+        {
+          "t": "Wind River Simics",
+          "c": "telecom",
+          "s": 0.3526
+        }
+      ]
+    },
+    {
+      "query": "센서 신호 시뮬레이션",
+      "gt": [
+        "sensor"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": 0.38
+        },
+        {
+          "t": "SE-FAST-HWIL",
+          "c": "sensor",
+          "s": 0.361
+        },
+        {
+          "t": "Active EO & GNSS Simulation",
+          "c": "sensor",
+          "s": 0.358
+        },
+        {
+          "t": "Sensor Modeling & Simulation — OKTAL-SE",
+          "c": "military",
+          "s": 0.354
+        },
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": 0.344
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Active EO & GNSS Simulation",
+          "c": "sensor",
+          "s": 0.647
+        },
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": 0.6421
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": 0.6011
+        },
+        {
+          "t": "Sensor Modeling & Simulation — OKTAL-SE",
+          "c": "military",
+          "s": 0.5659
+        },
+        {
+          "t": "SE-RAY-SAR",
+          "c": "sensor",
+          "s": 0.5005
+        }
+      ]
+    },
+    {
+      "query": "Cambridge Pixel SPx",
+      "gt": [
+        "radar"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "SPx AIS",
+          "c": "radar",
+          "s": 0.58
+        },
+        {
+          "t": "SPx Development",
+          "c": "radar",
+          "s": 0.554
+        },
+        {
+          "t": "Radar Processing — Cambridge Pixel",
+          "c": "military",
+          "s": 0.534
+        },
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "radar",
+          "s": 0.469
+        },
+        {
+          "t": "SPx-Scan",
+          "c": "radar",
+          "s": 0.455
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "SPx Development",
+          "c": "radar",
+          "s": 0.7983
+        },
+        {
+          "t": "SPx AIS",
+          "c": "radar",
+          "s": 0.7979
+        },
+        {
+          "t": "Radar Processing — Cambridge Pixel",
+          "c": "military",
+          "s": 0.7897
+        },
+        {
+          "t": "SPx Fusion Server",
+          "c": "radar",
+          "s": 0.7527
+        },
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "radar",
+          "s": 0.7283
+        }
+      ]
+    },
+    {
+      "query": "RadarView 디스플레이",
+      "gt": [
+        "radar"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "RadarView (Visualization)",
+          "c": "radar",
+          "s": 0.625
+        },
+        {
+          "t": "RDR Data Recorder",
+          "c": "radar",
+          "s": 0.487
+        },
+        {
+          "t": "VSD (Video Security Display)",
+          "c": "radar",
+          "s": 0.476
+        },
+        {
+          "t": "ASD-100",
+          "c": "radar",
+          "s": 0.455
+        },
+        {
+          "t": "Radar Processing & Display — Overview",
+          "c": "radar",
+          "s": 0.45
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "RadarView (Visualization)",
+          "c": "radar",
+          "s": 0.7894
+        },
+        {
+          "t": "Radar Processing & Display — Overview",
+          "c": "radar",
+          "s": 0.727
+        },
+        {
+          "t": "VSD (Video Security Display)",
+          "c": "radar",
+          "s": 0.5163
+        },
+        {
+          "t": "ASD-100",
+          "c": "radar",
+          "s": 0.4971
+        },
+        {
+          "t": "HPx-200",
+          "c": "radar",
+          "s": 0.4474
+        }
+      ]
+    },
+    {
+      "query": "해양 레이더 추적",
+      "gt": [
+        "radar"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "RDR Data Recorder",
+          "c": "radar",
+          "s": 0.341
+        },
+        {
+          "t": "SPx Fusion Server",
+          "c": "radar",
+          "s": 0.299
+        },
+        {
+          "t": "RadarView (Visualization)",
+          "c": "radar",
+          "s": 0.288
+        },
+        {
+          "t": "Radar Processing & Display — Overview",
+          "c": "radar",
+          "s": 0.279
+        },
+        {
+          "t": "SPx-Scan",
+          "c": "radar",
+          "s": 0.275
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "RDR Data Recorder",
+          "c": "radar",
+          "s": 0.2239
+        },
+        {
+          "t": "Radar Processing & Display — Overview",
+          "c": "radar",
+          "s": 0.1529
+        },
+        {
+          "t": "Radar Processing — Cambridge Pixel",
+          "c": "military",
+          "s": 0.1209
+        },
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "radar",
+          "s": 0.1209
+        },
+        {
+          "t": "SE-RAY-SAR",
+          "c": "sensor",
+          "s": 0.1109
+        }
+      ]
+    },
+    {
+      "query": "Target tracking radar",
+      "gt": [
+        "radar"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "RDR Data Recorder",
+          "c": "radar",
+          "s": 0.44
+        },
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "radar",
+          "s": 0.425
+        },
+        {
+          "t": "Radar Processing & Display — Overview",
+          "c": "radar",
+          "s": 0.391
+        },
+        {
+          "t": "RadarView (Visualization)",
+          "c": "radar",
+          "s": 0.378
+        },
+        {
+          "t": "HPx-346",
+          "c": "radar",
+          "s": 0.352
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "radar",
+          "s": 0.7669
+        },
+        {
+          "t": "Radar Processing & Display — Overview",
+          "c": "radar",
+          "s": 0.683
+        },
+        {
+          "t": "RDR Data Recorder",
+          "c": "radar",
+          "s": 0.5689
+        },
+        {
+          "t": "Radar Processing — Cambridge Pixel",
+          "c": "military",
+          "s": 0.1727
+        },
+        {
+          "t": "SE-RAY-SAR",
+          "c": "sensor",
+          "s": 0.1173
+        }
+      ]
+    },
+    {
+      "query": "Dolphin MXH532",
+      "gt": [
+        "interconnect"
+      ],
+      "n_cands": 4,
+      "v_eval": {
+        "rank1_hit": false,
+        "rank5_hit": false,
+        "first_rank": 0
+      },
+      "r_eval": {
+        "rank1_hit": false,
+        "rank5_hit": false,
+        "first_rank": 0
+      },
+      "v_top5": [
+        {
+          "t": "ACE-PPC-21HT",
+          "c": "ipc",
+          "s": 0.173
+        },
+        {
+          "t": "HPx-346",
+          "c": "radar",
+          "s": 0.167
+        },
+        {
+          "t": "VxWorks 653 Platform",
+          "c": "telecom",
+          "s": 0.165
+        },
+        {
+          "t": "HPx-300",
+          "c": "radar",
+          "s": 0.15
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "ACE-PPC-21HT",
+          "c": "ipc",
+          "s": 0.0807
+        },
+        {
+          "t": "HPx-346",
+          "c": "radar",
+          "s": 0.053
+        },
+        {
+          "t": "VxWorks 653 Platform",
+          "c": "telecom",
+          "s": 0.0506
+        },
+        {
+          "t": "HPx-300",
+          "c": "radar",
+          "s": 0.0489
+        }
+      ]
+    },
+    {
+      "query": "PCIe NTB 어댑터",
+      "gt": [
+        "interconnect"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": false,
+        "rank5_hit": false,
+        "first_rank": 0
+      },
+      "r_eval": {
+        "rank1_hit": false,
+        "rank5_hit": false,
+        "first_rank": 0
+      },
+      "v_top5": [
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.435
+        },
+        {
+          "t": "Network Appliance",
+          "c": "telecom",
+          "s": 0.376
+        },
+        {
+          "t": "HPx-400e",
+          "c": "radar",
+          "s": 0.323
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.314
+        },
+        {
+          "t": "ACE-IPC02D-i7-4",
+          "c": "ipc",
+          "s": 0.303
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "HPx-400e",
+          "c": "radar",
+          "s": 0.1718
+        },
+        {
+          "t": "HPx-200",
+          "c": "radar",
+          "s": 0.1444
+        },
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.1397
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.1087
+        },
+        {
+          "t": "ACE-IPC02D-i7-3",
+          "c": "ipc",
+          "s": 0.0915
+        }
+      ]
+    },
+    {
+      "query": "PCIe 5.0 호스트 어댑터",
+      "gt": [
+        "interconnect"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": false,
+        "rank5_hit": false,
+        "first_rank": 0
+      },
+      "r_eval": {
+        "rank1_hit": false,
+        "rank5_hit": false,
+        "first_rank": 0
+      },
+      "v_top5": [
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.424
+        },
+        {
+          "t": "ACE-Sever-2U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.359
+        },
+        {
+          "t": "HPx-400e",
+          "c": "radar",
+          "s": 0.353
+        },
+        {
+          "t": "HPx-200",
+          "c": "radar",
+          "s": 0.336
+        },
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.329
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "ACE-Sever-2U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.1663
+        },
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.1427
+        },
+        {
+          "t": "HPx-400e",
+          "c": "radar",
+          "s": 0.1299
+        },
+        {
+          "t": "ACE-WS01D-i7-6-F",
+          "c": "ipc",
+          "s": 0.1167
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.1062
+        }
+      ]
+    },
+    {
+      "query": "eXpressWare 클러스터링",
+      "gt": [
+        "interconnect"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": false,
+        "rank5_hit": false,
+        "first_rank": 0
+      },
+      "r_eval": {
+        "rank1_hit": false,
+        "rank5_hit": false,
+        "first_rank": 0
+      },
+      "v_top5": [
+        {
+          "t": "SPx-Scan",
+          "c": "radar",
+          "s": 0.285
+        },
+        {
+          "t": "RadarView (Visualization)",
+          "c": "radar",
+          "s": 0.28
+        },
+        {
+          "t": "SPx AIS",
+          "c": "radar",
+          "s": 0.273
+        },
+        {
+          "t": "SPx Development",
+          "c": "radar",
+          "s": 0.268
+        },
+        {
+          "t": "Wind River VxWorks 6.9",
+          "c": "telecom",
+          "s": 0.25
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Embedded Board Signal Processing",
+          "c": "military",
+          "s": 0.0956
+        },
+        {
+          "t": "SPx AIS",
+          "c": "radar",
+          "s": 0.0615
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.058
+        },
+        {
+          "t": "Middleware — RTI Connext DDS",
+          "c": "military",
+          "s": 0.05
+        },
+        {
+          "t": "ACE-IPC02R-4U-Xeon-E3",
+          "c": "ipc",
+          "s": 0.0489
+        }
+      ]
+    },
+    {
+      "query": "GPU servers for deep learning",
+      "gt": [
+        "hpc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "GPU Servers",
+          "c": "hpc",
+          "s": 0.672
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.535
+        },
+        {
+          "t": "GPU Desktop & Appliances",
+          "c": "hpc",
+          "s": 0.528
+        },
+        {
+          "t": "PCIe Expansion — One Stop Systems",
+          "c": "hpc",
+          "s": 0.382
+        },
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.342
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "GPU Servers",
+          "c": "hpc",
+          "s": 0.8427
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": 0.5923
+        },
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.2307
+        },
+        {
+          "t": "GPU Desktop & Appliances",
+          "c": "hpc",
+          "s": 0.2306
+        },
+        {
+          "t": "ACE-Sever-2U-Xeon-E5-F",
+          "c": "ipc",
+          "s": 0.0947
+        }
+      ]
+    },
+    {
+      "query": "Railway safety SIL4 platform",
+      "gt": [
+        "railway"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "HIMA ControlSafe™ Platform",
+          "c": "railway",
+          "s": 0.603
+        },
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": 0.538
+        },
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": 0.448
+        },
+        {
+          "t": "Industrial PCs for Railway",
+          "c": "railway",
+          "s": 0.373
+        },
+        {
+          "t": "VxWorks 653 Platform",
+          "c": "telecom",
+          "s": 0.373
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": 0.8158
+        },
+        {
+          "t": "HIMA ControlSafe™ Platform",
+          "c": "railway",
+          "s": 0.8115
+        },
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": 0.629
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": 0.5831
+        },
+        {
+          "t": "RTOS — Wind River",
+          "c": "railway",
+          "s": 0.1447
+        }
+      ]
+    },
+    {
+      "query": "Sensor simulation workbench",
+      "gt": [
+        "sensor"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": 0.595
+        },
+        {
+          "t": "SE-Workbench-EO",
+          "c": "sensor",
+          "s": 0.562
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": 0.53
+        },
+        {
+          "t": "3D Terrain & Scene Database",
+          "c": "sensor",
+          "s": 0.41
+        },
+        {
+          "t": "Sensor Modeling & Simulation — OKTAL-SE",
+          "c": "military",
+          "s": 0.405
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": 0.8496
+        },
+        {
+          "t": "SE-Workbench-EO",
+          "c": "sensor",
+          "s": 0.8454
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": 0.8325
+        },
+        {
+          "t": "Sensor Modeling & Simulation — OKTAL-SE",
+          "c": "military",
+          "s": 0.4577
+        },
+        {
+          "t": "SE-FAST-HWIL",
+          "c": "sensor",
+          "s": 0.3729
+        }
+      ]
+    },
+    {
+      "query": "Industrial PC fanless",
+      "gt": [
+        "industrial",
+        "ipc"
+      ],
+      "n_cands": 20,
+      "v_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "r_eval": {
+        "rank1_hit": true,
+        "rank5_hit": true,
+        "first_rank": 1
+      },
+      "v_top5": [
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs",
+          "c": "industrial",
+          "s": 0.642
+        },
+        {
+          "t": "Industrial Automation — Overview",
+          "c": "industrial",
+          "s": 0.532
+        },
+        {
+          "t": "Industrial PCs for Railway",
+          "c": "railway",
+          "s": 0.524
+        },
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": 0.522
+        },
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": 0.509
+        }
+      ],
+      "r_top5": [
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs",
+          "c": "industrial",
+          "s": 0.8381
+        },
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": 0.8167
+        },
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": 0.8065
+        },
+        {
+          "t": "Industrial Automation — Overview",
+          "c": "industrial",
+          "s": 0.8012
+        },
+        {
+          "t": "Industrial PCs for Railway",
+          "c": "railway",
+          "s": 0.8005
+        }
+      ]
+    }
+  ]
+}

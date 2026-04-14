@@ -18,7 +18,7 @@
     "exploreBtn": "DÉCOUVRIR NOS SOLUTIONS",
     "quoteBtn": "DEMANDER UN DEVIS",
     "solutions": "Solutions",
-    "viewAll": "VOIR TOUTES LES SOLUTIONS",
+    "viewAll": "Choisir mes solutions",
     "featuredProducts": "Produits phares",
     "ourSolutions": "Nos solutions",
     "consultTitle": "Besoin d'une solution sur mesure ?",
@@ -90,10 +90,10 @@
     "sensorSub": "Solutions OKTAL-SE",
     "sensorDesc": "Simulation haute fidélité EO/IR/RF d'OKTAL-SE pour les environnements HWIL, MITL et de formation.",
     "lab": "Centre de R&D",
-    "labSub": "AI, R&D Center",
+    "labSub": "IA, Centre de R&D",
     "labDesc": "De la conception de matériel embarqué aux algorithmes logiciels, nous recherchons l'ensemble du processus des systèmes de contrôle spécialisés et réalisons l'internalisation technologique.",
     "hpc": "Systèmes de supercalcul",
-    "hpcSub": "High Performance Computing",
+    "hpcSub": "Calcul haute performance",
     "hpcDesc": "Avec la croissance du Big Data, UHD/FHD et de la simulation, les besoins en HPC augmentent dans les organismes publics, les universités et les laboratoires. Les accélérateurs haute densité offrent un HPC différencié par le traitement GPU.",
     "ai": "Centre IA",
     "aiSub": "Service IA",
@@ -249,7 +249,8 @@
     "newChat": "Nouveau chat",
     "send": "Envoyer",
     "close": "Fermer",
-    "assistant": "Assistant IA AceTec"
+    "assistant": "Assistant IA AceTec",
+    "pickSolutions": "♡ Choisir mes solutions"
   },
   "form": {
     "name": "Nom",
@@ -628,5 +629,12 @@
     "descTab": "Description",
     "catsTab": "Catégories",
     "detailsBtn": "Détails"
+  },
+  "admin": {
+    "editing": "Édition",
+    "save": "Enregistrer",
+    "dashboard": "Tableau de bord",
+    "logout": "Déconnexion",
+    "survey": "Canal commercial"
   }
 }

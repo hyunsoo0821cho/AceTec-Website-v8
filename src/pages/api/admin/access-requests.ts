@@ -67,3 +67,33 @@ export const POST: APIRoute = async ({ request }) => {
 
   return Response.json({ ok: true, message: action === 'approve' ? '승인되었습니다' : '거절되었습니다' });
 };
+
+/** DELETE: 관리자 — 요청 거절(삭제) 또는 승인된 권한 회수 */
+export const DELETE: APIRoute = async ({ request }) => {
+  const cookie = request.headers.get('cookie');
+  const adminId = verifySession(getSessionIdFromCookie(cookie));
+  if (!adminId) return Response.json({ error: 'Unauthorized' }, { status: 401 });
+
+  const admin = getUserInfo(adminId);
+  if (!admin || admin.role !== 'admin') {
+    return Response.json({ error: 'Forbidden' }, { status: 403 });
+  }
+
+  const { requestId, action } = await request.json();
+  if (!requestId) return Response.json({ error: 'Invalid request' }, { status: 400 });
+
+  const req = getDb().prepare(
+    'SELECT ar.*, a.username FROM access_requests ar JOIN admins a ON ar.user_id = a.id WHERE ar.id = ?'
+  ).get(requestId) as { id: number; username: string; page: string; status: string } | undefined;
+
+  if (!req) return Response.json({ error: '요청을 찾을 수 없습니다' }, { status: 404 });
+
+  getDb().prepare('DELETE FROM access_requests WHERE id = ?').run(requestId);
+
+  const label = action === 'revoke' ? '권한 회수' : '거절(삭제)';
+  getDb().prepare(
+    'INSERT INTO audit_logs (admin_id, action, detail, created_at) VALUES (?, ?, ?, ?)'
+  ).run(adminId, `access_${action || 'delete'}`, `${req.username} [${req.page || 'all'}] ${label}`, Date.now());
+
+  return Response.json({ ok: true, message: label + ' 완료' });
+};

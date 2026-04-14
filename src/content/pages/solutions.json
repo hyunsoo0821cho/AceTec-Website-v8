@@ -1,6 +1,6 @@
 {
   "title": "솔루션",
-  "description": "국방, 항공우주, 철도, 통신, 산업 자동화를 위한 엔드투엔드 기술 솔루션 — 하드웨어 선정, 시스템 통합, 라이프사이클 지원까지.",
+  "description": "국방, 항공우주, 철도, 통신, 산업 자동화를 위한 엔드투엔드 기술 솔루션 — 하드웨어 선정부터 시스템 통합, 라이프사이클 지원까지.",
   "items": [
     {
       "title": "Military & Aerospace",
@@ -9,20 +9,20 @@
       "href": "/products/military"
     },
     {
-      "title": "Rail Transportation",
+      "title": "철도 교통",
       "subtitle": "SIL4 Safety Systems",
       "description": "TÜV SÜD SIL4 certified HIMA ControlSafe™ platforms for CBTC, interlocking, and train control — delivering the highest safety integrity levels in rail signaling.",
       "href": "/products/railway"
     },
     {
-      "title": "Industrial Automation",
+      "title": "산업 자동화",
       "subtitle": "Industrial-Grade Platforms",
       "description": "Fanless industrial PCs, network appliances, and IoT platforms for factory automation, process control, semiconductor manufacturing, and quality inspection.",
       "href": "/products/industrial"
     },
     {
       "title": "Telecom & Networking",
-      "subtitle": "Network Infrastructure",
+      "subtitle": "네트워크 인프라",
       "description": "Intel/AMD-based network appliances for firewall, VPN, UTM, and load balancing — along with high-performance NIC adapters for data center and telecom infrastructure.",
       "href": "/products/telecom"
     },
@@ -33,7 +33,7 @@
       "href": "/products/sensor"
     },
     {
-      "title": "High Performance Computing",
+      "title": "고성능 컴퓨팅",
       "subtitle": "GPU & Compute Platforms",
       "description": "High-density GPU servers and PCIe expansion systems for machine learning, financial analysis, military applications, medical imaging, and scientific research.",
       "href": "/products/hpc"
@@ -57,10 +57,10 @@
       "subtitle": "국방급 컴퓨팅",
       "image": "/images/services/military-aerospace.png",
       "href": "/products/military",
-      "description": "정밀 타격, C2, 감시, 무인 시스템을 위해 설계된 견고한 VPX/VME 보드 및 신호 처리 플랫폼. 가장 가혹한 운용 환경에 대응합니다.",
+      "description": "정밀 타격, C2, 감시, 무인 시스템을 위해 설계된 견고한 VPX/VME 보드 및 신호 처리 플랫폼 — 최악의 작전 환경에 특화.",
       "subcategories": [
         "Form Factor — Abaco",
-        "Middleware Software",
+        "미들웨어 소프트웨어",
         "Radar Processing & Display"
       ]
     },
@@ -69,7 +69,7 @@
       "subtitle": "SIL4 안전 시스템",
       "image": "/images/services/railway.png",
       "href": "/products/railway",
-      "description": "CBTC, 연동장치, 열차 제어에서 최고 수준의 안전성을 제공하는 TÜV SÜD SIL4 인증 HIMA ControlSafe™ 플랫폼.",
+      "description": "TÜV SÜD SIL4 인증 HIMA ControlSafe™ 플랫폼 — CBTC, 연동장치, 열차 제어에서 철도 신호 최고 수준의 안전 무결성 제공.",
       "subcategories": [
         "HIMA SIL4 Railway System",
         "HiMax System",
@@ -92,11 +92,11 @@
       "subtitle": "네트워크 인프라",
       "image": "/images/services/telecom.png",
       "href": "/products/telecom",
-      "description": "방화벽, VPN, UTM, 로드밸런싱용 Intel/AMD 기반 네트워크 어플라이언스 및 데이터센터·통신 인프라용 고성능 NIC 어댑터.",
+      "description": "방화벽, VPN, UTM, 로드밸런싱용 Intel/AMD 기반 네트워크 어플라이언스 — 데이터센터·통신 인프라용 고성능 NIC 어댑터 포함.",
       "subcategories": [
         "Entry/Middle/High-end Network Appliance",
-        "Server Network Appliance",
-        "NIC Adapter"
+        "서버 네트워크 어플라이언스",
+        "NIC 어댑터"
       ]
     },
     {
@@ -104,57 +104,57 @@
       "subtitle": "OKTAL-SE 솔루션",
       "image": "/images/products/sensor/satellite.png",
       "href": "/products/sensor",
-      "description": "국방 및 항공우주 프로그램의 HIL, MITL, 훈련 환경을 위한 OKTAL-SE 고충실도 EO/IR/RF 센서 시뮬레이션.",
+      "description": "국방·항공우주 프로그램의 Hardware-In-the-Loop, Man-In-the-Loop, 훈련 환경을 위한 OKTAL-SE 고충실도 EO/IR/RF 센서 시뮬레이션.",
       "subcategories": [
         "EO/IR Sensor Simulation",
-        "RF Sensor Simulation",
-        "Active EO Sensor Simulation",
-        "GNSS Sensor Simulation",
+        "RF 센서 시뮬레이션",
+        "Active EO 센서 시뮬레이션",
+        "GNSS 센서 시뮬레이션",
         "3D Terrain & Building Generation",
         "APIs & Integration Tools"
       ]
     },
     {
       "title": "연구소",
-      "subtitle": "AI, R&D 센터",
+      "subtitle": "AI·연구소",
       "image": "/images/services/ai-center.png",
       "href": "",
       "i18nKey": "lab",
-      "description": "임베디드 하드웨어 설계부터 소프트웨어 알고리즘까지 특수 제어 시스템의 전 과정을 연구하고 기술 내재화를 실현합니다."
+      "description": "임베디드 하드웨어 설계부터 소프트웨어 알고리즘까지 특수 제어 시스템의 전 과정을 연구하여 기술 내재화를 달성합니다."
     },
     {
       "title": "슈퍼컴퓨팅시스템분야",
       "subtitle": "고성능 컴퓨팅",
       "image": "/images/services/hpc.png",
       "href": "/products/hpc",
-      "description": "Big Data, UHD/FHD, Simulation 등의 대용량 데이터 증가에 따라 HPC 수요가 공공기관, 학교, 연구소에서 증가하고 있습니다. GPU 기반 High Density Compute Accelerator로 차별화된 HPC를 제공합니다.",
+      "description": "Big Data, UHD/FHD, 시뮬레이션 수요 증가에 따라 정부기관·대학·연구소에서 HPC 요구가 높아지고 있습니다. 고밀도 컴퓨팅 가속기가 GPU 기반 처리로 차별화된 HPC를 실현합니다.",
       "subcategories": [
-        "Servers",
-        "Desktop Computing Appliances",
-        "GPU Appliances",
-        "GPU Expansion",
-        "VIDEO Acceleration Platform"
+        "서버",
+        "데스크탑 컴퓨팅 어플라이언스",
+        "GPU 어플라이언스",
+        "GPU 확장",
+        "비디오 가속 플랫폼"
       ]
     },
     {
-      "title": "산업용컴퓨터분야",
+      "title": "산업용 PC & 팬리스 시스템",
       "subtitle": "산업용 컴퓨터",
-      "description": "24시간 365일 산업 환경을 위한 박스형, 랙마운트, 서버, 데스크톱, 벽걸이, 패널 PC — 팬리스 설계, 광온도, KC/ISO 인증.",
+      "description": "24시간 365일 산업 운전을 위한 박스형, 랙마운트, 서버, 데스크톱, 벽걸이, 패널 PC — 팬리스 설계, 광온도 지원, KC/ISO 인증.",
       "image": "/images/services/ipc.png",
       "href": "/products/ipc",
       "subcategories": [
-        "Boxtype PC",
-        "Rackmount PC",
-        "Server",
-        "Desktop PC",
-        "Wallmount PC",
-        "Panel PC"
+        "박스형 PC",
+        "랙마운트 PC",
+        "서버",
+        "데스크탑 PC",
+        "월마운트 PC",
+        "패널 PC"
       ]
     },
     {
       "title": "레이더 처리 & 디스플레이",
       "subtitle": "Cambridge Pixel 솔루션",
-      "description": "Cambridge Pixel의 고성능 레이더 스캔 변환, 표적 추적, 디스플레이 솔루션 — SPx Server, HPx 취득 카드, 통합 레이더 시각화 시스템.",
+      "description": "Cambridge Pixel의 고성능 레이더 스캔 변환, 목표 추적, 디스플레이 솔루션 — SPx Server, HPx 수집 카드, 통합 레이더 시각화 시스템.",
       "image": "/images/services/radar.png",
       "href": "/products/radar",
       "subcategories": [
@@ -165,17 +165,17 @@
     {
       "title": "초고속 데이터 인터커넥트",
       "subtitle": "PCIe 패브릭 & 저지연 네트워킹",
-      "description": "PCIe 기반 독자 통신 프로토콜로 서버, GPU, 스토리지 간 데이터 전송 지연을 극소화하고 복수 노드를 단일 시스템처럼 운영하는 초고속 컴퓨팅 클러스터를 구축합니다.",
+      "description": "PCIe 기반 독자적 통신 프로토콜로 서버·GPU·스토리지 간 데이터 전송 지연을 최소화하고, 여러 노드를 하나의 단일 시스템으로 운영하는 초고속 연산 클러스터를 구축합니다.",
       "image": "/uploads/services/1775193405048-dolphin---.webp",
       "href": "/products/interconnect",
       "subcategories": [
         "PCIe Network Adapter",
-        "Superfast Interconnect Switch"
+        "초고속 인터커넥트 스위치"
       ]
     }
   ],
   "quoteCta": {
     "title": "견적 요청",
-    "description": "프로젝트 요구사항을 공유해 주시면 엔지니어링 팀이 2영업일 이내에 맞춤형 솔루션 제안을 드립니다."
+    "description": "프로젝트 요구사항을 공유해 주시면 당사 엔지니어링 팀이 2영업일 이내에 맞춤형 솔루션 제안서를 드립니다."
   }
 }

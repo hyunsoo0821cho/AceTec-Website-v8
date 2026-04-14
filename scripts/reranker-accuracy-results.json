@@ -1,0 +1,3087 @@
+{
+  "timestamp": "2026-04-14T06:35:06.351Z",
+  "config": {
+    "embed": "nomic-embed-text-v2-moe:latest",
+    "qdrant": "http://localhost:6333/acetec_knowledge",
+    "reranker": "http://localhost:8787",
+    "rerankerUp": true,
+    "topNCandidates": 20,
+    "topKFinal": 5
+  },
+  "metrics": {
+    "vector": {
+      "n": 43,
+      "hit1": "72.1",
+      "hit5": "93.0",
+      "mrr5": "0.816"
+    },
+    "rerank": {
+      "n": 43,
+      "hit1": "83.7",
+      "hit5": "95.3",
+      "mrr5": "0.891"
+    }
+  },
+  "rows": [
+    {
+      "query": "GPU 서버",
+      "gt": [
+        "hpc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "GPU CUBE",
+          "c": "hpc",
+          "s": "0.447"
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": "0.446"
+        },
+        {
+          "t": "초고속 데이터 인터커넥트 (High-Speed Interconnect) — Overview",
+          "c": "interconnect",
+          "s": "0.402"
+        },
+        {
+          "t": "Expansion Optimized Server",
+          "c": "hpc",
+          "s": "0.399"
+        },
+        {
+          "t": "FlashCUBE",
+          "c": "hpc",
+          "s": "0.393"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": "0.650"
+        },
+        {
+          "t": "초고속 데이터 인터커넥트 (High-Speed Interconnect) — Overview",
+          "c": "interconnect",
+          "s": "0.412"
+        },
+        {
+          "t": "Expansion Optimized Server",
+          "c": "hpc",
+          "s": "0.407"
+        },
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "ipc",
+          "s": "0.368"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.339"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "HPC 솔루션 소개",
+      "gt": [
+        "hpc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": "0.448"
+        },
+        {
+          "t": "초고속 데이터 인터커넥트 (High-Speed Interconnect) — Overview",
+          "c": "interconnect",
+          "s": "0.428"
+        },
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": "0.425"
+        },
+        {
+          "t": "HPx-250",
+          "c": "radar",
+          "s": "0.417"
+        },
+        {
+          "t": "HPx-250",
+          "c": "military",
+          "s": "0.413"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": "0.257"
+        },
+        {
+          "t": "초고속 데이터 인터커넥트 (High-Speed Interconnect) — Overview",
+          "c": "interconnect",
+          "s": "0.178"
+        },
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": "0.156"
+        },
+        {
+          "t": "3U 5000 Series Server",
+          "c": "hpc",
+          "s": "0.146"
+        },
+        {
+          "t": "Expansion Optimized Server",
+          "c": "hpc",
+          "s": "0.143"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "PCIe 확장 섀시",
+      "gt": [
+        "hpc",
+        "interconnect"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.439"
+        },
+        {
+          "t": "PXH830 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.424"
+        },
+        {
+          "t": "FlashCUBE",
+          "c": "hpc",
+          "s": "0.414"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.408"
+        },
+        {
+          "t": "Flash-µCUBE",
+          "c": "hpc",
+          "s": "0.405"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "MXS924 PCIe 4.0 Switch",
+          "c": "interconnect",
+          "s": "0.369"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.353"
+        },
+        {
+          "t": "Flash-µCUBE",
+          "c": "hpc",
+          "s": "0.284"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.272"
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": "0.257"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "AI 학습용 서버",
+      "gt": [
+        "hpc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "military",
+          "s": "0.365"
+        },
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "radar",
+          "s": "0.356"
+        },
+        {
+          "t": "SPx Radar Image Distribution",
+          "c": "military",
+          "s": "0.343"
+        },
+        {
+          "t": "Expansion Optimized Server",
+          "c": "hpc",
+          "s": "0.341"
+        },
+        {
+          "t": "SPx Fusion Server",
+          "c": "military",
+          "s": "0.339"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 4
+      },
+      "rerankedTop5": [
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": "0.255"
+        },
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "telecom",
+          "s": "0.216"
+        },
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "ipc",
+          "s": "0.213"
+        },
+        {
+          "t": "SPx AIS",
+          "c": "military",
+          "s": "0.167"
+        },
+        {
+          "t": "SPx AIS",
+          "c": "radar",
+          "s": "0.139"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "GPU desktop workstation",
+      "gt": [
+        "hpc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "GPU CUBE",
+          "c": "hpc",
+          "s": "0.475"
+        },
+        {
+          "t": "FlashCUBE",
+          "c": "hpc",
+          "s": "0.435"
+        },
+        {
+          "t": "Flash-µCUBE",
+          "c": "hpc",
+          "s": "0.426"
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": "0.418"
+        },
+        {
+          "t": "ACE-WS01D-i7-4-F",
+          "c": "ipc",
+          "s": "0.376"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "GPU CUBE",
+          "c": "hpc",
+          "s": "0.401"
+        },
+        {
+          "t": "FlashCUBE",
+          "c": "hpc",
+          "s": "0.352"
+        },
+        {
+          "t": "Flash-µCUBE",
+          "c": "hpc",
+          "s": "0.327"
+        },
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": "0.232"
+        },
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "ipc",
+          "s": "0.130"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "High density GPU compute",
+      "gt": [
+        "hpc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": "0.543"
+        },
+        {
+          "t": "GPU CUBE",
+          "c": "hpc",
+          "s": "0.507"
+        },
+        {
+          "t": "Flash-µCUBE",
+          "c": "hpc",
+          "s": "0.443"
+        },
+        {
+          "t": "FlashCUBE",
+          "c": "hpc",
+          "s": "0.430"
+        },
+        {
+          "t": "초고속 데이터 인터커넥트 (High-Speed Interconnect) — Overview",
+          "c": "interconnect",
+          "s": "0.407"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": "0.686"
+        },
+        {
+          "t": "GPU CUBE",
+          "c": "hpc",
+          "s": "0.254"
+        },
+        {
+          "t": "Flash-µCUBE",
+          "c": "hpc",
+          "s": "0.248"
+        },
+        {
+          "t": "FlashCUBE",
+          "c": "hpc",
+          "s": "0.220"
+        },
+        {
+          "t": "3U 5000 Series Server",
+          "c": "hpc",
+          "s": "0.163"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "비디오 가속 플랫폼",
+      "gt": [
+        "hpc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "초고속 데이터 인터커넥트 (High-Speed Interconnect) — Overview",
+          "c": "interconnect",
+          "s": "0.342"
+        },
+        {
+          "t": "Helix Virtualization Platform",
+          "c": "industrial",
+          "s": "0.314"
+        },
+        {
+          "t": "VSD (Video Security Display)",
+          "c": "radar",
+          "s": "0.312"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.308"
+        },
+        {
+          "t": "VSD (Video Security Display)",
+          "c": "military",
+          "s": "0.306"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": false,
+        "rank5Hit": false,
+        "firstRelevantRank": 0
+      },
+      "rerankedTop5": [
+        {
+          "t": "SPx AIS",
+          "c": "military",
+          "s": "0.184"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.176"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.159"
+        },
+        {
+          "t": "VSD (Video Security Display)",
+          "c": "radar",
+          "s": "0.153"
+        },
+        {
+          "t": "VSD (Video Security Display)",
+          "c": "military",
+          "s": "0.152"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": false,
+        "rank5Hit": false,
+        "firstRelevantRank": 0
+      }
+    },
+    {
+      "query": "One Stop Systems",
+      "gt": [
+        "hpc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "Wind River VxWorks",
+          "c": "industrial",
+          "s": "0.283"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.271"
+        },
+        {
+          "t": "VxWorks 653 and Certified System",
+          "c": "industrial",
+          "s": "0.271"
+        },
+        {
+          "t": "ISaGRAF",
+          "c": "telecom",
+          "s": "0.261"
+        },
+        {
+          "t": "SoftPLC ISaGRAF",
+          "c": "industrial",
+          "s": "0.258"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": false,
+        "rank5Hit": false,
+        "firstRelevantRank": 0
+      },
+      "rerankedTop5": [
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.392"
+        },
+        {
+          "t": "초고속 데이터 인터커넥트 (High-Speed Interconnect) — Overview",
+          "c": "interconnect",
+          "s": "0.151"
+        },
+        {
+          "t": "VxWorks 653 Platform",
+          "c": "telecom",
+          "s": "0.124"
+        },
+        {
+          "t": "MXS924 PCIe 4.0 Switch",
+          "c": "interconnect",
+          "s": "0.120"
+        },
+        {
+          "t": "Helix Virtualization Platform",
+          "c": "industrial",
+          "s": "0.119"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": false,
+        "rank5Hit": false,
+        "firstRelevantRank": 0
+      }
+    },
+    {
+      "query": "VPX 임베디드 보드",
+      "gt": [
+        "military"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "VPX 3U",
+          "c": "military",
+          "s": "0.461"
+        },
+        {
+          "t": "VPX 6U",
+          "c": "military",
+          "s": "0.404"
+        },
+        {
+          "t": "HPx-200",
+          "c": "radar",
+          "s": "0.371"
+        },
+        {
+          "t": "Military & Aerospace — Overview",
+          "c": "military",
+          "s": "0.370"
+        },
+        {
+          "t": "HPx-200",
+          "c": "military",
+          "s": "0.370"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "Military & Aerospace — Overview",
+          "c": "military",
+          "s": "0.538"
+        },
+        {
+          "t": "VPX 3U",
+          "c": "military",
+          "s": "0.515"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.435"
+        },
+        {
+          "t": "VPX 6U",
+          "c": "military",
+          "s": "0.348"
+        },
+        {
+          "t": "HPx-200",
+          "c": "radar",
+          "s": "0.128"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "Abaco Systems 제품",
+      "gt": [
+        "military"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "PMC",
+          "c": "military",
+          "s": "0.607"
+        },
+        {
+          "t": "XMC",
+          "c": "military",
+          "s": "0.580"
+        },
+        {
+          "t": "VME",
+          "c": "military",
+          "s": "0.544"
+        },
+        {
+          "t": "FMC/FMC+",
+          "c": "military",
+          "s": "0.525"
+        },
+        {
+          "t": "VPX 3U",
+          "c": "military",
+          "s": "0.519"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "VPX 6U",
+          "c": "military",
+          "s": "0.669"
+        },
+        {
+          "t": "XMC",
+          "c": "military",
+          "s": "0.613"
+        },
+        {
+          "t": "VPX 3U",
+          "c": "military",
+          "s": "0.587"
+        },
+        {
+          "t": "CompactPCI",
+          "c": "military",
+          "s": "0.566"
+        },
+        {
+          "t": "FMC/FMC+",
+          "c": "military",
+          "s": "0.558"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "FPGA 신호처리 보드",
+      "gt": [
+        "military"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "HPx-346",
+          "c": "radar",
+          "s": "0.373"
+        },
+        {
+          "t": "PXH830 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.365"
+        },
+        {
+          "t": "HPx-346",
+          "c": "military",
+          "s": "0.362"
+        },
+        {
+          "t": "FMC/FMC+",
+          "c": "military",
+          "s": "0.358"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.357"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 3
+      },
+      "rerankedTop5": [
+        {
+          "t": "HPx-300",
+          "c": "radar",
+          "s": "0.232"
+        },
+        {
+          "t": "HPx-300",
+          "c": "military",
+          "s": "0.219"
+        },
+        {
+          "t": "HPx-200",
+          "c": "radar",
+          "s": "0.202"
+        },
+        {
+          "t": "FMC/FMC+",
+          "c": "military",
+          "s": "0.192"
+        },
+        {
+          "t": "HPx-200",
+          "c": "military",
+          "s": "0.191"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 2
+      }
+    },
+    {
+      "query": "Rugged military SBC",
+      "gt": [
+        "military"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "VPX 3U",
+          "c": "military",
+          "s": "0.259"
+        },
+        {
+          "t": "Military & Aerospace — Overview",
+          "c": "military",
+          "s": "0.246"
+        },
+        {
+          "t": "PMC",
+          "c": "military",
+          "s": "0.242"
+        },
+        {
+          "t": "VME",
+          "c": "military",
+          "s": "0.236"
+        },
+        {
+          "t": "VPX 6U",
+          "c": "military",
+          "s": "0.232"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "Military & Aerospace — Overview",
+          "c": "military",
+          "s": "0.373"
+        },
+        {
+          "t": "VPX 3U",
+          "c": "military",
+          "s": "0.328"
+        },
+        {
+          "t": "VME",
+          "c": "military",
+          "s": "0.178"
+        },
+        {
+          "t": "CompactPCI",
+          "c": "military",
+          "s": "0.110"
+        },
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "military",
+          "s": "0.064"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "MIL-STD 컴퓨터",
+      "gt": [
+        "military"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": "0.356"
+        },
+        {
+          "t": "VSD (Video Security Display)",
+          "c": "military",
+          "s": "0.337"
+        },
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "military",
+          "s": "0.331"
+        },
+        {
+          "t": "ASD-100",
+          "c": "military",
+          "s": "0.325"
+        },
+        {
+          "t": "RTI Connext DDS Micro",
+          "c": "military",
+          "s": "0.320"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 2
+      },
+      "rerankedTop5": [
+        {
+          "t": "3U 5000 Series Server",
+          "c": "hpc",
+          "s": "0.122"
+        },
+        {
+          "t": "Flash-µCUBE",
+          "c": "hpc",
+          "s": "0.113"
+        },
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "military",
+          "s": "0.111"
+        },
+        {
+          "t": "ACE-WS01D-i7-6-F",
+          "c": "ipc",
+          "s": "0.110"
+        },
+        {
+          "t": "ACE-IPC02D-i7-6",
+          "c": "ipc",
+          "s": "0.110"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 3
+      }
+    },
+    {
+      "query": "HIMA 철도 안전",
+      "gt": [
+        "railway"
+      ],
+      "candidatesN": 14,
+      "vectorTop5": [
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": "0.532"
+        },
+        {
+          "t": "HIMA HiMatrix System",
+          "c": "railway",
+          "s": "0.511"
+        },
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": "0.464"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.275"
+        },
+        {
+          "t": "RTI Connext DDS Secure",
+          "c": "telecom",
+          "s": "0.197"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "HIMA HiMatrix System",
+          "c": "railway",
+          "s": "0.821"
+        },
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": "0.812"
+        },
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": "0.713"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.506"
+        },
+        {
+          "t": "About AceTec",
+          "c": "",
+          "s": "0.247"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "SIL4 인증 시스템",
+      "gt": [
+        "railway"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": "0.392"
+        },
+        {
+          "t": "AceTec Total Service Solution",
+          "c": "",
+          "s": "0.311"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.304"
+        },
+        {
+          "t": "VxWorks 653 and Certified System",
+          "c": "industrial",
+          "s": "0.298"
+        },
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": "0.295"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.585"
+        },
+        {
+          "t": "HIMA HiMatrix System",
+          "c": "railway",
+          "s": "0.552"
+        },
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": "0.537"
+        },
+        {
+          "t": "VxWorks 653 and Certified System",
+          "c": "industrial",
+          "s": "0.099"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.090"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 2
+      }
+    },
+    {
+      "query": "HiMax fail-safe",
+      "gt": [
+        "railway"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": "0.532"
+        },
+        {
+          "t": "HIMA HiMatrix System",
+          "c": "railway",
+          "s": "0.404"
+        },
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": "0.300"
+        },
+        {
+          "t": "Helix Virtualization Platform",
+          "c": "industrial",
+          "s": "0.298"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.272"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": "0.476"
+        },
+        {
+          "t": "HIMA HiMatrix System",
+          "c": "railway",
+          "s": "0.170"
+        },
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": "0.101"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.083"
+        },
+        {
+          "t": "Helix Virtualization Platform",
+          "c": "industrial",
+          "s": "0.076"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "철도 신호제어",
+      "gt": [
+        "railway"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "RTI Connext DDS Cert",
+          "c": "telecom",
+          "s": "0.280"
+        },
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": "0.277"
+        },
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": "0.268"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.265"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.259"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 2
+      },
+      "rerankedTop5": [
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": "0.501"
+        },
+        {
+          "t": "HIMA HiMatrix System",
+          "c": "railway",
+          "s": "0.499"
+        },
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": "0.384"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.343"
+        },
+        {
+          "t": "제품 상세 설명 열람 권한 안내",
+          "c": "",
+          "s": "0.182"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "산업용 팬리스 PC",
+      "gt": [
+        "industrial",
+        "ipc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": "0.527"
+        },
+        {
+          "t": "ACE-PPC-19HT",
+          "c": "ipc",
+          "s": "0.468"
+        },
+        {
+          "t": "ACE-PPC-15AT",
+          "c": "ipc",
+          "s": "0.466"
+        },
+        {
+          "t": "ACE-PPC-17AT",
+          "c": "ipc",
+          "s": "0.463"
+        },
+        {
+          "t": "ACE-PPC-17HT",
+          "c": "ipc",
+          "s": "0.460"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": "0.736"
+        },
+        {
+          "t": "ACE-PPC-19HT",
+          "c": "ipc",
+          "s": "0.721"
+        },
+        {
+          "t": "ACE-PPC-21HT",
+          "c": "ipc",
+          "s": "0.718"
+        },
+        {
+          "t": "ACE-PPC-19MT",
+          "c": "ipc",
+          "s": "0.717"
+        },
+        {
+          "t": "ACE-PPC-17AT",
+          "c": "ipc",
+          "s": "0.716"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "DIN rail 컴퓨터",
+      "gt": [
+        "industrial",
+        "ipc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "ACE-IPC02R-4U-i7-6",
+          "c": "ipc",
+          "s": "0.375"
+        },
+        {
+          "t": "ACE-IPC02R-2U-i7-6-F",
+          "c": "ipc",
+          "s": "0.372"
+        },
+        {
+          "t": "ACE-IPC02R-2U-i7-6-F",
+          "c": "telecom",
+          "s": "0.370"
+        },
+        {
+          "t": "ACE-IPC02R-4U-i7-9",
+          "c": "ipc",
+          "s": "0.369"
+        },
+        {
+          "t": "ACE-IPC02D-i7-4",
+          "c": "ipc",
+          "s": "0.364"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": "0.406"
+        },
+        {
+          "t": "ACE-IPC02D-i7-6",
+          "c": "ipc",
+          "s": "0.110"
+        },
+        {
+          "t": "ACE-IPC02D-i7-4",
+          "c": "ipc",
+          "s": "0.108"
+        },
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": "0.104"
+        },
+        {
+          "t": "ACE-BoxIPC-73L2D",
+          "c": "ipc",
+          "s": "0.098"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "Panel PC HMI",
+      "gt": [
+        "industrial",
+        "ipc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "ACE-PPC-21HT",
+          "c": "ipc",
+          "s": "0.378"
+        },
+        {
+          "t": "ACE-PPC-15HT",
+          "c": "ipc",
+          "s": "0.371"
+        },
+        {
+          "t": "ACE-PPC-17HT",
+          "c": "ipc",
+          "s": "0.367"
+        },
+        {
+          "t": "ACE-PPC-19MT",
+          "c": "ipc",
+          "s": "0.366"
+        },
+        {
+          "t": "ACE-PPC-19HT",
+          "c": "ipc",
+          "s": "0.363"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "ACE-PPC-17AT",
+          "c": "ipc",
+          "s": "0.281"
+        },
+        {
+          "t": "ACE-PPC-19MT",
+          "c": "ipc",
+          "s": "0.280"
+        },
+        {
+          "t": "ACE-PPC-17HT",
+          "c": "ipc",
+          "s": "0.279"
+        },
+        {
+          "t": "ACE-PPC-19HT",
+          "c": "ipc",
+          "s": "0.277"
+        },
+        {
+          "t": "ACE-PPC-21HT",
+          "c": "ipc",
+          "s": "0.277"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "Wind River VxWorks",
+      "gt": [
+        "industrial"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "Wind River VxWorks 6.9",
+          "c": "telecom",
+          "s": "0.605"
+        },
+        {
+          "t": "Wind River VxWorks",
+          "c": "industrial",
+          "s": "0.598"
+        },
+        {
+          "t": "VxWorks 653 Platform",
+          "c": "telecom",
+          "s": "0.487"
+        },
+        {
+          "t": "Wind River Workbench 3.2",
+          "c": "telecom",
+          "s": "0.421"
+        },
+        {
+          "t": "WIND RIVER LINUX",
+          "c": "telecom",
+          "s": "0.393"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 2
+      },
+      "rerankedTop5": [
+        {
+          "t": "Wind River VxWorks",
+          "c": "industrial",
+          "s": "0.814"
+        },
+        {
+          "t": "Wind River VxWorks 6.9",
+          "c": "telecom",
+          "s": "0.803"
+        },
+        {
+          "t": "VxWorks 653 Platform",
+          "c": "telecom",
+          "s": "0.791"
+        },
+        {
+          "t": "Wind River Workbench 3.2",
+          "c": "telecom",
+          "s": "0.587"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.532"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "24시간 운영 산업용 PC",
+      "gt": [
+        "industrial",
+        "ipc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": "0.469"
+        },
+        {
+          "t": "ACE-BoxIPC-74L2D",
+          "c": "ipc",
+          "s": "0.447"
+        },
+        {
+          "t": "ACE-PPC-17AT",
+          "c": "ipc",
+          "s": "0.440"
+        },
+        {
+          "t": "ACE-WS01D-i7-6-F",
+          "c": "ipc",
+          "s": "0.440"
+        },
+        {
+          "t": "ACE-PPC-17HT",
+          "c": "ipc",
+          "s": "0.439"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "ipc",
+          "s": "0.507"
+        },
+        {
+          "t": "Industrial Automation — Overview",
+          "c": "industrial",
+          "s": "0.312"
+        },
+        {
+          "t": "Wind River VxWorks",
+          "c": "industrial",
+          "s": "0.287"
+        },
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": "0.267"
+        },
+        {
+          "t": "ACE-PPC-19MT",
+          "c": "ipc",
+          "s": "0.266"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "Fanless boxtype industrial",
+      "gt": [
+        "industrial",
+        "ipc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": "0.495"
+        },
+        {
+          "t": "ACE-BoxIPC-74L2D",
+          "c": "ipc",
+          "s": "0.490"
+        },
+        {
+          "t": "ACE-BoxIPC-76L2D",
+          "c": "ipc",
+          "s": "0.489"
+        },
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": "0.483"
+        },
+        {
+          "t": "ACE-BoxIPC-7110L2D",
+          "c": "ipc",
+          "s": "0.480"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "ACE-BoxIPC-76L2D",
+          "c": "ipc",
+          "s": "0.769"
+        },
+        {
+          "t": "ACE-BoxIPC-74L2D",
+          "c": "ipc",
+          "s": "0.768"
+        },
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": "0.768"
+        },
+        {
+          "t": "ACE-BoxIPC-73L2D",
+          "c": "ipc",
+          "s": "0.759"
+        },
+        {
+          "t": "ACE-BoxIPC-7110L2D",
+          "c": "ipc",
+          "s": "0.756"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "Network appliance 방화벽",
+      "gt": [
+        "telecom"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": "0.381"
+        },
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": "0.291"
+        },
+        {
+          "t": "PXH830 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.283"
+        },
+        {
+          "t": "FlashCUBE",
+          "c": "hpc",
+          "s": "0.283"
+        },
+        {
+          "t": "RTI Connext DDS Cert",
+          "c": "telecom",
+          "s": "0.280"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": "0.534"
+        },
+        {
+          "t": "Industrial Automation — Overview",
+          "c": "industrial",
+          "s": "0.128"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.110"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.097"
+        },
+        {
+          "t": "MXH532 PCIe 5.0 x16 Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.097"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "고성능 NIC 카드",
+      "gt": [
+        "telecom"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "PXH830 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.432"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.402"
+        },
+        {
+          "t": "MXH532 PCIe 5.0 x16 Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.359"
+        },
+        {
+          "t": "Flash-µCUBE",
+          "c": "hpc",
+          "s": "0.359"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.358"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": false,
+        "rank5Hit": false,
+        "firstRelevantRank": 0
+      },
+      "rerankedTop5": [
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": "0.329"
+        },
+        {
+          "t": "HPx-200",
+          "c": "military",
+          "s": "0.228"
+        },
+        {
+          "t": "HPx-200",
+          "c": "radar",
+          "s": "0.215"
+        },
+        {
+          "t": "HPx-250",
+          "c": "radar",
+          "s": "0.190"
+        },
+        {
+          "t": "HPx-250",
+          "c": "military",
+          "s": "0.181"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "UTM 하드웨어",
+      "gt": [
+        "telecom"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "Flash-µCUBE",
+          "c": "hpc",
+          "s": "0.350"
+        },
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": "0.347"
+        },
+        {
+          "t": "FlashCUBE",
+          "c": "hpc",
+          "s": "0.304"
+        },
+        {
+          "t": "ACE-PPC-15HT",
+          "c": "ipc",
+          "s": "0.301"
+        },
+        {
+          "t": "ACE-PPC-17HT",
+          "c": "ipc",
+          "s": "0.295"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 2
+      },
+      "rerankedTop5": [
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": "0.327"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.206"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.140"
+        },
+        {
+          "t": "ACE-WS01D-i7-6-F",
+          "c": "ipc",
+          "s": "0.116"
+        },
+        {
+          "t": "3U 5000 Series Server",
+          "c": "hpc",
+          "s": "0.110"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "AMD 네트워크 어플라이언스",
+      "gt": [
+        "telecom"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": "0.481"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.464"
+        },
+        {
+          "t": "PXH830 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.456"
+        },
+        {
+          "t": "초고속 데이터 인터커넥트 (High-Speed Interconnect) — Overview",
+          "c": "interconnect",
+          "s": "0.444"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.416"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "Telecom & Networking — Overview",
+          "c": "telecom",
+          "s": "0.752"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.335"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.307"
+        },
+        {
+          "t": "MXH532 PCIe 5.0 x16 Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.293"
+        },
+        {
+          "t": "PXH830 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.270"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "OKTAL SE-Workbench",
+      "gt": [
+        "sensor"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "SE-Workbench-SAR",
+          "c": "sensor",
+          "s": "0.566"
+        },
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": "0.498"
+        },
+        {
+          "t": "SE-Workbench-EO",
+          "c": "sensor",
+          "s": "0.493"
+        },
+        {
+          "t": "SE-Workbench-EOS",
+          "c": "sensor",
+          "s": "0.455"
+        },
+        {
+          "t": "Wind River Workbench 3.2",
+          "c": "telecom",
+          "s": "0.426"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "SE-Workbench-SAR",
+          "c": "sensor",
+          "s": "0.797"
+        },
+        {
+          "t": "SE-Workbench-EO",
+          "c": "sensor",
+          "s": "0.519"
+        },
+        {
+          "t": "SE-Workbench-AEO",
+          "c": "sensor",
+          "s": "0.510"
+        },
+        {
+          "t": "SE-Workbench-RBGM",
+          "c": "sensor",
+          "s": "0.496"
+        },
+        {
+          "t": "SE-Workbench-GNSS",
+          "c": "sensor",
+          "s": "0.490"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "EO IR 시뮬레이션",
+      "gt": [
+        "sensor"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "SE-Workbench-EO",
+          "c": "sensor",
+          "s": "0.525"
+        },
+        {
+          "t": "SE-Workbench-HWIL-EO",
+          "c": "sensor",
+          "s": "0.513"
+        },
+        {
+          "t": "SE-Workbench-EOS",
+          "c": "sensor",
+          "s": "0.503"
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": "0.495"
+        },
+        {
+          "t": "SE-FAST-IG",
+          "c": "sensor",
+          "s": "0.458"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "SE-Workbench-HWIL-EO",
+          "c": "sensor",
+          "s": "0.784"
+        },
+        {
+          "t": "SE-Workbench-EO",
+          "c": "sensor",
+          "s": "0.772"
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": "0.759"
+        },
+        {
+          "t": "SE-FAST-IG",
+          "c": "sensor",
+          "s": "0.730"
+        },
+        {
+          "t": "SE-Workbench-EOS",
+          "c": "sensor",
+          "s": "0.725"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "RF 시뮬레이션 시스템",
+      "gt": [
+        "sensor"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": "0.448"
+        },
+        {
+          "t": "SE-Workbench-RBGM",
+          "c": "sensor",
+          "s": "0.433"
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": "0.429"
+        },
+        {
+          "t": "SE-Workbench-SAR",
+          "c": "sensor",
+          "s": "0.368"
+        },
+        {
+          "t": "SPx Radar Simulator",
+          "c": "military",
+          "s": "0.356"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": "0.743"
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": "0.618"
+        },
+        {
+          "t": "SE-Workbench-RBGM",
+          "c": "sensor",
+          "s": "0.599"
+        },
+        {
+          "t": "SE-Workbench-SAR",
+          "c": "sensor",
+          "s": "0.585"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.417"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "센서 신호 시뮬레이션",
+      "gt": [
+        "sensor"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "SE-Workbench-GNSS",
+          "c": "sensor",
+          "s": "0.413"
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": "0.392"
+        },
+        {
+          "t": "SE-Workbench-AEO",
+          "c": "sensor",
+          "s": "0.385"
+        },
+        {
+          "t": "SE-Workbench-EOS",
+          "c": "sensor",
+          "s": "0.378"
+        },
+        {
+          "t": "SE-TK D SCNX Suite",
+          "c": "sensor",
+          "s": "0.361"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "SE-Workbench-RBGM",
+          "c": "sensor",
+          "s": "0.649"
+        },
+        {
+          "t": "Sensor Modeling & Simulation — Overview",
+          "c": "sensor",
+          "s": "0.638"
+        },
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": "0.623"
+        },
+        {
+          "t": "SE-Workbench-SAR",
+          "c": "sensor",
+          "s": "0.620"
+        },
+        {
+          "t": "SE-Workbench-GNSS",
+          "c": "sensor",
+          "s": "0.602"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "Cambridge Pixel SPx",
+      "gt": [
+        "radar"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "SPx AIS",
+          "c": "military",
+          "s": "0.528"
+        },
+        {
+          "t": "SPx AIS",
+          "c": "radar",
+          "s": "0.520"
+        },
+        {
+          "t": "SPx Development",
+          "c": "radar",
+          "s": "0.515"
+        },
+        {
+          "t": "SPx Development",
+          "c": "military",
+          "s": "0.512"
+        },
+        {
+          "t": "SPx-Scan",
+          "c": "radar",
+          "s": "0.379"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 2
+      },
+      "rerankedTop5": [
+        {
+          "t": "SPx AIS",
+          "c": "military",
+          "s": "0.768"
+        },
+        {
+          "t": "SPx AIS",
+          "c": "radar",
+          "s": "0.765"
+        },
+        {
+          "t": "SPx Development",
+          "c": "radar",
+          "s": "0.746"
+        },
+        {
+          "t": "SPx Development",
+          "c": "military",
+          "s": "0.746"
+        },
+        {
+          "t": "SPx Radar Image Distribution",
+          "c": "military",
+          "s": "0.293"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 2
+      }
+    },
+    {
+      "query": "RadarView 디스플레이",
+      "gt": [
+        "radar"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "RadarView (Visualization)",
+          "c": "radar",
+          "s": "0.634"
+        },
+        {
+          "t": "RadarView (Visualization)",
+          "c": "military",
+          "s": "0.617"
+        },
+        {
+          "t": "RDR Data Recorder",
+          "c": "radar",
+          "s": "0.495"
+        },
+        {
+          "t": "RDR Data Recorder",
+          "c": "military",
+          "s": "0.473"
+        },
+        {
+          "t": "VSD (Video Security Display)",
+          "c": "radar",
+          "s": "0.463"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "RadarView (Visualization)",
+          "c": "radar",
+          "s": "0.791"
+        },
+        {
+          "t": "RadarView (Visualization)",
+          "c": "military",
+          "s": "0.770"
+        },
+        {
+          "t": "Radar Processing & Display — Overview",
+          "c": "radar",
+          "s": "0.529"
+        },
+        {
+          "t": "VSD (Video Security Display)",
+          "c": "radar",
+          "s": "0.525"
+        },
+        {
+          "t": "VSD (Video Security Display)",
+          "c": "military",
+          "s": "0.502"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "해양 레이더 추적",
+      "gt": [
+        "radar"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "RDR Data Recorder",
+          "c": "military",
+          "s": "0.332"
+        },
+        {
+          "t": "RDR Data Recorder",
+          "c": "radar",
+          "s": "0.320"
+        },
+        {
+          "t": "SPx Fusion Server",
+          "c": "military",
+          "s": "0.307"
+        },
+        {
+          "t": "SPx Fusion Server",
+          "c": "radar",
+          "s": "0.304"
+        },
+        {
+          "t": "SE-Workbench-RBGM",
+          "c": "sensor",
+          "s": "0.299"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 2
+      },
+      "rerankedTop5": [
+        {
+          "t": "Radar Processing & Display — Overview",
+          "c": "radar",
+          "s": "0.161"
+        },
+        {
+          "t": "RDR Data Recorder",
+          "c": "military",
+          "s": "0.159"
+        },
+        {
+          "t": "RDR Data Recorder",
+          "c": "radar",
+          "s": "0.156"
+        },
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "military",
+          "s": "0.129"
+        },
+        {
+          "t": "SE-Workbench-RBGM",
+          "c": "sensor",
+          "s": "0.123"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "Target tracking radar",
+      "gt": [
+        "radar"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "military",
+          "s": "0.438"
+        },
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "radar",
+          "s": "0.429"
+        },
+        {
+          "t": "Radar Processing & Display — Overview",
+          "c": "radar",
+          "s": "0.418"
+        },
+        {
+          "t": "RDR Data Recorder",
+          "c": "radar",
+          "s": "0.412"
+        },
+        {
+          "t": "RDR Data Recorder",
+          "c": "military",
+          "s": "0.410"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 2
+      },
+      "rerankedTop5": [
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "military",
+          "s": "0.769"
+        },
+        {
+          "t": "SPx Server (Target Tracking)",
+          "c": "radar",
+          "s": "0.762"
+        },
+        {
+          "t": "RDR Data Recorder",
+          "c": "military",
+          "s": "0.490"
+        },
+        {
+          "t": "RDR Data Recorder",
+          "c": "radar",
+          "s": "0.455"
+        },
+        {
+          "t": "Radar Processing & Display — Overview",
+          "c": "radar",
+          "s": "0.228"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": false,
+        "rank5Hit": true,
+        "firstRelevantRank": 2
+      }
+    },
+    {
+      "query": "Dolphin MXH532",
+      "gt": [
+        "interconnect"
+      ],
+      "candidatesN": 15,
+      "vectorTop5": [
+        {
+          "t": "MXH532 PCIe 5.0 x16 Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.383"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.270"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.190"
+        },
+        {
+          "t": "HPx-346",
+          "c": "military",
+          "s": "0.177"
+        },
+        {
+          "t": "HPx-346",
+          "c": "radar",
+          "s": "0.175"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "MXH532 PCIe 5.0 x16 Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.554"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.244"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.157"
+        },
+        {
+          "t": "VxWorks 653 and Certified System",
+          "c": "industrial",
+          "s": "0.065"
+        },
+        {
+          "t": "ACE-PPC-21HT",
+          "c": "ipc",
+          "s": "0.059"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "PCIe NTB 어댑터",
+      "gt": [
+        "interconnect"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "PXH830 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.585"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.563"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.456"
+        },
+        {
+          "t": "MXH532 PCIe 5.0 x16 Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.455"
+        },
+        {
+          "t": "초고속 데이터 인터커넥트 (High-Speed Interconnect) — Overview",
+          "c": "interconnect",
+          "s": "0.387"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "PXH830 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.834"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.792"
+        },
+        {
+          "t": "MXH532 PCIe 5.0 x16 Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.510"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.476"
+        },
+        {
+          "t": "MXS924 PCIe 4.0 Switch",
+          "c": "interconnect",
+          "s": "0.258"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "PCIe 5.0 호스트 어댑터",
+      "gt": [
+        "interconnect"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "MXH532 PCIe 5.0 x16 Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.539"
+        },
+        {
+          "t": "PXH830 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.505"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.480"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.464"
+        },
+        {
+          "t": "초고속 데이터 인터커넥트 (High-Speed Interconnect) — Overview",
+          "c": "interconnect",
+          "s": "0.410"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "MXH532 PCIe 5.0 x16 Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.772"
+        },
+        {
+          "t": "PXH830 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.354"
+        },
+        {
+          "t": "MXH930 PCIe NTB Adapter",
+          "c": "interconnect",
+          "s": "0.312"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.311"
+        },
+        {
+          "t": "MXS924 PCIe 4.0 Switch",
+          "c": "interconnect",
+          "s": "0.235"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "eXpressWare 클러스터링",
+      "gt": [
+        "interconnect"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "MXH532 PCIe 5.0 x16 Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.313"
+        },
+        {
+          "t": "제품 상세 설명 열람 권한 안내",
+          "c": "",
+          "s": "0.300"
+        },
+        {
+          "t": "SPx-Scan",
+          "c": "radar",
+          "s": "0.285"
+        },
+        {
+          "t": "SPx-Scan",
+          "c": "military",
+          "s": "0.273"
+        },
+        {
+          "t": "RadarView (Visualization)",
+          "c": "radar",
+          "s": "0.273"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "MXH532 PCIe 5.0 x16 Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.331"
+        },
+        {
+          "t": "MXH932 PCIe Transparent Adapter",
+          "c": "interconnect",
+          "s": "0.074"
+        },
+        {
+          "t": "제품 상세 설명 열람 권한 안내",
+          "c": "",
+          "s": "0.073"
+        },
+        {
+          "t": "초고속 데이터 인터커넥트 (High-Speed Interconnect) — Overview",
+          "c": "interconnect",
+          "s": "0.073"
+        },
+        {
+          "t": "SPx AIS",
+          "c": "military",
+          "s": "0.055"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "GPU servers for deep learning",
+      "gt": [
+        "hpc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": "0.542"
+        },
+        {
+          "t": "초고속 데이터 인터커넥트 (High-Speed Interconnect) — Overview",
+          "c": "interconnect",
+          "s": "0.412"
+        },
+        {
+          "t": "GPU CUBE",
+          "c": "hpc",
+          "s": "0.395"
+        },
+        {
+          "t": "Expansion Optimized Server",
+          "c": "hpc",
+          "s": "0.388"
+        },
+        {
+          "t": "FlashCUBE",
+          "c": "hpc",
+          "s": "0.350"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "High Performance Computing — Overview",
+          "c": "hpc",
+          "s": "0.543"
+        },
+        {
+          "t": "초고속 데이터 인터커넥트 (High-Speed Interconnect) — Overview",
+          "c": "interconnect",
+          "s": "0.204"
+        },
+        {
+          "t": "Expansion Optimized Server",
+          "c": "hpc",
+          "s": "0.167"
+        },
+        {
+          "t": "ACE-Sever-4U-Xeon-E5-F",
+          "c": "ipc",
+          "s": "0.157"
+        },
+        {
+          "t": "3U 5000 Series Server",
+          "c": "hpc",
+          "s": "0.107"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "Railway safety SIL4 platform",
+      "gt": [
+        "railway"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": "0.569"
+        },
+        {
+          "t": "HIMA HiMatrix System",
+          "c": "railway",
+          "s": "0.435"
+        },
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": "0.379"
+        },
+        {
+          "t": "VxWorks 653 Platform",
+          "c": "telecom",
+          "s": "0.352"
+        },
+        {
+          "t": "Helix Virtualization Platform",
+          "c": "industrial",
+          "s": "0.348"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "Rail Transportation — Overview",
+          "c": "railway",
+          "s": "0.812"
+        },
+        {
+          "t": "HIMA HiMatrix System",
+          "c": "railway",
+          "s": "0.706"
+        },
+        {
+          "t": "AceTec 기술 파트너",
+          "c": "",
+          "s": "0.582"
+        },
+        {
+          "t": "HIMA HiMax System",
+          "c": "railway",
+          "s": "0.254"
+        },
+        {
+          "t": "VxWorks 653 Platform",
+          "c": "telecom",
+          "s": "0.067"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "Sensor simulation workbench",
+      "gt": [
+        "sensor"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "SE-Workbench-EO",
+          "c": "sensor",
+          "s": "0.634"
+        },
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": "0.625"
+        },
+        {
+          "t": "SE-Workbench-EOS",
+          "c": "sensor",
+          "s": "0.587"
+        },
+        {
+          "t": "SE-Workbench-GNSS",
+          "c": "sensor",
+          "s": "0.584"
+        },
+        {
+          "t": "SE-Workbench-AEO",
+          "c": "sensor",
+          "s": "0.569"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "SE-Workbench-RF",
+          "c": "sensor",
+          "s": "0.844"
+        },
+        {
+          "t": "SE-Workbench-EO",
+          "c": "sensor",
+          "s": "0.843"
+        },
+        {
+          "t": "SE-Workbench-SAR",
+          "c": "sensor",
+          "s": "0.838"
+        },
+        {
+          "t": "SE-Workbench-RBGM",
+          "c": "sensor",
+          "s": "0.827"
+        },
+        {
+          "t": "SE-Workbench-GNSS",
+          "c": "sensor",
+          "s": "0.820"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    },
+    {
+      "query": "Industrial PC fanless",
+      "gt": [
+        "industrial",
+        "ipc"
+      ],
+      "candidatesN": 20,
+      "vectorTop5": [
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": "0.603"
+        },
+        {
+          "t": "Industrial Automation — Overview",
+          "c": "industrial",
+          "s": "0.534"
+        },
+        {
+          "t": "ACE-IPC02D-i7-6",
+          "c": "ipc",
+          "s": "0.513"
+        },
+        {
+          "t": "ACE-IPC02D-i7-4",
+          "c": "ipc",
+          "s": "0.510"
+        },
+        {
+          "t": "ACE-IPC02D-i7-3",
+          "c": "ipc",
+          "s": "0.508"
+        }
+      ],
+      "vectorEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      },
+      "rerankedTop5": [
+        {
+          "t": "Industrial PCs & Fanless Industrial PCs — Overview",
+          "c": "ipc",
+          "s": "0.804"
+        },
+        {
+          "t": "Industrial Automation — Overview",
+          "c": "industrial",
+          "s": "0.780"
+        },
+        {
+          "t": "ACE-BoxIPC-74L2D",
+          "c": "ipc",
+          "s": "0.777"
+        },
+        {
+          "t": "ACE-BoxIPC-C4L3",
+          "c": "ipc",
+          "s": "0.773"
+        },
+        {
+          "t": "ACE-BoxIPC-73L2D",
+          "c": "ipc",
+          "s": "0.773"
+        }
+      ],
+      "rerankEval": {
+        "rank1Hit": true,
+        "rank5Hit": true,
+        "firstRelevantRank": 1
+      }
+    }
+  ]
+}

@@ -3,31 +3,7 @@
   "title": "Industrial Automation",
   "pageTitle": "Industrial Automation Products - AceTec",
   "description": "Fanless industrial PCs, network appliances, and IoT platforms for factory automation, process control, semiconductor manufacturing, and quality inspection.",
-  "items": [
-    {
-      "name": "Industrial PCs & Fanless Industrial PCs",
-      "specs": "Boxtype  Rackmount  Server  Desktop  Wallmount  Panel",
-      "image": "/images/products/ipc/boxipc-c4l3.png",
-      "alt": "Industrial Fanless PCs",
-      "detailDescription": "KC certified, ISO 9001 compliant fanless PCs in box, rackmount, server, desktop, wallmount, and panel form factors for continuous 24/7 industrial operation."
-    },
-    {
-      "name": "Device Cloud & IoT  Wind River",
-      "specs": "Helix Virtualization  Simics  Software Defined Infrastructure",
-      "image": "/images/products/telecom/helix-device-cloud.png",
-      "alt": "Wind River Device Cloud and IoT",
-      "partner": "Wind River",
-      "detailDescription": "Wind River IoT and device cloud solutions including Helix Virtualization Platform, Simics virtual platform, and Software Defined Infrastructure for industrial IoT."
-    },
-    {
-      "name": "RTOS  Wind River",
-      "specs": "VxWorks  Wind River Linux  ISaGRAF",
-      "image": "/images/products/telecom/vxworks.png",
-      "alt": "RTOS Wind River",
-      "partner": "Wind River",
-      "detailDescription": "Wind River real-time operating systems for industrial automation, including VxWorks, Wind River Linux, and ISaGRAF IEC 61131-3 control runtime."
-    }
-  ],
+  "items": [],
   "sections": [
     {
       "title": "Device Cloud (IoT)",
@@ -35,17 +11,29 @@
         {
           "name": "Helix Virtualization Platform",
           "image": "/images/products/telecom/helix-device-cloud.png",
-          "features": ["Type-1 Hypervisor", "Real-time + Linux", "Safety Certifiable"]
+          "features": [
+            "Type-1 Hypervisor",
+            "Real-time + Linux",
+            "Safety Certifiable"
+          ]
         },
         {
           "name": "Software Defined Infrastructure",
           "image": "/images/products/telecom/helix-device-cloud.png",
-          "features": ["Edge Computing", "Container Runtime", "Cloud Integration"]
+          "features": [
+            "Edge Computing",
+            "Container Runtime",
+            "Cloud Integration"
+          ]
         },
         {
           "name": "Wind River Simics",
           "image": "/images/products/telecom/helix-device-cloud.png",
-          "features": ["Virtual Platform", "Hardware Simulation", "CI/CD Integration"]
+          "features": [
+            "Virtual Platform",
+            "Hardware Simulation",
+            "CI/CD Integration"
+          ]
         }
       ]
     },
@@ -55,22 +43,38 @@
         {
           "name": "Wind River VxWorks",
           "image": "/images/products/telecom/vxworks.png",
-          "features": ["POSIX Compliant RTOS", "Safety Certifiable (DO-178C, IEC 61508)", "Multi-core / 64-bit"]
+          "features": [
+            "POSIX Compliant RTOS",
+            "Safety Certifiable (DO-178C, IEC 61508)",
+            "Multi-core / 64-bit"
+          ]
         },
         {
           "name": "Wind River Linux",
           "image": "/images/products/telecom/vxworks.png",
-          "features": ["Embedded Linux Distribution", "Long-term Support", "Yocto-based"]
+          "features": [
+            "Embedded Linux Distribution",
+            "Long-term Support",
+            "Yocto-based"
+          ]
         },
         {
           "name": "VxWorks 653 and Certified System",
           "image": "/images/products/telecom/vxworks.png",
-          "features": ["ARINC 653 RTOS", "DO-178C DAL-A", "Avionics Grade"]
+          "features": [
+            "ARINC 653 RTOS",
+            "DO-178C DAL-A",
+            "Avionics Grade"
+          ]
         },
         {
           "name": "SoftPLC ISaGRAF",
           "image": "/images/products/telecom/vxworks.png",
-          "features": ["IEC 61131-3 Compliant", "Multi-target Runtime", "Railway & Nuclear"]
+          "features": [
+            "IEC 61131-3 Compliant",
+            "Multi-target Runtime",
+            "Railway & Nuclear"
+          ]
         }
       ]
     }

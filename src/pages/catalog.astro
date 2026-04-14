@@ -59,10 +59,10 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             </div>
             <div class="arb-text">
-              <strong>제품 상세 설명을 보려면 로그인이 필요합니다.</strong>
-              <span>로그인 후 열람 권한을 요청하실 수 있습니다.</span>
+              <strong>You must log in to view detailed product descriptions.</strong>
+              <span>회원가입 후 로그인하여 열람 권한을 요청하실 수 있습니다.</span>
             </div>
-            <a href="/login" class="btn-request-access">로그인</a>
+            <a href="/register" class="btn-request-access">세부 사항 열람 권한 요청</a>
           </div>
         </div>
       )}
@@ -470,7 +470,7 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
   }
 </style>
 
-<script>
+<script is:inline>
   // TOC smooth scroll
   document.querySelectorAll('.cat-toc-link').forEach(link => {
     link.addEventListener('click', (ev) => {
@@ -512,7 +512,7 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
   const modalList = document.getElementById('detailModalList');
   const modalClose = document.getElementById('detailModalClose');
 
-  function openDetailModal(productName: string, items: string[]) {
+  function openDetailModal(productName, items) {
     if (!overlay || !modalTitle || !modalList) return;
     modalTitle.textContent = productName;
     modalList.innerHTML = items.map(item => `<li>${item}</li>`).join('');
@@ -526,19 +526,21 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
     document.body.style.overflow = '';
   }
 
-  // p-features (ul) 클릭 시 모달 열기
-  document.querySelectorAll('.p-features').forEach(ul => {
-    ul.addEventListener('click', (ev) => {
-      ev.preventDefault();
-      ev.stopPropagation();
-      const card = ul.closest('.p-card');
-      if (!card) return;
-      const nameEl = card.querySelector('.p-name');
-      const productName = nameEl?.textContent?.trim() || 'Product Details';
-      const features = Array.from(ul.querySelectorAll('li')).map(li => li.textContent || '');
-      openDetailModal(productName, features);
+  // p-features (ul) 클릭 시 모달 열기 — 관리자는 인라인 편집 우선
+  if (!document.getElementById('adminBar')) {
+    document.querySelectorAll('.p-features').forEach(function(ul) {
+      ul.addEventListener('click', function(ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        var card = ul.closest('.p-card');
+        if (!card) return;
+        var nameEl = card.querySelector('.p-name');
+        var productName = nameEl ? nameEl.textContent.trim() : 'Product Details';
+        var features = Array.from(ul.querySelectorAll('li')).map(function(li) { return li.textContent || ''; });
+        openDetailModal(productName, features);
+      });
     });
-  });
+  }
 
   // 모달 닫기
   modalClose?.addEventListener('click', closeDetailModal);

@@ -60,6 +60,14 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 
+  // pending 계정은 로그인 차단 (관리자 승인 전)
+  const loginUser = getUserInfo(adminId);
+  if (loginUser && loginUser.role === 'pending') {
+    const msg = '계정 승인 대기 중입니다. 관리자 승인 후 로그인 가능합니다';
+    if (isJson) return Response.json({ error: msg }, { status: 403 });
+    return new Response(null, { status: 302, headers: { Location: '/login?error=pending' } });
+  }
+
   // 로그인 성공 → 실패 카운트 초기화
   resetFailedLogin(adminId);
 

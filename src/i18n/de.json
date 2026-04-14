@@ -18,7 +18,7 @@
     "exploreBtn": "LÖSUNGEN ENTDECKEN",
     "quoteBtn": "ANGEBOT ANFORDERN",
     "solutions": "Lösungen",
-    "viewAll": "ALLE LÖSUNGEN ANZEIGEN",
+    "viewAll": "Meine Lösungen wählen",
     "featuredProducts": "Ausgewählte Produkte",
     "ourSolutions": "Unsere Lösungen",
     "consultTitle": "Benötigen Sie eine maßgeschneiderte Lösung?",
@@ -90,10 +90,10 @@
     "sensorSub": "OKTAL-SE-Lösungen",
     "sensorDesc": "Hochpräzise EO/IR/RF-Sensorsimulation von OKTAL-SE für HWIL-, MITL- und Trainingsumgebungen.",
     "lab": "F&E-Zentrum",
-    "labSub": "AI, R&D Center",
+    "labSub": "KI, F&E-Zentrum",
     "labDesc": "Von der Embedded-Hardware-Entwicklung bis zu Software-Algorithmen erforschen wir den gesamten Prozess spezialisierter Steuerungssysteme und erreichen technologische Internalisierung.",
     "hpc": "Supercomputing-Systeme",
-    "hpcSub": "High Performance Computing",
+    "hpcSub": "Hochleistungsrechnen",
     "hpcDesc": "Mit wachsendem Bedarf an Big Data, UHD/FHD und Simulation steigen die HPC-Anforderungen in Behörden, Universitäten und Forschungslabors. High-Density Compute Accelerators liefern differenziertes HPC durch GPU-Verarbeitung.",
     "ai": "KI-Zentrum",
     "aiSub": "KI-Service",
@@ -249,7 +249,8 @@
     "newChat": "Neuer Chat",
     "send": "Senden",
     "close": "Schließen",
-    "assistant": "AceTec KI-Assistent"
+    "assistant": "AceTec KI-Assistent",
+    "pickSolutions": "♡ Meine Lösungen wählen"
   },
   "form": {
     "name": "Name",
@@ -628,5 +629,12 @@
     "descTab": "Beschreibung",
     "catsTab": "Kategorien",
     "detailsBtn": "Details"
+  },
+  "admin": {
+    "editing": "Bearbeiten",
+    "save": "Speichern",
+    "dashboard": "Dashboard",
+    "logout": "Abmelden",
+    "survey": "Vertriebskanal"
   }
 }

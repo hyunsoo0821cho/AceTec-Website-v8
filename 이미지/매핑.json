@@ -1,0 +1,6 @@
+{
+  "설명": "이미지 폴더 파일명 → 웹사이트 경로 매핑. 여기에 추가하면 자동 변환됩니다.",
+  "매핑": {
+    "2.png": "public/images/services/military-aerospace.png"
+  }
+}

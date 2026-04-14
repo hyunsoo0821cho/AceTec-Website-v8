@@ -37,9 +37,9 @@ export const POST: APIRoute = async ({ request }) => {
     return Response.json({ error: '이미 등록된 계정입니다' }, { status: 409 });
   }
 
-  // 계정 생성
+  // 계정 생성 — 모든 신규 가입은 pending 상태 (관리자 승인 후 활성화)
   const hash = bcrypt.hashSync(password, 10);
-  const role = record.role || 'person';
+  const role = 'pending';
 
   getDb().prepare(
     'INSERT INTO admins (username, password_hash, role, display_name, email, phone) VALUES (?, ?, ?, ?, ?, ?)'

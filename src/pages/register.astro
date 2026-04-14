@@ -6,29 +6,15 @@ import Base from '../layouts/Base.astro';
 <Base title="회원가입 - AceTec">
   <section class="reg-page">
     <!-- Step 1: 역할 선택 -->
+    <!-- Step 1: Admin 선택 화면 -->
     <div id="step1" class="reg-card">
       <h1>새 계정 만들기</h1>
       <p class="reg-sub">계정 유형을 선택해주세요</p>
-      <div class="role-grid">
-        <button class="role-card" data-role="person">
-          <div class="role-icon">👤</div>
-          <div class="role-title">일반 가입</div>
-          <div class="role-desc">일반 사용자 계정 생성</div>
-        </button>
-        <button class="role-card" data-role="customer">
-          <div class="role-icon">🏢</div>
-          <div class="role-title">Customer</div>
-          <div class="role-desc">고객사 담당자 계정</div>
-        </button>
-        <button class="role-card" data-role="sales">
-          <div class="role-icon">📊</div>
-          <div class="role-title">Sales</div>
-          <div class="role-desc">영업 담당자 계정</div>
-        </button>
+      <div class="role-grid" style="grid-template-columns:1fr;">
         <button class="role-card" data-role="admin">
           <div class="role-icon">🔑</div>
-          <div class="role-title">Admin</div>
-          <div class="role-desc">관리자 계정 (승인 필요)</div>
+          <div class="role-title">관리자 계정 신청</div>
+          <div class="role-desc">관리자 승인 후 계정이 활성화됩니다</div>
         </button>
       </div>
       <div class="reg-footer">
@@ -55,7 +41,7 @@ import Base from '../layouts/Base.astro';
       <button class="btn-full" id="sendCodeBtn">인증 코드 받기</button>
       <div id="step2Msg" class="msg"></div>
       <div class="reg-footer">
-        <button class="link-back" id="backToStep1">← 돌아가기</button>
+        <a href="/login" class="link-back">← 로그인으로 돌아가기</a>
       </div>
     </div>
 
@@ -251,7 +237,7 @@ import Base from '../layouts/Base.astro';
 </style>
 
 <script>
-  let selectedRole = '';
+  let selectedRole = 'admin'; // admin 고정 (다른 역할 선택 제거)
   let emailFull = '';
 
   // Step 1 → Step 2
@@ -263,7 +249,8 @@ import Base from '../layouts/Base.astro';
     });
   });
 
-  document.getElementById('backToStep1')!.addEventListener('click', () => {
+  // backToStep1 제거됨 (admin 전용, Step 1 스킵)
+  document.getElementById('backToStep1')?.addEventListener('click', () => {
     document.getElementById('step2')!.style.display = 'none';
     document.getElementById('step1')!.style.display = 'block';
   });

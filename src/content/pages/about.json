@@ -1,6 +1,6 @@
 {
   "whoWeAre": {
-    "title": "Who We Are",
+    "title": "회사 소개",
     "paragraphs": [
       "For over three decades, AceTec has stood at the intersection of global embedded technology and Korea's most demanding industries. What began as a specialized distributor has evolved into a full-spectrum technology partner — one that not only supplies world-class hardware and software, but engineers custom solutions from the ground up through our own R&D center.",
       "We pioneered Korea's first desktop-type fanless industrial PC, setting an industry benchmark that still defines our approach: solve real problems with robust, purpose-built technology. Today, our platforms operate inside naval combat systems, railway interlocking networks, steel mill production lines, and defense simulation environments — anywhere failure is not an option.",
@@ -11,23 +11,23 @@
   "stats": [
     {
       "number": "30+",
-      "label": "Years in Embedded Computing"
+      "label": "임베디드 컴퓨팅 경력 년수"
     },
     {
       "number": "487+",
-      "label": "Project Deliveries"
+      "label": "프로젝트 납품 실적"
     },
     {
       "number": "300+",
-      "label": "Institutions Served"
+      "label": "고객 기관 수"
     },
     {
       "number": "9",
-      "label": "Global Technology Partners"
+      "label": "글로벌 기술 파트너"
     }
   ],
   "ceo": {
-    "title": "CEO Greeting",
+    "title": "CEO 인사말",
     "quote": "Our mission is to deliver the most reliable embedded solutions where failure is simply not an option.",
     "paragraphs": [
       "Since our founding in 1994, AceTec has spent over 30 years building deep expertise in the embedded computing industry. We started with a vision to bring world-class embedded technology to Korea's most demanding sectors — and today that vision drives everything we do.",
@@ -38,12 +38,12 @@
     "signature": "— Jang Jeong Hoon, CEO, AceTec Co., Ltd."
   },
   "philosophy": {
-    "title": "Management Philosophy",
-    "subtitle": "Three principles that guide every decision we make",
+    "title": "경영 철학",
+    "subtitle": "모든 의사결정을 이끄는 세 가지 원칙",
     "items": [
       {
         "number": "01",
-        "title": "Customer Satisfaction",
+        "title": "고객 만족",
         "description": "We place customer success at the center of our business. Every product, every project, and every support interaction is measured by one standard: did we exceed expectations? Our 300+ institutional clients and 487+ project deliveries reflect our relentless commitment to results."
       },
       {
@@ -59,25 +59,25 @@
     ]
   },
   "culture": {
-    "title": "Our Culture",
+    "title": "기업 문화",
     "subtitle": "The values that define how we work and grow together",
     "items": [
       {
-        "title": "Creativity",
+        "title": "창의성",
         "description": "We encourage innovative thinking and creative problem-solving. When standard solutions fall short, we engineer new ones — like our patented fanless cooling technology that set a national benchmark."
       },
       {
-        "title": "Dedication",
+        "title": "헌신",
         "description": "Passion for technology and care for our people. We foster a supportive environment where expertise is shared, mentorship is valued, and every team member contributes to our collective mission."
       },
       {
-        "title": "Challenge",
+        "title": "도전",
         "description": "We embrace difficult problems. From mission-critical defense systems to nuclear power plant controls, we take on the projects that demand the highest standards — and deliver every time."
       }
     ]
   },
   "partnerCta": {
-    "title": "Partner With Us",
+    "title": "파트너십",
     "description": "Seeking a technology partner for your next program? Share your requirements and our team will respond within one business day."
   }
 }

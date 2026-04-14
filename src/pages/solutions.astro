@@ -70,6 +70,9 @@ function cardKey(href: string): string {
                 )}
                 {item.href && <a href={item.href} class="s-card-img-link" aria-label={`Go to ${item.title}`}></a>}
               </div>
+              {isAdmin && (
+                <button type="button" class="pick-btn" data-pick-index={i} title="나만의 솔루션에 담기">♡</button>
+              )}
               <h3 {...e(`solutionCards[${i}].title`)} {...((item.i18nKey || cardKey(item.href)) ? {'data-i18n': `solutionCards.${item.i18nKey || cardKey(item.href)}`} : {})}>{item.title}</h3>
               <div class="s-subtitle" {...e(`solutionCards[${i}].subtitle`)} {...((item.i18nKey || cardKey(item.href)) ? {'data-i18n': `solutionCards.${item.i18nKey || cardKey(item.href)}Sub`} : {})}>
                 {item.subtitle}
@@ -144,7 +147,7 @@ function cardKey(href: string): string {
   document.querySelectorAll('.s-card[data-href]').forEach(card => {
     card.addEventListener('click', (ev) => {
       const target = ev.target as HTMLElement;
-      if (target.closest('.s-subcat-link') || target.closest('.admin-delete-btn') || target.closest('[data-edit]') || target.closest('[data-img]') || target.closest('.s-tab') || target.closest('.s-resize-handle') || target.closest('.s-panel')) return;
+      if (target.closest('.s-subcat-link') || target.closest('.admin-delete-btn') || target.closest('[data-edit]') || target.closest('[data-img]') || target.closest('.s-tab') || target.closest('.s-resize-handle') || target.closest('.s-panel') || target.closest('.pick-btn')) return;
       const href = card.getAttribute('data-href');
       if (href) window.location.href = href;
     });
@@ -200,9 +203,86 @@ function cardKey(href: string): string {
     handle.addEventListener('mousedown', onDown as EventListener);
     handle.addEventListener('touchstart', onDown as EventListener, { passive: false });
   });
+
+  // 홈에서 ?add=1 파라미터로 넘어왔을 때 자동으로 Add Solution 클릭
+  // AdminInline의 data-admin-add 핸들러가 DOMContentLoaded에서 등록되므로 지연 실행
+  if (new URLSearchParams(window.location.search).get('add') === '1') {
+    setTimeout(() => {
+      const addBtn = document.querySelector<HTMLButtonElement>('[data-admin-add="solutionCards"]');
+      if (addBtn) {
+        addBtn.click();
+        history.replaceState(null, '', window.location.pathname);
+      }
+    }, 500);
+  }
+
+  // ===== 나만의 솔루션 담기 =====
+  const PICK_KEY = 'acetec-my-solutions';
+  const MAX_PICKS = 6;
+
+  function getMyPicks(): number[] {
+    try { return JSON.parse(localStorage.getItem(PICK_KEY) || '[]'); } catch { return []; }
+  }
+  function saveMyPicks(picks: number[]) {
+    localStorage.setItem(PICK_KEY, JSON.stringify(picks));
+  }
+
+  function updatePickButtons() {
+    const picks = getMyPicks();
+    document.querySelectorAll<HTMLButtonElement>('.pick-btn').forEach(btn => {
+      const idx = Number(btn.getAttribute('data-pick-index'));
+      const picked = picks.includes(idx);
+      btn.textContent = picked ? '♥' : '♡';
+      btn.classList.toggle('picked', picked);
+      btn.title = picked
+        ? '나만의 솔루션에서 빼기'
+        : picks.length >= MAX_PICKS ? `최대 ${MAX_PICKS}개까지 선택 가능` : '나만의 솔루션에 담기';
+    });
+    // 카운터
+    let counter = document.getElementById('pickCounter');
+    if (!counter) {
+      counter = document.createElement('div');
+      counter.id = 'pickCounter';
+      counter.className = 'pick-counter';
+      document.querySelector('.svc-header-grid')?.appendChild(counter);
+    }
+    counter.textContent = picks.length > 0 ? `담은 솔루션: ${picks.length}/${MAX_PICKS}` : '';
+  }
+
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('.pick-btn') as HTMLButtonElement;
+    if (!btn) return;
+    e.stopPropagation();
+    const idx = Number(btn.getAttribute('data-pick-index'));
+    let picks = getMyPicks();
+    if (picks.includes(idx)) {
+      picks = picks.filter(p => p !== idx);
+    } else {
+      if (picks.length >= MAX_PICKS) { alert(`최대 ${MAX_PICKS}개까지만 선택할 수 있습니다.`); return; }
+      picks.push(idx);
+    }
+    saveMyPicks(picks);
+    updatePickButtons();
+  });
+
+  updatePickButtons();
 </script>
 
 <style>
+  .pick-btn {
+    position: absolute; top: 10px; left: 10px; z-index: 5;
+    width: 36px; height: 36px; border-radius: 50%;
+    border: none; background: rgba(255,255,255,0.9); backdrop-filter: blur(4px);
+    font-size: 20px; line-height: 1; cursor: pointer;
+    transition: all 0.2s; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    color: #94a3b8;
+  }
+  .pick-btn:hover { transform: scale(1.15); background: #fff; }
+  .pick-btn.picked { color: #ef4444; background: #fff; }
+  .pick-counter {
+    font-size: 14px; font-weight: 600; color: #2563eb;
+    display: flex; align-items: flex-end; justify-content: flex-end;
+  }
   .svc-header-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

@@ -70,7 +70,10 @@
             <li data-i18n="chat.companyInfo">Company information</li>
             <li data-i18n="chat.contactDetails">Contact details</li>
           </ul>
-          <button id="chatInquiryBtn" class="chat-inquiry-btn" data-i18n="chat.inquiryBtn">📋 Product Inquiry</button>
+          <div class="chat-welcome-btns">
+            <button id="chatInquiryBtn" class="chat-inquiry-btn" data-i18n="chat.inquiryBtn">📋 Product Inquiry</button>
+            <a href="/solutions" class="chat-inquiry-btn chat-pick-btn" data-i18n="chat.pickSolutions">♡ Pick My Solutions</a>
+          </div>
         </div>
       </div>
     </div>
@@ -190,6 +193,8 @@
   /* 히스토리 항목 스타일은 JS로 동적 생성되므로 global 블록에 정의 */
 
   /* Inquiry button & flow */
+  .chat-welcome-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .chat-pick-btn { text-decoration: none; }
   .chat-inquiry-btn {
     display: inline-block;
     margin-top: 10px;

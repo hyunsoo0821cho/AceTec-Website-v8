@@ -1,59 +1,116 @@
 {
   "columns": [
     {
-      "title": "Industrial PCs",
+      "title": "산업용 PC",
       "href": "/products/ipc",
-      "items": ["Boxtype PC", "Rackmount PC", "Server", "Desktop PC", "Wallmount PC", "Panel PC"]
+      "items": [
+        "박스형 PC",
+        "랙마운트 PC",
+        "서버",
+        "데스크탑 PC",
+        "월마운트 PC",
+        "패널 PC"
+      ]
     },
     {
-      "title": "Network Appliance",
+      "title": "네트워크 어플라이언스",
       "href": "/products/telecom",
-      "items": ["Entry Network Appliance", "Middle Network Appliance", "High-end Network Appliance", "Server Network Appliance", "Customizing Network Appliance", "NIC Adapter"]
+      "items": [
+        "엔트리 네트워크 어플라이언스",
+        "미들 네트워크 어플라이언스",
+        "High-end Network Appliance",
+        "서버 네트워크 어플라이언스",
+        "커스터마이징 네트워크 어플라이언스",
+        "NIC 어댑터"
+      ]
     },
     {
       "title": "Device Cloud (The Internet of Things)",
       "href": "/products/industrial",
-      "items": ["Helix Virtualization Platform", "Software Defined Infrastructure", "Wind River Simics"]
+      "items": [
+        "Helix 가상화 플랫폼",
+        "소프트웨어 정의 인프라",
+        "Wind River Simics"
+      ]
     },
     {
       "title": "Form Factor_Abaco",
       "href": "/products/military",
-      "items": ["VME", "VPX 3U", "VPX 6U", "Compact PCI", "PMC", "XMC", "FMC/FMC+"]
+      "items": [
+        "VME",
+        "VPX 3U",
+        "VPX 6U",
+        "Compact PCI",
+        "PMC",
+        "XMC",
+        "FMC/FMC+"
+      ]
     },
     {
       "title": "HIMA Railway",
       "href": "/products/railway",
-      "items": ["HiMax System", "HiMatrix System"]
+      "items": [
+        "HiMax System",
+        "HiMatrix System"
+      ]
     },
     {
-      "title": "High Performance Computing",
+      "title": "고성능 컴퓨팅",
       "href": "/products/hpc",
-      "items": ["Servers", "Desktop Computing Appliances", "GPU Appliances", "GPU Expansion", "VIDEO Acceleration Platform"]
+      "items": [
+        "서버",
+        "데스크탑 컴퓨팅 어플라이언스",
+        "GPU 어플라이언스",
+        "GPU 확장",
+        "비디오 가속 플랫폼"
+      ]
     },
     {
       "title": "High-Speed Data Interconnect",
       "href": "/products/interconnect",
-      "items": ["PCIe Network Adapter", "Superfast Interconnect Switch"]
+      "items": [
+        "PCIe Network Adapter",
+        "초고속 인터커넥트 스위치"
+      ]
     },
     {
       "title": "Real-Time Operating System",
       "href": "/products/industrial",
-      "items": ["Wind River VxWorks", "Wind River Linux", "VxWorks 653 and Certified System", "SoftPLC ISaGRAF"]
+      "items": [
+        "Wind River VxWorks",
+        "Wind River Linux",
+        "VxWorks 653 and Certified System",
+        "SoftPLC ISaGRAF"
+      ]
     },
     {
-      "title": "Sensor modeling and simulation",
+      "title": "센서 모델링 & 시뮬레이션",
       "href": "/products/sensor",
-      "items": ["EO/IR Sensor Simulation", "RF Sensor Simulation", "Active EO Sensor Simulation", "GNSS Sensor Simulation", "APIs & Integration Tools"]
+      "items": [
+        "EO/IR Sensor Simulation",
+        "RF 센서 시뮬레이션",
+        "Active EO 센서 시뮬레이션",
+        "GNSS 센서 시뮬레이션",
+        "APIs & Integration Tools"
+      ]
     },
     {
-      "title": "Middleware Software",
+      "title": "미들웨어 소프트웨어",
       "href": "/products/telecom",
-      "items": ["Connext DDS Professional", "Connext DDS Secure", "Connext DDS Micro", "Connext DDS Cert"]
+      "items": [
+        "Connext DDS Professional",
+        "Connext DDS Secure",
+        "Connext DDS Micro",
+        "Connext DDS Cert"
+      ]
     },
     {
-      "title": "Radar processing System",
+      "title": "레이더 처리 시스템",
       "href": "/products/radar",
-      "items": ["SPx Software Family", "HPx Hardware Family"]
+      "items": [
+        "SPx Software Family",
+        "HPx Hardware Family"
+      ]
     }
   ]
 }

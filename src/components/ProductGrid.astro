@@ -557,7 +557,7 @@ const hasSections = sections && sections.length > 0;
   </div>
 </div>
 
-<script>
+<script is:inline>
   // Detail toggle for product cards
   document.querySelectorAll('.p-detail-toggle').forEach(btn => {
     btn.addEventListener('click', (ev) => {
@@ -587,7 +587,7 @@ const hasSections = sections && sections.length > 0;
   const modalList = document.getElementById('detailModalList');
   const modalClose = document.getElementById('detailModalClose');
 
-  function openDetailModal(productName: string, items: string[]) {
+  function openDetailModal(productName, items) {
     if (!overlay || !modalTitle || !modalList) return;
     modalTitle.textContent = productName;
     modalList.innerHTML = items.map(item => `<li>${item}</li>`).join('');
@@ -601,33 +601,36 @@ const hasSections = sections && sections.length > 0;
     document.body.style.overflow = '';
   }
 
-  // 섹션 기반 p-features (ul) 클릭
-  document.querySelectorAll('.p-features').forEach(ul => {
-    ul.addEventListener('click', (ev) => {
-      ev.preventDefault();
-      ev.stopPropagation();
-      const card = ul.closest('.p-card');
-      if (!card) return;
-      const nameEl = card.querySelector('.p-name');
-      const productName = nameEl?.textContent?.trim() || 'Product Details';
-      const features = Array.from(ul.querySelectorAll('li')).map(li => li.textContent || '');
-      openDetailModal(productName, features);
+  // 관리자 모드일 때 모달 핸들러 아예 등록 안 함 (인라인 편집 우선)
+  if (!document.getElementById('adminBar')) {
+    // 섹션 기반 p-features (ul) 클릭
+    document.querySelectorAll('.p-features').forEach(function(ul) {
+      ul.addEventListener('click', function(ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        var card = ul.closest('.p-card');
+        if (!card) return;
+        var nameEl = card.querySelector('.p-name');
+        var productName = nameEl ? nameEl.textContent.trim() : 'Product Details';
+        var features = Array.from(ul.querySelectorAll('li')).map(function(li) { return li.textContent || ''; });
+        openDetailModal(productName, features);
+      });
     });
-  });
 
-  // flat items p-price (specs) 클릭
-  document.querySelectorAll('.p-price').forEach(el => {
-    el.addEventListener('click', (ev) => {
-      ev.preventDefault();
-      ev.stopPropagation();
-      const card = el.closest('.p-card');
-      if (!card) return;
-      const nameEl = card.querySelector('.p-name');
-      const productName = nameEl?.textContent?.trim() || 'Product Details';
-      const specs = el.textContent?.trim() || '';
-      openDetailModal(productName, specs.split(/[,;]\s*|\n/).filter(Boolean));
+    // flat items p-price (specs) 클릭
+    document.querySelectorAll('.p-price').forEach(function(el) {
+      el.addEventListener('click', function(ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        var card = el.closest('.p-card');
+        if (!card) return;
+        var nameEl = card.querySelector('.p-name');
+        var productName = nameEl ? nameEl.textContent.trim() : 'Product Details';
+        var specs = el.textContent ? el.textContent.trim() : '';
+        openDetailModal(productName, specs.split(/[,;]\s*|\n/).filter(Boolean));
+      });
     });
-  });
+  }
 
   // 모달 닫기
   modalClose?.addEventListener('click', closeDetailModal);

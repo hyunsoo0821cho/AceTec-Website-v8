@@ -18,7 +18,7 @@
     "exploreBtn": "ソリューションを見る",
     "quoteBtn": "見積もりを依頼する",
     "solutions": "ソリューション",
-    "viewAll": "すべてのソリューションを見る",
+    "viewAll": "マイソリューションを選ぶ",
     "featuredProducts": "注目の製品",
     "ourSolutions": "私たちのソリューション",
     "consultTitle": "カスタマイズされたソリューションが必要ですか？",
@@ -90,10 +90,10 @@
     "sensorSub": "OKTAL-SEソリューション",
     "sensorDesc": "防衛・航空宇宙プログラム向けHIL、MITL、訓練環境のためのOKTAL-SE高忠実度EO/IR/RFセンサーシミュレーション。",
     "lab": "研究所",
-    "labSub": "AI, R&Dセンター",
+    "labSub": "AI、R&Dセンター",
     "labDesc": "組込みハードウェア設計からソフトウェアアルゴリズムまで、特殊制御システムの全工程を研究し、技術的内製化を実現する研究所",
     "hpc": "スーパーコンピューティングシステム",
-    "hpcSub": "High Performance Computing",
+    "hpcSub": "ハイパフォーマンスコンピューティング",
     "hpcDesc": "ビッグデータ、UHD/FHD、シミュレーションなどの大容量データの増加に伴い、データ処理速度の重要性が高まり続け、HPCの需要が公共機関、学校、研究所で増加しています。High Density Compute AcceleratorはCPUではなくGPUによる差別化されたHPC製品を提供します。",
     "ai": "AIセンター",
     "aiSub": "AIサービス",
@@ -124,7 +124,7 @@
     "ch5Title": "センサーモデリング＆シミュレーション",
     "ch5Meta": "EO/IR · RF · アクティブEO · GNSS · HWIL · MITL",
     "ch6Title": "スーパーコンピューティングシステム",
-    "ch6Meta": "HPC · GPU · Big Data · Simulation",
+    "ch6Meta": "HPC · GPU · ビッグデータ · シミュレーション",
     "ch7Title": "R&Dセンター",
     "ch7Meta": "画像処理 · GPU · FPGA · 組込み設計",
     "faq1Q": "AceTecはどの業界にサービスを提供していますか？",
@@ -249,7 +249,8 @@
     "close": "閉じる",
     "assistant": "AceTec AIアシスタント",
     "inquiryBtn": "📋 製品のお問い合わせ",
-    "newChat": "新しいチャット"
+    "newChat": "新しいチャット",
+    "pickSolutions": "♡ マイソリューション選択"
   },
   "form": {
     "name": "氏名",
@@ -628,5 +629,12 @@
     "descTab": "説明",
     "catsTab": "分野",
     "detailsBtn": "詳細"
+  },
+  "admin": {
+    "editing": "編集",
+    "save": "保存",
+    "dashboard": "ダッシュボード",
+    "logout": "ログアウト",
+    "survey": "営業部連絡窓口"
   }
 }
