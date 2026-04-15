@@ -71,7 +71,16 @@ export const onRequest = defineMiddleware(async (_context, next) => {
     }
   }
 
-  const response = await next();
+  let response: Response;
+  try {
+    response = await next();
+  } catch {
+    // H3: 에러 스택 트레이스 외부 노출 방지 — 일반 메시지만 반환
+    return new Response(JSON.stringify({ error: '일시적인 오류가 발생했습니다' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 
   // HTML no-cache (CSS/JS는 Astro 해시 파일명으로 자동 버스팅되므로 제외)
   const contentType = response.headers.get('content-type') || '';
@@ -85,7 +94,10 @@ export const onRequest = defineMiddleware(async (_context, next) => {
   response.headers.set('X-Frame-Options', 'DENY');
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  // H2: 브라우저 권한 제한 — payment/usb/bluetooth 추가
+  response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()');
+  // H1: 탭 간 DOM 접근(Spectre) 차단
+  response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
   response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
   // Content Security Policy — 기존 디렉티브(default/script/style/img/connect/font)는 그대로 유지하고
   // 방어 강화용 디렉티브 4개만 추가함 (script-src 'unsafe-inline'는 Astro 인라인 호환성을 위해 유지).

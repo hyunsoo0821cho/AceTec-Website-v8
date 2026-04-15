@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { generateChatResponse } from '../../lib/chat';
 import { checkRateLimit } from '../../lib/rate-limiter';
 import { sanitizeChatMessage } from '../../lib/sanitize';
+import { sanitizeOutput } from '../../lib/chatbot-guard';
 import getDb from '../../lib/db';
 
 const ChatRequestSchema = z.object({
@@ -57,6 +58,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     const message = sanitizeChatMessage(parsed.data.message);
     const { reply, sources } = await generateChatResponse(message, parsed.data.history);
+    const safeReply = sanitizeOutput(reply);
 
     // 대화 저장
     let conversationId = parsed.data.conversationId;
@@ -78,10 +80,10 @@ export const POST: APIRoute = async ({ request }) => {
       conversationId, 'user', message, null, now,
     );
     db.prepare('INSERT INTO messages (conversation_id, role, content, sources, created_at) VALUES (?, ?, ?, ?, ?)').run(
-      conversationId, 'assistant', reply, sources.length > 0 ? JSON.stringify(sources) : null, now + 1,
+      conversationId, 'assistant', safeReply, sources.length > 0 ? JSON.stringify(sources) : null, now + 1,
     );
 
-    return new Response(JSON.stringify({ reply, sources, conversationId }), {
+    return new Response(JSON.stringify({ reply: safeReply, sources, conversationId }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
