@@ -65,26 +65,6 @@ npm run dev
 npx astro dev --host 0.0.0.0 --port 8080
 ```
 
-### 2-4. Admin 계정 생성 (최초 1회)
-
-```bash
-node -e "
-const Database = require('better-sqlite3');
-const bcrypt = require('bcryptjs');
-const path = require('path');
-const fs = require('fs');
-const dataDir = path.join(__dirname, 'data');
-if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
-const db = new Database(path.join(dataDir, 'acetec.db'));
-db.pragma('journal_mode = WAL');
-db.exec('CREATE TABLE IF NOT EXISTS admins (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE NOT NULL, password_hash TEXT NOT NULL);');
-db.exec('CREATE TABLE IF NOT EXISTS sessions (id TEXT PRIMARY KEY, admin_id INTEGER NOT NULL, expires_at INTEGER NOT NULL, FOREIGN KEY (admin_id) REFERENCES admins(id));');
-const hash = bcrypt.hashSync('acetec2024', 10);
-db.prepare('INSERT OR REPLACE INTO admins (id, username, password_hash) VALUES (1, ?, ?)').run('admin', hash);
-console.log('Admin account created: admin / acetec2024');
-db.close();
-"
-```
 
 또는 `/register` 페이지에서 이메일 인증 후 직접 회원가입 가능.
 
@@ -496,14 +476,15 @@ SQLite: `data/acetec.db` (better-sqlite3, WAL 모드, 8개 테이블)
 
 ## 10. 보안
 
-### 10-1. 현황 (2026-04-14)
+### 10-1. 현황 (2026-04-15)
 
 | 영역 | 등급 | 핵심 |
 |------|------|------|
-| 웹앱 (포트 8080) | **A** | CSP 11개 디렉티브, PII 마스킹 |
+| 웹앱 (포트 8080) | **A** | CSP 11개 디렉티브, PII 마스킹, COOP, 에러 스택 차단 |
 | LLM 백엔드 (Ollama 11434) | **A** | localhost 바인딩, 외부 차단 |
 | PII 데이터 보호 | **B+** | 기본 마스킹 + 언마스킹 감사 로그 |
-| **종합** | **B+** | P0 CRITICAL 해결, MEDIUM 2건 부분 완화 |
+| 챗봇 보안 | **A** | Input 30패턴 차단 + Output 이중 sanitize (lib + API) |
+| **종합** | **A-** | P0 CRITICAL 해결, 보안 헤더 완비, 챗봇 이중 방어 |
 
 ### 10-2. 펜테스트 대응
 
@@ -511,25 +492,49 @@ SQLite: `data/acetec.db` (better-sqlite3, WAL 모드, 8개 테이블)
 |----------|------|------|
 | **P0** | Ollama 11434 외부 노출 | **해결** — `OLLAMA_HOST=127.0.0.1:11434` |
 | **P1** | Admin API PII 과다 노출 | **해결** — 마스킹 + 감사 로그 |
-| **P2** | CSP `unsafe-inline` | 부분 완화 — 4개 디렉티브 추가 (`object-src 'none'`, `base-uri 'self'`, `form-action 'self'`, `frame-ancestors 'none'`) |
+| **P2** | CSP `unsafe-inline` | 부분 완화 — 4개 디렉티브 추가 |
 | **P2** | CSRF 토큰 부재 | 부분 완화 — `SameSite=Strict` + Origin 화이트리스트 |
 | **P3** | `/api/chat` 500 → 400 | **해결** |
 | **P3** | `X-Content-Type-Options` 누락 | **해결** |
+| **P6** | magic word DB dump 백도어 | **해결** — `sanitizeOutput` lib + API 이중 적용 |
 
-### 10-3. 인증/세션
+### 10-3. 보안 헤더 (middleware.ts)
+
+| 헤더 | 값 | 비고 |
+|------|-----|------|
+| X-Frame-Options | DENY | Clickjacking 차단 |
+| X-Content-Type-Options | nosniff | MIME 스니핑 차단 |
+| Referrer-Policy | strict-origin-when-cross-origin | 리퍼러 제한 |
+| Permissions-Policy | camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=() | 브라우저 권한 제한 |
+| Cross-Origin-Opener-Policy | same-origin | Spectre 탭 간 DOM 접근 차단 |
+| Strict-Transport-Security | max-age=31536000; includeSubDomains | HSTS |
+| Content-Security-Policy | 11개 디렉티브 (아래 참조) | XSS/Clickjacking 방어 |
+| 에러 스택 트레이스 | try/catch로 next() 감싸기 | 내부 정보 노출 차단 |
+
+### 10-4. 인증/세션
 
 - **비밀번호**: bcrypt hashSync (salt round 10), 정책: 8자+ 영문+숫자+특수문자
 - **세션 쿠키**: HttpOnly, SameSite=Strict, Secure(env 제어), 24시간 TTL
 - **로그인 잠금**: 5회 실패 → 30분 잠금 (DB `failed_attempts`/`lock_until`)
 - **RBAC**: 미들웨어에서 `/admin/*`, `/api/admin/*` 세션+role 자동 검증
 
-### 10-4. CSP (Content Security Policy)
+### 10-5. CSP (Content Security Policy)
 
 ```
 default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';
 img-src 'self' data:; connect-src 'self' http://localhost:11434 https://translate.googleapis.com;
 font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
 ```
+
+### 10-6. 챗봇 보안 (이중 방어)
+
+| 레이어 | 위치 | 내용 |
+|--------|------|------|
+| Input Guardrail | `src/lib/chatbot-guard.ts` | 30개 패턴 차단 (자격증명, SQL, 프롬프트 인젝션, jailbreak, 스펙 요청) |
+| Output Sanitize (1차) | `src/lib/chat.ts:187` | LLM 응답에서 bcrypt/UUID/내부IP/테이블명 마스킹 + 스펙 누출 차단 |
+| Output Sanitize (2차) | `src/pages/api/chat.ts:61` | API 최종 응답에서 한번 더 sanitizeOutput 적용 (defense-in-depth) |
+| 스코프 제한 | 시스템 프롬프트 | 제품명/분야/회사소개만 허용 |
+| Ingest 화이트리스트 | `scripts/ingest-embeddings.ts` | Qdrant payload에 title/content/category/type만 저장 |
 
 > 상세 보안 조치 내역: [보안이슈해결보고.md](보안이슈해결보고.md) 참조
 
