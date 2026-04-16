@@ -34,7 +34,7 @@ const WATCH_DIRS = ['src', 'public', 'scripts', 'tests', 'CLAUDE.md', 'README.md
 const IGNORE = ['.astro', 'node_modules', 'dist', 'data', '.git', 'logs'];
 const STAGE_PATHS = [
   'src/', 'public/uploads/', 'scripts/', 'tests/',
-  'CLAUDE.md', 'README.md', '전체README.md',
+  'CLAUDE.md', 'README.md',
   'package.json', 'astro.config.mjs', 'tsconfig.json', '.gitignore',
 ];
 

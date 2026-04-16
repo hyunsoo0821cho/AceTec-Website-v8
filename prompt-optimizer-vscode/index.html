@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Optimizer</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%);
+    border-bottom: 1px solid #30363d;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  header .logo {
+    font-size: 28px;
+    background: linear-gradient(135deg, #a78bfa, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  header h1 { font-size: 22px; font-weight: 600; }
+  header .subtitle { color: #8b949e; font-size: 13px; margin-top: 2px; }
+
+  .api-bar {
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    padding: 12px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .api-bar label { font-size: 13px; color: #8b949e; white-space: nowrap; }
+  .api-bar input {
+    flex: 1;
+    max-width: 500px;
+    padding: 8px 12px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #e6edf3;
+    font-family: monospace;
+    font-size: 13px;
+  }
+  .api-bar input:focus { outline: none; border-color: #818cf8; }
+  .api-bar .save-btn {
+    padding: 8px 16px;
+    background: #21262d;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #8b949e;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .api-bar .save-btn:hover { border-color: #818cf8; color: #e6edf3; }
+  .api-bar .status { font-size: 12px; color: #3fb950; }
+
+  main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+  }
+  .panel {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #30363d;
+    min-height: 0;
+  }
+  .panel:last-child { border-right: none; }
+  .panel-header {
+    padding: 12px 24px;
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .panel-header h2 { font-size: 14px; font-weight: 600; }
+  .panel-header .tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: #1f2937;
+    color: #8b949e;
+  }
+  .panel-header .tag.output { background: #0f291a; color: #3fb950; }
+
+  textarea {
+    flex: 1;
+    width: 100%;
+    padding: 20px 24px;
+    background: #0d1117;
+    border: none;
+    color: #e6edf3;
+    font-size: 14px;
+    line-height: 1.7;
+    resize: none;
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 300px;
+  }
+  textarea:focus { outline: none; }
+  textarea::placeholder { color: #484f58; }
+
+  #output {
+    background: #0d1117;
+    cursor: default;
+  }
+
+  .action-bar {
+    padding: 16px 32px;
+    background: #161b22;
+    border-top: 1px solid #30363d;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+  }
+  .btn {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #7c3aed, #6366f1);
+    color: white;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+  }
+  .btn-primary:hover { box-shadow: 0 4px 16px rgba(99, 102, 241, 0.5); transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+  .btn-secondary {
+    background: #21262d;
+    color: #e6edf3;
+    border: 1px solid #30363d;
+  }
+  .btn-secondary:hover { border-color: #818cf8; }
+  .btn-copy {
+    background: #0f291a;
+    color: #3fb950;
+    border: 1px solid #1a4028;
+  }
+  .btn-copy:hover { background: #1a4028; }
+
+  .spinner {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ffffff44;
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .stats {
+    font-size: 12px;
+    color: #8b949e;
+    display: flex;
+    gap: 16px;
+  }
+  .stats span { display: flex; align-items: center; gap: 4px; }
+
+  footer {
+    padding: 8px 32px;
+    background: #0d1117;
+    border-top: 1px solid #21262d;
+    font-size: 11px;
+    color: #484f58;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    main { grid-template-columns: 1fr; }
+    .panel { border-right: none; border-bottom: 1px solid #30363d; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">&#9889;</div>
+  <div>
+    <h1>Prompt Optimizer</h1>
+    <div class="subtitle">Claude Haiku로 프롬프트를 체계적으로 최적화</div>
+  </div>
+</header>
+
+<div class="api-bar">
+  <label>API Key:</label>
+  <input type="password" id="apiKey" placeholder="sk-ant-api03-..." />
+  <button class="save-btn" onclick="saveKey()">저장</button>
+  <span class="status" id="keyStatus"></span>
+</div>
+
+<main>
+  <div class="panel">
+    <div class="panel-header">
+      <h2>원본 프롬프트</h2>
+      <span class="tag">INPUT</span>
+    </div>
+    <textarea id="input" placeholder="최적화할 프롬프트를 여기에 입력하세요...&#10;&#10;예시: &quot;파이썬으로 웹 스크래핑 코드 만들어줘&quot;"></textarea>
+  </div>
+  <div class="panel">
+    <div class="panel-header">
+      <h2>최적화된 프롬프트</h2>
+      <span class="tag output">OUTPUT</span>
+    </div>
+    <textarea id="output" readonly placeholder="여기에 최적화 결과가 표시됩니다..."></textarea>
+  </div>
+</main>
+
+<div class="action-bar">
+  <button class="btn btn-secondary" onclick="pasteFromClipboard()">&#128203; 붙여넣기</button>
+  <button class="btn btn-primary" id="optimizeBtn" onclick="optimize()">
+    <span class="spinner" id="spinner"></span>
+    <span id="btnText">&#9889; 최적화</span>
+  </button>
+  <button class="btn btn-copy" onclick="copyResult()">&#128203; 결과 복사</button>
+  <div class="stats">
+    <span id="inputCount">입력: 0자</span>
+    <span id="outputCount">출력: 0자</span>
+    <span id="elapsed"></span>
+  </div>
+</div>
+
+<footer>
+  Prompt Optimizer &mdash; Anthropic Claude Haiku 4.5 &mdash; localhost:9091
+</footer>
+
+<script>
+  const apiKeyInput = document.getElementById('apiKey');
+  const inputEl = document.getElementById('input');
+  const outputEl = document.getElementById('output');
+  const optimizeBtn = document.getElementById('optimizeBtn');
+  const spinner = document.getElementById('spinner');
+  const btnText = document.getElementById('btnText');
+  const keyStatus = document.getElementById('keyStatus');
+
+  // Load saved API key
+  const saved = localStorage.getItem('prompt_optimizer_api_key');
+  if (saved) {
+    apiKeyInput.value = saved;
+    keyStatus.textContent = '저장됨';
+  }
+
+  function saveKey() {
+    const key = apiKeyInput.value.trim();
+    if (key) {
+      localStorage.setItem('prompt_optimizer_api_key', key);
+      keyStatus.textContent = '저장됨';
+    }
+  }
+
+  inputEl.addEventListener('input', () => {
+    document.getElementById('inputCount').textContent = `입력: ${inputEl.value.length}자`;
+  });
+
+  async function pasteFromClipboard() {
+    try {
+      const text = await navigator.clipboard.readText();
+      inputEl.value = text;
+      document.getElementById('inputCount').textContent = `입력: ${text.length}자`;
+    } catch (e) {
+      alert('클립보드 접근 권한이 필요합니다.');
+    }
+  }
+
+  async function copyResult() {
+    const text = outputEl.value;
+    if (!text) return;
+    try {
+      await navigator.clipboard.writeText(text);
+      const btn = document.querySelector('.btn-copy');
+      btn.textContent = '복사됨!';
+      setTimeout(() => { btn.innerHTML = '&#128203; 결과 복사'; }, 1500);
+    } catch (e) {
+      outputEl.select();
+      document.execCommand('copy');
+    }
+  }
+
+  async function optimize() {
+    const apiKey = apiKeyInput.value.trim() || localStorage.getItem('prompt_optimizer_api_key') || '';
+    const prompt = inputEl.value.trim();
+
+    if (!apiKey) { alert('API 키를 입력하세요.'); apiKeyInput.focus(); return; }
+    if (!prompt) { alert('프롬프트를 입력하세요.'); inputEl.focus(); return; }
+
+    // UI loading state
+    optimizeBtn.disabled = true;
+    spinner.style.display = 'inline-block';
+    btnText.textContent = '최적화 중...';
+    outputEl.value = '';
+    const start = Date.now();
+
+    try {
+      const res = await fetch('/api/optimize', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt, apiKey })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'API 오류');
+
+      outputEl.value = data.result;
+      document.getElementById('outputCount').textContent = `출력: ${data.result.length}자`;
+
+      const elapsed = ((Date.now() - start) / 1000).toFixed(1);
+      document.getElementById('elapsed').textContent = `${elapsed}초`;
+
+      // Auto copy to clipboard
+      try {
+        await navigator.clipboard.writeText(data.result);
+      } catch (e) { /* ignore */ }
+
+    } catch (err) {
+      outputEl.value = `오류: ${err.message}`;
+    } finally {
+      optimizeBtn.disabled = false;
+      spinner.style.display = 'none';
+      btnText.innerHTML = '&#9889; 최적화';
+    }
+  }
+
+  // Ctrl+Enter shortcut
+  inputEl.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      optimize();
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+# ============================================================================
+#  AceTec Website v8 — Qdrant & Reranker 컨테이너 관리
+# ============================================================================
+#  목적: 2차 점검(SUMMARY (1).md) P0 취약점 수정
+#        - Qdrant 6333 / 6334 외부 노출 → 127.0.0.1 loopback 전용
+#        - Reranker 8787 외부 노출 → 127.0.0.1 loopback 전용
+#
+#  설정 근거 (기존 실행 중이던 컨테이너에서 역추적):
+#    heuristic_montalcini (qdrant/qdrant)         ← 19~46시간 운영중
+#      · Ports: 6333-6334 → 0.0.0.0 (문제)
+#      · Env:   TZ=Etc/UTC, RUN_MODE=production
+#      · Cmd:   ./entrypoint.sh (default)
+#      · Volume: ❌ 없음 — 데이터가 컨테이너 레이어에 저장됨 (취약)
+#               → 이번에 named volume 'qdrant_storage' 로 영속화
+#    jina-reranker (michaelf34/infinity:latest)    ← 24시간 운영중
+#      · Ports: 8787 → 7997 (0.0.0.0)
+#      · Cmd:   v2 --model-id jinaai/jina-reranker-v2-base-multilingual --port 7997
+#      · Volume: infinity_cache → /app/.cache  (유지)
+#      · GPU:   NVIDIA all devices
+#
+#  이 파일은 프로젝트 루트의 소스 코드(src/, public/, astro.config.*)에
+#  전혀 영향을 주지 않음. Astro 빌드는 .yml 파일을 스캔하지 않음.
+#  CSS / 아키텍처 / 기능 모두 무손상.
+# ============================================================================
+#
+#  🚨 최초 전환 절차 (데이터 보존):
+#  ----------------------------------------------------------------------------
+#  기존 qdrant 컨테이너(heuristic_montalcini)는 볼륨 마운트가 없어
+#  그대로 삭제 시 acetec_knowledge / acetronix_knowledge / acetronix_memory
+#  3개 컬렉션이 날아감. 반드시 아래 순서로 마이그레이션할 것.
+#
+#  # 1) 기존 컨테이너에서 전체 스냅샷 생성
+#  docker exec heuristic_montalcini sh -c 'curl -s -X POST http://localhost:6333/collections/acetec_knowledge/snapshots'
+#  docker exec heuristic_montalcini sh -c 'curl -s -X POST http://localhost:6333/collections/acetronix_knowledge/snapshots'
+#  docker exec heuristic_montalcini sh -c 'curl -s -X POST http://localhost:6333/collections/acetronix_memory/snapshots'
+#
+#  # 2) 스냅샷 파일을 호스트로 복사 (경로는 위 API 응답의 name 필드)
+#  mkdir -p qdrant-backup
+#  docker cp heuristic_montalcini:/qdrant/storage/snapshots ./qdrant-backup/
+#
+#  # 3) 기존 컨테이너 정지 (삭제는 검증 후)
+#  docker stop heuristic_montalcini
+#  docker stop jina-reranker
+#
+#  # 4) 새 compose 기동 (localhost-only)
+#  docker compose -f docker-compose.hompage.yml up -d
+#
+#  # 5) 새 qdrant 에 컬렉션 복구 (각 컬렉션마다)
+#  docker cp ./qdrant-backup/snapshots/acetec_knowledge/<snapshot>.snapshot \
+#            qdrant:/qdrant/snapshots/acetec_knowledge/
+#  curl -X PUT http://127.0.0.1:6333/collections/acetec_knowledge/snapshots/recover \
+#       -H 'Content-Type: application/json' \
+#       -d '{"location":"file:///qdrant/snapshots/acetec_knowledge/<snapshot>.snapshot"}'
+#
+#  # 6) 동작 검증 (AceTec 챗봇으로 질의 → RAG 응답 확인) 후 기존 컨테이너 삭제
+#  docker rm heuristic_montalcini jina-reranker
+#
+#  💡 빠른 대안: 데이터를 다시 ingest 할 수 있다면 (5)단계 건너뛰고
+#               `npm run ingest` 한 번 실행으로 acetec_knowledge 재구성 가능.
+# ============================================================================
+
+services:
+  # ---------------------------------------------------------------------------
+  #  Qdrant Vector DB (RAG 지식베이스)
+  # ---------------------------------------------------------------------------
+  qdrant:
+    image: qdrant/qdrant
+    container_name: qdrant
+    restart: unless-stopped
+    ports:
+      # P0 보안 수정: 0.0.0.0 → 127.0.0.1 (외부 네트워크에서 접근 불가)
+      - "127.0.0.1:6333:6333"   # REST API (AceTec 앱이 사용)
+      - "127.0.0.1:6334:6334"   # gRPC (현재 미사용 — 필요 없으면 주석 처리 가능)
+    environment:
+      TZ: Etc/UTC
+      RUN_MODE: production
+    volumes:
+      # 데이터 영속화: 컨테이너 재생성/업그레이드 시에도 컬렉션 유지
+      - qdrant_storage:/qdrant/storage
+      - qdrant_snapshots:/qdrant/snapshots
+    healthcheck:
+      # 외부 포트가 아닌 컨테이너 내부에서 확인 (loopback 이라도 확실)
+      test: ["CMD-SHELL", "bash -c '</dev/tcp/127.0.0.1/6333' || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  # ---------------------------------------------------------------------------
+  #  Jina Reranker v2 (RAG 리랭킹 — Infinity 엔진)
+  # ---------------------------------------------------------------------------
+  jina-reranker:
+    image: michaelf34/infinity:latest
+    container_name: jina-reranker
+    restart: unless-stopped
+    ports:
+      # P0 보안 수정: 0.0.0.0 → 127.0.0.1
+      # AceTec 앱(src/lib/reranker.ts)은 http://localhost:8787/rerank 호출 → OK
+      - "127.0.0.1:8787:7997"
+    command:
+      - v2
+      - --model-id
+      - jinaai/jina-reranker-v2-base-multilingual
+      - --port
+      - "7997"
+    environment:
+      HF_HOME: /app/.cache/huggingface
+      # GPU 활성화 (기존 컨테이너 설정 유지)
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+      NVIDIA_DISABLE_REQUIRE: "true"
+    volumes:
+      # 기존에 쓰던 volume 을 그대로 재사용 → 모델 재다운로드 불필요
+      - infinity_cache:/app/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:7997/health || exit 1"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 120s   # 모델 로딩 시간 고려
+
+# ============================================================================
+#  Named Volumes
+# ============================================================================
+volumes:
+  # 기존에 이미 존재하는 볼륨을 재사용 (모델 캐시 보존)
+  # docker volume ls | grep infinity_cache  ← 존재 확인됨
+  infinity_cache:
+    external: true
+
+  # Qdrant 용 신규 볼륨 (기존 컨테이너는 볼륨 없었으므로 새로 생성)
+  qdrant_storage:
+    name: acetec_qdrant_storage
+  qdrant_snapshots:
+    name: acetec_qdrant_snapshots
+
+# ============================================================================
+#  네트워크는 compose 기본 네트워크 사용 (모든 서비스가 자동으로 같은 네트워크에 참여).
+#  AceTec Astro 앱은 호스트에서 직접 실행되므로 127.0.0.1:6333 / 127.0.0.1:8787 로 접근.
+# ============================================================================

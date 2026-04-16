@@ -1,0 +1,32 @@
+{
+  "name": "prompt-optimizer",
+  "displayName": "Prompt Optimizer",
+  "description": "Optimize prompts using Anthropic Claude API - clipboard to clipboard",
+  "version": "1.0.0",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "promptOptimizer.optimize",
+        "title": "Optimize Prompt"
+      }
+    ],
+    "configuration": {
+      "title": "Prompt Optimizer",
+      "properties": {
+        "promptOptimizer.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Anthropic API Key. Also supports ANTHROPIC_API_KEY environment variable."
+        }
+      }
+    }
+  }
+}
