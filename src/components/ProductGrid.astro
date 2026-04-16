@@ -67,7 +67,7 @@ const hasSections = sections && sections.length > 0;
         &times;
       </button>
     )}
-    <h2 class="cat-section-title" id={`section-${si}`} {...e(`sections[${si}].title`)}
+    <h2 class="cat-section-title" translate="no" id={`section-${si}`} {...e(`sections[${si}].title`)}
       data-i18n={`ps.${category}.s${si}`}>{section.title}</h2>
     <div class="products-grid">
       {section.products.map((product, pi) => (
@@ -93,7 +93,7 @@ const hasSections = sections && sections.length > 0;
               <div class="p-img-placeholder" />
             )}
           </div>
-          <div class="p-name" {...e(`sections[${si}].products[${pi}].name`)}
+          <div class="p-name" translate="no" {...e(`sections[${si}].products[${pi}].name`)}
             data-i18n={`ps.${category}.s${si}p${pi}n`}>{product.name}</div>
           {hideDetails ? (
             <div class="p-locked">
@@ -106,8 +106,7 @@ const hasSections = sections && sections.length > 0;
                 <span class="p-detail-toggle-text">Details</span>
                 <svg class="p-detail-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,4 6,8 10,4"></polyline></svg>
               </button>
-              <ul class="p-features p-features--collapsed" {...e(`sections[${si}].products[${pi}].featuresHtml`)}
-                data-i18n={`ps.${category}.s${si}p${pi}f`} data-i18n-html="">
+              <ul class="p-features p-features--collapsed" {...e(`sections[${si}].products[${pi}].featuresHtml`)}>
                 {product.features.map((f) => <li>{f}</li>)}
               </ul>
             </div>
@@ -180,7 +179,7 @@ const hasSections = sections && sections.length > 0;
                 </div>
               ) : null}
             </div>
-            <div class="p-name" {...editName}>
+            <div class="p-name" translate="no" {...editName}>
               {item.name}
             </div>
             {hideDetails ? (
@@ -250,6 +249,12 @@ const hasSections = sections && sections.length > 0;
     overflow: hidden;
     background: var(--color-gray-200);
     padding-bottom: 75%;
+  }
+  /* telecom 페이지의 Server network appliance(s3) / Customized Network Appliance(s4)
+     랙서버·스키매틱 이미지는 세로로 길게 표시 (다른 카테고리·섹션 무영향) */
+  .cat-section:has(> [data-i18n="ps.telecom.s3"]) .p-img,
+  .cat-section:has(> [data-i18n="ps.telecom.s4"]) .p-img {
+    padding-bottom: 130%;
   }
   .p-img img,
   .p-img :global(img) {

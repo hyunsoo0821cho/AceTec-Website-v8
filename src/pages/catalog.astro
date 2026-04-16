@@ -71,7 +71,7 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
       <div class="cat-toc">
         <strong>Categories: </strong>
         {catalog.categories.map((cat: any) => (
-          <a href={`#${cat.id}`} class="cat-toc-link">{cat.title}</a>
+          <a href={`#${cat.id}`} class="cat-toc-link" translate="no">{cat.title}</a>
         ))}
       </div>
 
@@ -95,7 +95,7 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
               &times;
             </button>
           )}
-          <h2 class="cat-section-title" id={cat.id}>
+          <h2 class="cat-section-title" id={cat.id} translate="no">
             <span {...e(`categories[${ci}].icon`)}>{cat.icon}</span>{' '}
             <span {...e(`categories[${ci}].title`)}>{cat.title}</span>
           </h2>
@@ -116,7 +116,7 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
                     {...img(`categories[${ci}].products[${pi}].image`, 'product')}
                   />
                 </div>
-                <div class="p-name" {...e(`categories[${ci}].products[${pi}].name`)}>{prod.name}</div>
+                <div class="p-name" translate="no" {...e(`categories[${ci}].products[${pi}].name`)}>{prod.name}</div>
                 {hideDetails ? (
                   <div class="p-locked">
                     <span class="p-locked-icon">🔒</span>

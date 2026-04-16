@@ -986,11 +986,27 @@
     messagesEl.appendChild(card);
     messagesEl.scrollTop = messagesEl.scrollHeight;
 
-    card.querySelector('[data-nav-yes]')?.addEventListener('click', () => {
+    // 중복 클릭/카드 잔존 방지용 내부 상태
+    let handled = false;
+    const yesBtn = card.querySelector('[data-nav-yes]') as HTMLButtonElement | null;
+    const noBtn  = card.querySelector('[data-nav-no]')  as HTMLButtonElement | null;
+
+    yesBtn?.addEventListener('click', () => {
+      if (handled) return;
+      handled = true;
+      if (yesBtn) yesBtn.disabled = true;
+      if (noBtn)  noBtn.disabled  = true;
+      card.remove();   // 이동 카드 제거 (사용자 요청: 선택 후 카드 숨김)
       renderMessage('assistant', `${label} 페이지로 이동합니다...`, undefined, true);
       setTimeout(() => { window.location.href = path; }, 500);
     });
-    card.querySelector('[data-nav-no]')?.addEventListener('click', () => {
+
+    noBtn?.addEventListener('click', () => {
+      if (handled) return;
+      handled = true;
+      if (yesBtn) yesBtn.disabled = true;
+      if (noBtn)  noBtn.disabled  = true;
+      card.remove();   // "아니요" 시 이동 안내 박스를 즉시 제거
       renderMessage('assistant', '알겠습니다. 원하시는 내용을 다시 질문해 주세요.', undefined, true);
     });
   }
@@ -1051,7 +1067,15 @@
       // [NAVIGATE:/path] 태그 파싱: 표시 전 본문에서 제거, 확인 카드로 사용자 의도 재확인 후 이동
       const reply: string = data.reply || '';
       const navMatch = reply.match(/\[NAVIGATE:(\/[^\]]+)\]/);
-      const cleanedReply = navMatch ? reply.replace(navMatch[0], '').trim() : reply;
+      // LLM 이 가끔 **[NAVIGATE:/...]**, *...*, __...__ 로 감싸서 출력 → 주변 마크다운 emphasis 도 함께 제거.
+      // 또한 제거 후 본문에 고립된 ****, **  ** 같은 빈껍질도 정리.
+      let cleanedReply = reply
+        .replace(/[*_]{1,3}\s*\[NAVIGATE:\/[^\]]+\]\s*[*_]{1,3}/g, '') // 감싸진 NAVIGATE
+        .replace(/\[NAVIGATE:\/[^\]]+\]/g, '')                          // 맨 NAVIGATE
+        .replace(/(^|\n)\s*[*_]{2,}\s*(?=\n|$)/g, '$1')                 // 본문 중간의 ****/____ 고립 라인
+        .replace(/[*_]{2,}\s*$/g, '')                                    // 끝자락 ****
+        .replace(/\n{3,}/g, '\n\n')                                      // 과도한 빈 줄 축소
+        .trim();
       addMessage('assistant', cleanedReply, data.sources);
       if (navMatch) {
         const targetPath = navMatch[1];

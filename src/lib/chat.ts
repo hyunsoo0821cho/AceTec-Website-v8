@@ -1,5 +1,5 @@
 import { retrieveRelevantDocs } from './rag';
-import { isBlockedInput, refusalMessage, sanitizeOutput, SCOPE_RESTRICTION } from './chatbot-guard';
+import { isBlockedInput, refusalMessage, sanitizeOutput, sanitizeRagContext, SCOPE_RESTRICTION } from './chatbot-guard';
 
 const OLLAMA_URL = 'http://localhost:11434';
 const CHAT_MODEL = 'ministral-3:14b';
@@ -135,9 +135,13 @@ export async function generateChatResponse(
 
   const docs = await retrieveRelevantDocs(message);
 
+  // Qdrant 외부 노출 (P0 잔존) 대비: 검색된 문서에 지시형 injection 이 섞여 있을 수 있으므로
+  // title / content 모두 sanitizeRagContext 로 필터링 후 프롬프트에 투입.
   const contextBlock =
     docs.length > 0
-      ? docs.map((d) => `[${d.title}]: ${d.content}`).join('\n\n')
+      ? docs
+          .map((d) => `[${sanitizeRagContext(d.title)}]: ${sanitizeRagContext(d.content)}`)
+          .join('\n\n')
       : 'No specific documents found. Answer from general company knowledge.';
 
   const messages = [

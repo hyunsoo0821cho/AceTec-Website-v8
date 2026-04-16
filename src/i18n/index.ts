@@ -192,8 +192,11 @@ async function autoTranslatePage(lang: string) {
     if (el.querySelector('input,textarea,select,form,iframe,video,audio,img,svg,picture')) return;
     // 블록 컨테이너 + button/label/summary 에 자식 요소가 있으면 번역하지 않음 (자식 wipe 방지)
     if (['DIV', 'SECTION', 'ARTICLE', 'MAIN', 'HEADER', 'FOOTER', 'ASIDE', 'NAV', 'FORM', 'BUTTON', 'LABEL', 'SUMMARY'].includes(el.tagName) && el.children.length > 0) return;
-    if (el.offsetParent === null && !el.closest('.mega-menu')) return;
+    // 숨겨진 요소 스킵 — 단, 접이식 컨테이너(메가메뉴/제품 Details/아코디언)는 미리 번역
+    if (el.offsetParent === null && !el.closest('.mega-menu') && !el.closest('.p-features') && !el.closest('.ch-body') && !el.closest('.p-price')) return;
     if (el.closest('.admin-add-btn') || el.closest('.admin-delete-btn')) return;
+    // translate="no" 속성이 있는 요소 또는 그 자식은 번역 제외 (제품명 등 영문 고정)
+    if (el.getAttribute('translate') === 'no' || el.closest('[translate="no"]')) return;
     // 관리자 툴바/편집 UI는 원문 그대로 (Save/Dashboard 등 영문 용어 유지)
     if (el.closest('.admin-bar') || el.closest('.admin-btn') || el.closest('#adminBar')) return;
     if (el.hasAttribute('data-edit')) return;
@@ -211,7 +214,22 @@ async function autoTranslatePage(lang: string) {
     collectElement(el, marked, lang, cache, cachePrefix, bucket);
   });
 
-  // ── 2) 히스토리 모든 패널 엔트리 수집 (숨김 패널 포함) ──
+  // ── 2) 접이식 컨테이너 내부 텍스트 수집 (아코디언/Details/ref-block — 숨김 상태 포함) ──
+  document.querySelectorAll<HTMLElement>('.ch-body h4, .ch-body h5, .ch-body p, .ch-body li, .ch-body span.lesson-t, .p-features li, .p-price, .ref-block h5, .ref-block li, .s-panel a, .s-panel li, .s-panel p, .s-panel span').forEach((el) => {
+    if (el.hasAttribute('data-i18n')) return;
+    if (el.hasAttribute('data-edit')) return;
+    if (el.closest('[translate="no"]')) return;
+    if (el.querySelector('h1,h2,h3,h4,h5,h6,p,a,span,li,div')) return;
+    const currentText = (el.textContent || '').trim();
+    if (!currentText || currentText.length < 2 || currentText.length > 500) return;
+    const existingOriginal = el.getAttribute('data-i18n-original');
+    const textForDetection = existingOriginal || currentText;
+    const marked = ensureMarked(el, textForDetection);
+    if (!marked) return;
+    collectElement(el, marked, lang, cache, cachePrefix, bucket);
+  });
+
+  // ── 3) 히스토리 패널 엔트리 수집 ──
   document.querySelectorAll<HTMLElement>('.history-panel .h-entry p').forEach((el) => {
     const currentText = (el.textContent || '').trim();
     if (!currentText || currentText.length < 3) return;
@@ -222,7 +240,7 @@ async function autoTranslatePage(lang: string) {
     collectElement(el, marked, lang, cache, cachePrefix, bucket);
   });
 
-  // ── 3) 소스언어별로 배치 번역 — ko/en 병렬 처리 ──
+  // ── 4) 소스언어별로 배치 번역 — ko/en 병렬 처리 ──
   await Promise.all(
     (['ko', 'en'] as const).map(async (src) => {
       const { elements, texts } = bucket[src];

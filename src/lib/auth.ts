@@ -10,11 +10,20 @@ const SECURE_FLAG = process.env.SESSION_SECURE === '1' ? ' Secure;' : '';
 const MAX_FAILED_ATTEMPTS = 5;
 const LOCK_DURATION_MS = 30 * 60 * 1000;
 
+// User Enumeration 타이밍 방어 (H2차 점검 잔존 취약점):
+// 존재하지 않는 사용자에 대해서도 bcrypt.compareSync 를 항상 실행해 응답 시간 편차를 제거한다.
+// 이 해시는 실제 로그인에 사용되지 않는 랜덤 문자열 ("__dummy__") 의 bcrypt(round=10) 결과.
+const DUMMY_BCRYPT_HASH = '$2b$10$CwTycUXWue0Thq9StjUM0uJ8X8tI3/uXyQlQe6qK1.5xHcvIjpNp.';
+
 export function verifyPassword(usernameOrEmail: string, password: string): number | null {
   const row = getDb().prepare('SELECT id, password_hash FROM admins WHERE username = ? OR email = ?').get(usernameOrEmail, usernameOrEmail) as
     | { id: number; password_hash: string }
     | undefined;
-  if (!row) return null;
+  if (!row) {
+    // 타이밍 일정화: 사용자 없을 때도 bcrypt 호출 (응답 지연 동일)
+    bcrypt.compareSync(password, DUMMY_BCRYPT_HASH);
+    return null;
+  }
   if (!bcrypt.compareSync(password, row.password_hash)) return null;
   return row.id;
 }

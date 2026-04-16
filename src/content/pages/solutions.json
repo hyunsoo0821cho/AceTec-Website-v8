@@ -94,9 +94,9 @@
       "href": "/products/telecom",
       "description": "방화벽, VPN, UTM, 로드밸런싱용 Intel/AMD 기반 네트워크 어플라이언스 — 데이터센터·통신 인프라용 고성능 NIC 어댑터 포함.",
       "subcategories": [
-        "Entry/Middle/High-end Network Appliance",
-        "서버 네트워크 어플라이언스",
-        "NIC 어댑터"
+        "Network Appliance",
+        "Network NICs Adapter",
+        "GPU Workstation PC"
       ]
     },
     {

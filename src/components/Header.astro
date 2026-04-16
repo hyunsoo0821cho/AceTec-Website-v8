@@ -119,9 +119,11 @@ const megaMenuCols = megaData.columns || [];
 
 <script>
   // 로그인 상태면 "로그인" → "내정보" 로 변경
+  // (비로그인 시 API는 200 { user: null } 반환 — 기존 r.ok 분기는 유지되며 user null 이면 그대로 종료)
   fetch('/api/auth/me').then(r => {
     if (!r.ok) return;
     r.json().then(user => {
+      if (!user || !user.username) return; // 비로그인 응답 { user: null } 처리
       // 데스크톱 nav
       document.querySelectorAll<HTMLAnchorElement>('a.nav-link[href="/login"]').forEach(el => {
         el.href = '/account';

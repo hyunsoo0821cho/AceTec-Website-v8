@@ -230,7 +230,10 @@ if (!sessionId) return Astro.redirect('/login');
   async function loadProfile() {
     const res = await fetch('/api/auth/me');
     if (!res.ok) { window.location.href = '/login'; return; }
-    userData = await res.json();
+    const data = await res.json();
+    // 비로그인 시 API는 200 { user: null } 반환하므로 username 부재로 재확인
+    if (!data || !data.username) { window.location.href = '/login'; return; }
+    userData = data;
 
     // 프로필 카드
     document.getElementById('profileName')!.textContent = userData.displayName || userData.username;

@@ -13,15 +13,16 @@
       ]
     },
     {
-      "title": "네트워크 어플라이언스",
+      "title": "Networking",
       "href": "/products/telecom",
       "items": [
-        "엔트리 네트워크 어플라이언스",
-        "미들 네트워크 어플라이언스",
+        "Entry Network Appliance",
+        "Middle network appliance",
         "High-end Network Appliance",
-        "서버 네트워크 어플라이언스",
-        "커스터마이징 네트워크 어플라이언스",
-        "NIC 어댑터"
+        "server network appliance",
+        "Customized Network Appliance",
+        "Network NICs Adapter",
+        "GPU Workstation PC"
       ]
     },
     {

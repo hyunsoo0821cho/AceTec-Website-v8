@@ -97,7 +97,23 @@ export const onRequest = defineMiddleware(async (_context, next) => {
   // H2: 브라우저 권한 제한 — payment/usb/bluetooth 추가
   response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()');
   // H1: 탭 간 DOM 접근(Spectre) 차단
-  response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+  // 브라우저는 HTTPS / localhost / 127.0.0.1 등 "trustworthy origin" 에서만 COOP 을 적용하고
+  // 그 외(예: LAN IP http)에서는 헤더를 무시하며 콘솔 경고를 찍음 → 해당 환경에서만 전송하여 노이즈 제거.
+  // NOTE: Astro의 _context.url.hostname 은 allowedDomains 미설정 시 내부적으로 'localhost' 로 고정 fallback 되므로
+  //       실제 클라이언트가 접속한 주소 판정은 원본 Host 헤더와 X-Forwarded-Proto 를 직접 본다.
+  const _rawHost = (_context.request.headers.get('host') || '').split(':')[0].trim();
+  const _forwardedProto = _context.request.headers.get('x-forwarded-proto');
+  const _isHttps = _forwardedProto === 'https' || _context.url.protocol === 'https:';
+  const _isLoopback =
+    _rawHost === 'localhost' || _rawHost === '127.0.0.1' || _rawHost === '::1' || _rawHost === '[::1]';
+  const _isTrustworthy = _isHttps || _isLoopback;
+  if (_isTrustworthy) {
+    response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+  } else {
+    // LAN IP http 등 신뢰불가 출처에선 브라우저가 어차피 헤더를 무시하고 콘솔 경고만 찍으므로
+    // 송신 자체를 삭제하여 DevTools 콘솔 노이즈를 제거.
+    response.headers.delete('Cross-Origin-Opener-Policy');
+  }
   response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
   // Content Security Policy — 기존 디렉티브(default/script/style/img/connect/font)는 그대로 유지하고
   // 방어 강화용 디렉티브 4개만 추가함 (script-src 'unsafe-inline'는 Astro 인라인 호환성을 위해 유지).

@@ -23,6 +23,12 @@ const {
   description = 'AceTec - Leading provider of embedded computing, industrial PCs, railway safety systems, and defense solutions for mission-critical applications.',
 } = Astro.props;
 const currentPath = Astro.url.pathname;
+
+// 빌드 시점에 한 번만 고정되는 ID — 새 빌드 배포마다 값이 바뀌어 클라이언트 캐시 무효화.
+// (SSR 중 매 요청마다 바뀌면 무한 새로고침 위험 있음 → import.meta.env.BUILD_ID 정책 대신
+//  서버 프로세스 시작 시점 타임스탬프를 모듈 로드 시 한 번만 캡처 — PM2 restart 시 갱신됨.)
+const BUILD_ID = (globalThis as { __ACETEC_BUILD_ID__?: string }).__ACETEC_BUILD_ID__
+  ?? ((globalThis as { __ACETEC_BUILD_ID__?: string }).__ACETEC_BUILD_ID__ = String(Date.now()));
 ---
 
 <!doctype html>
@@ -32,6 +38,28 @@ const currentPath = Astro.url.pathname;
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0a0a0a" />
+    <!-- 브라우저 캐시 방지 (Ctrl+F5 없이도 최신 반영) -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="acetec-build-id" content={BUILD_ID} />
+    <script is:inline define:vars={{ BUILD_ID }}>
+      // ===== Fresh-load guard =====
+      // 1) bfcache 복원 감지 → 자동 새로고침 (뒤로가기/앞으로가기 시 구버전 방지)
+      window.addEventListener('pageshow', function (e) {
+        if (e.persisted) { window.location.reload(); }
+      });
+      // 2) 빌드 ID 변경 감지 → 한 번만 자동 새로고침 (구버전 탭 자동 동기화)
+      try {
+        var stored = sessionStorage.getItem('acetec_build_id');
+        if (stored && stored !== BUILD_ID) {
+          sessionStorage.setItem('acetec_build_id', BUILD_ID);
+          window.location.reload();
+        } else if (!stored) {
+          sessionStorage.setItem('acetec_build_id', BUILD_ID);
+        }
+      } catch (_) { /* sessionStorage 비활성 환경 무시 */ }
+    </script>
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />

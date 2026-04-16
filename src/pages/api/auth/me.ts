@@ -4,18 +4,18 @@ import getDb from '../../../lib/db';
 
 export const prerender = false;
 
-/** GET — 현재 로그인 사용자 정보 반환 */
+/** GET — 현재 로그인 사용자 정보 반환 (비로그인 시 200 `{ user: null }` — 콘솔 401 노이즈 제거) */
 export const GET: APIRoute = async ({ request }) => {
   const cookie = request.headers.get('cookie');
   const sessionId = verifySession(getSessionIdFromCookie(cookie));
-  if (!sessionId) return Response.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!sessionId) return Response.json({ user: null });
 
   const userInfo = getUserInfo(sessionId);
-  if (!userInfo) return Response.json({ error: 'User not found' }, { status: 404 });
+  if (!userInfo) return Response.json({ user: null });
 
   const db = getDb();
   const user = db.prepare('SELECT id, username, display_name, email, role, phone, bio, avatar_url FROM admins WHERE id = ?').get(userInfo.id) as any;
-  if (!user) return Response.json({ error: 'User not found' }, { status: 404 });
+  if (!user) return Response.json({ user: null });
 
   return Response.json({
     id: user.id,

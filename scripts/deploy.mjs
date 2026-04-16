@@ -11,11 +11,35 @@
 import { execSync, spawn } from 'node:child_process';
 import { platform } from 'node:process';
 import { setTimeout as sleep } from 'node:timers/promises';
+import { existsSync, readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import http from 'node:http';
 
 const PORT = process.env.PORT || '8080';
 const HOST = process.env.HOST || '0.0.0.0';
 const isWindows = platform === 'win32';
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const WATCHDOG_PID_FILE = join(ROOT, 'logs', 'watchdog.pid');
+
+/** watchdog이 살아있는지 확인 (PID 파일 + 프로세스 존재) */
+function getLiveWatchdogPid() {
+  if (!existsSync(WATCHDOG_PID_FILE)) return null;
+  const pid = readFileSync(WATCHDOG_PID_FILE, 'utf8').trim();
+  if (!pid) return null;
+  try {
+    if (isWindows) {
+      const out = execSync(`tasklist /FI "PID eq ${pid}" /NH`, {
+        encoding: 'utf8', stdio: ['pipe', 'pipe', 'ignore'],
+      });
+      return out.includes(pid) ? pid : null;
+    }
+    process.kill(Number(pid), 0);
+    return pid;
+  } catch {
+    return null;
+  }
+}
 
 function findPidOnPort(port) {
   try {
@@ -130,25 +154,42 @@ async function main() {
   console.log('[deploy] 1/4 빌드 시작...');
   execSync('npm run build', { stdio: 'inherit' });
 
-  console.log(`[deploy] 2/4 포트 ${PORT} 점유 프로세스 확인...`);
-  const ok = await ensurePortFreeAndKill();
-  if (!ok) process.exit(1);
-  console.log(`[deploy] 포트 ${PORT} 정상 해제 확인`);
+  // watchdog이 살아있으면 서버 프로세스를 직접 관리하지 않는다.
+  // 서버 자식만 kill → watchdog이 새 dist/ 로 자동 respawn.
+  const watchdogPid = getLiveWatchdogPid();
+  let pid;
+  let healthy = false;
 
-  console.log(`[deploy] 3/4 ${HOST}:${PORT} 에서 새 서버 시작 (detached)...`);
-  let pid = startServer();
-  console.log(`[deploy] 새 서버 PID: ${pid}. 기동 헬스체크 대기 중...`);
+  if (watchdogPid) {
+    console.log(`[deploy] 🐕 watchdog 감지 (PID ${watchdogPid}) → 서버 자식만 교체`);
+    const serverPid = findPidOnPort(PORT);
+    if (serverPid && serverPid !== watchdogPid) {
+      killPid(serverPid);
+      console.log(`[deploy] watchdog 자식 서버(PID ${serverPid}) 종료 완료`);
+    }
+    console.log('[deploy] watchdog respawn 대기 중...');
+    healthy = await waitServerUp(HOST, PORT, 60000);
+    pid = findPidOnPort(PORT);
+  } else {
+    console.log(`[deploy] 2/4 포트 ${PORT} 점유 프로세스 확인...`);
+    const ok = await ensurePortFreeAndKill();
+    if (!ok) process.exit(1);
+    console.log(`[deploy] 포트 ${PORT} 정상 해제 확인`);
 
-  let healthy = await waitServerUp(HOST, PORT, 30000);
-
-  if (!healthy) {
-    console.warn('[deploy] ⚠️ 첫 기동 실패 → 한 번 더 재시도');
-    // 죽은 PID/잔존 좀비 정리
-    await ensurePortFreeAndKill();
-    await sleep(1000);
+    console.log(`[deploy] 3/4 ${HOST}:${PORT} 에서 새 서버 시작 (detached)...`);
     pid = startServer();
-    console.log(`[deploy] 재시도 PID: ${pid}`);
+    console.log(`[deploy] 새 서버 PID: ${pid}. 기동 헬스체크 대기 중...`);
+
     healthy = await waitServerUp(HOST, PORT, 30000);
+
+    if (!healthy) {
+      console.warn('[deploy] ⚠️ 첫 기동 실패 → 한 번 더 재시도');
+      await ensurePortFreeAndKill();
+      await sleep(1000);
+      pid = startServer();
+      console.log(`[deploy] 재시도 PID: ${pid}`);
+      healthy = await waitServerUp(HOST, PORT, 30000);
+    }
   }
 
   // watch-images 프로세스 확인 + 재시작

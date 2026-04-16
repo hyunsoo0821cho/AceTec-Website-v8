@@ -1,10 +1,31 @@
 import type { APIRoute } from 'astro';
 import { verifyPassword, createSession, sessionCookie, getUserInfo, isAccountLocked, recordFailedLogin, resetFailedLogin } from '../../../lib/auth';
+import { checkRateLimit } from '../../../lib/rate-limiter';
 import getDb from '../../../lib/db';
+
+// 로그인 시 공통 인증 실패 메시지 (User Enumeration 방어)
+// 잠금 / 존재하지 않음 / 비밀번호 오류 모두 동일 메시지 + 401 로 통일.
+const GENERIC_AUTH_FAIL = '이메일 또는 비밀번호가 올바르지 않습니다';
 
 export const POST: APIRoute = async ({ request }) => {
   const contentType = request.headers.get('content-type') || '';
   const isJson = contentType.includes('application/json');
+
+  const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
+  const ua = request.headers.get('user-agent') || 'unknown';
+
+  // ===== IP 기반 Rate Limit (Account Lockout DoS 완화) =====
+  // 단일 IP에서 분당 10회 초과 로그인 시도 시 429. 계정별 lockout 과 별개로 공격 속도 자체를 제한.
+  const rl = checkRateLimit(`login:${ip}`, 10, 60_000);
+  if (!rl.allowed) {
+    try {
+      getDb().prepare('INSERT INTO audit_logs (action, detail, created_at) VALUES (?, ?, ?)').run(
+        'login_rate_limited', `IP: ${ip} | ${ua.substring(0, 120)}`, Date.now()
+      );
+    } catch { /* 로깅 실패 무시 */ }
+    if (isJson) return Response.json({ error: '요청이 너무 많습니다. 잠시 후 다시 시도하세요' }, { status: 429 });
+    return new Response(null, { status: 302, headers: { Location: '/login?error=ratelimit' } });
+  }
 
   let username = '';
   let password = '';
@@ -29,17 +50,14 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 
-  const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
-  const ua = request.headers.get('user-agent') || 'unknown';
-
   // 계정 잠금 확인 (브루트포스 방어)
+  // 2차 점검 잔존: 이전엔 423 + 전용 메시지로 "계정 존재" 정보가 새어나감 → 401 + 공통 메시지로 통일.
   if (isAccountLocked(username)) {
     getDb().prepare('INSERT INTO audit_logs (action, detail, created_at) VALUES (?, ?, ?)').run(
       'login_locked', `Locked account login attempt: ${username} | IP: ${ip}`, Date.now()
     );
-    const msg = '계정이 일시적으로 잠겼습니다. 30분 후 다시 시도하세요';
-    if (isJson) return Response.json({ error: msg }, { status: 423 });
-    return new Response(null, { status: 302, headers: { Location: '/login?error=locked' } });
+    if (isJson) return Response.json({ error: GENERIC_AUTH_FAIL }, { status: 401 });
+    return new Response(null, { status: 302, headers: { Location: '/login?error=invalid' } });
   }
 
   const adminId = verifyPassword(username, password);
@@ -52,7 +70,7 @@ export const POST: APIRoute = async ({ request }) => {
       Date.now()
     );
     if (isJson) {
-      return Response.json({ error: '이메일 또는 비밀번호가 올바르지 않습니다' }, { status: 401 });
+      return Response.json({ error: GENERIC_AUTH_FAIL }, { status: 401 });
     }
     return new Response(null, {
       status: 302,

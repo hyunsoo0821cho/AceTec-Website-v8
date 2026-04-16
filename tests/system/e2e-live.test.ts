@@ -183,9 +183,11 @@ describe('E2E: API 엔드포인트', () => {
     expect(res.status).toBe(401);
   });
 
-  it('GET /api/auth/me — 미인증 401 반환', async () => {
+  it('GET /api/auth/me — 미인증 시 200 { user: null } 반환 (콘솔 401 노이즈 제거 목적)', async () => {
     const res = await fetch(`${BASE_URL}/api/auth/me`);
-    expect(res.status).toBe(401);
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body.user).toBeNull();
   });
 
   it('GET /api/conversations — visitor_id 없이 400 반환', async () => {

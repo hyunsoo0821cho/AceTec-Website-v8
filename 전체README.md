@@ -2,7 +2,19 @@
 
 **AceTec** (acetronix.co.kr) — 한국 B2B 임베디드 컴퓨팅 & 산업용 기술 솔루션 기업의 마케팅 웹사이트.
 Astro 6 기반 하이브리드(SSG + SSR) 구조. 로컬 AI 챗봇(RAG + Reranker), Admin CMS 인라인 편집, 다국어(8개 언어 완전 번역 + 20개 언어 프레임워크), 회원 관리 시스템 포함.
+pm2 status                   # 프로세스 요약
+pm2 monit                    # 실시간 CPU/메모리 대시보드
+pm2 logs acetec --lines 50   # 최근 로그
+pm2 describe acetec          # 상세 (restart 카운트, 재시작 이력 등)
+서버 수동 재기동이 필요할 때
 
+pm2 restart acetec           # 무중단(<1초) 재기동
+pm2 reload acetec            # graceful (요청 완료 후 재기동)
+재부팅 시 자동 시작 (선택)
+
+# 한 번만 실행 — Windows 시작 시 PM2 가 자동 기동
+pm2-startup install
+pm2 save
 ---
 
 ### 최신 테스트 결과 (2026-04-14)
