@@ -1,62 +1,62 @@
 {
-  "companyDescription": "30년 이상 임베디드 컴퓨팅, 산업용 PC, 안전 필수 시스템의 신뢰받는 파트너 — 국방, 항공우주, 철도, 산업 시장 대상.",
+  "companyDescription": "Trusted for over 30 years in embedded computing, industrial PCs, and safety-critical systems — serving defense, aerospace, railway, and industrial markets.",
   "solutionLinks": [
     {
-      "label": "군수항공분야",
+      "label": "Military & Aerospace",
       "href": "/products/military"
     },
     {
-      "label": "철도분야",
+      "label": "Rail Transportation",
       "href": "/products/railway"
     },
     {
-      "label": "자동화분야",
+      "label": "Industrial Automation",
       "href": "/products/industrial"
     },
     {
-      "label": "정보통신분야",
+      "label": "Telecom & Networking",
       "href": "/products/telecom"
     },
     {
-      "label": "모델링 & 시뮬레이션 분야",
+      "label": "Sensor Modeling & Simulation",
       "href": "/products/sensor"
     },
     {
-      "label": "슈퍼컴퓨팅시스템분야",
+      "label": "Supercomputing Systems",
       "href": "/products/hpc"
     },
     {
-      "label": "산업용컴퓨터분야",
+      "label": "Industrial PCs",
       "href": "/products/ipc"
     },
     {
-      "label": "레이더",
+      "label": "Radar Processing & Display",
       "href": "/products/radar"
     },
     {
-      "label": "초고속 데이터 인터커넥트",
+      "label": "High-Speed Interconnect",
       "href": "/products/interconnect"
     }
   ],
   "companyLinks": [
     {
-      "label": "솔루션",
+      "label": "Solutions",
       "href": "/solutions"
     },
     {
-      "label": "적용 분야",
+      "label": "Applications",
       "href": "/applications"
     },
     {
-      "label": "회사 소개",
+      "label": "About",
       "href": "/about"
     },
     {
-      "label": "연혁",
+      "label": "History",
       "href": "/history"
     },
     {
-      "label": "문의",
+      "label": "Contact",
       "href": "/contact"
     }
   ],
@@ -99,18 +99,18 @@
     }
   ],
   "contact": {
-    "seoulLabel": "서울 본사",
+    "seoulLabel": "Seoul HQ",
     "seoulEmail": "acetec@acetec-korea.co.kr",
     "seoulPhone": "+82-2-420-2343",
     "seoulFax": "FAX: +82-2-420-2757",
-    "daejeonLabel": "대전 지사",
-    "daejeonAddress": "대전광역시 유성구 테크노2로 199, 미건테크노월드 205호",
+    "daejeonLabel": "Daejeon Branch",
+    "daejeonAddress": "Rm. 205, Migeon Techno World, 199, Techno 2-ro, Yuseong-gu, Daejeon",
     "daejeonPhone": "+82-42-471-2343",
     "daejeonFax": "FAX: +82-42-933-2642"
   },
   "copyright": {
     "company": "AceTec Co., Ltd.",
-    "ceo": "장정훈",
+    "ceo": "Jang Jeong Hoon",
     "bizNo": "215-81-68464"
   }
 }

@@ -151,6 +151,14 @@ async function ensurePortFreeAndKill() {
 }
 
 async function main() {
+  // ── 0단계: 미번역 i18n 키 자동 번역 ──
+  console.log('[deploy] 0/4 i18n 미번역 키 자동 번역 확인...');
+  try {
+    execSync('node scripts/translate-missing.mjs', { stdio: 'inherit', cwd: ROOT });
+  } catch (e) {
+    console.warn('[deploy] ⚠️ i18n 자동 번역 실패 (빌드는 계속 진행):', e.message);
+  }
+
   console.log('[deploy] 1/4 빌드 시작...');
   execSync('npm run build', { stdio: 'inherit' });
 

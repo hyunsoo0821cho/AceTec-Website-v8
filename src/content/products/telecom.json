@@ -2,7 +2,7 @@
   "category": "telecom",
   "title": "Telecom & Networking",
   "pageTitle": "Telecom & Networking Products - AceTec",
-  "description": "Intel/AMD-based network appliances for firewall, VPN, UTM, and load balancing  along with high-performance NIC adapters for data center and telecom infrastructure.",
+  "description": "Intel/AMD-based network appliances for firewall, VPN, UTM, and load balancing — along with high-performance NIC adapters for data center and telecom infrastructure.",
   "items": [],
   "sections": [
     {
@@ -97,15 +97,48 @@
     },
     {
       "title": "Machine Vision NICs",
-      "products": []
-    },
-    {
-      "title": "Industrial PC NICs",
-      "products": []
-    },
-    {
-      "title": "PCIE Network Adapter",
-      "products": []
+      "products": [
+        {
+          "name": "MCX453A",
+          "image": "/uploads/products/network/MCX453A.png",
+          "features": []
+        },
+        {
+          "name": "MCX456A",
+          "image": "/uploads/products/network/MCX456A.png",
+          "features": []
+        },
+        {
+          "name": "MCX555A",
+          "image": "/uploads/products/network/MCX555A.png",
+          "features": []
+        },
+        {
+          "name": "MCX556A",
+          "image": "/uploads/products/network/MCX556A.png",
+          "features": []
+        },
+        {
+          "name": "ACE2004PT-POE (1G POE)",
+          "image": "/uploads/products/network/ACE2004PT-POE-1G-POE.png",
+          "features": []
+        },
+        {
+          "name": "ACE9804BT (10G)",
+          "image": "/uploads/products/network/ACE9804BT-10G.png",
+          "features": []
+        },
+        {
+          "name": "ACE9812BT (10G)",
+          "image": "/uploads/products/network/ACE9812BT-10G.png",
+          "features": []
+        },
+        {
+          "name": "ACE1023PF-4SF28 (25G)",
+          "image": "/uploads/products/network/ACE1023PF-4SF28-25G.png",
+          "features": []
+        }
+      ]
     }
   ]
 }
