@@ -100,7 +100,7 @@ const hasSections = sections && sections.length > 0;
               <span class="p-locked-icon">🔒</span>
               <span class="p-locked-text">승인된 사용자만 열람 가능</span>
             </div>
-          ) : product.features && product.features.length > 0 && (
+          ) : product.features && product.features.length > 0 ? (
             <div class="p-detail-wrap">
               <button type="button" class="p-detail-toggle" aria-expanded="false">
                 <span class="p-detail-toggle-text">Details</span>
@@ -108,6 +108,16 @@ const hasSections = sections && sections.length > 0;
               </button>
               <ul class="p-features p-features--collapsed" {...e(`sections[${si}].products[${pi}].featuresHtml`)}>
                 {product.features.map((f) => <li>{f}</li>)}
+              </ul>
+            </div>
+          ) : isAdmin && (
+            <div class="p-detail-wrap">
+              <button type="button" class="p-detail-toggle" aria-expanded="true">
+                <span class="p-detail-toggle-text">Details</span>
+                <svg class="p-detail-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,4 6,8 10,4"></polyline></svg>
+              </button>
+              <ul class="p-features p-features--expanded p-features--empty" {...e(`sections[${si}].products[${pi}].featuresHtml`)}>
+                <li style="color:#94a3b8;font-style:italic;">클릭하여 설명 추가 (여러 줄은 Enter)</li>
               </ul>
             </div>
           )}
