@@ -20,7 +20,7 @@
           ]
         },
         {
-          "name": "ACE-BoxIPC-73L2D",
+          "name": "ACE-BoxIPC-76L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
             "2개의 기가비트 LAN 포트 지원",
@@ -71,14 +71,14 @@
           "name": "ACE-BoxIPC-74L2-S4",
           "image": "/uploads/products/1776402807492-ace-boxipc-74l2-s4.webp",
           "features": [
-            "Intel® Core™ i7-4770TE (8M Cache, Quad Core 2.3GHz up to 3.3GHz)"
+            "Intel® Core™ i7-4770TE(8M 캐시, 쿼드 코어 2.3GHz 최대 3.3GHz)"
           ]
         },
         {
           "name": "ACE-OWS-712-S4",
           "image": "/uploads/products/1776402802638-ace-ows-712-s4.webp",
           "features": [
-            "Intel® Core™ i7-1270TE (25M Cache, 12 Core 1.40GHz up to 4.6GHz)"
+            "Intel® Core™ i7-1270TE(25M 캐시, 12 코어 1.40GHz 최대 4.6GHz)"
           ]
         }
       ]
@@ -894,17 +894,23 @@
         {
           "name": "ACE-N-J4125(Mini)",
           "image": "/uploads/products/network/ACE-N-J4125(Mini).png",
-          "features": []
+          "features": [
+            "클릭하여 설명 추가 (여러 줄은 Enter)"
+          ]
         },
         {
           "name": "ACE-N-J4125",
           "image": "/uploads/products/network/ACE-N-J4125.png",
-          "features": []
+          "features": [
+            "클릭하여 설명 추가 (여러 줄은 Enter)"
+          ]
         },
         {
           "name": "ACE-N-J6412",
           "image": "/uploads/products/network/ACE-N-J6412.png",
-          "features": []
+          "features": [
+            "클릭하여 설명 추가 (여러 줄은 Enter)"
+          ]
         }
       ]
     },
@@ -916,17 +922,23 @@
         {
           "name": "ACE-N-H170",
           "image": "/uploads/products/network/ACE-N-H170.png",
-          "features": []
+          "features": [
+            "클릭하여 설명 추가 (여러 줄은 Enter)"
+          ]
         },
         {
           "name": "ACE-N-Q670E",
           "image": "/uploads/products/network/ACE-N-Q670E.png",
-          "features": []
+          "features": [
+            "클릭하여 설명 추가 (여러 줄은 Enter)"
+          ]
         },
         {
           "name": "ACE-N-C252",
           "image": "/uploads/products/network/ACE-N-C252.png",
-          "features": []
+          "features": [
+            "클릭하여 설명 추가 (여러 줄은 Enter)"
+          ]
         }
       ]
     },
@@ -938,17 +950,23 @@
         {
           "name": "ACE-N-C246",
           "image": "/uploads/products/network/ACE-N-C246.png",
-          "features": []
+          "features": [
+            "클릭하여 설명 추가 (여러 줄은 Enter)"
+          ]
         },
         {
           "name": "ACE-N-C621",
           "image": "/uploads/products/network/ACE-N-C621.png",
-          "features": []
+          "features": [
+            "클릭하여 설명 추가 (여러 줄은 Enter)"
+          ]
         },
         {
           "name": "ACE-N-C741",
           "image": "/uploads/products/network/ACE-N-C741.png",
-          "features": []
+          "features": [
+            "클릭하여 설명 추가 (여러 줄은 Enter)"
+          ]
         }
       ]
     },
@@ -960,17 +978,23 @@
         {
           "name": "ACE-N-1UXEON",
           "image": "/uploads/products/network/ACE-N-1UXEON.png",
-          "features": []
+          "features": [
+            "클릭하여 설명 추가 (여러 줄은 Enter)"
+          ]
         },
         {
           "name": "ACE-N-2UXEON",
           "image": "/uploads/products/network/ACE-N-2UXEON.png",
-          "features": []
+          "features": [
+            "클릭하여 설명 추가 (여러 줄은 Enter)"
+          ]
         },
         {
           "name": "ACE-N-4UGPU",
           "image": "/uploads/products/network/ACE-N-4UGPU.png",
-          "features": []
+          "features": [
+            "클릭하여 설명 추가 (여러 줄은 Enter)"
+          ]
         }
       ]
     },
