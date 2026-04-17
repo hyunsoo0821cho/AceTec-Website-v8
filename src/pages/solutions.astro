@@ -70,10 +70,10 @@ function resolveSubcatHref(itemHref: string, subName: string, fallbackIndex: num
         <h1 class="text-6xl" {...e('title')} data-i18n="solutions.title">{d.title}</h1>
         <p class="text-lg" {...e('description')} data-i18n="solutions.desc">{d.description}</p>
       </div>
-      <div class={`svc-cards ${isAdmin ? 'is-admin' : ''}`}>
+      <div class={`svc-cards ${isAdmin ? 'is-admin' : ''}`} {...(isAdmin ? { 'data-admin-sort': 'solutionCards' } : {})}>
         {
           cards.map((item: any, i: number) => (
-            <div class="s-card" data-href={item.href || ''} style="position:relative;">
+            <div class="s-card" data-href={item.href || ''} {...(isAdmin ? { 'data-sort-id': String(i), draggable: 'true' } : {})} style="position:relative;">
               {isAdmin && (
                 <button class="admin-delete-btn" data-admin-delete={`solutionCards[${i}]`} title="Delete">
                   &times;

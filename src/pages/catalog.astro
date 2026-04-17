@@ -100,9 +100,9 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
             <span {...e(`categories[${ci}].title`)}>{cat.title}</span>
           </h2>
 
-          <div class="products-grid">
+          <div class="products-grid" {...(isAdmin ? { 'data-admin-sort': `categories[${ci}].products` } : {})}>
             {cat.products.map((prod: any, pi: number) => (
-              <div class="p-card" style="position:relative;">
+              <div class="p-card" {...(isAdmin ? { 'data-sort-id': String(pi), draggable: 'true' } : {})} style="position:relative;">
                 {isAdmin && (
                   <button class="admin-delete-btn" data-admin-delete={`categories[${ci}].products[${pi}]`} title="Delete Product">
                     &times;

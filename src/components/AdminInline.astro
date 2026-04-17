@@ -38,6 +38,15 @@ const { page, isAdmin } = Astro.props;
     .admin-btn-dash { background:#334155; color:#cbd5e1; } .admin-btn-dash:hover { background:#475569; }
     .admin-btn-survey { background:#059669; color:#fff; } .admin-btn-survey:hover { background:#047857; }
     .admin-btn-logout { background:transparent; color:#94a3b8; border:1px solid #475569; } .admin-btn-logout:hover { color:#fff; border-color:#64748b; }
+
+    /* Drag-to-reorder visual feedback (admin only) */
+    [data-admin-sort] > [data-sort-id] { cursor: grab; }
+    [data-admin-sort] > [data-sort-id]:active { cursor: grabbing; }
+    [data-admin-sort] > [data-sort-id].sort-dragging { opacity: 0.35; }
+    [data-admin-sort] > [data-sort-id].sort-over-before { box-shadow: -4px 0 0 0 #2563eb; }
+    [data-admin-sort] > [data-sort-id].sort-over-after  { box-shadow:  4px 0 0 0 #2563eb; }
+    [data-admin-sort] > [data-sort-id].sort-over-top    { box-shadow: 0 -4px 0 0 #2563eb; }
+    [data-admin-sort] > [data-sort-id].sort-over-bottom { box-shadow: 0  4px 0 0 #2563eb; }
   </style>
 
   <script define:vars={{ page }}>
@@ -154,6 +163,71 @@ const { page, isAdmin } = Astro.props;
         imgInput.value = '';
       });
 
+      // ===== DRAG-TO-REORDER =====
+      // 컨테이너: [data-admin-sort="<arrayPath>"]
+      // 항목: [data-sort-id="<originalIndex>"]
+      // 드롭 후 컨테이너에 data-sort-changed="1" 플래그가 붙어 Save 시 배열 순서 PUT.
+      document.querySelectorAll('[data-admin-sort]').forEach(container => {
+        let draggedCard = null;
+        const items = container.querySelectorAll(':scope > [data-sort-id]');
+        const isHorizontalLayout = () => {
+          if (items.length < 2) return true;
+          const a = items[0].getBoundingClientRect();
+          const b = items[1].getBoundingClientRect();
+          return Math.abs(a.top - b.top) < Math.min(a.height, b.height) / 2;
+        };
+        const clearOver = () => {
+          container.querySelectorAll('.sort-over-before,.sort-over-after,.sort-over-top,.sort-over-bottom')
+            .forEach(e => e.classList.remove('sort-over-before','sort-over-after','sort-over-top','sort-over-bottom'));
+        };
+        items.forEach(card => {
+          card.addEventListener('dragstart', (ev) => {
+            // contenteditable 안에서 시작된 드래그는 무시 (텍스트 드래그로 취급)
+            if (ev.target && ev.target.isContentEditable) return;
+            draggedCard = card;
+            setTimeout(() => card.classList.add('sort-dragging'), 0);
+            ev.dataTransfer.effectAllowed = 'move';
+            ev.dataTransfer.setData('text/plain', card.getAttribute('data-sort-id') || '');
+          });
+          card.addEventListener('dragend', () => {
+            card.classList.remove('sort-dragging');
+            clearOver();
+            draggedCard = null;
+          });
+          card.addEventListener('dragover', (ev) => {
+            if (!draggedCard || draggedCard === card) return;
+            ev.preventDefault();
+            ev.dataTransfer.dropEffect = 'move';
+            clearOver();
+            const rect = card.getBoundingClientRect();
+            if (isHorizontalLayout()) {
+              const after = ev.clientX > rect.left + rect.width / 2;
+              card.classList.add(after ? 'sort-over-after' : 'sort-over-before');
+            } else {
+              const after = ev.clientY > rect.top + rect.height / 2;
+              card.classList.add(after ? 'sort-over-bottom' : 'sort-over-top');
+            }
+          });
+          card.addEventListener('dragleave', () => {
+            card.classList.remove('sort-over-before','sort-over-after','sort-over-top','sort-over-bottom');
+          });
+          card.addEventListener('drop', (ev) => {
+            if (!draggedCard || draggedCard === card) return;
+            ev.preventDefault();
+            clearOver();
+            const rect = card.getBoundingClientRect();
+            const after = isHorizontalLayout()
+              ? (ev.clientX > rect.left + rect.width / 2)
+              : (ev.clientY > rect.top + rect.height / 2);
+            if (after) card.insertAdjacentElement('afterend', draggedCard);
+            else card.insertAdjacentElement('beforebegin', draggedCard);
+            container.setAttribute('data-sort-changed', '1');
+            const status = document.getElementById('adminStatus');
+            if (status) { status.textContent = 'Order changed — Save to keep'; status.style.color = '#4ade80'; }
+          });
+        });
+      });
+
       // ===== SAVE =====
       document.getElementById('adminSave')?.addEventListener('click', async () => {
         const status = document.getElementById('adminStatus');
@@ -161,24 +235,38 @@ const { page, isAdmin } = Astro.props;
         try {
           // Group edits by target page
           const editsByPage = {};
+          const ensure = (tp) => {
+            if (!editsByPage[tp]) editsByPage[tp] = { texts: [], imgs: [], sorts: [] };
+            return editsByPage[tp];
+          };
           editables.forEach(el => {
             const p = el.getAttribute('data-edit');
             const targetPage = el.getAttribute('data-edit-page') || page;
             if (!p) return;
-            if (!editsByPage[targetPage]) editsByPage[targetPage] = { texts: [], imgs: [] };
-            editsByPage[targetPage].texts.push({ path: p, value: el.innerText.trim() });
+            ensure(targetPage).texts.push({ path: p, value: el.innerText.trim() });
           });
           document.querySelectorAll('[data-img][data-new-src]').forEach(im => {
             const p = im.getAttribute('data-img');
             const s = im.getAttribute('data-new-src');
             const targetPage = im.getAttribute('data-edit-page') || page;
             if (!p || !s) return;
-            if (!editsByPage[targetPage]) editsByPage[targetPage] = { texts: [], imgs: [] };
-            editsByPage[targetPage].imgs.push({ path: p, value: s });
+            ensure(targetPage).imgs.push({ path: p, value: s });
             im.removeAttribute('data-new-src');
           });
+          // 순서 변경 수집: [data-admin-sort][data-sort-changed]
+          let hasSortChange = false;
+          document.querySelectorAll('[data-admin-sort][data-sort-changed]').forEach(container => {
+            const arrayPath = container.getAttribute('data-admin-sort');
+            if (!arrayPath) return;
+            const targetPage = container.getAttribute('data-edit-page') || page;
+            const order = Array.from(container.querySelectorAll(':scope > [data-sort-id]'))
+              .map(el => parseInt(el.getAttribute('data-sort-id') || '0'));
+            if (order.length === 0) return;
+            ensure(targetPage).sorts.push({ arrayPath, order });
+            hasSortChange = true;
+          });
           // Ensure main page is included even if no edits
-          if (!editsByPage[page]) editsByPage[page] = { texts: [], imgs: [] };
+          ensure(page);
 
           // i18n 동기화: 편집된 요소의 data-i18n 키도 수집
           const i18nUpdates = {};
@@ -205,6 +293,13 @@ const { page, isAdmin } = Astro.props;
               }
             });
             edits.imgs.forEach(e => setByPath(data, e.path, e.value));
+            // sort 순서는 text/img 적용 후 마지막에 배열 재배치 (원래 인덱스 기준 수정이 먼저 반영되어야 함)
+            (edits.sorts || []).forEach(s => {
+              const arr = getByPath(data, s.arrayPath);
+              if (!Array.isArray(arr)) return;
+              const reordered = s.order.map(oldIdx => arr[oldIdx]).filter(v => v !== undefined);
+              if (reordered.length === arr.length) setByPath(data, s.arrayPath, reordered);
+            });
             const saveRes = await fetch('/api/pages/' + targetPage, {
               method: 'PUT',
               headers: { 'Content-Type': 'application/json' },
@@ -224,7 +319,12 @@ const { page, isAdmin } = Astro.props;
           }
 
           if (status) {
-            if (allOk) { status.textContent = 'Saved!'; status.style.color = '#4ade80'; setTimeout(() => { status.textContent = ''; }, 2000); }
+            if (allOk) {
+              status.textContent = 'Saved!'; status.style.color = '#4ade80';
+              // 순서 변경이 포함된 저장은 DOM의 data-edit 인덱스가 어긋나므로 새 HTML로 새로고침
+              if (hasSortChange) { setTimeout(() => window.location.reload(), 400); }
+              else { setTimeout(() => { status.textContent = ''; }, 2000); }
+            }
             else { status.textContent = 'Partial save'; status.style.color = '#fbbf24'; }
           }
         } catch (err) {
