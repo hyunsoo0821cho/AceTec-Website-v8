@@ -32,7 +32,7 @@
           ]
         },
         {
-          "name": "ACE-BoxIPC-710L2D",
+          "name": "ACE-BoxIPC-79L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
             "2개의 기가비트 LAN 포트 지원",
@@ -44,7 +44,7 @@
           ]
         },
         {
-          "name": "ACE-BoxIPC-74L2D",
+          "name": "ACE-BoxIPC-710L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
             "2x 기가비트 LAN 포트 지원",
@@ -56,7 +56,7 @@
           ]
         },
         {
-          "name": "ACE-BoxIPC-76L2D",
+          "name": "ACE-BoxIPC-712L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
             "2x 기가비트 LAN 포트 지원",
