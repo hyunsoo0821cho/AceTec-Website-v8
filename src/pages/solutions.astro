@@ -35,6 +35,30 @@ function cardKey(href: string): string {
   return hrefToKey[href] || '';
 }
 
+// 서브카테고리 이름 → 대상 제품 페이지의 섹션 인덱스 매핑 (이름 기반 매칭)
+const sectionIndexMap: Record<string, Record<string, number>> = {};
+function loadSectionMap(href: string): Record<string, number> {
+  if (sectionIndexMap[href]) return sectionIndexMap[href];
+  const m = href.match(/^\/products\/(\w+)$/);
+  if (!m) return {};
+  try {
+    const data = JSON.parse(fs.readFileSync(path.join(root, 'src', 'content', 'products', `${m[1]}.json`), 'utf-8'));
+    const map: Record<string, number> = {};
+    (data.sections || []).forEach((s: { title: string }, idx: number) => {
+      if (s.title) map[s.title.trim().toLowerCase()] = idx;
+    });
+    sectionIndexMap[href] = map;
+    return map;
+  } catch {
+    return {};
+  }
+}
+function resolveSubcatHref(itemHref: string, subName: string, fallbackIndex: number): string {
+  const map = loadSectionMap(itemHref);
+  const matched = map[subName.trim().toLowerCase()];
+  return `${itemHref}#section-${matched !== undefined ? matched : fallbackIndex}`;
+}
+
 ---
 
 <Base title="Solutions - AceTec">
@@ -91,7 +115,7 @@ function cardKey(href: string): string {
                       <ul class="s-subcats">
                         {item.subcategories.map((sub: string, si: number) => (
                           <li>
-                            <a href={`${item.href}#section-${si}`} class="s-subcat-link" {...e(`solutionCards[${i}].subcategories[${si}]`)}>{sub}</a>
+                            <a href={resolveSubcatHref(item.href, sub, si)} class="s-subcat-link" {...e(`solutionCards[${i}].subcategories[${si}]`)}>{sub}</a>
                             {isAdmin && (
                               <button class="subcat-delete-btn" data-admin-delete={`solutionCards[${i}].subcategories[${si}]`} title="Delete">&times;</button>
                             )}
