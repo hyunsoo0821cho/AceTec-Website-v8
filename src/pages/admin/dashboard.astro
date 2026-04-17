@@ -1,6 +1,7 @@
 ---
 export const prerender = false;
 import { verifySession, getSessionIdFromCookie, getUserInfo } from '../../lib/auth';
+import LangSwitcher from '../../components/LangSwitcher.astro';
 
 const cookie = Astro.request.headers.get('cookie');
 const session = verifySession(getSessionIdFromCookie(cookie));
@@ -117,6 +118,7 @@ if (!currentUser || currentUser.role !== 'admin') return Astro.redirect('/');
       <h1>AceTec Admin Dashboard</h1>
     </div>
     <div class="topbar-right">
+      <LangSwitcher />
       <a href="/" class="topbar-btn topbar-btn--back">Back to Site</a>
       <form method="POST" action="/api/auth/logout" style="display:inline;">
         <button type="submit" class="topbar-btn topbar-btn--logout">Logout</button>
