@@ -92,7 +92,7 @@
           "name": "ACE-Sever-4U-Xeon-E5-F",
           "image": "/images/catalog/ACE-Sever-4U-Xeon-E5-F.png",
           "features": [
-            "4U Rack/Tower Convertible (괴Ԯ强) Supports Intel"
+            "4U Rack/Tower Convertible Supports Intel"
           ]
         }
       ]
@@ -136,10 +136,11 @@
           ]
         },
         {
-          "name": "New Product",
+          "name": "ACE-IPC02D-i7-12",
           "image": "/images/catalog/컴퓨터1.png",
           "features": [
-            "Feature 1"
+            "Intel® Core™ i7-12700T",
+            "(12M Cache, 8 Core 2.0GHz up to 4.3GHz)"
           ]
         }
       ]
