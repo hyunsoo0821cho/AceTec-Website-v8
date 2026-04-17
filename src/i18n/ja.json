@@ -283,7 +283,8 @@
     "corpName": "株式会社エーステック",
     "ceoLabel": "代表取締役",
     "ceoName": "張政勲",
-    "bizLabel": "事業者番号"
+    "bizLabel": "事業者番号",
+    "brandName": "エイステック"
   },
   "login": {
     "title": "ログイン",

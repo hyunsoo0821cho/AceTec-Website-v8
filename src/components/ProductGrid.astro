@@ -250,11 +250,14 @@ const hasSections = sections && sections.length > 0;
     background: var(--color-gray-200);
     padding-bottom: 75%;
   }
-  /* telecom 페이지의 Server network appliance(s3) / Customized Network Appliance(s4)
+  /* telecom 페이지의 High-end(s2) / Server(s3) / Customized(s4)
      랙서버·스키매틱 이미지는 세로로 길게 표시 (다른 카테고리·섹션 무영향) */
+  .cat-section:has(> [data-i18n="ps.telecom.s2"]) .p-img {
+    padding-bottom: 130%;
+  }
   .cat-section:has(> [data-i18n="ps.telecom.s3"]) .p-img,
   .cat-section:has(> [data-i18n="ps.telecom.s4"]) .p-img {
-    padding-bottom: 130%;
+    padding-bottom: 160%;
   }
   .p-img img,
   .p-img :global(img) {

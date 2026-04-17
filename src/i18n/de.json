@@ -283,7 +283,8 @@
     "corpName": "AceTec Co., Ltd.",
     "ceoLabel": "Geschäftsführer",
     "ceoName": "Jang Jeong Hoon",
-    "bizLabel": "Handelsregisternr."
+    "bizLabel": "Handelsregisternr.",
+    "brandName": "AceTec"
   },
   "login": {
     "title": "Anmelden",

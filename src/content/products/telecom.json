@@ -96,47 +96,96 @@
       ]
     },
     {
-      "title": "Machine Vision NICs",
+      "title": "Network NICs Adapter",
       "products": [
         {
-          "name": "MCX453A",
+          "name": "MCX453A-FCAT",
           "image": "/uploads/products/network/MCX453A.png",
-          "features": []
+          "features": [
+            "ConnectX-4 1Port 56(40)Gb/s Infiniband(Ethernet) Card",
+            "RDMA over Converged Ethernet(RoCE) support",
+            "SR-IOV / IEEE 802 / IEEE 1588 v2 support",
+            "PCIe Gen 3.0 compliant, 1.1 and 2.0 compatible",
+            "Auto-negotiates to x8, x4, x2 or x1"
+          ]
         },
         {
-          "name": "MCX456A",
+          "name": "MCX456A-FCAT",
           "image": "/uploads/products/network/MCX456A.png",
-          "features": []
+          "features": [
+            "ConnectX-4 2Port 56(40)Gb/s Infiniband(Ethernet) Card",
+            "RDMA over Converged Ethernet(RoCE) support",
+            "SR-IOV / IEEE 802 / IEEE 1588 v2 support",
+            "PCIe Gen 3.0 compliant, 1.1 and 2.0 compatible",
+            "Auto-negotiates to x8, x4, x2 or x1"
+          ]
         },
         {
-          "name": "MCX555A",
+          "name": "MCX555A-ECAT",
           "image": "/uploads/products/network/MCX555A.png",
-          "features": []
+          "features": [
+            "ConnectX-5 1Port up to 100Gb/s Infiniband(Ethernet) Card",
+            "RDMA over Converged Ethernet(RoCE) support",
+            "SR-IOV / IEEE 802 / IEEE 1588 v2 support",
+            "PCIe Gen 4.0 / 3.0 compliant, 1.1 and 2.0 compatible",
+            "Auto-negotiates to x16, x8, x4, x2 or x1"
+          ]
         },
         {
-          "name": "MCX556A",
+          "name": "MCX556A-ECAT",
           "image": "/uploads/products/network/MCX556A.png",
-          "features": []
+          "features": [
+            "ConnectX-5 2Port up to 100Gb/s Infiniband(Ethernet) Card",
+            "RDMA over Converged Ethernet(RoCE) support",
+            "SR-IOV / IEEE 802 / IEEE 1588 v2 support",
+            "PCIe Gen 4.0 / 3.0 compliant, 1.1 and 2.0 compatible",
+            "Auto-negotiates to x16, x8, x4, x2 or x1"
+          ]
         },
         {
           "name": "ACE2004PT-POE (1G POE)",
           "image": "/uploads/products/network/ACE2004PT-POE-1G-POE.png",
-          "features": []
+          "features": [
+            "PCIe x4 Quad-port 802.3at PoE+ Gigabit Vision Frame Grabber Card (Intel I350)",
+            "The single-port PoE output power consumption is up to 30W, and an external large 4-Pin power supply interface is provided",
+            "Adaptive to the power consumption output required by external devices: Class 0, Class 1, Class 2, Class 3"
+          ]
         },
         {
           "name": "ACE9804BT (10G)",
           "image": "/uploads/products/network/ACE9804BT-10G.png",
-          "features": []
+          "features": [
+            "Quad-port 10G SFP+ Connectivity",
+            "PCI Express (PCIe) v3.0 (8.0GT/s) x8 lanes",
+            "Network Virtualization",
+            "PXE boot",
+            "IEEE 802.1q VLAN support with VLAN tag insertion",
+            "Half height & full-height bracket"
+          ]
         },
         {
           "name": "ACE9812BT (10G)",
           "image": "/uploads/products/network/ACE9812BT-10G.png",
-          "features": []
+          "features": [
+            "Dual-port 10GbE adapters",
+            "PCI Express (PCIe) v3.0, 8.0 GT/s, x4 lanes",
+            "Standard CAT 6a cabling with RJ45 connectors",
+            "Unified networking delivering LAN iSCSI and FCoE in one low-cost CNA",
+            "Network Virtualization, low latency",
+            "Low profile and full-height bracket"
+          ]
         },
         {
           "name": "ACE1023PF-4SF28 (25G)",
           "image": "/uploads/products/network/ACE1023PF-4SF28-25G.png",
-          "features": []
+          "features": [
+            "Fiber 25G ethernet network adapter based on Intel chips",
+            "Four 1/10/25GbE SFP28 ports deliver multiple high speed connections",
+            "Dynamic Device Personalization (DDP)",
+            "Supports both RDMA iWARP and RoCEv2",
+            "Application Device Queues (ADQ)",
+            "IEEE 1588 Precision Time Protocol (PTP)"
+          ]
         }
       ]
     }

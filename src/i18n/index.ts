@@ -192,8 +192,8 @@ async function autoTranslatePage(lang: string) {
     if (el.querySelector('input,textarea,select,form,iframe,video,audio,img,svg,picture')) return;
     // 블록 컨테이너 + button/label/summary 에 자식 요소가 있으면 번역하지 않음 (자식 wipe 방지)
     if (['DIV', 'SECTION', 'ARTICLE', 'MAIN', 'HEADER', 'FOOTER', 'ASIDE', 'NAV', 'FORM', 'BUTTON', 'LABEL', 'SUMMARY'].includes(el.tagName) && el.children.length > 0) return;
-    // 숨겨진 요소 스킵 — 단, 접이식 컨테이너(메가메뉴/제품 Details/아코디언)는 미리 번역
-    if (el.offsetParent === null && !el.closest('.mega-menu') && !el.closest('.p-features') && !el.closest('.ch-body') && !el.closest('.p-price')) return;
+    // 숨겨진 요소 스킵 — 단, 접이식 컨테이너(메가메뉴/제품 Details/아코디언/솔루션 분야탭)는 미리 번역
+    if (el.offsetParent === null && !el.closest('.mega-menu') && !el.closest('.p-features') && !el.closest('.ch-body') && !el.closest('.p-price') && !el.closest('.s-panel')) return;
     if (el.closest('.admin-add-btn') || el.closest('.admin-delete-btn')) return;
     // translate="no" 속성이 있는 요소 또는 그 자식은 번역 제외 (제품명 등 영문 고정)
     if (el.getAttribute('translate') === 'no' || el.closest('[translate="no"]')) return;

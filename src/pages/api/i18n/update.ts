@@ -42,10 +42,24 @@ export const POST: APIRoute = async ({ request }) => {
     return Response.json({ error: 'Language file not found' }, { status: 404 });
   }
 
+  // ko.json 번역 보호: nav/products/footer 핵심 키는 덮어쓰기 차단
+  const PROTECTED_PREFIXES_KO = [
+    'nav.solutions', 'nav.applications', 'nav.about', 'nav.history', 'nav.contact',
+    'nav.login', 'nav.inquiry', 'nav.productsIntro',
+    'products.military', 'products.railway', 'products.telecom', 'products.industrial',
+    'products.sensor', 'products.hpc', 'products.radar', 'products.ipc', 'products.interconnect',
+    'footer.seoulHQ', 'footer.daejeonBranch', 'footer.corpName', 'footer.ceoName',
+  ];
+
   const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
   for (const [key, value] of Object.entries(updates)) {
     if (typeof value === 'string') {
+      // ko.json 보호 키는 영어 값으로 덮어쓰기 차단
+      if (lang === 'ko' && PROTECTED_PREFIXES_KO.includes(key)) {
+        const hasKorean = /[\uAC00-\uD7AF]/.test(value);
+        if (!hasKorean) continue; // 한국어가 없으면 스킵 (영어 덮어쓰기 방지)
+      }
       setNestedValue(data, key, value);
     }
   }

@@ -51,7 +51,7 @@ const compI18n: Record<string, string> = {
 <footer class="site-footer">
   <div class="footer-grid">
     <div class="footer-col">
-      <h4>AceTec</h4>
+      <h4 data-i18n="footer.brandName">에이스텍</h4>
       {
         d ? (
           <p {...e('companyDescription')} data-i18n="home.companyDesc">{d.companyDescription}</p>
@@ -136,7 +136,7 @@ const compI18n: Record<string, string> = {
           <>
             {d.partners.map((p: any, i: number) => (
               <div class="footer-link-row">
-                <a href={p.url} target="_blank" rel="noopener" {...e(`partners[${i}].name`)}>{p.name}</a>
+                <a href={p.url} target="_blank" rel="noopener" translate="no" {...e(`partners[${i}].name`)}>{p.name}</a>
                 {isAdmin && <button class="footer-del-btn" data-admin-delete={`partners[${i}]`} data-edit-page="footer">&times;</button>}
               </div>
             ))}
