@@ -66,6 +66,20 @@
             "3개의 독립 디스플레이 지원",
             "ESD 보호 지원"
           ]
+        },
+        {
+          "name": "ACE-BoxIPC-74L2-S4",
+          "image": "/uploads/products/1776402807492-ace-boxipc-74l2-s4.webp",
+          "features": [
+            "Intel® Core™ i7-4770TE (8M Cache, Quad Core 2.3GHz up to 3.3GHz)"
+          ]
+        },
+        {
+          "name": "ACE-OWS-712-S4",
+          "image": "/uploads/products/1776402802638-ace-ows-712-s4.webp",
+          "features": [
+            "Intel® Core™ i7-1270TE (25M Cache, 12 Core 1.40GHz up to 4.6GHz)"
+          ]
         }
       ]
     },
