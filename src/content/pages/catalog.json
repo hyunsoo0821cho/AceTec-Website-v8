@@ -11,60 +11,60 @@
           "name": "ACE-BoxIPC-C4L3",
           "image": "/images/catalog/ACE-BoxIPC-C4L3.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "RS232/422/485 4개 지원",
-            "DB-9 포트를 통해 1 x 8비트 DIO 지원",
-            "WIFI, 3G/4G 및 GPRS 애플리케이션 지원",
-            "알루미늄 + 금속 알루미늄",
-            "벽면 장착 지원(VESA, DIN 레일 옵션)"
+            "Supports 2 Gigabit LAN ports",
+            "Supports 4 RS232/422/485",
+            "Supports 1 x 8-bit DIO via DB-9 port",
+            "Supports WIFI, 3G/4G and GPRS applications",
+            "Aluminum + Metal Aluminum",
+            "Wall mounting supported (VESA, DIN rail optional)"
           ]
         },
         {
           "name": "ACE-BoxIPC-73L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "DDR3L SO-DIMM 4GB 메모리 최대 16GB",
-            "벽 장착 지원",
-            "RAID 0/1/5/10 지원",
-            "3개의 독립 디스플레이 지원",
-            "인텔 iAMT 8.0 지원"
+            "Supports 2 Gigabit LAN ports",
+            "DDR3L SO-DIMM 4GB memory up to 16GB",
+            "wall mounting support",
+            "RAID 0/1/5/10 support",
+            "Supports 3 independent displays",
+            "Intel iAMT 8.0 support"
           ]
         },
         {
           "name": "ACE-BoxIPC-7110L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "DDR3L SO-DIMM 4GB 메모리 최대 16GB",
-            "벽 장착 지원",
-            "RAID 0/1/5/10 지원",
-            "3개의 독립 디스플레이 지원",
-            "인텔 iAMT 8.0 지원"
+            "Supports 2 Gigabit LAN ports",
+            "DDR3L SO-DIMM 4GB memory up to 16GB",
+            "wall mounting support",
+            "RAID 0/1/5/10 support",
+            "Supports 3 independent displays",
+            "Intel iAMT 8.0 support"
           ]
         },
         {
           "name": "ACE-BoxIPC-74L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
-            "2x 기가비트 LAN 포트 지원",
-            "DDR4 SO-DIMM 8GB 메모리 최대 32GB",
-            "벽 장착 지원",
-            "RAID 0/1 지원",
-            "3개의 독립 디스플레이 지원",
-            "ESD 보호 지원"
+            "Supports 2x Gigabit LAN ports",
+            "DDR4 SO-DIMM 8GB memory up to 32GB",
+            "wall mounting support",
+            "RAID 0/1 support",
+            "Supports 3 independent displays",
+            "Supports ESD protection"
           ]
         },
         {
           "name": "ACE-BoxIPC-76L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
-            "2x 기가비트 LAN 포트 지원",
-            "DDR4 SO-DIMM 8GB 메모리 최대 32GB",
-            "벽 장착 지원",
-            "RAID 0/1 지원",
-            "3개의 독립 디스플레이 지원",
-            "ESD 보호 지원"
+            "Supports 2x Gigabit LAN ports",
+            "DDR4 SO-DIMM 8GB memory up to 32GB",
+            "wall mounting support",
+            "RAID 0/1 support",
+            "Supports 3 independent displays",
+            "Supports ESD protection"
           ]
         }
       ]
@@ -78,48 +78,48 @@
           "name": "ACE-IPC02R-4U-i7-6",
           "image": "/images/catalog/Rack1.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "최대 64GB 시스템 메모리 지원",
-            "표준 랙 장착 지원",
-            "RAID 0/1/5/10 지원",
-            "간편한 설치 HDD 랙 지원",
-            "인텔 iAMT 11.0 지원"
+            "Supports 2 Gigabit LAN ports",
+            "Supports up to 64GB system memory",
+            "Supports standard rack mounting",
+            "RAID 0/1/5/10 support",
+            "Easy installation HDD rack support",
+            "Intel iAMT 11.0 support"
           ]
         },
         {
           "name": "ACE-IPC02R-4U-Xeon-E3",
           "image": "/images/catalog/Rack2.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "최대 64GB 시스템 메모리 지원",
-            "표준 랙 장착 지원",
-            "RAID 0/1/5/10 지원",
-            "간편한 설치 HDD 랙 지원",
-            "인텔 iAMT 11.0 지원"
+            "Supports 2 Gigabit LAN ports",
+            "Supports up to 64GB system memory",
+            "Supports standard rack mounting",
+            "RAID 0/1/5/10 support",
+            "Easy installation HDD rack support",
+            "Intel iAMT 11.0 support"
           ]
         },
         {
           "name": "ACE-IPC02R-2U-i7-6-F",
           "image": "/images/catalog/ACE-IPC02R-2U-i7-4-F.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "최대 64GB 시스템 메모리 지원",
-            "표준 랙 장착 지원",
-            "RAID 0/1/5/10 지원",
-            "간편한 설치 HDD 랙 지원",
-            "인텔 iAMT 11.0 지원"
+            "Supports 2 Gigabit LAN ports",
+            "Supports up to 64GB system memory",
+            "Supports standard rack mounting",
+            "RAID 0/1/5/10 support",
+            "Easy installation HDD rack support",
+            "Intel iAMT 11.0 support"
           ]
         },
         {
           "name": "ACE-IPC02R-4U-i7-9",
           "image": "/images/catalog/Rack3.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "최대 64GB 시스템 메모리 지원",
-            "표준 랙 장착 지원",
-            "RAID 0/1/5/10 지원",
-            "간편한 설치 HDD 랙 지원",
-            "인텔 iAMT 11.0 지원"
+            "Supports 2 Gigabit LAN ports",
+            "Supports up to 64GB system memory",
+            "Supports standard rack mounting",
+            "RAID 0/1/5/10 support",
+            "Easy installation HDD rack support",
+            "Intel iAMT 11.0 support"
           ]
         }
       ]
@@ -133,24 +133,24 @@
           "name": "ACE-Sever-2U-Xeon-E5-F",
           "image": "/images/catalog/ACE-Sever-2U-Xeon-E5-F.png",
           "features": [
-            "2U 랙 마운팅( )",
-            "Intel Xeon E5 시리즈 프로세서 지원(듀얼 소켓)",
-            "최대 256GB 시스템 메모리 지원",
-            "4 x 기가비트 LAN 포트 지원(네트워크 이중화)",
-            "멀티베이 핫스왑 HDD/SSD 랙 지원",
-            "애드온 카드를 위한 유연한 PCIe 확장 슬롯"
+            "2U rack mounting ( )",
+            "Supports Intel Xeon E5 series processors (dual socket)",
+            "Supports up to 256GB system memory",
+            "Supports 4 x Gigabit LAN ports (network redundancy)",
+            "Multibay hot-swap HDD/SSD rack support",
+            "Flexible PCIe expansion slot for add-on cards"
           ]
         },
         {
           "name": "ACE-Sever-4U-Xeon-E5-F",
           "image": "/images/catalog/ACE-Sever-4U-Xeon-E5-F.png",
           "features": [
-            "4U 랙/타워 컨버터블(ִ Ԯ强 )",
-            "Intel Xeon E5 시리즈 고성능 프로세서 지원",
-            "대용량 시스템 메모리 지원(대형 데이터베이스 최적화)",
-            "기업용 HDD를 위한 대용량 스토리지 베이 지원",
-            "AI 및 데이터 분석을 위한 GPU 가속 지원",
-            "연중무휴 미션 크리티컬 안정성을 위한 예비 전원 공급 장치"
+            "4U Rack/Tower Convertible (ԴԮ强)",
+            "Supports Intel Xeon E5 series high-performance processors",
+            "Supports large system memory (optimized for large databases)",
+            "Supports large capacity storage bays for enterprise HDDs",
+            "GPU acceleration support for AI and data analytics",
+            "Redundant power supply for 24/7 mission-critical reliability"
           ]
         }
       ]
@@ -164,54 +164,54 @@
           "name": "ACE-IPC02D-i7-3",
           "image": "/images/catalog/ACE-IPC02D-i7-3.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "DDR3L SO-DIMM 4GB 메모리 최대 16GB",
-            "RAID 0/1/5/10 지원",
-            "3개의 독립 디스플레이 지원",
-            "인텔 iAMT 8.0 지원"
+            "Supports 2 Gigabit LAN ports",
+            "DDR3L SO-DIMM 4GB memory up to 16GB",
+            "RAID 0/1/5/10 support",
+            "Supports 3 independent displays",
+            "Intel iAMT 8.0 support"
           ]
         },
         {
           "name": "ACE-IPC02D-i7-4",
           "image": "/images/catalog/컴퓨터1.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "DDR3 DIMM 4GB 메모리 최대 32GB",
-            "RAID 0/1/5/10 지원",
-            "인텔 iAMT 9.0 지원"
+            "Supports 2 Gigabit LAN ports",
+            "DDR3 DIMM 4GB memory up to 32GB",
+            "RAID 0/1/5/10 support",
+            "Intel iAMT 9.0 support"
           ]
         },
         {
           "name": "ACE-IPC02D-i7-6",
           "image": "/images/catalog/컴퓨터2.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "DDR4 DIMM 8GB 메모리 최대 16GB",
-            "RAID 0/1/5/10 지원",
-            "3개의 독립 디스플레이 지원",
-            "인텔 iAMT 11.0 지원"
+            "Supports 2 Gigabit LAN ports",
+            "DDR4 DIMM 8GB memory up to 16GB",
+            "RAID 0/1/5/10 support",
+            "Supports 3 independent displays",
+            "Intel iAMT 11.0 support"
           ]
         },
         {
           "name": "ACE-WS01D-i7-4-F",
           "image": "/images/catalog/ACE-WS01D-i7-4-F.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "최대 32GB 시스템 메모리 지원",
-            "RAID 0/1/5/10 지원",
-            "인텔 iAMT 9.0 지원"
+            "Supports 2 Gigabit LAN ports",
+            "Supports up to 32GB system memory",
+            "RAID 0/1/5/10 support",
+            "Intel iAMT 9.0 support"
           ]
         },
         {
           "name": "ACE-WS01D-i7-6-F",
           "image": "/images/catalog/ACE-WS01D-i7-4-F.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "최대 64GB 시스템 메모리 지원",
-            "RAID 0/1/5/10 지원",
-            "3개의 독립 디스플레이 지원",
-            "iAMT 9.0 및 vPRO 9.0 지원",
-            "500W 고효율 전원 공급 장치"
+            "Supports 2 Gigabit LAN ports",
+            "Supports up to 64GB system memory",
+            "RAID 0/1/5/10 support",
+            "Supports 3 independent displays",
+            "Supports iAMT 9.0 and vPRO 9.0",
+            "500W high efficiency power supply"
           ]
         }
       ]
@@ -225,12 +225,12 @@
           "name": "ACE-IPC-Wall-i7-6-F",
           "image": "/images/catalog/ACE-IPC-Wall-i7-6-F.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "최대 64GB 시스템 메모리 지원",
-            "벽 장착 지원",
-            "RAID 0/1/5/10 지원",
-            "간편한 설치 HDD 랙 지원",
-            "인텔 iAMT 11.0 지원"
+            "Supports 2 Gigabit LAN ports",
+            "Supports up to 64GB system memory",
+            "wall mounting support",
+            "RAID 0/1/5/10 support",
+            "Easy installation HDD rack support",
+            "Intel iAMT 11.0 support"
           ]
         }
       ]
@@ -244,80 +244,80 @@
           "name": "ACE-PPC-10AT",
           "image": "/images/catalog/ACE-PPC-10AT.png",
           "features": [
-            "1024 x 768 도트 지원",
-            "DDR3L SO-DIMM 4GB 메모리 최대 8GB",
-            "VESA 장착 지원",
-            "터치스크린 지원"
+            "Supports 1024 x 768 dots",
+            "DDR3L SO-DIMM 4GB memory up to 8GB",
+            "VESA mounting support",
+            "Touchscreen support"
           ]
         },
         {
           "name": "ACE-PPC-15AT",
           "image": "/images/catalog/ACE-PPC-15AT.png",
           "features": [
-            "1024 x 768 도트 지원",
-            "DDR3L SO-DIMM 4GB 메모리 최대 8GB",
-            "VESA 장착 지원",
-            "터치스크린 지원"
+            "Supports 1024 x 768 dots",
+            "DDR3L SO-DIMM 4GB memory up to 8GB",
+            "VESA mounting support",
+            "Touchscreen support"
           ]
         },
         {
           "name": "ACE-PPC-17AT",
           "image": "/images/catalog/ACE-PPC-17AT.png",
           "features": [
-            "1024 x 768 도트 지원",
-            "DDR3L SO-DIMM 4GB 메모리 최대 8GB",
-            "VESA 장착 지원",
-            "터치스크린 지원"
+            "Supports 1024 x 768 dots",
+            "DDR3L SO-DIMM 4GB memory up to 8GB",
+            "VESA mounting support",
+            "Touchscreen support"
           ]
         },
         {
           "name": "ACE-PPC-19MT",
           "image": "/images/catalog/ACE-PPC-19MT.png",
           "features": [
-            "1280 x 1024 도트 지원",
-            "DDR3L SODIMM 4GB 메모리 최대 8GB",
-            "VESA 장착 지원",
-            "터치스크린 지원"
+            "Supports 1280 x 1024 dots",
+            "DDR3L SODIMM 4GB memory up to 8GB",
+            "VESA mounting support",
+            "Touchscreen support"
           ]
         },
         {
           "name": "ACE-PPC-15HT",
           "image": "/images/catalog/ACE-PPC-15HT.png",
           "features": [
-            "1024 x 768 도트 지원",
-            "DDR3L SO-DIMM 4GB 메모리 최대 8GB",
-            "VESA 장착 지원",
-            "터치스크린 지원"
+            "Supports 1024 x 768 dots",
+            "DDR3L SO-DIMM 4GB memory up to 8GB",
+            "VESA mounting support",
+            "Touchscreen support"
           ]
         },
         {
           "name": "ACE-PPC-17HT",
           "image": "/images/catalog/ACE-PPC-17HT.png",
           "features": [
-            "1024 x 1024 도트 지원",
-            "DDR3L SO-DIMM 4GB 메모리 최대 8GB",
-            "VESA 장착 지원",
-            "터치스크린 지원"
+            "Supports 1024 x 1024 dots",
+            "DDR3L SO-DIMM 4GB memory up to 8GB",
+            "VESA mounting support",
+            "Touchscreen support"
           ]
         },
         {
           "name": "ACE-PPC-19HT",
           "image": "/images/catalog/ACE-PPC-19HT.png",
           "features": [
-            "1280 x 1024 도트 지원",
-            "DDR3L SO-DIMM 4GB 메모리 최대 8GB",
-            "VESA 장착 지원",
-            "터치스크린 지원"
+            "Supports 1280 x 1024 dots",
+            "DDR3L SO-DIMM 4GB memory up to 8GB",
+            "VESA mounting support",
+            "Touchscreen support"
           ]
         },
         {
           "name": "ACE-PPC-21HT",
           "image": "/images/catalog/ACE-PPC-21HT.png",
           "features": [
-            "1920 x 1080 도트 지원",
-            "DDR3L SO-DIMM 4GB 메모리 최대 8GB",
-            "VESA 장착 지원",
-            "터치스크린 지원"
+            "Supports 1920 x 1080 dots",
+            "DDR3L SO-DIMM 4GB memory up to 8GB",
+            "VESA mounting support",
+            "Touchscreen support"
           ]
         }
       ]
@@ -331,23 +331,23 @@
           "name": "VME",
           "image": "/images/catalog/VME.png",
           "features": [
-            "VME: 장기적으로 승리",
-            "1981년에 출시된 오늘날 전 세계 대부분의 개방형 아키텍처 러기드 시스템은 VME 아키텍처를 기반으로 합니다."
+            "VME: Wins in the long run",
+            "Launched in 1981, today most open architecture rugged systems in the world are based on the VME architecture."
           ]
         },
         {
           "name": "VPX 3U",
           "image": "/images/catalog/VME 3U.png",
           "features": [
-            "2006년 업계 최초의 3U VPX 단일 보드 컴퓨터인 SBC340 출시",
-            "모든 시스템 아키텍처, 폼 팩터 및 인터페이스 요구 사항에 맞는 모든 형태와 크기의 솔루션"
+            "2006 Launch of SBC340, the industry's first 3U VPX single board computer",
+            "Solutions of all shapes and sizes to suit all system architectures, form factors and interface requirements."
           ]
         },
         {
           "name": "VPX 6U",
           "image": "/images/catalog/VPX 6U.png",
           "features": [
-            "Abaco HPEC 솔루션의 주요 구성원에는 SWE540 완전 관리형 6U VPX 40/10GigE 데이터 플레인 이더넷 스위치(NETernity SWE540), 레이어 2/3 관리형 스위칭 및 라우팅이 포함됩니다."
+            "Key members of the Abaco HPEC solution include the SWE540 Fully Managed 6U VPX 40/10GigE Data Plane Ethernet Switch (NETernity SWE540), Layer 2/3 managed switching and routing."
           ]
         },
         {
@@ -649,15 +649,15 @@
           "image": "/images/catalog/58.png",
           "features": [
             "엄격한 크기, 무게 및 전력(SWaP) 요구 사항을 충족하는 분산 IIoT 시스템용 DDS Micro 연결",
-            "작은 공간의 연결 프레임워크"
+            "Small space connection framework"
           ]
         },
         {
           "name": "RTI Connext DDS Cert",
           "image": "/images/catalog/59.png",
           "features": [
-            "RTI Connext DDS Cert를 통해 IIoT 설계자는 안전에 중요한 시스템을 구축할 수 있습니다.",
-            "최고의 안전 표준 인증을 받은 기성 연결 프레임워크"
+            "The RTI Connext DDS Cert enables IIoT designers to build safety-critical systems.",
+            "Ready-made connection framework certified to the highest safety standards"
           ]
         }
       ]
@@ -671,112 +671,112 @@
           "name": "SPx Server (Target Tracking)",
           "image": "/images/catalog/73.png",
           "features": [
-            "SPx 서버는 레이더 분배, 플롯 추출 및 표적 추적을 제공하는 다기능 레이더 프로세서입니다."
+            "The SPx server is a multi-function radar processor that provides radar distribution, plot extraction, and target tracking."
           ]
         },
         {
           "name": "RadarView (Visualization)",
           "image": "/images/catalog/72.png",
           "features": [
-            "RadarView는 원격 서버, 네트워크 인터페이스 또는 HPx 캡처 카드에서 기본 레이더 비디오를 캡처하고 시각화하기 위한 Cambridge Pixel의 Windows 기반 애플리케이션입니다."
+            "RadarView is a Windows-based application from Cambridge Pixel for capturing and visualizing native radar video from a remote server, network interface, or HPx capture card."
           ]
         },
         {
           "name": "SPx Radar Simulator",
           "image": "/images/catalog/74.png",
           "features": [
-            "SPx 레이더 시뮬레이터는 현실적인 레이더 반환을 위한 지형 고도 데이터와 함께 네트워크 소켓을 통해 시뮬레이션된 레이더 비디오 데이터를 생성하는 Windows 기반 응용 프로그램입니다."
+            "SPx Radar Simulator is a Windows-based application that generates simulated radar video data over a network socket along with terrain elevation data for realistic radar returns."
           ]
         },
         {
           "name": "SPx Development",
           "image": "/images/catalog/75.png",
           "features": [
-            "레이더 처리 또는 디스플레이 기능을 통합한 개발자를 위한 Cambridge Pixel의 SPx 개발 소프트웨어"
+            "Cambridge Pixel's SPx development software for developers integrating radar processing or display functions"
           ]
         },
         {
           "name": "SPx Fusion Server",
           "image": "/images/catalog/76.png",
           "features": [
-            "SPx Fusion은 여러 독립 센서의 관찰 내용을 상관 보고서의 단일 스트림으로 융합합니다."
+            "SPx Fusion fuses observations from multiple independent sensors into a single stream of correlated reports."
           ]
         },
         {
           "name": "RDR Data Recorder",
           "image": "/images/catalog/77.png",
           "features": [
-            "Cambridge Pixel의 RDR은 레이더 비디오, 표적 추적, AIS, ADS-B, IFF 및 내비게이션 데이터에 대한 모든 기능을 갖춘 다중 채널 기록 및 재생을 동시에 제공합니다."
+            "Cambridge Pixel's RDR provides simultaneous, full-featured multi-channel recording and playback of radar video, target tracking, AIS, ADS-B, IFF and navigation data."
           ]
         },
         {
           "name": "VSD (Video Security Display)",
           "image": "/images/catalog/78.png",
           "features": [
-            "기성 상황 인식 디스플레이를 제공하는 레이더 및 카메라에 대한 VSD 애플리케이션 인터페이스"
+            "VSD application interface to radar and cameras providing off-the-shelf situational awareness displays"
           ]
         },
         {
           "name": "ASD-100",
           "image": "/images/catalog/79.png",
           "features": [
-            "ASD-100은 1차 및 2차 레이더 데이터를 위한 Cambridge Pixel의 PC 기반 항공 감시 디스플레이입니다."
+            "The ASD-100 is Cambridge Pixel's PC-based airborne surveillance display for primary and secondary radar data."
           ]
         },
         {
           "name": "SPx-Scan",
           "image": "/images/catalog/80.png",
           "features": [
-            "그래픽 애플리케이션에 레이더 통합을 단순화하는 Windows 및 Linux/X11용 SPx-Scan 소프트웨어 기반 레이더 스캔 변환기"
+            "SPx-Scan software-based radar scan translator for Windows and Linux/X11 that simplifies radar integration into graphics applications"
           ]
         },
         {
           "name": "SPx Radar Image Distribution",
           "image": "/images/catalog/81.png",
           "features": [
-            "SPx Radar Image Server(RIS)는 레이더 비디오를 캡처하고 스캔하여 클라이언트나 웹 브라우저에 전달되는 이미지로 변환하는 스캔 변환 서버입니다."
+            "SPx Radar Image Server (RIS) is a scan conversion server that captures and scans radar video and converts it into images delivered to clients or web browsers."
           ]
         },
         {
           "name": "SPx AIS",
           "image": "/images/catalog/82.png",
           "features": [
-            "SPx AV는 다양한 소스의 압축, 배포 및 녹음을 위한 Cambridge Pixel의 오디오 및 비디오 스트리밍 소프트웨어입니다."
+            "SPx AV is Cambridge Pixel's audio and video streaming software for compression, distribution and recording from a variety of sources."
           ]
         },
         {
           "name": "HPx-346",
           "image": "/images/catalog/HPx-346.png",
           "features": [
-            "HPx-346은 아날로그 레이더 입력과 네트워크 분배 카드가 결합된 소형 폼 팩터입니다."
+            "The HPx-346 is a small form factor that combines an analog radar input with a network distribution card."
           ]
         },
         {
           "name": "HPx-400e",
           "image": "/images/catalog/HPx-400e.png",
           "features": [
-            "HPx-400e는 최대 2개의 레이더에서 아날로그 및 디지털 기본 레이더 비디오를 캡처하는 고성능 PCIe 듀얼 스트림 레이더 수집 카드입니다."
+            "The HPx-400e is a high-performance PCIe dual-stream radar acquisition card that captures analog and digital primary radar video from up to two radars."
           ]
         },
         {
           "name": "HPx-300",
           "image": "/images/catalog/HPx-300.png",
           "features": [
-            "HPx-300 레이더 신호 출력 카드는 테스트, 시뮬레이션, 교육 또는 스트리밍을 위한 대표적인 레이더 신호를 생성합니다."
+            "The HPx-300 radar signal output card generates representative radar signals for testing, simulation, training, or streaming."
           ]
         },
         {
           "name": "HPx-250",
           "image": "/images/catalog/HPx-250.png",
           "features": [
-            "HPx-250은 1개 또는 2개의 아날로그 및 최대 2비트의 디지털 기본 레이더 비디오를 캡처하는 고성능 PMC 기반 레이더 수집 카드입니다."
+            "The HPx-250 is a high-performance PMC-based radar acquisition card that captures one or two analog and up to two bits of digital primary radar video."
           ]
         },
         {
           "name": "HPx-200",
           "image": "/images/catalog/HPx-200.png",
           "features": [
-            "HPx-200은 1~2개의 아날로그 또는 최대 8비트의 디지털 기본 레이더 비디오를 캡처하는 고성능 PCI 기반 레이더 수집 카드입니다."
+            "The HPx-200 is a high-performance PCI-based radar acquisition card that captures one to two analog or up to 8-bit digital primary radar video."
           ]
         }
       ]
@@ -790,22 +790,22 @@
           "name": "WIND RIVER HELIX DEVICE CLOUD",
           "image": "/images/catalog/69.png",
           "features": [
-            "Wind River Helix Device Cloud는 상태 모니터링 및 원격 액세스를 통해 대규모 배포의 복잡성을 줄이는 IoT 장치 관리 플랫폼입니다."
+            "Wind River Helix Device Cloud is an IoT device management platform that reduces the complexity of large-scale deployments through health monitoring and remote access."
           ]
         },
         {
           "name": "TITANIUM CONTROL",
           "image": "/images/catalog/70.png",
           "features": [
-            "Wind River Titanium Control: 중요한 서비스를 위한 온프레미스 클라우드 인프라로 민첩성을 향상하고 운영/배포 비용을 절감합니다."
+            "Wind River Titanium Control: Increase agility and reduce operational/deployment costs with an on-premises cloud infrastructure for critical services."
           ]
         },
         {
           "name": "Wind River Simics",
           "image": "/images/catalog/71.png",
           "features": [
-            "Simics는 가장 작은 시스템부터 가장 복잡한 시스템까지 시뮬레이션합니다.",
-            "물리적 하드웨어에서 가상 랩으로 이동하면 임베디드 소프트웨어 팀이 개발 프로세스를 혁신할 수 있습니다."
+            "Simics simulates the smallest to most complex systems.",
+            "Moving from physical hardware to virtual labs allows embedded software teams to transform their development processes."
           ]
         }
       ]
@@ -819,55 +819,55 @@
           "name": "MXH532 PCIe 5.0 x16 Transparent Adapter",
           "image": "/images/products/interconnect/MXH532 PCIe 5.0 x16 Transparent  Adapter.png",
           "features": [
-            "성능 및 규격: PCIe Gen5(32 GT/s) 지원 및 하위 버전(1.0~5.0) 완벽 호환, 초저지연 성능(칩 100ns / 앱 간 600ns)",
-            "연결성: Quad SFF-8614 x4 커넥터 및 패시브 구리 케이블 지원",
-            "하드웨어 설계: Microchip Switchtec® Gen 5.0 PFX 탑재, LP-HL(Low Profile, Half Length) 폼팩터, 상태 표시 LED",
-            "주요 기능: RDMA(PIO/DMA) 지원, 클럭 격리 및 CFC/SSC 자동 지원, 멀티 설정을 위한 EEPROM 내장",
-            "소프트웨어: eXpressWare™ 소프트웨어 라이선스 포함"
+            "Performance and specifications: Supports PCIe Gen5 (32 GT/s) and fully compatible with lower versions (1.0~5.0), ultra-low latency performance (100ns on chip / 600ns between apps)",
+            "Connectivity: Supports Quad SFF-8614 x4 connectors and passive copper cables",
+            "Hardware design: Built-in Microchip Switchtec® Gen 5.0 PFX, Low Profile, Half Length (LP-HL) form factor, status LED",
+            "Key features: RDMA (PIO/DMA) support, clock isolation and CFC/SSC automatic support, built-in EEPROM for multi-configuration",
+            "Software: eXpressWare™ software license included"
           ]
         },
         {
           "name": "MXH930 PCIe NTB Adapter",
           "image": "/images/products/interconnect/MXH930 PCIe NTB Adapter.png",
           "features": [
-            "성능 및 인터페이스: PCIe Gen4(16 GT/s) 지원 및 하위 호환(Gen1~4), Microchip PM40036-PFX 칩셋 탑재, 100ns 미만의 초저지연(Cut-Through) 성능",
-            "연결성 및 케이블: Quad SFF-8644 커넥터 사용, 구리(Copper) 및 광(Fiber-optic) 케이블 지원, CMI 및 non-CMI 케이블 호환",
-            "유연한 포트 구성: 1개(x16), 2개(x8), 4개(x4) 등 다양한 포트 구성 옵션 제공",
-            "클러스터링 및 확장성: 2~5 노드 클러스터 구성 지원, MXS924와 결합 시 최대 64~128 노드까지 확장 가능",
-            "주요 기능: RDMA(PIO 및 DMA*) 지원, Full Host Clock Isolation 및 CFC/SSC 자동 지원, 커스텀 설정을 위한 EEPROM 내장 (*DMA는 개발 중)",
-            "하드웨어 설계: LP(Low Profile) 폼팩터, 전면부 링크 상태 LED 탑재"
+            "Performance and interface: PCIe Gen4 (16 GT/s) support and backward compatibility (Gen1~4), equipped with Microchip PM40036-PFX chipset, ultra-low latency (cut-through performance) of less than 100ns",
+            "Connectivity and Cables: Uses Quad SFF-8644 connectors; supports copper and fiber-optic cables; compatible with CMI and non-CMI cables",
+            "Flexible port configuration: Provides various port configuration options including 1 (x16), 2 (x8), and 4 (x4)",
+            "Clustering and scalability: Supports 2 to 5 node cluster configuration, expandable up to 64 to 128 nodes when combined with MXS924",
+            "Key features: RDMA (PIO and DMA*) support, Full Host Clock Isolation and CFC/SSC automatic support, built-in EEPROM for custom settings (*DMA is under development)",
+            "Hardware design: LP (Low Profile) form factor, front link status LED"
           ]
         },
         {
           "name": "MXH932 PCIe Transparent Adapter",
           "image": "/images/products/interconnect/MXH932 PCIe Transparent Adapter.png",
           "features": [
-            "인터페이스 및 성능: PCIe Gen4(16 GT/s) 지원 및 하위 호환(Gen1~4), 100ns 미만의 초저지연(Cut-Through) 성능, Microchip PM40036-PFX 칩셋 탑재",
-            "연결성 및 케이블: Quad SFF-8644 커넥터 기반, 구리(Copper) 및 광(Fiber-optic) 케이블 지원, CMI 지원 PCIe 4.0 케이블 호환",
-            "유연한 포트 구성 (MXH932): 사용자 필요에 따라 x16 1개, x8 2개, x4 4개 포트로 가변 구성 가능",
-            "시스템 확장성: MXS924와 결합하여 대규모 I/O 확장 시스템(I/O Expansion Systems) 구축 및 스케일링 지원",
-            "하드웨어 및 신뢰성: LP(Low Profile) 폼팩터, 클럭 격리(Clock Isolation) 및 CFC/SSC 자동 지원, 전면 상태 LED 및 커스텀용 EEPROM 내장"
+            "Interface and performance: PCIe Gen4 (16 GT/s) support and backward compatibility (Gen1~4), ultra-low latency (Cut-Through) performance of less than 100ns, equipped with Microchip PM40036-PFX chipset",
+            "Connectivity and Cables: Based on Quad SFF-8644 connectors, supports copper and fiber-optic cables, PCIe 4.0 cable compatible with CMI support",
+            "Flexible port configuration (MXH932): 1x16, 2x8 and 4x4 ports can be configurable depending on user needs.",
+            "System expandability: Supports building and scaling large-scale I/O Expansion Systems by combining with MXS924",
+            "Hardware and Reliability: Low Profile form factor, clock isolation and CFC/SSC auto support, front status LED and built-in EEPROM for customization"
           ]
         },
         {
           "name": "PXH830 PCIe NTB Adapter",
           "image": "/images/products/interconnect/PXH830 PCIe NTB Adapter.png",
           "features": [
-            "인터페이스 및 성능: PCIe Gen3(8.0 Gbps/lane) 지원 및 하위 호환(Gen1~3), RDMA(PIO 및 DMA) 지원",
-            "유연한 포트 구성: 4개의 x4 Gen3 케이블 포트를 탑재하여 사용자 필요에 따라 1x16 또는 2x8 포트로 유연하게 구성 가능",
-            "연결성: SFF-8644(iPass+ HD / MiniSAS-HD®) 커넥터 기반, 구리(Copper) 및 광(Fiber-optic) 케이블 모두 지원",
-            "브릿징 및 기술: 최대 2개의 NTB(Non-transparent bridging) 포트 지원, 호스트 클럭 격리(Full host clock isolation) 및 CFC/SSC 동시 지원",
-            "하드웨어 설계: LP(Low Profile) 폼팩터, 전면 링크 상태 LED, 사용자 맞춤 설정을 위한 EEPROM 내장"
+            "Interface and performance: Supports PCIe Gen3 (8.0 Gbps/lane) and backward compatible (Gen1~3), supports RDMA (PIO and DMA)",
+            "Flexible port configuration: Equipped with 4 x4 Gen3 cable ports, flexibly configured as 1x16 or 2x8 ports depending on user needs",
+            "Connectivity: Based on SFF-8644 (iPass+ HD / MiniSAS-HD®) connector, supports both copper and fiber-optic cables",
+            "Bridging and technology: Supports up to two non-transparent bridging (NTB) ports, full host clock isolation, and simultaneous CFC/SSC support",
+            "Hardware design: Low Profile (LP) form factor, front link status LED, built-in EEPROM for customization"
           ]
         },
         {
           "name": "MXS924 PCIe 4.0 Switch",
           "image": "/images/products/interconnect/MXS924 PCIe 4.0 Switch.png",
           "features": [
-            "성능 및 규격: PCIe 4.0(16 GT/s) 지원 및 하위 호환(Gen 1~4), 고성능 Microchip PFX Gen4 칩셋 탑재",
-            "포트 및 연결성: 총 24개의 PCIe 4.0 x4 포트(SFF-8644 커넥터) 제공, 구리 및 광케이블 지원, 유지보수가 용이한 핫플러그(Hot-plug) 지원",
-            "시스템 관리: 이더넷(Ethernet) 기반의 원격 관리 및 모니터링 기능, 전면 패널의 상태 LED를 통한 직관적인 포트 확인",
-            "하드웨어 설계: 표준 19인치 1U 랙마운트 섀시 적용, 다중 스위치 구성을 통한 유연한 확장성(Scalable) 제공"
+            "Performance and specifications: Supports PCIe 4.0 (16 GT/s) and backward compatible (Gen 1~4), equipped with high-performance Microchip PFX Gen4 chipset",
+            "Ports and connectivity: Provides a total of 24 PCIe 4.0 x4 ports (SFF-8644 connectors), supports copper and optical cables, supports hot-plug for easy maintenance",
+            "System management: Ethernet-based remote management and monitoring functions, intuitive port confirmation through status LED on the front panel",
+            "Hardware design: Standard 19-inch 1U rack-mount chassis, flexible scalability through multiple switch configuration"
           ]
         }
       ]
