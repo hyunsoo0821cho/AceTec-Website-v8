@@ -69,9 +69,9 @@ const hasSections = sections && sections.length > 0;
     )}
     <h2 class="cat-section-title" translate="no" id={`section-${si}`} {...e(`sections[${si}].title`)}
       data-i18n={`ps.${category}.s${si}`}>{section.title}</h2>
-    <div class="products-grid">
+    <div class="products-grid" {...(isAdmin ? { 'data-admin-sort': `sections[${si}].products` } : {})}>
       {section.products.map((product, pi) => (
-        <div class="p-card" style="position:relative;">
+        <div class="p-card" style="position:relative;" {...(isAdmin ? { 'data-sort-id': String(pi), draggable: 'true' } : {})}>
           {isAdmin && (
             <button class="admin-delete-btn" data-admin-delete={`sections[${si}].products[${pi}]`} title="Delete Product">
               &times;
@@ -152,14 +152,15 @@ const hasSections = sections && sections.length > 0;
 {/* ===== 기존 flat items 렌더링 ===== */}
 {items.length > 0 && (
   <>
-    <div class="products-grid">
+    <div class="products-grid" {...(isAdmin ? { 'data-admin-sort': 'items' } : {})}>
       {items.map((item, i) => {
         const optimized = getImage(item.image);
         const imgAttrs = isAdmin ? { 'data-img': `items[${i}].image`, 'data-preset': 'product' } : {};
         const editName = isAdmin ? { 'data-edit': `items[${i}].name` } : {};
         const editSpecs = isAdmin ? { 'data-edit': `items[${i}].specs` } : {};
+        const sortAttrs = isAdmin ? { 'data-sort-id': String(i), draggable: 'true' as const } : {};
         return (
-          <div class="p-card" style="position:relative;">
+          <div class="p-card" style="position:relative;" {...sortAttrs}>
             {isAdmin && (
               <button class="admin-delete-btn" data-admin-delete={`items[${i}]`} title="Delete">
                 &times;
