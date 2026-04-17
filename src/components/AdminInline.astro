@@ -74,12 +74,19 @@ const { page, isAdmin } = Astro.props;
         el.addEventListener('click', (ev) => {
           if (el.isContentEditable) return;
           ev.preventDefault(); ev.stopPropagation();
+          // i18n 번역 중이었다면 편집은 원문(한국어)으로 — 번역된 텍스트가 저장되는 사고 방지
+          const original = el.getAttribute('data-i18n-original');
+          if (original && el.textContent !== original) { el.textContent = original; }
           el.contentEditable = 'true';
           el.style.outline = '2px solid #2563eb'; el.style.outlineOffset = '3px';
           el.style.background = 'rgba(59,130,246,.06)'; el.style.borderRadius = '4px';
           el.focus();
         });
-        el.addEventListener('blur', () => { el.contentEditable = 'false'; el.style.outline = 'none'; el.style.background = ''; });
+        el.addEventListener('blur', () => {
+          el.contentEditable = 'false'; el.style.outline = 'none'; el.style.background = '';
+          // 편집 종료 후 현재 언어로 재번역 (다시 보기용)
+          if (typeof window.__retranslateElement === 'function') window.__retranslateElement(el);
+        });
         el.addEventListener('keydown', (ev) => { if (ev.key === 'Escape') { el.contentEditable = 'false'; el.style.outline = 'none'; el.style.background = ''; el.blur(); } });
       });
 

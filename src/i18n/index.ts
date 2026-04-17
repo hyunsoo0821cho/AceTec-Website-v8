@@ -199,7 +199,9 @@ async function autoTranslatePage(lang: string) {
     if (el.getAttribute('translate') === 'no' || el.closest('[translate="no"]')) return;
     // 관리자 툴바/편집 UI는 원문 그대로 (Save/Dashboard 등 영문 용어 유지)
     if (el.closest('.admin-bar') || el.closest('.admin-btn') || el.closest('#adminBar')) return;
-    if (el.hasAttribute('data-edit')) return;
+    // [data-edit] 요소는 편집 중(contentEditable)이 아닐 때만 번역.
+    // 편집 중엔 원문(한국어) 유지 → 번역된 텍스트가 JSON에 저장되는 사고 방지.
+    if (el.isContentEditable) return;
     if (el.closest('.h-entry')) return; // 히스토리는 별도 수집
 
     const currentText = (el.textContent || '').trim();
@@ -217,7 +219,7 @@ async function autoTranslatePage(lang: string) {
   // ── 2) 접이식 컨테이너 내부 텍스트 수집 (아코디언/Details/ref-block — 숨김 상태 포함) ──
   document.querySelectorAll<HTMLElement>('.ch-body h4, .ch-body h5, .ch-body p, .ch-body li, .ch-body span.lesson-t, .p-features li, .p-price, .ref-block h5, .ref-block li, .s-panel a, .s-panel li, .s-panel p, .s-panel span').forEach((el) => {
     if (el.hasAttribute('data-i18n')) return;
-    if (el.hasAttribute('data-edit')) return;
+    if (el.isContentEditable) return;
     if (el.closest('[translate="no"]')) return;
     if (el.querySelector('h1,h2,h3,h4,h5,h6,p,a,span,li,div')) return;
     const currentText = (el.textContent || '').trim();
@@ -324,6 +326,27 @@ async function translateHistoryEntries(lang: string, cache: Record<string, strin
     }),
   );
 }
+
+/** 단일 요소 재번역 — 편집 완료(blur) 후 현재 언어로 다시 표시 (AdminInline에서 호출) */
+(window as any).__retranslateElement = async function (el: HTMLElement) {
+  const lang = _currentAutoLang;
+  if (!el || !lang || lang === 'ko') return;
+  const text = (el.textContent || '').trim();
+  if (!text) return;
+  // 편집된 텍스트를 새 원문으로 재마킹 (한국어 기준)
+  el.setAttribute('data-i18n-src', 'ko');
+  el.setAttribute('data-i18n-original', text);
+  const cache = getAutoCache();
+  const cachePrefix = `${lang}:`;
+  const cached = cache[cachePrefix + text];
+  if (cached) { el.textContent = cached; return; }
+  const [translated] = await gTranslate([text], 'ko', lang);
+  if (translated && translated !== text) {
+    cache[cachePrefix + text] = translated;
+    saveAutoCache(cache);
+    el.textContent = translated;
+  }
+};
 
 /** 히스토리 탭 전환 시 새 패널도 번역 (history.astro에서 호출) */
 (window as any).__translateHistoryPanel = async function () {
