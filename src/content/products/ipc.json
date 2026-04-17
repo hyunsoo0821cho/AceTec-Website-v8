@@ -44,17 +44,19 @@
           ]
         },
         {
-          "name": "New Product",
-          "image": "/images/catalog/ACE-BoxIPC-C4L3.png",
+          "name": "ACE-OWS-712-S4",
+          "image": "/uploads/products/1776402802638-ace-ows-712-s4.webp",
           "features": [
-            "특징 1"
+            "Intel® Core™ i7-1270TE",
+            "(25M Cache, 12 Core 1.40GHz up to 4.6GHz)"
           ]
         },
         {
-          "name": "New Product",
-          "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
+          "name": "ACE-BoxIPC-74L2-S4",
+          "image": "/uploads/products/1776402807492-ace-boxipc-74l2-s4.webp",
           "features": [
-            "Feature 1"
+            "Intel® Core™ i7-4770TE",
+            "(8M Cache, Quad Core 2.3GHz up to 3.3GHz)"
           ]
         }
       ]
