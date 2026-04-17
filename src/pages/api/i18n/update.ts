@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { verifySession, getSessionIdFromCookie } from '../../../lib/auth';
+import { verifySession, getSessionIdFromCookie, getUserInfo } from '../../../lib/auth';
 import fs from 'fs';
 import path from 'path';
 
@@ -22,8 +22,14 @@ function setNestedValue(obj: Record<string, unknown>, keyPath: string, value: st
 /** POST { lang: "ko", updates: { "home.heroTitle": "새 제목", ... } } */
 export const POST: APIRoute = async ({ request }) => {
   const cookie = request.headers.get('cookie');
-  if (!verifySession(getSessionIdFromCookie(cookie))) {
+  const adminId = verifySession(getSessionIdFromCookie(cookie));
+  if (!adminId) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+  // 번역 파일 수정은 관리자 전용 — 일반 사용자 차단
+  const user = getUserInfo(adminId);
+  if (!user || user.role !== 'admin') {
+    return Response.json({ error: 'Forbidden' }, { status: 403 });
   }
 
   const { lang, updates } = await request.json();

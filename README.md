@@ -25,7 +25,7 @@ pm2 save
 | RAG + Reranker Hit@1 | **83.7%** (36/43) |
 | RAG + Reranker Hit@5 | **95.3%** (41/43) |
 | E2E 챗봇 API | **5/5 PASS** |
-| 보안 등급 | **B+** (P0 CRITICAL 해결) |
+| 보안 등급 | **C+** (P0 해결, CRITICAL 8건 잔존 — [SUMMARY.md](SUMMARY.md)) |
 
 > 상세: [test.md](test.md) | 보안: [보안이슈해결보고.md](보안이슈해결보고.md)
 
@@ -680,15 +680,53 @@ Start-Process "ollama" -ArgumentList "serve"
 
 ---
 
-## 16. 알려진 이슈
+## 16. 알려진 이슈 (2026-04-17 ECC 재감사)
 
-| # | 이슈 | 심각도 | 상태 |
-|---|------|--------|------|
-| 1 | 6개 카테고리 제품 `items[]` 비어있음 (military, railway, industrial, telecom, sensor, hpc) | HIGH | 데이터 입력 필요 |
-| 2 | Rate limiter 인메모리 (서버 재시작 시 초기화) | MEDIUM | 의도된 동작 |
-| 3 | CSP `unsafe-inline` 유지 | MEDIUM | nonce 기반 전환 시 .astro 전면 개편 필요 |
-| 4 | CSRF 토큰 미적용 | MEDIUM | SameSite=Strict + Origin 화이트리스트로 완화 중 |
-| 5 | `login.ts` 101줄 (API 100줄 제한 1줄 초과) | LOW | — |
+### CRITICAL (즉시 조치)
+
+| # | 이슈 | 파일 | 상태 |
+|---|------|------|------|
+| 1 | i18n `setNestedValue()` Prototype Pollution — `__proto__` 키 미필터링 | `i18n/update.ts`, `translate-save.ts` | 미해결 |
+| 2 | CMS/i18n/이미지 API에 admin role 체크 없음 — 일반 사용자가 콘텐츠 변조 가능 | `pages/[page].ts`, `i18n/update.ts`, `images/upload.ts` | 미해결 |
+| 3 | 인증 코드가 API 응답에 평문 반환 (`devCode`) | `send-code.ts:53,56` | 미해결 |
+| 4 | 인증 관련 3개 엔드포인트에 rate limit 없음 | `send-code.ts`, `register.ts`, `reset-password.ts` | 미해결 |
+| 5 | conversations/messages API 무인증 — 타인 대화 열람·삭제 | `conversations.ts`, `messages.ts` | 미해결 |
+| 6 | DB 인덱스 0개 + 만료 데이터 cleanup 없음 | `db.ts` | 미해결 |
+
+### HIGH (단기 조치)
+
+| # | 이슈 | 파일 | 상태 |
+|---|------|------|------|
+| 7 | Ollama URL 하드코딩 4곳 (환경변수 미사용) | `chat.ts`, `embeddings.ts`, `health.ts`, `middleware.ts` | 미해결 |
+| 8 | `logout.ts` 서버 측 세션 미삭제 (쿠키만 제거) | `logout.ts` | 미해결 |
+| 9 | `users.ts` role 값 검증 없음 + 비밀번호 변경 시 정책 미검증 | `admin/users.ts` | 미해결 |
+| 10 | 이미지 업로드 magic-byte 검증 없음 (`file.type`만 확인) | `images/upload.ts` | 미해결 |
+| 11 | `dashboard.astro` avatar_url/data-edit-user XSS 취약점 | `dashboard.astro:276,280` | 미해결 |
+| 12 | ChatWidget source title innerHTML XSS | `ChatWidget.astro:924-926` | 미해결 |
+| 13 | `Math.random()` 인증 코드 — `crypto.randomInt()` 필요 | `email.ts:41` | 미해결 |
+| 14 | npm audit: vite 3건 CVE + defu prototype pollution | `package.json` | 미해결 |
+| 15 | SQLite 장애 시 미들웨어 admin 경로 크래시 | `middleware.ts:47-51` | 미해결 |
+| 16 | `embeddings.ts` fetch timeout 없음 | `embeddings.ts:5` | 미해결 |
+| 17 | sessions FK CASCADE 누락 + `PRAGMA busy_timeout` 미설정 | `db.ts` | 미해결 |
+| 18 | `admins.email` UNIQUE 제약 없음 | `db.ts` | 미해결 |
+| 19 | Dockerfile DB 파일을 이미지에 포함 | `Dockerfile:14` | 미해결 |
+| 20 | Supabase 미설정 시 문의 데이터 소실하면서 성공 응답 | `contact.ts:48-57` | 미해결 |
+| 21 | 정기 백업 자동화 없음 | — | 미해결 |
+| 22 | 6개 카테고리 제품 `items[]` 비어있음 | products JSON | 데이터 입력 필요 |
+
+### MEDIUM (중기 개선)
+
+| # | 이슈 | 상태 |
+|---|------|------|
+| 23 | CSP `unsafe-inline` 유지 (nonce 전환 시 .astro 전면 개편 필요) | 미해결 |
+| 24 | Rate limiter 인메모리 (서버 재시작 시 초기화) | 의도된 동작 |
+| 25 | CSRF Origin 체크만 (SameSite=Strict로 완화 중) | 미해결 |
+| 26 | `login.ts` 119줄 / `chat.ts` API 110줄 — 100줄 한도 초과 | 미해결 |
+| 27 | `chatbot-guard.ts` 234줄 — lib 200줄 한도 초과 | 미해결 |
+| 28 | `.env.example` 없음 / `500.astro` 없음 | 미해결 |
+| 29 | `email.ts` .env 수동 파서 / console.log 디버그 코드 잔존 | 미해결 |
+| 30 | 15개 API가 lib/ 무시하고 inline SQL 직접 실행 | 미해결 |
+| 31 | `index.astro` 1051줄 / `ChatWidget.astro` 1280줄 — 800줄 한도 초과 | 미해결 |
 
 ---
 

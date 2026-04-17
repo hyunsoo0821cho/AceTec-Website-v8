@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { verifySession, getSessionIdFromCookie } from '../../../lib/auth';
+import { verifySession, getSessionIdFromCookie, getUserInfo } from '../../../lib/auth';
 import fs from 'fs';
 import path from 'path';
 
@@ -61,8 +61,14 @@ async function gTranslate(texts: string[], target: string): Promise<string[]> {
  */
 export const POST: APIRoute = async ({ request }) => {
   const cookie = request.headers.get('cookie');
-  if (!verifySession(getSessionIdFromCookie(cookie))) {
+  const adminId = verifySession(getSessionIdFromCookie(cookie));
+  if (!adminId) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+  // 자동 번역 저장은 관리자 전용 — 일반 사용자 차단
+  const user = getUserInfo(adminId);
+  if (!user || user.role !== 'admin') {
+    return Response.json({ error: 'Forbidden' }, { status: 403 });
   }
 
   const body = (await request.json().catch(() => null)) as { updates?: Record<string, string> } | null;

@@ -2,14 +2,20 @@ import { defineMiddleware } from 'astro:middleware';
 import getDb from './lib/db';
 import { verifySession, getUserInfo, getSessionIdFromCookie } from './lib/auth';
 
-// CSRF 허용 Origin 화이트리스트 (내부 IP + 운영 도메인)
-const ALLOWED_ORIGINS = new Set([
+// CSRF 허용 Origin 화이트리스트 — 기본값은 내부 IP + 운영 도메인.
+// CSRF_ALLOWED_ORIGINS 환경변수(콤마 구분)로 재정의 가능.
+const DEFAULT_ALLOWED_ORIGINS = [
   'http://192.168.10.182:8080',
   'http://localhost:8080',
   'http://localhost:4321',
   'https://www.acetronix.co.kr',
   'https://acetronix.co.kr',
-]);
+];
+const ALLOWED_ORIGINS = new Set(
+  (process.env.CSRF_ALLOWED_ORIGINS
+    ? process.env.CSRF_ALLOWED_ORIGINS.split(',').map((s) => s.trim()).filter(Boolean)
+    : DEFAULT_ALLOWED_ORIGINS),
+);
 
 export const onRequest = defineMiddleware(async (_context, next) => {
   // 방문자 로그 기록 (HTML 페이지 요청만)
@@ -45,9 +51,23 @@ export const onRequest = defineMiddleware(async (_context, next) => {
   const path = url.pathname;
   const needsAdmin = path.startsWith('/admin/') || path.startsWith('/api/admin/');
   if (needsAdmin) {
-    const sid = getSessionIdFromCookie(_context.request.headers.get('cookie'));
-    const adminId = verifySession(sid);
-    const user = adminId ? getUserInfo(adminId) : null;
+    // SQLite 장애 시 미들웨어 전체가 크래시되지 않도록 방어
+    let adminId: number | null = null;
+    let user: { role?: string } | null = null;
+    try {
+      const sid = getSessionIdFromCookie(_context.request.headers.get('cookie'));
+      adminId = verifySession(sid);
+      user = adminId ? getUserInfo(adminId) : null;
+    } catch {
+      // DB 장애: 인증 불가로 간주하여 안전하게 거부
+      if (path.startsWith('/api/')) {
+        return new Response(JSON.stringify({ error: 'Service temporarily unavailable' }), {
+          status: 503,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+      return new Response(null, { status: 302, headers: { Location: '/login' } });
+    }
     if (!user || user.role !== 'admin') {
       // 감사 로그
       try {
