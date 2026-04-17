@@ -23,36 +23,24 @@
           "name": "ACE-BoxIPC-76L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "DDR3L SO-DIMM 4GB 메모리 최대 16GB",
-            "벽 장착 지원",
-            "RAID 0/1/5/10 지원",
-            "3개의 독립 디스플레이 지원",
-            "인텔 iAMT 8.0 지원"
+            "Intel® Core™ i7-6700T",
+            "(8M Cache, 4 Core 2.4GHz up to 3.4GHz)"
           ]
         },
         {
           "name": "ACE-BoxIPC-79L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원",
-            "DDR3L SO-DIMM 4GB 메모리 최대 16GB",
-            "벽 장착 지원",
-            "RAID 0/1/5/10 지원",
-            "3개의 독립 디스플레이 지원",
-            "인텔 iAMT 8.0 지원"
+            "Intel® Core™ i7-9700T",
+            "(12M Cache, 8 Core 2.0GHz up to 4.3GHz)"
           ]
         },
         {
           "name": "ACE-BoxIPC-710L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
-            "2x 기가비트 LAN 포트 지원",
-            "DDR4 SO-DIMM 8GB 메모리 최대 32GB",
-            "벽 장착 지원",
-            "RAID 0/1 지원",
-            "3개의 독립 디스플레이 지원",
-            "ESD 보호 지원"
+            "Intel® Core™ i7-10700T",
+            "(16M Cache, 8 Core 2.0GHz up to 4.5GHz)"
           ]
         },
         {
