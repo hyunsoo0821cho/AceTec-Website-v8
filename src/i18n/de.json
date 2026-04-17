@@ -215,7 +215,9 @@
     "radar": "Radarverarbeitung und -anzeige",
     "ipc": "Industrie-PCs",
     "ai": "KI-Zentrum",
-    "interconnect": "Hochgeschwindigkeits-Datenverbindung"
+    "interconnect": "Hochgeschwindigkeits-Datenverbindung",
+    "detailsToggle": "Details",
+    "lockedNote": "Nur für genehmigte Benutzer"
   },
   "productDetail": {
     "militaryTitle": "Militär und Luft- & Raumfahrt",
@@ -270,7 +272,8 @@
   },
   "catalog": {
     "title": "Vollständiger Produktkatalog",
-    "desc": "Vollständige Auflistung von 108 Produkten in 16 Kategorien."
+    "desc": "Vollständige Auflistung von 108 Produkten in 16 Kategorien.",
+    "lockedNote": "Detaillierte Beschreibungen sind nur für genehmigte Benutzer sichtbar"
   },
   "footer": {
     "company": "Unternehmen",

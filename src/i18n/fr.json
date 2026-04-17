@@ -215,7 +215,9 @@
     "radar": "Traitement et affichage radar",
     "ipc": "PC industriels",
     "ai": "Centre IA",
-    "interconnect": "Interconnexion de données ultra-rapide"
+    "interconnect": "Interconnexion de données ultra-rapide",
+    "detailsToggle": "Détails",
+    "lockedNote": "Utilisateurs approuvés uniquement"
   },
   "productDetail": {
     "militaryTitle": "Militaire et aérospatial",
@@ -270,7 +272,8 @@
   },
   "catalog": {
     "title": "Catalogue complet des produits",
-    "desc": "Liste complète de 108 produits répartis dans 16 catégories."
+    "desc": "Liste complète de 108 produits répartis dans 16 catégories.",
+    "lockedNote": "Les descriptions détaillées sont visibles uniquement par les utilisateurs approuvés"
   },
   "footer": {
     "company": "Entreprise",

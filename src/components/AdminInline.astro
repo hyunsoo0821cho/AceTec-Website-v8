@@ -257,13 +257,15 @@ const { page, isAdmin } = Astro.props;
             if (!p) return;
             ensure(targetPage).texts.push({ path: p, value: el.innerText.trim() });
           });
+          // 이미지 변경 수집 — data-new-src 는 PUT 성공 후에만 제거 (실패 재시도 대응)
+          const pendingImgs = [];
           document.querySelectorAll('[data-img][data-new-src]').forEach(im => {
             const p = im.getAttribute('data-img');
             const s = im.getAttribute('data-new-src');
             const targetPage = im.getAttribute('data-edit-page') || page;
             if (!p || !s) return;
             ensure(targetPage).imgs.push({ path: p, value: s });
-            im.removeAttribute('data-new-src');
+            pendingImgs.push(im);
           });
           // 순서 변경 수집: [data-admin-sort][data-sort-changed]
           let hasSortChange = false;
@@ -290,9 +292,10 @@ const { page, isAdmin } = Astro.props;
           });
 
           let allOk = true;
+          let pageSaveOk = true;
           for (const [targetPage, edits] of Object.entries(editsByPage)) {
             const res = await fetch('/api/pages/' + targetPage);
-            if (!res.ok) { allOk = false; continue; }
+            if (!res.ok) { allOk = false; pageSaveOk = false; continue; }
             const data = await res.json();
             edits.texts.forEach(e => {
               // featuresHtml → features 배열 변환
@@ -317,15 +320,21 @@ const { page, isAdmin } = Astro.props;
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(data),
             });
-            if (!saveRes.ok) allOk = false;
+            if (!saveRes.ok) { allOk = false; pageSaveOk = false; }
           }
 
-          // ko.json 번역 파일도 동기화
+          // PUT 성공한 경우에만 data-new-src 제거 — 실패 시 재시도 가능
+          if (pageSaveOk) {
+            pendingImgs.forEach(im => im.removeAttribute('data-new-src'));
+          }
+
+          // ko + 6개 언어 자동 번역 저장 (제품명/기술파트너 제외)
           if (Object.keys(i18nUpdates).length > 0) {
-            const i18nRes = await fetch('/api/i18n/update', {
+            if (status) { status.textContent = 'Translating...'; status.style.color = '#fbbf24'; }
+            const i18nRes = await fetch('/api/i18n/translate-save', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ lang: 'ko', updates: i18nUpdates }),
+              body: JSON.stringify({ updates: i18nUpdates }),
             });
             if (!i18nRes.ok) allOk = false;
           }

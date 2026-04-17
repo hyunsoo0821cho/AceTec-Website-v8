@@ -120,7 +120,7 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
                 {hideDetails ? (
                   <div class="p-locked">
                     <span class="p-locked-icon">🔒</span>
-                    <span class="p-locked-text">상세 설명은 승인된 사용자만 볼 수 있습니다</span>
+                    <span class="p-locked-text" data-i18n="catalog.lockedNote">상세 설명은 승인된 사용자만 볼 수 있습니다</span>
                   </div>
                 ) : prod.features.length > 0 ? (
                   <ul class="p-features" {...e(`categories[${ci}].products[${pi}].featuresHtml`)}>

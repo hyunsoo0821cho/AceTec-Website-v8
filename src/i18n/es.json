@@ -215,7 +215,9 @@
     "radar": "Procesamiento y visualización de radar",
     "ipc": "PCs industriales",
     "ai": "Centro de IA",
-    "interconnect": "Interconexión de datos de alta velocidad"
+    "interconnect": "Interconexión de datos de alta velocidad",
+    "detailsToggle": "Detalles",
+    "lockedNote": "Solo usuarios aprobados"
   },
   "productDetail": {
     "militaryTitle": "Militar y aeroespacial",
@@ -270,7 +272,8 @@
   },
   "catalog": {
     "title": "Catálogo completo de productos",
-    "desc": "Listado completo de 108 productos en 16 categorías."
+    "desc": "Listado completo de 108 productos en 16 categorías.",
+    "lockedNote": "Las descripciones detalladas solo son visibles para usuarios aprobados"
   },
   "footer": {
     "company": "Empresa",

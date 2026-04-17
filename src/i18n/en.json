@@ -215,7 +215,9 @@
     "radar": "Radar Processing & Display",
     "ipc": "Industrial PCs",
     "ai": "AI Center",
-    "interconnect": "High-Speed Interconnect"
+    "interconnect": "High-Speed Interconnect",
+    "detailsToggle": "Details",
+    "lockedNote": "Approved users only"
   },
   "productDetail": {
     "militaryTitle": "Military & Aerospace",
@@ -270,7 +272,8 @@
   },
   "catalog": {
     "title": "Full Product Catalog",
-    "desc": "Complete listing of 108 products across 16 categories."
+    "desc": "Complete listing of 108 products across 16 categories.",
+    "lockedNote": "Detailed descriptions are visible to approved users only"
   },
   "footer": {
     "company": "Company",

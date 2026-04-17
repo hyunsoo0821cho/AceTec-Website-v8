@@ -215,7 +215,9 @@
     "radar": "レーダー処理＆ディスプレイ",
     "ipc": "産業用PC",
     "ai": "AIセンター",
-    "interconnect": "超高速データインターコネクト"
+    "interconnect": "超高速データインターコネクト",
+    "detailsToggle": "詳細",
+    "lockedNote": "承認されたユーザーのみ閲覧可能"
   },
   "productDetail": {
     "militaryTitle": "軍事・航空宇宙",
@@ -270,7 +272,8 @@
   },
   "catalog": {
     "title": "全製品カタログ",
-    "desc": "16カテゴリ、108製品の完全なリストです。"
+    "desc": "16カテゴリ、108製品の完全なリストです。",
+    "lockedNote": "詳細な説明は承認されたユーザーのみが閲覧できます"
   },
   "footer": {
     "company": "会社情報",

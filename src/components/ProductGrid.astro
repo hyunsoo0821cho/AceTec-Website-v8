@@ -98,12 +98,12 @@ const hasSections = sections && sections.length > 0;
           {hideDetails ? (
             <div class="p-locked">
               <span class="p-locked-icon">🔒</span>
-              <span class="p-locked-text">승인된 사용자만 열람 가능</span>
+              <span class="p-locked-text" data-i18n="products.lockedNote">승인된 사용자만 열람 가능</span>
             </div>
           ) : product.features && product.features.length > 0 ? (
             <div class="p-detail-wrap">
               <button type="button" class="p-detail-toggle" aria-expanded="false">
-                <span class="p-detail-toggle-text">Details</span>
+                <span class="p-detail-toggle-text" data-i18n="products.detailsToggle">Details</span>
                 <svg class="p-detail-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,4 6,8 10,4"></polyline></svg>
               </button>
               <ul class="p-features p-features--collapsed" {...e(`sections[${si}].products[${pi}].featuresHtml`)}>
@@ -113,7 +113,7 @@ const hasSections = sections && sections.length > 0;
           ) : isAdmin && (
             <div class="p-detail-wrap">
               <button type="button" class="p-detail-toggle" aria-expanded="true">
-                <span class="p-detail-toggle-text">Details</span>
+                <span class="p-detail-toggle-text" data-i18n="products.detailsToggle">Details</span>
                 <svg class="p-detail-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,4 6,8 10,4"></polyline></svg>
               </button>
               <ul class="p-features p-features--expanded p-features--empty" {...e(`sections[${si}].products[${pi}].featuresHtml`)}>
@@ -195,12 +195,12 @@ const hasSections = sections && sections.length > 0;
             {hideDetails ? (
               <div class="p-locked">
                 <span class="p-locked-icon">🔒</span>
-                <span class="p-locked-text">승인된 사용자만 열람 가능</span>
+                <span class="p-locked-text" data-i18n="products.lockedNote">승인된 사용자만 열람 가능</span>
               </div>
             ) : (
               <div class="p-detail-wrap">
                 <button type="button" class="p-detail-toggle" aria-expanded="false">
-                  <span class="p-detail-toggle-text">Details</span>
+                  <span class="p-detail-toggle-text" data-i18n="products.detailsToggle">Details</span>
                   <svg class="p-detail-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,4 6,8 10,4"></polyline></svg>
                 </button>
                 <div class="p-price p-features--collapsed" {...editSpecs}>
