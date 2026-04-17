@@ -66,7 +66,6 @@
       "Bash(curl -s http://localhost:8080/products/military)",
       "Bash(curl -s http://localhost:8080/contact)",
       "Bash(curl -s http://localhost:8080/about)",
-
       "Bash(npm run:*)",
       "Bash(npm rebuild:*)",
       "Bash(npx vitest:*)",
@@ -104,7 +103,15 @@
       "Bash(netstat:*)",
       "Bash(sqlite3:*)",
       "WebFetch(domain:192.168.10.182)",
-      "Read(//c/Users/user/Desktop/**)"
+      "Read(//c/Users/user/Desktop/**)",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('src/content/products/telecom.json','utf8'\\)\\); JSON.parse\\(require\\('fs'\\).readFileSync\\('src/content/pages/catalog.json','utf8'\\)\\); console.log\\('JSON OK'\\)\")",
+      "Bash(node -e \"const ko=require\\('./ko.json'\\); ['solutions','applications','about','history','contact','login','productsIntro'].forEach\\(k=>console.log\\('nav.'+k+': '+ko.nav[k]\\)\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const t=require\\('./src/content/products/telecom.json'\\); t.sections.forEach\\(\\(s,i\\)=>console.log\\('s'+i+': '+s.title\\)\\)\")",
+      "Bash(node -e \"const s=require\\('./src/content/pages/solutions.json'\\); const t=s.solutionCards.find\\(c=>c.href==='/products/telecom'\\); console.log\\('telecom subcategories:'\\); t.subcategories.forEach\\(\\(x,i\\)=>console.log\\('  ['+i+'] '+x\\)\\)\")",
+      "Bash(node -e \"const Database = require\\('better-sqlite3'\\); const db = new Database\\('data/acetec.db'\\); console.log\\(db.prepare\\('SELECT id, username, role, approved FROM admins'\\).all\\(\\)\\);\")",
+      "Bash(node -e \"const Database = require\\('better-sqlite3'\\); const db = new Database\\('data/acetec.db'\\); console.log\\('admins columns:', db.pragma\\('table_info\\(admins\\)'\\).map\\(c=>c.name\\).join\\(','\\)\\); console.log\\('data:', db.prepare\\('SELECT id, username, role FROM admins'\\).all\\(\\)\\);\")",
+      "Bash(2>&1)"
     ],
     "deny": [],
     "additionalDirectories": [
