@@ -488,17 +488,29 @@ SQLite: `data/acetec.db` (better-sqlite3, WAL 모드, 8개 테이블)
 
 ## 10. 보안
 
-### 10-1. 현황 (2026-04-15)
+### 10-1. 현황 (2026-04-17, ECC 재감사)
 
 | 영역 | 등급 | 핵심 |
 |------|------|------|
-| 웹앱 (포트 8080) | **A** | CSP 11개 디렉티브, PII 마스킹, COOP, 에러 스택 차단 |
+| 웹앱 (포트 8080) | **B-** | CRITICAL 8건 잔존 (인증 우회, Prototype Pollution, 코드 노출) |
 | LLM 백엔드 (Ollama 11434) | **A** | localhost 바인딩, 외부 차단 |
 | PII 데이터 보호 | **B+** | 기본 마스킹 + 언마스킹 감사 로그 |
 | 챗봇 보안 | **A** | Input 30패턴 차단 + Output 이중 sanitize (lib + API) |
-| **종합** | **A-** | P0 CRITICAL 해결, 보안 헤더 완비, 챗봇 이중 방어 |
+| DB/인프라 | **C** | 인덱스 0개, cleanup 없음, backup 없음, busy_timeout 미설정 |
+| **종합** | **C+** | P0 해결 후에도 CRITICAL 8건 잔존. 상세: [SUMMARY.md](SUMMARY.md) |
 
-### 10-2. 펜테스트 대응
+### 10-2. 미해결 CRITICAL 이슈 (6건, 즉시 조치 필요)
+
+| # | 이슈 | 파일 | 영향 |
+|---|------|------|------|
+| 1 | i18n `setNestedValue()` Prototype Pollution | `update.ts`, `translate-save.ts` | `__proto__` 키로 전체 Node 프로세스 Object.prototype 오염 |
+| 2 | CMS/i18n/이미지 API에 admin role 체크 없음 | `pages/[page].ts`, `i18n/update.ts`, `images/upload.ts` | 일반 사용자(person/customer)가 사이트 콘텐츠·번역·이미지 변조 |
+| 3 | 인증 코드가 API 응답에 평문 반환 | `send-code.ts:53,56` | SMTP 실패 시 누구든 코드 획득 → 계정 탈취 |
+| 4 | 인증 관련 엔드포인트 rate limit 부재 | `send-code.ts`, `register.ts`, `reset-password.ts` | 이메일 폭탄 + 6자리 코드 브루트포스 |
+| 5 | conversations/messages API 무인증 | `conversations.ts`, `messages.ts` | 타인 대화 열람·삭제 |
+| 6 | DB 인덱스 0개 + 만료 데이터 미정리 | `db.ts` | 데이터 증가 시 서비스 성능 급감 + DB 무한 증가 |
+
+### 10-3. 펜테스트 대응 (해결 완료)
 
 | 우선순위 | 항목 | 상태 |
 |----------|------|------|
@@ -510,7 +522,7 @@ SQLite: `data/acetec.db` (better-sqlite3, WAL 모드, 8개 테이블)
 | **P3** | `X-Content-Type-Options` 누락 | **해결** |
 | **P6** | magic word DB dump 백도어 | **해결** — `sanitizeOutput` lib + API 이중 적용 |
 
-### 10-3. 보안 헤더 (middleware.ts)
+### 10-4. 보안 헤더 (middleware.ts)
 
 | 헤더 | 값 | 비고 |
 |------|-----|------|
@@ -523,14 +535,14 @@ SQLite: `data/acetec.db` (better-sqlite3, WAL 모드, 8개 테이블)
 | Content-Security-Policy | 11개 디렉티브 (아래 참조) | XSS/Clickjacking 방어 |
 | 에러 스택 트레이스 | try/catch로 next() 감싸기 | 내부 정보 노출 차단 |
 
-### 10-4. 인증/세션
+### 10-5. 인증/세션
 
 - **비밀번호**: bcrypt hashSync (salt round 10), 정책: 8자+ 영문+숫자+특수문자
 - **세션 쿠키**: HttpOnly, SameSite=Strict, Secure(env 제어), 24시간 TTL
 - **로그인 잠금**: 5회 실패 → 30분 잠금 (DB `failed_attempts`/`lock_until`)
 - **RBAC**: 미들웨어에서 `/admin/*`, `/api/admin/*` 세션+role 자동 검증
 
-### 10-5. CSP (Content Security Policy)
+### 10-6. CSP (Content Security Policy)
 
 ```
 default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';
@@ -538,7 +550,7 @@ img-src 'self' data:; connect-src 'self' http://localhost:11434 https://translat
 font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
 ```
 
-### 10-6. 챗봇 보안 (이중 방어)
+### 10-7. 챗봇 보안 (이중 방어)
 
 | 레이어 | 위치 | 내용 |
 |--------|------|------|
