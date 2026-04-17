@@ -23,14 +23,14 @@
           ]
         },
         {
-          "name": "ACE-BoxIPC-7110L2D",
+          "name": "ACE-BoxIPC-710L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
             "Supports 2 Gigabit LAN portsDDR3L SO-DIMM 4GB memory Up to 16GBWall mounting Supports RAID 0/1/5/10 Supports 3 independent displays Supports Intel iAMT 8.0"
           ]
         },
         {
-          "name": "ACE-BoxIPC-74L2D",
+          "name": "ACE-BoxIPC-712L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
             "Supports 2x Gigabit LAN ports, DDR4 SO-DIMM 8GB memory, up to 32GB wall mounting, supports RAID 0/1, supports three independent displays, supports ESD protection"
