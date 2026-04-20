@@ -41,7 +41,7 @@
   },
   {
     "question": "산업용 컴퓨터 IPC 팬리스 PC 제품이 뭐가 있어?",
-    "answer": "AceTec 산업용 컴퓨터(IPC) 분야 제품 목록 (29모델):\n\n**팬리스 박스PC (ACE-BoxIPC)**\n- ACE-BoxIPC-C4L3, 79L2D, 710L2D, 712L2D, 76L2D\n- ACE-OWS-712-S4 (올인원 워크스테이션)\n\n**랙마운트 서버 (ACE-IPC02R)**\n- 4U: i7-6세대/9세대/12세대, Xeon-E5 (팬리스/표준)\n- 2U: Xeon-E5-F (서버급)\n\n**데스크톱/벽면장착 (ACE-IPC02D/WS01D/Wall)**\n- ACE-IPC02D: i7-3세대/4세대/6세대/12세대\n- ACE-WS01D: i7-4세대/6세대 팬리스\n- ACE-IPC-Wall-i7-6-F: 벽면장착형\n\n**패널PC (ACE-PPC)**\n- ACE-PPC: 10/15/17/19/21인치 (터치/고휘도)\n\n특징: 팬리스, 넓은 온도 범위, 24/7 연속 운전, KC/ISO 인증\n\n상세: /products/ipc\n문의: acetec@acetec-korea.co.kr (+82-2-420-2343)",
+    "answer": "AceTec 산업용 컴퓨터(IPC) 분야 제품 목록 (29모델):\n\n**팬리스 박스PC (ACE-BoxIPC)**\n- ACE-BoxIPC-C4L3, 79L2D, 710L2D, 712L2D, 76L2D\n- ACE-OWS-712-S4 (올인원 워크스테이션)\n\n**랙마운트 서버 (ACE-IPC02R)**\n- 4U 시리즈 6종 (팬리스/표준)\n- 2U 서버급 시리즈\n\n**데스크톱/벽면장착**\n- ACE-IPC02D 시리즈 4종\n- ACE-WS01D 팬리스 시리즈 2종\n- ACE-IPC-Wall 벽면장착형\n\n**패널PC (ACE-PPC)**\n- ACE-PPC: 10/15/17/19/21인치 (터치/고휘도)\n\n특징: 팬리스, 넓은 온도 범위, 24/7 연속 운전, KC/ISO 인증\n\n상세: /products/ipc\n문의: acetec@acetec-korea.co.kr (+82-2-420-2343)",
     "tags": ["산업용컴퓨터", "IPC", "팬리스", "fanless", "랙마운트", "패널PC", "산업용PC", "BoxIPC", "ACE"]
   },
   {

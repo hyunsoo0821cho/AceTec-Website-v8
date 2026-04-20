@@ -161,7 +161,6 @@ export function matchFaq(rawMsg: string): { reply: string } | null {
     }
     if (score > bestScore) { bestScore = score; bestFaq = faq; }
   }
-  console.log(`[FAQ-match] score=${bestScore.toFixed(1)} q="${bestFaq?.question?.substring(0,30)}"`);
   if (!bestFaq || bestScore < 1.0) return null;
   let reply = bestFaq.answer;
   if (!/\[NAVIGATE:/.test(reply)) {

@@ -61,7 +61,6 @@ export const POST: APIRoute = async ({ request }) => {
     // FAQ 매칭: rawText에서 직접 추출한 원본 메시지로 매칭 (Astro 인코딩 문제 우회)
     const rawMsgMatch = rawText.match(/"message"\s*:\s*"((?:[^"\\]|\\.)*)"/);
     const rawMsg = rawMsgMatch ? rawMsgMatch[1].replace(/\\"/g, '"').replace(/\\n/g, '\n') : '';
-    console.log(`[FAQ-API] rawMsg="${rawMsg.substring(0,30)}" len=${rawMsg.length}`);
     const faqResult = matchFaq(rawMsg);
     if (faqResult) {
       const safeReply = sanitizeOutput(faqResult.reply);
