@@ -56,8 +56,10 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
+    // rawMessage: body에서 직접 추출 (Zod/sanitize 우회) — FAQ 키워드 매칭용
+    const rawMsg = typeof body === 'object' && body !== null ? (body as any).message || '' : '';
     const message = sanitizeChatMessage(parsed.data.message);
-    const { reply, sources } = await generateChatResponse(message, parsed.data.history, parsed.data.message);
+    const { reply, sources } = await generateChatResponse(message, parsed.data.history, rawMsg);
     const safeReply = sanitizeOutput(reply);
 
     // 대화 저장
