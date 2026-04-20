@@ -144,6 +144,7 @@ function detectNavPath(userMsg: string): string | null {
 export async function generateChatResponse(
   message: string,
   history: Array<{ role: 'user' | 'assistant'; content: string }> = [],
+  rawMessage?: string,
 ): Promise<ChatResponse> {
   // ===== Input Guardrail =====
   const guard = isBlockedInput(message);
@@ -157,7 +158,7 @@ export async function generateChatResponse(
   const faqs = loadFaq();
   if (faqs.length > 0) {
     try {
-      const msgLower = message.toLowerCase();
+      const msgLower = (rawMessage || message).toLowerCase();
       const msgNoSpace = msgLower.replace(/\s+/g, '');
       let bestFaq: FaqEntry | null = null;
       let bestScore = 0;

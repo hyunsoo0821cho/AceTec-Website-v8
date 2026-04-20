@@ -57,7 +57,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const message = sanitizeChatMessage(parsed.data.message);
-    const { reply, sources } = await generateChatResponse(message, parsed.data.history);
+    const { reply, sources } = await generateChatResponse(message, parsed.data.history, parsed.data.message);
     const safeReply = sanitizeOutput(reply);
 
     // 대화 저장
