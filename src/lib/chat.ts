@@ -11,8 +11,9 @@ function loadFaq(): FaqEntry[] {
   if (_faqCache) return _faqCache;
   let faqPath = path.join(process.cwd(), 'src', 'content', 'faq.json');
   if (!fs.existsSync(faqPath)) faqPath = path.join(process.cwd(), 'data', 'faq.json');
-  if (!fs.existsSync(faqPath)) { _faqCache = []; return _faqCache; }
+  if (!fs.existsSync(faqPath)) { console.log('[FAQ] file not found:', faqPath); _faqCache = []; return _faqCache; }
   _faqCache = JSON.parse(fs.readFileSync(faqPath, 'utf-8'));
+  console.log(`[FAQ] loaded ${_faqCache!.length} entries from ${faqPath}, tags[0]=${JSON.stringify(_faqCache![0]?.tags?.slice(0,3))}`);
   return _faqCache!;
 }
 
