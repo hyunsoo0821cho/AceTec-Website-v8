@@ -2,8 +2,8 @@
   "nav": {
     "solutions": "解決方案",
     "applications": "應用領域",
-    "about": "關於我們",
-    "history": "發展歷程",
+    "about": "公司介紹",
+    "history": "歷史",
     "contact": "聯絡我們",
     "login": "登入",
     "inquiry": "詢價"
@@ -27,7 +27,8 @@
     "partners": "技術合作夥伴",
     "learnMore": "深入了解",
     "contactTitle": "聯絡我們",
-    "contactDesc": "無論您需要產品報價、技術諮詢，還是想探討合作機會，我們的工程團隊隨時為您服務。"
+    "contactDesc": "無論您需要產品報價、技術諮詢，還是想探討合作機會，我們的工程團隊隨時為您服務。",
+    "companyDesc": "30 多年來在嵌入式運算、工業 PC 和安全關鍵系統領域深受信賴—服務於國防、航空航太、鐵路和工業市場。"
   },
   "solutions": {
     "title": "解決方案",
@@ -55,17 +56,18 @@
   "products": {
     "backToHome": "← 返回首頁",
     "viewCatalog": "查看完整目錄",
-    "military": "軍事與航太",
-    "railway": "軌道運輸",
-    "telecom": "通訊與網路",
+    "military": "軍事航空",
+    "railway": "鐵路運輸",
+    "telecom": "電信/網路",
     "industrial": "工業自動化",
-    "sensor": "感測器建模與模擬",
-    "hpc": "高效能運算",
-    "radar": "雷達處理與顯示",
+    "sensor": "感測器建模與仿真",
+    "hpc": "超級計算系統",
+    "radar": "雷達處理和顯示",
     "ipc": "工業電腦",
     "ai": "AI 中心",
     "detailsToggle": "詳細",
-    "lockedNote": "僅限已核准用戶檢視"
+    "lockedNote": "僅限已核准用戶檢視",
+    "interconnect": "高速互連"
   },
   "chat": {
     "pillText": "詢問我們的產品",
@@ -104,7 +106,12 @@
     "company": "公司資訊",
     "partners": "合作夥伴",
     "contact": "聯絡我們",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "seoulHQ": "首爾總部",
+    "daejeonBranch": "大田店",
+    "daejeonAddr": "室。大田廣域市儒城區Techno 2路199，Migeon Techno World 205",
+    "corpName": "埃斯泰克有限公司",
+    "ceoName": "張正勳"
   },
   "lang": {
     "label": "Language",
@@ -131,40 +138,52 @@
   },
   "ps": {
     "telecom": {
-      "s0": "Entry Network Appliance",
-      "s0p0n": "ACE-N-J4125(Mini)",
+      "s0": "入門網路設備",
+      "s0p0n": "ACE-N-J4125(迷你)",
       "s0p0f": "",
       "s0p1n": "ACE-N-J4125",
       "s0p1f": "",
       "s0p2n": "ACE-N-J6412",
       "s0p2f": "",
-      "s1": "Middle Network Appliance",
+      "s1": "中間網路設備",
       "s1p0n": "ACE-N-H170",
       "s1p0f": "",
       "s1p1n": "ACE-N-Q670E",
       "s1p1f": "",
       "s1p2n": "ACE-N-C252",
       "s1p2f": "",
-      "s2": "High-end Network Appliance",
+      "s2": "高階網路設備",
       "s2p0n": "ACE-N-C246",
       "s2p0f": "",
       "s2p1n": "ACE-N-C621",
       "s2p1f": "",
       "s2p2n": "ACE-N-C741",
       "s2p2f": "",
-      "s3": "Server Network Appliance",
+      "s3": "伺服器網路設備",
       "s3p0n": "ACE-N-1UXEON",
       "s3p0f": "",
       "s3p1n": "ACE-N-2UXEON",
       "s3p1f": "",
       "s3p2n": "ACE-N-4UGPU",
       "s3p2f": "",
-      "s4": "Customized Network Appliance",
-      "s4p0n": "커스터마이징",
+      "s4": "客製化網路設備",
+      "s4p0n": "客製化",
       "s4p0f": "",
-      "s5": "Machine Vision NICs",
+      "s5": "網路 NIC 適配器",
       "s6": "Industrial PC NICs",
-      "s7": "PCIE Network Adapter"
+      "s7": "PCIE Network Adapter",
+      "s5p0n": "MCX453A",
+      "s5p1n": "MCX456A",
+      "s5p2n": "MCX555A",
+      "s5p3n": "MCX556A",
+      "s5p4n": "ACE2004PT-POE（1G POE）",
+      "s5p5n": "ACE9804BT (10G)",
+      "s5p6n": "ACE9812BT (10G)",
+      "s5p7n": "ACE1023PF-4SF28 (25G)"
     }
+  },
+  "productDetail": {
+    "telecomTitle": "電信/網路領域",
+    "telecomDesc": "基於 Intel/AMD 的網路設備，用於防火牆、VPN、UTM 和負載平衡 - 包括用於資料中心和通訊基礎架構的高效能 NIC 適配器。"
   }
 }

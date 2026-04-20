@@ -1,8 +1,8 @@
 {
   "category": "telecom",
-  "title": "Telecom & Networking",
+  "title": "통신/네트워킹 분야",
   "pageTitle": "Telecom & Networking Products - AceTec",
-  "description": "Intel/AMD-based network appliances for firewall, VPN, UTM, and load balancing — along with high-performance NIC adapters for data center and telecom infrastructure.",
+  "description": "방화벽, VPN, UTM, 로드밸런싱을 위한 Intel/AMD 기반 네트워크 어플라이언스 — 데이터센터 및 통신 인프라용 고성능 NIC 어댑터 포함.",
   "items": [],
   "sections": [
     {
@@ -11,17 +11,34 @@
         {
           "name": "ACE-N-J4125(Mini)",
           "image": "/uploads/products/network/ACE-N-J4125(Mini).png",
-          "features": []
+          "features": [
+            "• Support 19’ Rack mounting",
+            "• Support 4Port Intel I211 Gigabit LAN",
+            "• Support RJ45 Console Port",
+            "• Support FanlessCPU configuration",
+            "• NAC/UTM 전용Appliance"
+          ]
         },
         {
           "name": "ACE-N-J4125",
           "image": "/uploads/products/network/ACE-N-J4125.png",
-          "features": []
+          "features": [
+            "• Support 19’ Rack mounting",
+            "• Support 4Port Intel I211 Gigabit LAN",
+            "• Support RJ45 Console Port",
+            "• Support FanlessCPU configuration",
+            "• NAC/UTM 전용Appliance"
+          ]
         },
         {
           "name": "ACE-N-J6412",
           "image": "/uploads/products/network/ACE-N-J6412.png",
-          "features": []
+          "features": [
+            "• Support 19’ Rack mounting",
+            "• Support 6Port Intel I211AT Gigabit LAN • Support RJ45 Console Port",
+            "• Support FanlessCPU configuration",
+            "• NAC/UTM 전용Appliance"
+          ]
         }
       ]
     },
@@ -31,17 +48,36 @@
         {
           "name": "ACE-N-H170",
           "image": "/uploads/products/network/ACE-N-H170.png",
-          "features": []
+          "features": [
+            "• Support 19’ Rack mounting",
+            "• Support 6Port Intel I211AT Gigabit LAN",
+            "• Support RJ45 Console Port",
+            "• Support Socket type CPU configuration",
+            "• NAC/UTM 전용Appliance"
+          ]
         },
         {
           "name": "ACE-N-Q670E",
           "image": "/uploads/products/network/ACE-N-Q670E.png",
-          "features": []
+          "features": [
+            "• Support 19’ Rack mounting",
+            "• Support 8Port Intel I225V 2.5G LAN",
+            "• Support RJ45 Console Port",
+            "• Support Socket type CPU configuration",
+            "• Firewall/UTM 전용Appliance"
+          ]
         },
         {
           "name": "ACE-N-C252",
           "image": "/uploads/products/network/ACE-N-C252.png",
-          "features": []
+          "features": [
+            "• Support 19’ Rack mounting",
+            "• Support 6Port Intel I226V Gigabit LAN",
+            "•Support 2Port Intel I210IS SFP",
+            "• Support RJ45 Console Port",
+            "• Support Socket type CPU configuration",
+            "• Firewall/UTM 전용Appliance"
+          ]
         }
       ]
     },
@@ -99,92 +135,59 @@
       "title": "Network NICs Adapter",
       "products": [
         {
-          "name": "MCX453A-FCAT",
+          "name": "MCX453A",
           "image": "/uploads/products/network/MCX453A.png",
           "features": [
-            "ConnectX-4 1Port 56(40)Gb/s Infiniband(Ethernet) Card",
-            "RDMA over Converged Ethernet(RoCE) support",
-            "SR-IOV / IEEE 802 / IEEE 1588 v2 support",
-            "PCIe Gen 3.0 compliant, 1.1 and 2.0 compatible",
-            "Auto-negotiates to x8, x4, x2 or x1"
+            "ConnectX-4 1포트 56(40)Gb/s Infiniband(이더넷) 카드RoCE(통합 이더넷을 통한 RDMA) 지원SR-IOV/IEEE 802/IEEE 1588 v2 지원PCIe Gen 3.0 호환, 1.1 및 2.0 호환x8, x4, x2 또는 x1로 자동 협상"
           ]
         },
         {
-          "name": "MCX456A-FCAT",
+          "name": "MCX456A",
           "image": "/uploads/products/network/MCX456A.png",
           "features": [
-            "ConnectX-4 2Port 56(40)Gb/s Infiniband(Ethernet) Card",
-            "RDMA over Converged Ethernet(RoCE) support",
-            "SR-IOV / IEEE 802 / IEEE 1588 v2 support",
-            "PCIe Gen 3.0 compliant, 1.1 and 2.0 compatible",
-            "Auto-negotiates to x8, x4, x2 or x1"
+            "ConnectX-4 2포트 56(40)Gb/s Infiniband(이더넷) 카드RoCE(통합 이더넷을 통한 RDMA) 지원SR-IOV/IEEE 802/IEEE 1588 v2 지원PCIe Gen 3.0 호환, 1.1 및 2.0 호환x8, x4, x2 또는 x1로 자동 협상"
           ]
         },
         {
-          "name": "MCX555A-ECAT",
+          "name": "MCX555A",
           "image": "/uploads/products/network/MCX555A.png",
           "features": [
-            "ConnectX-5 1Port up to 100Gb/s Infiniband(Ethernet) Card",
-            "RDMA over Converged Ethernet(RoCE) support",
-            "SR-IOV / IEEE 802 / IEEE 1588 v2 support",
-            "PCIe Gen 4.0 / 3.0 compliant, 1.1 and 2.0 compatible",
-            "Auto-negotiates to x16, x8, x4, x2 or x1"
+            "ConnectX-5 1포트 최대 100Gb/s Infiniband(이더넷) 카드RoCE(통합 이더넷을 통한 RDMA) 지원SR-IOV/IEEE 802/IEEE 1588 v2 지원PCIe Gen 4.0/3.0 호환, 1.1 및 2.0 호환x16, x8, x4, x2 또는 x1로 자동 협상"
           ]
         },
         {
-          "name": "MCX556A-ECAT",
+          "name": "MCX556A",
           "image": "/uploads/products/network/MCX556A.png",
           "features": [
-            "ConnectX-5 2Port up to 100Gb/s Infiniband(Ethernet) Card",
-            "RDMA over Converged Ethernet(RoCE) support",
-            "SR-IOV / IEEE 802 / IEEE 1588 v2 support",
-            "PCIe Gen 4.0 / 3.0 compliant, 1.1 and 2.0 compatible",
-            "Auto-negotiates to x16, x8, x4, x2 or x1"
+            "ConnectX-5 2포트 최대 100Gb/s Infiniband(이더넷) 카드RoCE(통합 이더넷을 통한 RDMA) 지원SR-IOV/IEEE 802/IEEE 1588 v2 지원PCIe Gen 4.0/3.0 호환, 1.1 및 2.0 호환x16, x8, x4, x2 또는 x1로 자동 협상"
           ]
         },
         {
           "name": "ACE2004PT-POE (1G POE)",
           "image": "/uploads/products/network/ACE2004PT-POE-1G-POE.png",
           "features": [
-            "PCIe x4 Quad-port 802.3at PoE+ Gigabit Vision Frame Grabber Card (Intel I350)",
-            "The single-port PoE output power consumption is up to 30W, and an external large 4-Pin power supply interface is provided",
-            "Adaptive to the power consumption output required by external devices: Class 0, Class 1, Class 2, Class 3"
+            "PCIe x4 쿼드 포트 802.3at PoE+ 기가비트 비전 프레임 그래버 카드(Intel I350)단일 포트 PoE 출력 전력 소비는 최대 30W이며 외부 대형 4핀 전원 공급 장치 인터페이스가 제공됩니다.외부 장치에 필요한 전력 소비 출력에 적응: 클래스 0, 클래스 1, 클래스 2, 클래스 3"
           ]
         },
         {
           "name": "ACE9804BT (10G)",
           "image": "/uploads/products/network/ACE9804BT-10G.png",
           "features": [
-            "Quad-port 10G SFP+ Connectivity",
-            "PCI Express (PCIe) v3.0 (8.0GT/s) x8 lanes",
-            "Network Virtualization",
-            "PXE boot",
-            "IEEE 802.1q VLAN support with VLAN tag insertion",
-            "Half height & full-height bracket"
+            "쿼드 포트 10G SFP+ 연결PCI Express(PCIe) v3.0(8.0GT/s) x8 레인네트워크 가상화PXE 부팅VLAN 태그 삽입을 통한 IEEE 802.1q VLAN 지원절반 높이 및 전체 높이 브래킷"
           ]
         },
         {
           "name": "ACE9812BT (10G)",
           "image": "/uploads/products/network/ACE9812BT-10G.png",
           "features": [
-            "Dual-port 10GbE adapters",
-            "PCI Express (PCIe) v3.0, 8.0 GT/s, x4 lanes",
-            "Standard CAT 6a cabling with RJ45 connectors",
-            "Unified networking delivering LAN iSCSI and FCoE in one low-cost CNA",
-            "Network Virtualization, low latency",
-            "Low profile and full-height bracket"
+            "듀얼 포트 10GbE 어댑터PCI Express(PCIe) v3.0, 8.0GT/s, x4 레인RJ45 커넥터를 사용한 표준 CAT 6a 케이블링하나의 저렴한 CNA에서 LAN iSCSI 및 FCoE를 제공하는 통합 네트워킹네트워크 가상화, 낮은 대기 시간로우 프로파일 및 전체 높이 브래킷"
           ]
         },
         {
           "name": "ACE1023PF-4SF28 (25G)",
           "image": "/uploads/products/network/ACE1023PF-4SF28-25G.png",
           "features": [
-            "Fiber 25G ethernet network adapter based on Intel chips",
-            "Four 1/10/25GbE SFP28 ports deliver multiple high speed connections",
-            "Dynamic Device Personalization (DDP)",
-            "Supports both RDMA iWARP and RoCEv2",
-            "Application Device Queues (ADQ)",
-            "IEEE 1588 Precision Time Protocol (PTP)"
+            "Intel 칩 기반 파이버 25G 이더넷 네트워크 어댑터4개의 1/10/25GbE SFP28 포트가 다중 고속 연결을 제공합니다.동적 장치 개인화(DDP)RDMA iWARP 및 RoCEv2 모두 지원ADQ(애플리케이션 장치 대기열)IEEE 1588 PTP(정밀 시간 프로토콜)"
           ]
         }
       ]
