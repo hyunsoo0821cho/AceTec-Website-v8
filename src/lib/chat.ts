@@ -175,8 +175,9 @@ export async function generateChatResponse(
   const faqs = loadFaqWithEmbeddings();
   if (faqs.length > 0) {
     try {
-      const qEmb = (docs as any)._queryEmbedding as number[] | undefined
-        || await generateEmbedding(message);
+      const cachedEmb = (docs as any)._queryEmbedding as number[] | undefined;
+      const qEmb = cachedEmb || await generateEmbedding(message);
+      console.log(`[FAQ] embSource=${cachedEmb ? 'cached' : 'fresh'} embLen=${qEmb?.length}`);
       let bestFaq: FaqEntry | null = null;
       let bestSim = 0;
       for (const faq of faqs) {
