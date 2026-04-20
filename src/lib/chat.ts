@@ -171,25 +171,28 @@ export async function generateChatResponse(
 
   const docs = await retrieveRelevantDocs(message);
 
-  // ===== FAQ 직접 매칭 — 임베딩 코사인 유사도로 LLM 우회, 환각 방지 =====
-  const FAQ_THRESHOLD = 0.22;
+  // ===== FAQ 키워드 매칭 — 태그 기반으로 LLM 우회, 환각 방지 =====
   const faqs = loadFaqWithEmbeddings();
   if (faqs.length > 0) {
     try {
-      const cachedEmb = (docs as any)._queryEmbedding as number[] | undefined;
-      const qEmb = cachedEmb || await generateEmbedding(message);
-      console.log(`[FAQ] embSource=${cachedEmb ? 'cached' : 'fresh'} embLen=${qEmb?.length} emb5=${qEmb?.slice(0,5).map(v=>v.toFixed(4)).join(',')} faq0emb5=${faqs[0]?.embedding?.slice(0,5).map(v=>v.toFixed(4)).join(',')}`);
+      const msgLower = message.toLowerCase();
       let bestFaq: FaqEntry | null = null;
-      let bestSim = 0;
+      let bestScore = 0;
       for (const faq of faqs) {
-        if (!faq.embedding) continue;
-        const sim = cosSim(qEmb, faq.embedding);
-        if (sim > bestSim) { bestSim = sim; bestFaq = faq; }
+        // 태그 매칭 점수: 일치하는 태그 수
+        let score = 0;
+        for (const tag of faq.tags) {
+          if (msgLower.includes(tag.toLowerCase())) score++;
+        }
+        // 질문 키워드 매칭 보조 점수
+        const qWords = faq.question.replace(/[?？]/g, '').split(/[\s,]+/).filter(w => w.length >= 2);
+        for (const w of qWords) {
+          if (msgLower.includes(w.toLowerCase())) score += 0.5;
+        }
+        if (score > bestScore) { bestScore = score; bestFaq = faq; }
       }
-      // 상위 3개 FAQ 매칭 결과 로그
-      const topMatches = faqs.filter(f=>f.embedding).map(f=>({q:f.question.substring(0,25),s:cosSim(qEmb,f.embedding!)})).sort((a,b)=>b.s-a.s).slice(0,3);
-      console.log(`[FAQ] best=${bestSim.toFixed(4)} threshold=${FAQ_THRESHOLD} match=${bestFaq?.question?.substring(0,30)} top3=${JSON.stringify(topMatches.map(m=>m.q+'='+m.s.toFixed(4)))}`);
-      if (bestFaq && bestSim >= FAQ_THRESHOLD) {
+      console.log(`[FAQ] tagMatch best=${bestScore.toFixed(1)} match=${bestFaq?.question?.substring(0,30)}`);
+      if (bestFaq && bestScore >= 1.0) {
         const safeFaq = sanitizeOutput(bestFaq.answer);
         let reply = safeFaq;
         if (!/\[NAVIGATE:/.test(reply)) {
