@@ -58,6 +58,10 @@
     {
       "label": "Contact us",
       "href": "/contact"
+    },
+    {
+      "label": "New Link",
+      "href": "/"
     }
   ],
   "partners": [
