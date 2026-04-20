@@ -86,12 +86,7 @@
           "name": "ACE-IPC02R-4U-Xeon-E3",
           "image": "/images/catalog/Rack2.png",
           "features": [
-            "Supports 2 Gigabit LAN ports",
-            "Supports up to 64GB system memory",
-            "Supports standard rack mounting",
-            "RAID 0/1/5/10 support",
-            "Easy installation HDD rack support",
-            "Intel iAMT 11.0 support"
+            "Intel®"
           ]
         },
         {
