@@ -175,7 +175,7 @@ export async function generateChatResponse(
         }
         if (score > bestScore) { bestScore = score; bestFaq = faq; }
       }
-      console.log(`[FAQ] tagMatch best=${bestScore.toFixed(1)} match=${bestFaq?.question?.substring(0,30)}`);
+      console.log(`[FAQ] tagMatch best=${bestScore.toFixed(1)} match=${bestFaq?.question?.substring(0,30)} msg="${msgLower}" msgNoSp="${msgNoSpace}"`);
       if (bestFaq && bestScore >= 1.0) {
         const safeFaq = sanitizeOutput(bestFaq.answer);
         let reply = safeFaq;
