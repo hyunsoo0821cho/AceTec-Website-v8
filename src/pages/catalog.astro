@@ -89,7 +89,7 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
 
       <!-- 카테고리 & 제품 목록 -->
       {catalog.categories.map((cat: any, ci: number) => (
-        <div class="cat-group" style="position:relative;">
+        <div class="cat-group" data-cat-id={cat.id} style="position:relative;">
           {isAdmin && (
             <button class="admin-delete-btn" data-admin-delete={`categories[${ci}]`} title="Delete Category">
               &times;
@@ -243,6 +243,18 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
     height: 100%;
     object-fit: cover;
     transition: opacity var(--transition-slow);
+  }
+  /* 네트워크 어플라이언스 카테고리(cs20 고급 / cs21 서버)는 제품이 가로로 길고
+     위아래가 얇아 기본 75% 비율에서는 상하가 잘림 — 세로 여유를 늘리고
+     전체 이미지가 보이도록 contain 으로 표시. 다른 카테고리는 영향 없음. */
+  .cat-group[data-cat-id="cs20"] .p-img,
+  .cat-group[data-cat-id="cs21"] .p-img {
+    padding-bottom: 100%;
+  }
+  .cat-group[data-cat-id="cs20"] .p-img img,
+  .cat-group[data-cat-id="cs21"] .p-img img {
+    object-fit: contain;
+    padding: 6px;
   }
   .p-card .p-name {
     font-size: var(--font-size-xl);
