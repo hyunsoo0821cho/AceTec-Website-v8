@@ -63,7 +63,7 @@
           ]
         },
         {
-          "name": "ACE-IPC02R-4U-Xeon-E3",
+          "name": "ACE-IPC02R-4U-Xeon-E5",
           "image": "/images/catalog/Rack2.png",
           "features": [
             "Supports two Gigabit LAN ports Supports up to 64GB system memory Supports standard rack mounting Supports RAID 0/1/5/10 Easy installation Supports HDD rack Supports Intel iAMT 11.0"
@@ -80,7 +80,7 @@
           "name": "ACE-IPC02R-4U-i7-9",
           "image": "/uploads/products/1776659547983-ace-ipc02r-2u-i7-4-f.webp",
           "features": [
-            "Intel® Core™ i7-6700"
+            "Intel® Core™ i7-9700T (12M Cache, 8 Core 2.0GHz up to 4.3GHz)"
           ]
         },
         {
