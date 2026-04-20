@@ -10,9 +10,10 @@ let _faqCache: FaqEntry[] | null = null;
 
 function loadFaqWithEmbeddings(): FaqEntry[] {
   if (_faqCache) return _faqCache;
-  // vector-store.json에서 faq 타입 문서의 임베딩을 가져옴
   const vsPath = path.join(process.cwd(), 'data', 'vector-store.json');
-  const faqPath = path.join(process.cwd(), 'src', 'content', 'faq.json');
+  // faq.json 경로: src/content 또는 data/ fallback
+  let faqPath = path.join(process.cwd(), 'src', 'content', 'faq.json');
+  if (!fs.existsSync(faqPath)) faqPath = path.join(process.cwd(), 'data', 'faq.json');
   if (!fs.existsSync(faqPath)) { _faqCache = []; return _faqCache; }
   const faqs: FaqEntry[] = JSON.parse(fs.readFileSync(faqPath, 'utf-8'));
   if (fs.existsSync(vsPath)) {
@@ -196,7 +197,7 @@ export async function generateChatResponse(
           })),
         };
       }
-    } catch { /* 임베딩 실패 시 LLM fallback */ }
+    } catch (faqErr) { console.error('[FAQ] match error:', faqErr); }
   }
 
   // Qdrant 외부 노출 (P0 잔존) 대비: 검색된 문서에 지시형 injection 이 섞여 있을 수 있으므로
