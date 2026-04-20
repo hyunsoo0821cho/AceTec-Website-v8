@@ -236,7 +236,7 @@
     "radarTitle": "Traitement et affichage radar",
     "radarDesc": "Solutions haute performance de conversion radar, suivi de cibles et affichage de Cambridge Pixel — serveur SPx, cartes d'acquisition HPx et systèmes intégrés de visualisation radar.",
     "ipcTitle": "PC industriels et systèmes sans ventilateur",
-    "ipcDesc": "PC box, rack, serveur, bureau, mural et panel pour fonctionnement industriel 24/7 — conception sans ventilateur, large plage de température, certifiés KC/ISO.",
+    "ipcDesc": "PC de type boîtier, montés en rack, serveur, de bureau, à montage mural et Panel PC pour un fonctionnement industriel 24h/24 et 7j/7 : conceptions sans ventilateur, températures étendues et certification KC/ISO.",
     "interconnectTitle": "Interconnexion de données ultra-rapide (High-Speed Interconnect)",
     "interconnectDesc": "Utilisation de protocoles de communication PCIe propriétaires pour minimiser la latence de transfert entre serveurs, GPU et stockage, construisant des clusters de calcul ultra-rapides où plusieurs nœuds fonctionnent comme un système unifié."
   },
@@ -400,7 +400,7 @@
       "s1p3f": "<li>Conforme à la norme CEI 61131-3</li><li>Exécution multi-cible</li><li>Chemin de fer et nucléaire</li>"
     },
     "ipc": {
-      "s0": "PC Boîtier",
+      "s0": "PC de type boîte",
       "s0p0n": "ACE-BoxIPC-C4L3",
       "s0p0f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>Prise en charge de 4 ports RS232/422/485</li><li>Prise en charge de 1 x DIO 8 bits via le port DB-9</li><li>Prise en charge des applications WIFI, 3G/4G et GPRS</li><li>Aluminium + métal aluminium</li><li>Support mural (VESA, rail DIN en option)</li>",
       "s0p1n": "ACE-BoxIPC-73L2D",
@@ -411,7 +411,7 @@
       "s0p3f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>DDR4 SO-DIMM 8 Go de mémoire jusqu'à 32 Go</li><li>Prise en charge du montage mural</li><li>Prise en charge de RAID 0/1</li><li>Prise en charge de 3 écrans indépendants</li><li>Prise en charge de la protection ESD</li>",
       "s0p4n": "ACE-BoxIPC-76L2D",
       "s0p4f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>DDR4 SO-DIMM 8 Go de mémoire jusqu'à 32 Go</li><li>Prise en charge du montage mural</li><li>Prise en charge de RAID 0/1</li><li>Prise en charge de 3 écrans indépendants</li><li>Prise en charge de la protection ESD</li>",
-      "s1": "PC Rack",
+      "s1": "PC monté en rack",
       "s1p0n": "ACE-IPC02R-4U-i7-6",
       "s1p0f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>Prend en charge jusqu'à 64 Go de mémoire système</li><li>Prise en charge du montage en rack standard</li><li>Prise en charge du RAID 0/1/5/10</li><li>Prise en charge du rack de disque dur à installation facile</li><li>Prise en charge d'Intel iAMT 11.0</li>",
       "s1p1n": "ACE-IPC02R-4U-Xeon-E3",
@@ -425,7 +425,7 @@
       "s2p0f": "<li>Montage en rack 2U (Ȯ强)</li><li>Prise en charge des processeurs Intel Xeon série E5 (double socket)</li><li>Prise en charge jusqu'à 256 Go de mémoire système</li><li>Prise en charge de 4 ports LAN Gigabit (redondance réseau)</li><li>Prise en charge des racks HDD/SSD multi-baies remplaçables à chaud</li><li>Emplacements d'extension PCIe flexibles pour cartes d'extension</li>",
       "s2p1n": "ACE-Sever-4U-Xeon-E5-F",
       "s2p1f": "<li>Convertible en rack/tour 4U (ִ Ȯ强 )</li><li>Prise en charge des processeurs hautes performances Intel Xeon série E5</li><li>Prise en charge de la mémoire système haute capacité (grande base de données optimisée)</li><li>Prise en charge d'une baie de stockage massive pour les disques durs d'entreprise</li><li>Prise en charge de l'accélération GPU pour l'IA et l'analyse des données</li><li>Alimentation redondante pour une stabilité critique 24h/24 et 7j/7</li>",
-      "s3": "PC de Bureau",
+      "s3": "Ordinateur de bureau",
       "s3p0n": "ACE-IPC02D-i7-3",
       "s3p0f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>DDR3L SO-DIMM 4 Go de mémoire jusqu'à 16 Go</li><li>Prise en charge RAID 0/1/5/10</li><li>Prise en charge de 3 écrans indépendants</li><li>Prise en charge d'Intel iAMT 8.0</li>",
       "s3p1n": "ACE-IPC02D-i7-4",
@@ -436,7 +436,7 @@
       "s3p3f": "<li>Prend en charge 2 ports LAN Gigabit</li><li>Prend en charge jusqu'à 32 Go de mémoire système</li><li>Prend en charge RAID 0/1/5/10</li><li>Prend en charge Intel iAMT 9.0</li>",
       "s3p4n": "ACE-WS01D-i7-6-F",
       "s3p4f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>Prise en charge jusqu'à 64 Go de mémoire système</li><li>Prise en charge de RAID 0/1/5/10</li><li>Prise en charge de 3 écrans indépendants</li><li>Prise en charge d'iAMT 9.0 et vPRO 9.0</li><li>Alimentation haute efficacité de 500 W</li>",
-      "s4": "PC Mural",
+      "s4": "PC mural",
       "s4p0n": "ACE-IPC-Wall-i7-6-F",
       "s4p0f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>Prend en charge jusqu'à 64 Go de mémoire système</li><li>Prise en charge du montage mural</li><li>Prise en charge du RAID 0/1/5/10</li><li>Prise en charge du rack de disque dur à installation facile</li><li>Prise en charge d'Intel iAMT 11.0</li>",
       "s5": "Panel PC",
@@ -455,7 +455,9 @@
       "s5p6n": "ACE-PPC-19HT",
       "s5p6f": "<li>Prise en charge de 1 280 x 1 024 points</li><li>DDR3L SO-DIMM 4 Go de mémoire jusqu'à 8 Go</li><li>Prise en charge du montage VESA</li><li>Prise en charge de l'écran tactile</li>",
       "s5p7n": "ACE-PPC-21HT",
-      "s5p7f": "<li>Prise en charge de 1 920 x 1 080 points</li><li>DDR3L SO-DIMM, 4 Go de mémoire jusqu'à 8 Go</li><li>Prise en charge du montage VESA</li><li>Prise en charge de l'écran tactile</li>"
+      "s5p7f": "<li>Prise en charge de 1 920 x 1 080 points</li><li>DDR3L SO-DIMM, 4 Go de mémoire jusqu'à 8 Go</li><li>Prise en charge du montage VESA</li><li>Prise en charge de l'écran tactile</li>",
+      "s0p5n": "ACE-OWS-712-S4",
+      "s3p5n": "ACE-IPC02D-i7-12"
     },
     "military": {
       "s0": "Facteur de forme Systèmes Abaco",

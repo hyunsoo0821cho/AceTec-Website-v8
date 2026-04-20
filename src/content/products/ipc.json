@@ -12,49 +12,42 @@
           "name": "ACE-BoxIPC-C4L3",
           "image": "/images/catalog/ACE-BoxIPC-C4L3.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원 4개의 RS232/422/485 지원 DB-9 포트를 통해 1 x 8비트 DIO 지원 WIFI, 3G/4G 및 GPRS 애플리케이션 지원 알루미늄 + 금속 알루미늄 벽면 장착 지원(VESA, DIN 레일 옵션)"
+            "Supports 2 Gigabit LAN ports Supports 4 RS232/422/485 Supports 1 x 8-bit DIO via DB-9 port Supports WIFI, 3G/4G and GPRS applications Aluminum + Metal Supports aluminum wall mounting (VESA, DIN rail optional)"
           ]
         },
         {
-          "name": "ACE-BoxIPC-79L2D",
+          "name": "ACE-BoxIPC-73L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원DDR3L SO-DIMM 4GB 메모리 최대 16GB벽면 장착 RAID 0/1/5/10 지원 3개의 독립 디스플레이 지원 Intel iAMT 8.0 지원"
+            "Supports 2 Gigabit LAN ports DDR3L SO-DIMM 4GB memory Up to 16GB Wall mount Supports RAID 0/1/5/10 Supports 3 independent displays Supports Intel iAMT 8.0"
           ]
         },
         {
-          "name": "ACE-BoxIPC-710L2D",
+          "name": "ACE-BoxIPC-7110L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원DDR3L SO-DIMM 4GB 메모리 최대 16GB벽면 장착 RAID 0/1/5/10 지원 3개의 독립 디스플레이 지원 Intel iAMT 8.0 지원"
+            "Supports 2 Gigabit LAN ports DDR3L SO-DIMM 4GB memory Up to 16GB Wall mount Supports RAID 0/1/5/10 Supports 3 independent displays Supports Intel iAMT 8.0"
           ]
         },
         {
-          "name": "ACE-BoxIPC-712L2D",
+          "name": "ACE-BoxIPC-74L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
-            "2x 기가비트 LAN 포트, DDR4 SO-DIMM 8GB 메모리, 최대 32GB 벽면 장착 지원, RAID 0/1 지원, 3개의 독립 디스플레이 지원, ESD 보호 지원"
+            "2x Gigabit LAN ports, DDR4 SO-DIMM 8GB memory, supports wall mounting up to 32GB, supports RAID 0/1, supports 3 independent displays, supports ESD protection"
           ]
         },
         {
           "name": "ACE-BoxIPC-76L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
-            "2x 기가비트 LAN 포트, DDR4 SO-DIMM 8GB 메모리, 최대 32GB 벽면 장착 지원, RAID 0/1 지원, 3개의 독립 디스플레이 지원, ESD 보호 지원"
+            "2x Gigabit LAN ports, DDR4 SO-DIMM 8GB memory, supports wall mounting up to 32GB, supports RAID 0/1, supports 3 independent displays, supports ESD protection"
           ]
         },
         {
           "name": "ACE-OWS-712-S4",
           "image": "/uploads/products/1776402802638-ace-ows-712-s4.webp",
           "features": [
-            "인텔® 코어™ i7-1270TE(25M 캐시, 12코어 1.40GHz 최대 4.6GHz)"
-          ]
-        },
-        {
-          "name": "ACE-BoxIPC-74L2-S4",
-          "image": "/uploads/products/1776402807492-ace-boxipc-74l2-s4.webp",
-          "features": [
-            "인텔® 코어™ i7-4770TE(8M 캐시, 쿼드 코어 2.3GHz 최대 3.3GHz)"
+            "Intel® Core™ i7-1270TE (25M Cache, 12 cores 1.40GHz up to 4.6GHz)"
           ]
         }
       ]
@@ -66,28 +59,28 @@
           "name": "ACE-IPC02R-4U-i7-6",
           "image": "/images/catalog/Rack1.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원 최대 64GB 시스템 메모리 지원 표준 랙 장착 지원 RAID 0/1/5/10 지원 간편한 설치 HDD 랙 지원 Intel iAMT 11.0 지원"
+            "Supports two Gigabit LAN ports Supports up to 64GB system memory Supports standard rack mounting Supports RAID 0/1/5/10 Easy installation Supports HDD rack Supports Intel iAMT 11.0"
           ]
         },
         {
           "name": "ACE-IPC02R-4U-Xeon-E3",
           "image": "/images/catalog/Rack2.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원 최대 64GB 시스템 메모리 지원 표준 랙 장착 지원 RAID 0/1/5/10 지원 간편한 설치 HDD 랙 지원 Intel iAMT 11.0 지원"
+            "Supports two Gigabit LAN ports Supports up to 64GB system memory Supports standard rack mounting Supports RAID 0/1/5/10 Easy installation Supports HDD rack Supports Intel iAMT 11.0"
           ]
         },
         {
           "name": "ACE-IPC02R-2U-i7-6-F",
           "image": "/images/catalog/ACE-IPC02R-2U-i7-4-F.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원 최대 64GB 시스템 메모리 지원 표준 랙 장착 지원 RAID 0/1/5/10 지원 간편한 설치 HDD 랙 지원 Intel iAMT 11.0 지원"
+            "Supports two Gigabit LAN ports Supports up to 64GB system memory Supports standard rack mounting Supports RAID 0/1/5/10 Easy installation Supports HDD rack Supports Intel iAMT 11.0"
           ]
         },
         {
           "name": "ACE-IPC02R-4U-i7-9",
           "image": "/images/catalog/Rack3.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원 최대 64GB 시스템 메모리 지원 표준 랙 장착 지원 RAID 0/1/5/10 지원 간편한 설치 HDD 랙 지원 Intel iAMT 11.0 지원"
+            "Supports two Gigabit LAN ports Supports up to 64GB system memory Supports standard rack mounting Supports RAID 0/1/5/10 Easy installation Supports HDD rack Supports Intel iAMT 11.0"
           ]
         }
       ]
@@ -99,14 +92,14 @@
           "name": "ACE-Sever-2U-Xeon-E5-F",
           "image": "/images/catalog/ACE-Sever-2U-Xeon-E5-F.png",
           "features": [
-            "2U 랙 마운팅( )Intel 지원"
+            "2U Rack Mounting ( )Intel Support"
           ]
         },
         {
           "name": "ACE-Sever-4U-Xeon-E5-F",
           "image": "/images/catalog/ACE-Sever-4U-Xeon-E5-F.png",
           "features": [
-            "4U 랙/타워 컨버터블은 Intel을 지원합니다."
+            "The 4U rack/tower convertible supports Intel."
           ]
         }
       ]
@@ -118,42 +111,42 @@
           "name": "ACE-IPC02D-i7-3",
           "image": "/images/catalog/ACE-IPC02D-i7-3.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원DDR3L SO-DIMM 4GB 메모리 최대 16GBRAID 0/1/5/10 지원 3개의 독립 디스플레이 지원 Intel iAMT 8.0 지원"
+            "Supports 2 Gigabit LAN ports DDR3L SO-DIMM 4GB memory Supports up to 16GBRAID 0/1/5/10 Supports 3 independent displays Supports Intel iAMT 8.0"
           ]
         },
         {
           "name": "ACE-IPC02D-i7-4",
           "image": "/images/catalog/컴퓨터1.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원 DDR3 DIMM 4GB 메모리, 최대 32GBRAID 0/1/5/10 Intel iAMT 9.0 지원"
+            "Supports 2 Gigabit LAN ports DDR3 DIMM 4GB memory, up to 32GBRAID 0/1/5/10 Supports Intel iAMT 9.0"
           ]
         },
         {
           "name": "ACE-IPC02D-i7-6",
           "image": "/images/catalog/컴퓨터2.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원 DDR4 DIMM 8GB 메모리 최대 16GBRAID 0/1/5/10 지원 3개의 독립 디스플레이 지원 Intel iAMT 11.0 지원"
+            "Supports 2 Gigabit LAN ports DDR4 DIMM 8GB memory Supports up to 16GBRAID 0/1/5/10 Supports 3 independent displays Supports Intel iAMT 11.0"
           ]
         },
         {
           "name": "ACE-WS01D-i7-4-F",
           "image": "/images/catalog/ACE-WS01D-i7-4-F.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원 최대 32GB 시스템 메모리 지원 RAID 0/1/5/10 지원 Intel iAMT 9.0 지원"
+            "Supports two Gigabit LAN ports Supports up to 32GB system memory Supports RAID 0/1/5/10 Supports Intel iAMT 9.0"
           ]
         },
         {
           "name": "ACE-WS01D-i7-6-F",
           "image": "/images/catalog/ACE-WS01D-i7-4-F.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원 최대 64GB 시스템 메모리 지원 RAID 0/1/5/10 지원 3개의 독립 디스플레이 지원 iAMT 9.0 및 vPRO 9.0 500W 고효율 전원 공급 장치 지원"
+            "Supports 2 Gigabit LAN ports Supports up to 64GB system memory Supports RAID 0/1/5/10 Supports 3 independent displays Supports iAMT 9.0 and vPRO 9.0 Supports 500W high-efficiency power supply"
           ]
         },
         {
           "name": "ACE-IPC02D-i7-12",
           "image": "/images/catalog/컴퓨터1.png",
           "features": [
-            "인텔® 코어™ i7-12700T(12M 캐시, 8 코어 2.0GHz 최대 4.3GHz)"
+            "Intel® Core™ i7-12700T (12M Cache, 8 Cores 2.0GHz up to 4.3GHz)"
           ]
         }
       ]
@@ -165,7 +158,7 @@
           "name": "ACE-IPC-Wall-i7-6-F",
           "image": "/images/catalog/ACE-IPC-Wall-i7-6-F.png",
           "features": [
-            "2개의 기가비트 LAN 포트 지원 최대 64GB 시스템 메모리 지원 벽면 장착 지원 RAID 0/1/5/10 지원 간편한 설치 HDD 랙 지원 Intel iAMT 11.0 지원"
+            "Supports 2 Gigabit LAN ports Supports up to 64GB system memory Supports wall mounting Supports RAID 0/1/5/10 Easy installation Supports HDD rack Supports Intel iAMT 11.0"
           ]
         }
       ]
@@ -177,56 +170,56 @@
           "name": "ACE-PPC-10AT",
           "image": "/images/catalog/ACE-PPC-10AT.png",
           "features": [
-            "1024 x 768 도트 지원, DDR3L SO-DIMM 4GB 메모리 지원, 최대 8GBVESA 장착 지원, 터치 스크린 지원"
+            "Supports 1024 x 768 dots, supports DDR3L SO-DIMM 4GB memory, supports up to 8GBVESA mounting, supports touch screen"
           ]
         },
         {
           "name": "ACE-PPC-15AT",
           "image": "/images/catalog/ACE-PPC-15AT.png",
           "features": [
-            "1024 x 768 도트 지원, DDR3L SO-DIMM 4GB 메모리 지원, 최대 8GBVESA 장착 지원, 터치 스크린 지원"
+            "Supports 1024 x 768 dots, supports DDR3L SO-DIMM 4GB memory, supports up to 8GBVESA mounting, supports touch screen"
           ]
         },
         {
           "name": "ACE-PPC-17AT",
           "image": "/images/catalog/ACE-PPC-17AT.png",
           "features": [
-            "1024 x 768 도트 지원, DDR3L SO-DIMM 4GB 메모리 지원, 최대 8GBVESA 장착 지원, 터치 스크린 지원"
+            "Supports 1024 x 768 dots, supports DDR3L SO-DIMM 4GB memory, supports up to 8GBVESA mounting, supports touch screen"
           ]
         },
         {
           "name": "ACE-PPC-19MT",
           "image": "/images/catalog/ACE-PPC-19MT.png",
           "features": [
-            "1280 x 1024 도트 지원 DDR3L SODIMM 4GB 메모리 지원 최대 8GBVESA 장착 터치 스크린 지원"
+            "Supports 1280 x 1024 dots Supports DDR3L SODIMM 4GB memory Supports up to 8GBVESA equipped touch screen"
           ]
         },
         {
           "name": "ACE-PPC-15HT",
           "image": "/images/catalog/ACE-PPC-15HT.png",
           "features": [
-            "1024 x 768 도트 지원, DDR3L SO-DIMM 4GB 메모리 지원, 최대 8GBVESA 장착 지원, 터치 스크린 지원"
+            "Supports 1024 x 768 dots, supports DDR3L SO-DIMM 4GB memory, supports up to 8GBVESA mounting, supports touch screen"
           ]
         },
         {
           "name": "ACE-PPC-17HT",
           "image": "/images/catalog/ACE-PPC-17HT.png",
           "features": [
-            "1024 x 1024 도트 지원 DDR3L SO-DIMM 지원 4GB 메모리 최대 8GBVESA 장착 터치 스크린 지원"
+            "Supports 1024 x 1024 dots Supports DDR3L SO-DIMM 4GB memory Supports touch screen with up to 8GBVESA"
           ]
         },
         {
           "name": "ACE-PPC-19HT",
           "image": "/images/catalog/ACE-PPC-19HT.png",
           "features": [
-            "1280 x 1024 도트 지원 DDR3L SO-DIMM 지원 4GB 메모리 최대 8GBVESA 장착 터치 스크린 지원"
+            "Supports 1280 x 1024 dots Supports DDR3L SO-DIMM 4GB memory Supports touch screen with up to 8GBVESA"
           ]
         },
         {
           "name": "ACE-PPC-21HT",
           "image": "/images/catalog/ACE-PPC-21HT.png",
           "features": [
-            "1920 지원"
+            "1920 support"
           ]
         }
       ]

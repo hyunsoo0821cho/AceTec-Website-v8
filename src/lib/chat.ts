@@ -171,7 +171,7 @@ export async function generateChatResponse(
   const docs = await retrieveRelevantDocs(message);
 
   // ===== FAQ 직접 매칭 — 임베딩 코사인 유사도로 LLM 우회, 환각 방지 =====
-  const FAQ_THRESHOLD = 0.52;
+  const FAQ_THRESHOLD = 0.22;
   const faqs = loadFaqWithEmbeddings();
   if (faqs.length > 0) {
     try {

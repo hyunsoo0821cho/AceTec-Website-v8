@@ -236,7 +236,7 @@
     "radarTitle": "Radarverarbeitung und -anzeige",
     "radarDesc": "Hochleistungsfähige Radar-Scan-Konvertierung, Zielverfolgung und Anzeigelösungen von Cambridge Pixel — SPx Server, HPx-Erfassungskarten und integrierte Radar-Visualisierungssysteme.",
     "ipcTitle": "Industrie-PCs und lüfterlose Systeme",
-    "ipcDesc": "Box-, Rackmount-, Server-, Desktop-, Wand- und Panel-PCs für den industriellen 24/7-Betrieb — lüfterloses Design, breiter Temperaturbereich und KC/ISO-zertifiziert.",
+    "ipcDesc": "Box-, Rackmount-, Server-, Desktop-, Wand- und Panel-PCs für den industriellen Betrieb rund um die Uhr – lüfterloses Design, breiter Temperaturbereich und KC/ISO-zertifiziert.",
     "interconnectTitle": "Hochgeschwindigkeits-Datenverbindung (High-Speed Interconnect)",
     "interconnectDesc": "Nutzung proprietärer PCIe-basierter Kommunikationsprotokolle zur Minimierung der Datenübertragungslatenz zwischen Servern, GPUs und Speicher — Aufbau ultraschneller Rechencluster, in denen mehrere Knoten als ein einheitliches System arbeiten."
   },
@@ -436,7 +436,7 @@
       "s3p3f": "<li>Unterstützt 2 x Gigabit-LAN-Ports</li><li>Unterstützt bis zu 32 GB Systemspeicher</li><li>Unterstützt RAID 0/1/5/10</li><li>Unterstützt Intel iAMT 9.0</li>",
       "s3p4n": "ACE-WS01D-i7-6-F",
       "s3p4f": "<li>Unterstützt 2 x Gigabit-LAN-Ports</li><li>Unterstützt bis zu 64 GB Systemspeicher</li><li>Unterstützt RAID 0/1/5/10</li><li>Unterstützt 3 x unabhängige Displays</li><li>Unterstützt iAMT 9.0 und vPRO 9.0</li><li>Hocheffizientes 500-W-Netzteil</li>",
-      "s4": "Wandmontage-PC",
+      "s4": "Wandmontierter PC",
       "s4p0n": "ACE-IPC-Wall-i7-6-F",
       "s4p0f": "<li>Unterstützt 2 x Gigabit-LAN-Ports</li><li>Unterstützt bis zu 64 GB Systemspeicher</li><li>Unterstützt Wandmontage</li><li>Unterstützt RAID 0/1/5/10</li><li>Unterstützt die einfache Installation eines Festplatten-Racks</li><li>Unterstützt Intel iAMT 11.0</li>",
       "s5": "Panel-PC",
@@ -455,7 +455,9 @@
       "s5p6n": "ACE-PPC-19HT",
       "s5p6f": "<li>Unterstützt 1280 x 1024 Punkte</li><li>DDR3L SO-DIMM 4 GB Speicher bis zu 8 GB</li><li>Unterstützt VESA-Montage</li><li>Unterstützt Touchscreen</li>",
       "s5p7n": "ACE-PPC-21HT",
-      "s5p7f": "<li>Unterstützt 1920 x 1080 Punkte</li><li>DDR3L SO-DIMM 4 GB Speicher bis zu 8 GB</li><li>Unterstützt VESA-Montage</li><li>Unterstützt Touchscreen</li>"
+      "s5p7f": "<li>Unterstützt 1920 x 1080 Punkte</li><li>DDR3L SO-DIMM 4 GB Speicher bis zu 8 GB</li><li>Unterstützt VESA-Montage</li><li>Unterstützt Touchscreen</li>",
+      "s0p5n": "ACE-OWS-712-S4",
+      "s3p5n": "ACE-IPC02D-i7-12"
     },
     "military": {
       "s0": "Formfaktor Abaco Systems",

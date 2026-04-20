@@ -455,7 +455,9 @@
       "s5p6n": "ACE-PPC-19HT",
       "s5p6f": "<li>Support 1280 x 1024 dots</li><li>DDR3L SO-DIMM 4GB Memory up to 8GB</li><li>Support VESA Mounting</li><li>Support Touch Screen</li>",
       "s5p7n": "ACE-PPC-21HT",
-      "s5p7f": "<li>Support 1920 x 1080 dots</li><li>DDR3L SO-DIMM 4GB Memory up to 8GB</li><li>Support VESA Mounting</li><li>Support Touch Screen</li>"
+      "s5p7f": "<li>Support 1920 x 1080 dots</li><li>DDR3L SO-DIMM 4GB Memory up to 8GB</li><li>Support VESA Mounting</li><li>Support Touch Screen</li>",
+      "s0p5n": "ACE-OWS-712-S4",
+      "s3p5n": "ACE-IPC02D-i7-12"
     },
     "military": {
       "s0": "Form Factor Abaco Systems",

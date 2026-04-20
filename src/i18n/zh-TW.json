@@ -180,10 +180,47 @@
       "s5p5n": "ACE9804BT (10G)",
       "s5p6n": "ACE9812BT (10G)",
       "s5p7n": "ACE1023PF-4SF28 (25G)"
+    },
+    "ipc": {
+      "s0": "盒式電腦",
+      "s0p0n": "ACE-BoxIPC-C4L3",
+      "s0p1n": "ACE-BoxIPC-73L2D",
+      "s0p2n": "ACE-BoxIPC-7110L2D",
+      "s0p3n": "ACE-BoxIPC-74L2D",
+      "s0p4n": "ACE-BoxIPC-76L2D",
+      "s0p5n": "ACE-OWS-712-S4",
+      "s1": "機架式電腦",
+      "s1p0n": "ACE-IPC02R-4U-i7-6",
+      "s1p1n": "ACE-IPC02R-4U-至強-E3",
+      "s1p2n": "ACE-IPC02R-2U-i7-6-F",
+      "s1p3n": "ACE-IPC02R-4U-i7-9",
+      "s2": "伺服器",
+      "s2p0n": "ACE-Sever-2U-Xeon-E5-F",
+      "s2p1n": "ACE-Sever-4U-Xeon-E5-F",
+      "s3": "桌上型電腦",
+      "s3p0n": "ACE-IPC02D-i7-3",
+      "s3p1n": "ACE-IPC02D-i7-4",
+      "s3p2n": "ACE-IPC02D-i7-6",
+      "s3p3n": "ACE-WS01D-i7-4-F",
+      "s3p4n": "ACE-WS01D-i7-6-F",
+      "s3p5n": "ACE-IPC02D-i7-12",
+      "s4": "壁掛式電腦",
+      "s4p0n": "ACE-IPC-Wall-i7-6-F",
+      "s5": "平板電腦",
+      "s5p0n": "ACE-PPC-10AT",
+      "s5p1n": "ACE-PPC-15AT",
+      "s5p2n": "ACE-PPC-17AT",
+      "s5p3n": "ACE-PPC-19MT",
+      "s5p4n": "ACE-PPC-15HT",
+      "s5p5n": "ACE-PPC-17HT",
+      "s5p6n": "ACE-PPC-19HT",
+      "s5p7n": "ACE-PPC-21HT"
     }
   },
   "productDetail": {
     "telecomTitle": "電信/網路領域",
-    "telecomDesc": "基於 Intel/AMD 的網路設備，用於防火牆、VPN、UTM 和負載平衡 - 包括用於資料中心和通訊基礎架構的高效能 NIC 適配器。"
+    "telecomDesc": "基於 Intel/AMD 的網路設備，用於防火牆、VPN、UTM 和負載平衡 - 包括用於資料中心和通訊基礎架構的高效能 NIC 適配器。",
+    "ipcTitle": "工業 PC 和無風扇系統",
+    "ipcDesc": "適用於 24/7 工業操作的盒式、機架式、伺服器、桌上型電腦、壁掛式和平板電腦 — 無風扇設計、寬溫且經過 KC/ISO 認證。"
   }
 }

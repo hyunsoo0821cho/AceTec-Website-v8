@@ -235,8 +235,8 @@
     "hpcDesc": "Con el crecimiento de la demanda de Big Data, UHD/FHD y simulación, los requisitos de HPC están aumentando en organismos públicos, universidades y laboratorios de investigación.",
     "radarTitle": "Procesamiento y visualización de radar",
     "radarDesc": "Soluciones de alto rendimiento para conversión de escaneo radar, seguimiento de objetivos y visualización de Cambridge Pixel — SPx Server, tarjetas de adquisición HPx y sistemas integrados de visualización radar.",
-    "ipcTitle": "PCs industriales y sistemas sin ventilador",
-    "ipcDesc": "PCs de caja, rack, servidor, escritorio, pared y panel para operación industrial 24/7 — diseños sin ventilador, amplio rango de temperatura y certificados KC/ISO.",
+    "ipcTitle": "PC industriales y sistemas sin ventilador",
+    "ipcDesc": "PC tipo caja, de montaje en rack, de servidor, de escritorio, de montaje en pared y de panel para funcionamiento industrial las 24 horas del día, los 7 días de la semana: diseños sin ventilador, amplia temperatura y certificación KC/ISO.",
     "interconnectTitle": "Interconexión de datos de alta velocidad (High-Speed Interconnect)",
     "interconnectDesc": "Utilizando protocolos de comunicación PCIe propietarios para minimizar la latencia de transferencia entre servidores, GPUs y almacenamiento, construyendo clústeres de cómputo ultrarrápidos donde múltiples nodos operan como un sistema unificado."
   },
@@ -411,7 +411,7 @@
       "s0p3f": "<li>Admite 2 puertos LAN Gigabit</li><li>Memoria DDR4 SO-DIMM de 8 GB hasta 32 GB</li><li>Admite montaje en pared</li><li>Admite RAID 0/1</li><li>Admite 3 pantallas independientes</li><li>Admite protección ESD</li>",
       "s0p4n": "ACE-BoxIPC-76L2D",
       "s0p4f": "<li>Admite 2 puertos LAN Gigabit</li><li>Memoria DDR4 SO-DIMM de 8 GB hasta 32 GB</li><li>Admite montaje en pared</li><li>Admite RAID 0/1</li><li>Admite 3 pantallas independientes</li><li>Admite protección ESD</li>",
-      "s1": "PC Rackmount",
+      "s1": "PC montada en bastidor",
       "s1p0n": "ACE-IPC02R-4U-i7-6",
       "s1p0f": "<li>Admite 2 puertos LAN Gigabit</li><li>Admite hasta 64 GB de memoria del sistema</li><li>Admite montaje en bastidor estándar</li><li>Admite RAID 0/1/5/10</li><li>Admite bastidor HDD de fácil instalación</li><li>Compatible con Intel iAMT 11.0</li>",
       "s1p1n": "ACE-IPC02R-4U-Xeon-E3",
@@ -436,7 +436,7 @@
       "s3p3f": "<li>Admite 2 puertos LAN Gigabit</li><li>Admite hasta 32 GB de memoria del sistema</li><li>Admite RAID 0/1/5/10</li><li>Admite Intel iAMT 9.0</li>",
       "s3p4n": "ACE-WS01D-i7-6-F",
       "s3p4f": "<li>Admite 2 puertos LAN Gigabit</li><li>Admite hasta 64 GB de memoria del sistema</li><li>Admite RAID 0/1/5/10</li><li>Admite 3 pantallas independientes</li><li>Admite iAMT 9.0 y vPRO 9.0</li><li>Fuente de alimentación de alta eficiencia de 500 W</li>",
-      "s4": "PC de pared",
+      "s4": "PC de montaje en pared",
       "s4p0n": "ACE-IPC-Wall-i7-6-F",
       "s4p0f": "<li>Admite 2 puertos LAN Gigabit</li><li>Admite hasta 64 GB de memoria del sistema</li><li>Admite montaje en pared</li><li>Admite RAID 0/1/5/10</li><li>Admite bastidor HDD de fácil instalación</li><li>Compatible con Intel iAMT 11.0</li>",
       "s5": "Panel de ordenador",
@@ -455,7 +455,9 @@
       "s5p6n": "ACE-PPC-19HT",
       "s5p6f": "<li>Compatible con 1280 x 1024 puntos</li><li>Memoria DDR3L SO-DIMM de 4 GB hasta 8 GB</li><li>Compatible con montaje VESA</li><li>Compatible con pantalla táctil</li>",
       "s5p7n": "ACE-PPC-21HT",
-      "s5p7f": "<li>Admite 1920 x 1080 puntos</li><li>Memoria DDR3L SO-DIMM de 4 GB hasta 8 GB</li><li>Admite montaje VESA</li><li>Admite pantalla táctil</li>"
+      "s5p7f": "<li>Admite 1920 x 1080 puntos</li><li>Memoria DDR3L SO-DIMM de 4 GB hasta 8 GB</li><li>Admite montaje VESA</li><li>Admite pantalla táctil</li>",
+      "s0p5n": "ACE-OWS-712-S4",
+      "s3p5n": "ACE-IPC02D-i7-12"
     },
     "military": {
       "s0": "Sistemas Abaco de factor de forma",
