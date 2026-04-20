@@ -71,7 +71,11 @@
       "Bash(git ls-remote *)",
       "Bash(git fetch *)",
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d, indent=2\\)[:500]\\)\")",
-      "Bash(npm audit:*)"
+      "Bash(npm audit:*)",
+      "Bash(git commit -m ' *)",
+      "Bash(npx playwright *)",
+      "Bash(python3 -c \"import openpyxl; print\\('openpyxl OK'\\)\")",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "additionalDirectories": [

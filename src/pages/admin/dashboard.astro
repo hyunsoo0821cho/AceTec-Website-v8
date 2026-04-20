@@ -273,11 +273,11 @@ if (!currentUser || currentUser.role !== 'admin') return Astro.redirect('/');
                 <button class="btn btn-sm btn-danger" onclick="deleteUser(${u.id}, '${esc(u.username)}')">거절</button>
                </div>`
             : `<div class="btn-group">
-                <button class="btn btn-sm btn-edit" data-edit-user='${JSON.stringify({id:u.id,username:u.username,display_name:u.display_name||'',role:u.role||'admin',phone:u.phone||'',bio:u.bio||''})}'>Edit</button>
+                <button class="btn btn-sm btn-edit" data-edit-user="${esc(JSON.stringify({id:u.id,username:u.username,display_name:u.display_name||'',role:u.role||'admin',phone:u.phone||'',bio:u.bio||''}))}">Edit</button>
                 <button class="btn btn-sm btn-danger" onclick="deleteUser(${u.id}, '${esc(u.username)}')">Delete</button>
                </div>`;
           return `<tr${isPending ? ' style="background:#fef3c7;"' : ''}>
-            <td><img class="user-avatar" src="${u.avatar_url || '/images/misc/default-avatar.svg'}" alt="" /></td>
+            <td><img class="user-avatar" src="${esc(u.avatar_url || '/images/misc/default-avatar.svg')}" alt="" /></td>
             <td><strong>${esc(u.username)}</strong>${isPending ? ' <span style="color:#d97706;font-size:11px;">⏳ 승인 대기</span>' : ''}</td>
             <td>${esc(u.display_name || '-')}</td>
             <td class="td-email">${esc(u.email || '-')}</td>

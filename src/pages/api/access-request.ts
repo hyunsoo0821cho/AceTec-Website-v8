@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import getDb from '../../lib/db';
 import { verifySession, getSessionIdFromCookie, getUserInfo, hasDetailAccess } from '../../lib/auth';
+import { checkRateLimit } from '../../lib/rate-limiter';
 
 export const prerender = false;
 
@@ -24,6 +25,12 @@ export const POST: APIRoute = async ({ request }) => {
   const adminId = verifySession(getSessionIdFromCookie(cookie));
   if (!adminId) {
     return Response.json({ error: '로그인이 필요합니다' }, { status: 401 });
+  }
+
+  // Rate limit: 동일 사용자당 분당 10회 (스팸 요청으로 audit_logs 폭주 방지)
+  const rl = checkRateLimit(`access-request:${adminId}`, 10, 60_000);
+  if (!rl.allowed) {
+    return Response.json({ error: '요청이 너무 많습니다. 잠시 후 다시 시도하세요' }, { status: 429 });
   }
 
   const body = await request.json().catch(() => ({}));

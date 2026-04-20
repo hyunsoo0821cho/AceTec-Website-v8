@@ -2,16 +2,35 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 const pages = [
+  // 메인 마케팅 (6)
   { path: '/', name: 'Home' },
   { path: '/solutions', name: 'Solutions' },
   { path: '/about', name: 'About' },
   { path: '/contact', name: 'Contact' },
   { path: '/history', name: 'History' },
   { path: '/applications', name: 'Applications' },
+  // 정보 (5)
+  { path: '/news', name: 'News' },
+  { path: '/careers', name: 'Careers' },
+  { path: '/training', name: 'Training' },
+  { path: '/products-intro', name: 'Products Intro' },
+  { path: '/catalog', name: 'Catalog' },
+  // 제품 동적 (9)
   { path: '/products/military', name: 'Products: Military' },
   { path: '/products/railway', name: 'Products: Railway' },
   { path: '/products/industrial', name: 'Products: Industrial' },
   { path: '/products/hpc', name: 'Products: HPC' },
+  { path: '/products/telecom', name: 'Products: Telecom' },
+  { path: '/products/sensor', name: 'Products: Sensor' },
+  { path: '/products/ipc', name: 'Products: IPC' },
+  { path: '/products/radar', name: 'Products: Radar' },
+  { path: '/products/interconnect', name: 'Products: Interconnect' },
+  // 인증 (3)
+  { path: '/login', name: 'Login' },
+  { path: '/register', name: 'Register' },
+  { path: '/forgot-password', name: 'Forgot Password' },
+  // 에러 (1)
+  { path: '/this-page-does-not-exist-xyz', name: '404 Not Found' },
 ];
 
 for (const { path, name } of pages) {

@@ -107,10 +107,10 @@ function resolveSubcatHref(itemHref: string, subName: string, fallbackIndex: num
                   <button type="button" class="s-tab" data-tab="cats" data-i18n="ui.catsTab">분야</button>
                 </div>
                 <div class="s-panel-wrap">
-                  <div class="s-panel s-panel--desc active" data-panel="desc">
+                  <div class="s-panel s-panel--desc active" data-panel="desc" tabindex="0" role="region" aria-label="설명">
                     <p class="s-desc-full" {...e(`solutionCards[${i}].description`)} {...((item.i18nKey || cardKey(item.href)) ? {'data-i18n': `solutionCards.${item.i18nKey || cardKey(item.href)}Desc`} : {})}>{item.description}</p>
                   </div>
-                  <div class="s-panel s-panel--cats" data-panel="cats">
+                  <div class="s-panel s-panel--cats" data-panel="cats" tabindex="0" role="region" aria-label="분야">
                     {item.subcategories && item.subcategories.length > 0 && (
                       <ul class="s-subcats">
                         {item.subcategories.map((sub: string, si: number) => (
