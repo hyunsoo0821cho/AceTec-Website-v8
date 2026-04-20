@@ -9,7 +9,8 @@ interface FaqEntry { question: string; answer: string; tags: string[]; embedding
 let _faqCache: FaqEntry[] | null = null;
 
 function loadFaqWithEmbeddings(): FaqEntry[] {
-  if (_faqCache) return _faqCache;
+  // 매 요청마다 로드하지 않도록 캐시하되, 서버 시작 시 최초 1회 로드
+  if (_faqCache && _faqCache.length > 0 && _faqCache[0].embedding) return _faqCache;
   const vsPath = path.join(process.cwd(), 'data', 'vector-store.json');
   // faq.json 경로: src/content 또는 data/ fallback
   let faqPath = path.join(process.cwd(), 'src', 'content', 'faq.json');
@@ -185,7 +186,9 @@ export async function generateChatResponse(
         const sim = cosSim(qEmb, faq.embedding);
         if (sim > bestSim) { bestSim = sim; bestFaq = faq; }
       }
-      console.log(`[FAQ] best=${bestSim.toFixed(4)} threshold=${FAQ_THRESHOLD} match=${bestFaq?.question?.substring(0,30)} embLen=${qEmb?.length} faqCount=${faqs.length} faqHasEmb=${faqs.filter(f=>f.embedding).length}`);
+      // 상위 3개 FAQ 매칭 결과 로그
+      const topMatches = faqs.filter(f=>f.embedding).map(f=>({q:f.question.substring(0,25),s:cosSim(qEmb,f.embedding!)})).sort((a,b)=>b.s-a.s).slice(0,3);
+      console.log(`[FAQ] best=${bestSim.toFixed(4)} threshold=${FAQ_THRESHOLD} match=${bestFaq?.question?.substring(0,30)} top3=${JSON.stringify(topMatches.map(m=>m.q+'='+m.s.toFixed(4)))}`);
       if (bestFaq && bestSim >= FAQ_THRESHOLD) {
         const safeFaq = sanitizeOutput(bestFaq.answer);
         let reply = safeFaq;

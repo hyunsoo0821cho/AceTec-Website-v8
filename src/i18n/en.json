@@ -416,7 +416,7 @@
       "s1p0f": "<li>Support 2 x Gigabit LAN Ports</li><li>Support up to 64GB system memory</li><li>Support Standard Rack Mounting</li><li>Support RAID 0/1/5/10</li><li>Support Easy install HDD Rack</li><li>Support intel iAMT 11.0</li>",
       "s1p1n": "ACE-IPC02R-4U-Xeon-E3",
       "s1p1f": "<li>Support 2 x Gigabit LAN Ports</li><li>Support up to 64GB system memory</li><li>Support Standard Rack Mounting</li><li>Support RAID 0/1/5/10</li><li>Support Easy install HDD Rack</li><li>Support intel iAMT 11.0</li>",
-      "s1p2n": "ACE-IPC02R-2U-i7-6-F",
+      "s1p2n": "ACE-IPC02R-4U-i7-6-F",
       "s1p2f": "<li>Support 2 x Gigabit LAN Ports</li><li>Support up to 64GB system memory</li><li>Support Standard Rack Mounting</li><li>Support RAID 0/1/5/10</li><li>Support Easy install HDD Rack</li><li>Supports intel iAMT 11.0</li>",
       "s1p3n": "ACE-IPC02R-4U-i7-9",
       "s1p3f": "<li>Support 2 x Gigabit LAN Ports</li><li>Support up to 64GB system memory</li><li>Support Standard Rack Mounting</li><li>Support RAID 0/1/5/10</li><li>Support Easy install HDD Rack</li><li>Supports intel iAMT 11.0</li>",
@@ -457,7 +457,8 @@
       "s5p7n": "ACE-PPC-21HT",
       "s5p7f": "<li>Support 1920 x 1080 dots</li><li>DDR3L SO-DIMM 4GB Memory up to 8GB</li><li>Support VESA Mounting</li><li>Support Touch Screen</li>",
       "s0p5n": "ACE-OWS-712-S4",
-      "s3p5n": "ACE-IPC02D-i7-12"
+      "s3p5n": "ACE-IPC02D-i7-12",
+      "s1p4n": "ACE-IPC02R-4U-I7-9-F"
     },
     "military": {
       "s0": "Form Factor Abaco Systems",

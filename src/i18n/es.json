@@ -416,7 +416,7 @@
       "s1p0f": "<li>Admite 2 puertos LAN Gigabit</li><li>Admite hasta 64 GB de memoria del sistema</li><li>Admite montaje en bastidor estándar</li><li>Admite RAID 0/1/5/10</li><li>Admite bastidor HDD de fácil instalación</li><li>Compatible con Intel iAMT 11.0</li>",
       "s1p1n": "ACE-IPC02R-4U-Xeon-E3",
       "s1p1f": "<li>Admite 2 puertos LAN Gigabit</li><li>Admite hasta 64 GB de memoria del sistema</li><li>Admite montaje en bastidor estándar</li><li>Admite RAID 0/1/5/10</li><li>Admite bastidor HDD de fácil instalación</li><li>Compatible con Intel iAMT 11.0</li>",
-      "s1p2n": "ACE-IPC02R-2U-i7-6-F",
+      "s1p2n": "ACE-IPC02R-4U-i7-6-F",
       "s1p2f": "<li>Admite 2 puertos LAN Gigabit</li><li>Admite hasta 64 GB de memoria del sistema</li><li>Admite montaje en bastidor estándar</li><li>Admite RAID 0/1/5/10</li><li>Admite bastidor HDD de fácil instalación</li><li>Admite Intel iAMT 11.0</li>",
       "s1p3n": "ACE-IPC02R-4U-i7-9",
       "s1p3f": "<li>Admite 2 puertos LAN Gigabit</li><li>Admite hasta 64 GB de memoria del sistema</li><li>Admite montaje en bastidor estándar</li><li>Admite RAID 0/1/5/10</li><li>Admite bastidor HDD de fácil instalación</li><li>Admite Intel iAMT 11.0</li>",
@@ -457,7 +457,8 @@
       "s5p7n": "ACE-PPC-21HT",
       "s5p7f": "<li>Admite 1920 x 1080 puntos</li><li>Memoria DDR3L SO-DIMM de 4 GB hasta 8 GB</li><li>Admite montaje VESA</li><li>Admite pantalla táctil</li>",
       "s0p5n": "ACE-OWS-712-S4",
-      "s3p5n": "ACE-IPC02D-i7-12"
+      "s3p5n": "ACE-IPC02D-i7-12",
+      "s1p4n": "ACE-IPC02R-4U-I7-9-F"
     },
     "military": {
       "s0": "Sistemas Abaco de factor de forma",

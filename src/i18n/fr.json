@@ -416,7 +416,7 @@
       "s1p0f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>Prend en charge jusqu'à 64 Go de mémoire système</li><li>Prise en charge du montage en rack standard</li><li>Prise en charge du RAID 0/1/5/10</li><li>Prise en charge du rack de disque dur à installation facile</li><li>Prise en charge d'Intel iAMT 11.0</li>",
       "s1p1n": "ACE-IPC02R-4U-Xeon-E3",
       "s1p1f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>Prend en charge jusqu'à 64 Go de mémoire système</li><li>Prise en charge du montage en rack standard</li><li>Prise en charge du RAID 0/1/5/10</li><li>Prise en charge du rack de disque dur à installation facile</li><li>Prise en charge d'Intel iAMT 11.0</li>",
-      "s1p2n": "ACE-IPC02R-2U-i7-6-F",
+      "s1p2n": "ACE-IPC02R-4U-i7-6-F",
       "s1p2f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>Prend en charge jusqu'à 64 Go de mémoire système</li><li>Prend en charge le montage en rack standard</li><li>Prend en charge RAID 0/1/5/10</li><li>Prend en charge le rack de disque dur à installation facile</li><li>Prend en charge Intel iAMT 11.0</li>",
       "s1p3n": "ACE-IPC02R-4U-i7-9",
       "s1p3f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>Prend en charge jusqu'à 64 Go de mémoire système</li><li>Prend en charge le montage en rack standard</li><li>Prend en charge RAID 0/1/5/10</li><li>Prend en charge le rack de disque dur à installation facile</li><li>Prend en charge Intel iAMT 11.0</li>",
@@ -457,7 +457,8 @@
       "s5p7n": "ACE-PPC-21HT",
       "s5p7f": "<li>Prise en charge de 1 920 x 1 080 points</li><li>DDR3L SO-DIMM, 4 Go de mémoire jusqu'à 8 Go</li><li>Prise en charge du montage VESA</li><li>Prise en charge de l'écran tactile</li>",
       "s0p5n": "ACE-OWS-712-S4",
-      "s3p5n": "ACE-IPC02D-i7-12"
+      "s3p5n": "ACE-IPC02D-i7-12",
+      "s1p4n": "ACE-IPC02R-4U-I7-9-F"
     },
     "military": {
       "s0": "Facteur de forme Systèmes Abaco",

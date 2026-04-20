@@ -416,7 +416,7 @@
       "s1p0f": "<li>Unterstützt 2 x Gigabit-LAN-Ports</li><li>Unterstützt bis zu 64 GB Systemspeicher</li><li>Unterstützt Standard-Rack-Montage</li><li>Unterstützt RAID 0/1/5/10</li><li>Unterstützt die einfache Installation eines Festplatten-Racks</li><li>Unterstützt Intel iAMT 11.0</li>",
       "s1p1n": "ACE-IPC02R-4U-Xeon-E3",
       "s1p1f": "<li>Unterstützt 2 x Gigabit-LAN-Ports</li><li>Unterstützt bis zu 64 GB Systemspeicher</li><li>Unterstützt Standard-Rack-Montage</li><li>Unterstützt RAID 0/1/5/10</li><li>Unterstützt die einfache Installation eines Festplatten-Racks</li><li>Unterstützt Intel iAMT 11.0</li>",
-      "s1p2n": "ACE-IPC02R-2U-i7-6-F",
+      "s1p2n": "ACE-IPC02R-4U-i7-6-F",
       "s1p2f": "<li>Unterstützt 2 x Gigabit-LAN-Ports</li><li>Unterstützt bis zu 64 GB Systemspeicher</li><li>Unterstützt Standard-Rack-Montage</li><li>Unterstützt RAID 0/1/5/10</li><li>Unterstützt die einfache Installation eines Festplatten-Racks</li><li>Unterstützt Intel iAMT 11.0</li>",
       "s1p3n": "ACE-IPC02R-4U-i7-9",
       "s1p3f": "<li>Unterstützt 2 x Gigabit-LAN-Ports</li><li>Unterstützt bis zu 64 GB Systemspeicher</li><li>Unterstützt Standard-Rack-Montage</li><li>Unterstützt RAID 0/1/5/10</li><li>Unterstützt die einfache Installation eines Festplatten-Racks</li><li>Unterstützt Intel iAMT 11.0</li>",
@@ -457,7 +457,8 @@
       "s5p7n": "ACE-PPC-21HT",
       "s5p7f": "<li>Unterstützt 1920 x 1080 Punkte</li><li>DDR3L SO-DIMM 4 GB Speicher bis zu 8 GB</li><li>Unterstützt VESA-Montage</li><li>Unterstützt Touchscreen</li>",
       "s0p5n": "ACE-OWS-712-S4",
-      "s3p5n": "ACE-IPC02D-i7-12"
+      "s3p5n": "ACE-IPC02D-i7-12",
+      "s1p4n": "ACE-IPC02R-4U-I7-9-F"
     },
     "military": {
       "s0": "Formfaktor Abaco Systems",
