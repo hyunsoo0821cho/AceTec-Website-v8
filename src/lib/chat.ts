@@ -175,7 +175,12 @@ export async function generateChatResponse(
         }
         if (score > bestScore) { bestScore = score; bestFaq = faq; }
       }
-      console.log(`[FAQ] tagMatch best=${bestScore.toFixed(1)} match=${bestFaq?.question?.substring(0,30)} msg="${msgLower}" msgNoSp="${msgNoSpace}"`);
+      // 디버그: faq-0의 태그별 매칭 결과
+      if (faqs[0]) {
+        const f0tags = faqs[0].tags.map(t => `${t}=${msgLower.includes(t.toLowerCase()) || msgNoSpace.includes(t.toLowerCase().replace(/\s+/g,''))}`);
+        console.log(`[FAQ] faq0 tags: ${f0tags.join(', ')}`);
+      }
+      console.log(`[FAQ] tagMatch best=${bestScore.toFixed(1)} match=${bestFaq?.question?.substring(0,30)}`);
       if (bestFaq && bestScore >= 1.0) {
         const safeFaq = sanitizeOutput(bestFaq.answer);
         let reply = safeFaq;
