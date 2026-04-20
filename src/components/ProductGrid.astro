@@ -587,9 +587,22 @@ const hasSections = sections && sections.length > 0;
 
 <script is:inline>
   // Detail toggle for product cards
-  // 관리자 모드(#adminBar 존재)에서는 토글 자체를 비활성화 — CSS가 설명을 항상 보이게 하므로
-  // 토글이 동작하면 오히려 편집 영역이 사라지는 버그 발생.
+  // 관리자 모드(#adminBar 존재)에서는 편집을 방해하지 않도록:
+  //  1) Details 토글 버튼을 DOM에서 숨김
+  //  2) 접힘 상태의 설명을 모두 펼침 상태로 강제 변환
+  //  3) 버튼 클릭 이벤트도 무력화 (안전장치)
+  // Astro scoped CSS가 body-level 셀렉터와 혼합될 때 매치 실패 사례가 있어
+  // JS로 직접 처리하는 것이 가장 신뢰성 높음.
   const isAdminMode = !!document.getElementById('adminBar');
+  if (isAdminMode) {
+    document.querySelectorAll('.p-detail-toggle').forEach(btn => {
+      /** @type {HTMLElement} */ (btn).style.display = 'none';
+    });
+    document.querySelectorAll('.p-features--collapsed').forEach(el => {
+      el.classList.remove('p-features--collapsed');
+      el.classList.add('p-features--expanded');
+    });
+  }
   document.querySelectorAll('.p-detail-toggle').forEach(btn => {
     btn.addEventListener('click', (ev) => {
       ev.preventDefault();

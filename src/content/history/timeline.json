@@ -9,7 +9,9 @@
           "months": [
             {
               "month": "Jan.",
-              "entries": ["New entry"]
+              "entries": [
+                "New entry"
+              ]
             }
           ]
         }
@@ -792,7 +794,9 @@
             },
             {
               "month": "Jul.",
-              "entries": ["Made SBC contract for PKG upgrade project with Hanwha Systems"]
+              "entries": [
+                "Made SBC contract for PKG upgrade project with Hanwha Systems"
+              ]
             },
             {
               "month": "Jun.",
@@ -824,11 +828,15 @@
             },
             {
               "month": "Mar.",
-              "entries": ["Delivered electronic interlocking SIL4 EXB Solution to Yookyung Control"]
+              "entries": [
+                "Delivered electronic interlocking SIL4 EXB Solution to Yookyung Control"
+              ]
             },
             {
               "month": "Feb.",
-              "entries": ["Delivered MPUH interlocking treatment machine and others to LIGNex1"]
+              "entries": [
+                "Delivered MPUH interlocking treatment machine and others to LIGNex1"
+              ]
             }
           ]
         },
@@ -837,23 +845,33 @@
           "months": [
             {
               "month": "Dec.",
-              "entries": ["Made a contract for supercomputer subject OSS product with Seoul National University"]
+              "entries": [
+                "Made a contract for supercomputer subject OSS product with Seoul National University"
+              ]
             },
             {
               "month": "Nov.",
-              "entries": ["Delivered Image database construction service H/W to LIGNex1"]
+              "entries": [
+                "Delivered Image database construction service H/W to LIGNex1"
+              ]
             },
             {
               "month": "Sep.",
-              "entries": ["Image database construction service / LIGNex1"]
+              "entries": [
+                "Image database construction service / LIGNex1"
+              ]
             },
             {
               "month": "Aug.",
-              "entries": ["Finally delivered corps level UAV ground system\" ACE-01R-3U-7-F to Aero Master Corporation"]
+              "entries": [
+                "Finally delivered corps level UAV ground system\" ACE-01R-3U-7-F to Aero Master Corporation"
+              ]
             },
             {
               "month": "Jul.",
-              "entries": ["Delivered Korean model e-navigation HPC\" ACE-HPC-10N-01 to Hanwha Systems"]
+              "entries": [
+                "Delivered Korean model e-navigation HPC\" ACE-HPC-10N-01 to Hanwha Systems"
+              ]
             },
             {
               "month": "Jun.",
@@ -872,7 +890,9 @@
             },
             {
               "month": "Apr.",
-              "entries": ["Proposed and made a contract for SBC of KDX PIP project with Hanwha Systems"]
+              "entries": [
+                "Proposed and made a contract for SBC of KDX PIP project with Hanwha Systems"
+              ]
             },
             {
               "month": "Mar.",
@@ -924,7 +944,9 @@
             },
             {
               "month": "Aug.",
-              "entries": ["Introduced broadcasting multi monitoring Artesyn Encoding Service System"]
+              "entries": [
+                "Introduced broadcasting multi monitoring Artesyn Encoding Service System"
+              ]
             },
             {
               "month": "Jul.",
@@ -968,11 +990,16 @@
             },
             {
               "month": "Feb.",
-              "entries": ["Delivered coast passenger sensor collection device ACE-2016-EM-01 to EMARINE"]
+              "entries": [
+                "Delivered coast passenger sensor collection device ACE-2016-EM-01 to EMARINE"
+              ]
             },
             {
               "month": "Jan.",
-              "entries": ["SE-Workbench-EO Maintenance / LIGNex1", "SE-Workbench-EO and one other type / LIGNex1"]
+              "entries": [
+                "SE-Workbench-EO Maintenance / LIGNex1",
+                "SE-Workbench-EO and one other type / LIGNex1"
+              ]
             }
           ]
         }
@@ -994,7 +1021,9 @@
             },
             {
               "month": "Nov.",
-              "entries": ["Target image DB construction and performance simulation system / LIGNex1"]
+              "entries": [
+                "Target image DB construction and performance simulation system / LIGNex1"
+              ]
             },
             {
               "month": "Oct.",
@@ -1004,11 +1033,15 @@
             },
             {
               "month": "Sep.",
-              "entries": ["Delivered long term repair goods automated warehouse automation system to Korail Networks"]
+              "entries": [
+                "Delivered long term repair goods automated warehouse automation system to Korail Networks"
+              ]
             },
             {
               "month": "Aug.",
-              "entries": ["Developed and delivered Ethernet based IEC61162-450 data converter device to Maritime Radio"]
+              "entries": [
+                "Developed and delivered Ethernet based IEC61162-450 data converter device to Maritime Radio"
+              ]
             },
             {
               "month": "Jul.",
@@ -1028,7 +1061,9 @@
             },
             {
               "month": "Apr.",
-              "entries": ["SE-Workbench-EO and two other types / LIGNex1"]
+              "entries": [
+                "SE-Workbench-EO and two other types / LIGNex1"
+              ]
             },
             {
               "month": "Mar.",
@@ -1077,7 +1112,9 @@
             },
             {
               "month": "Jan.",
-              "entries": ["Developed two types of Rackmount IPC and 1 type of Embedded BoxIPC with ACE-IPC"]
+              "entries": [
+                "Developed two types of Rackmount IPC and 1 type of Embedded BoxIPC with ACE-IPC"
+              ]
             }
           ]
         },
@@ -1100,15 +1137,21 @@
             },
             {
               "month": "Aug.",
-              "entries": ["ADS-B air control system / AP Aerospace"]
+              "entries": [
+                "ADS-B air control system / AP Aerospace"
+              ]
             },
             {
               "month": "Jul.",
-              "entries": ["Developed flight test measuring sensor interface system with Agency for Defense Development"]
+              "entries": [
+                "Developed flight test measuring sensor interface system with Agency for Defense Development"
+              ]
             },
             {
               "month": "May.",
-              "entries": ["Developed ACE-BoxIPC-73L2D and other Intel i7 affiliated five types of IPCs with ACE-IPC"]
+              "entries": [
+                "Developed ACE-BoxIPC-73L2D and other Intel i7 affiliated five types of IPCs with ACE-IPC"
+              ]
             }
           ]
         }
@@ -1135,11 +1178,15 @@
             },
             {
               "month": "Jun.",
-              "entries": ["Proposed and made a contract for SBC of Jangbogo submarine project with Samsung Thales"]
+              "entries": [
+                "Proposed and made a contract for SBC of Jangbogo submarine project with Samsung Thales"
+              ]
             },
             {
               "month": "Mar.",
-              "entries": ["Made Embedded Customer License Agreement (CLA) with Microsoft"]
+              "entries": [
+                "Made Embedded Customer License Agreement (CLA) with Microsoft"
+              ]
             }
           ]
         },
@@ -1148,11 +1195,15 @@
           "months": [
             {
               "month": "Nov.",
-              "entries": ["Acquired CE, FCC certificate for ACE-IPC01D-i5, ACE-IPC02D-i7 / ACE-IPC"]
+              "entries": [
+                "Acquired CE, FCC certificate for ACE-IPC01D-i5, ACE-IPC02D-i7 / ACE-IPC"
+              ]
             },
             {
               "month": "Oct.",
-              "entries": ["Acquired K mark certificate / ACE-IPC"]
+              "entries": [
+                "Acquired K mark certificate / ACE-IPC"
+              ]
             },
             {
               "month": "Sep.",
@@ -1174,7 +1225,9 @@
             },
             {
               "month": "Mar.",
-              "entries": ["Made a contract for JTDLS with Samsung Thales"]
+              "entries": [
+                "Made a contract for JTDLS with Samsung Thales"
+              ]
             }
           ]
         },
@@ -1183,7 +1236,9 @@
           "months": [
             {
               "month": "Dec.",
-              "entries": ["Manufacturing real-time simulation computer system / Agency for Defense Development"]
+              "entries": [
+                "Manufacturing real-time simulation computer system / Agency for Defense Development"
+              ]
             },
             {
               "month": "Nov.",
@@ -1193,15 +1248,21 @@
             },
             {
               "month": "Sep.",
-              "entries": ["Released ACE-IPC01D-i5, ACE-IPC02D-i7, ACE-IPC01R-4U-i7 products / ACE-IPC"]
+              "entries": [
+                "Released ACE-IPC01D-i5, ACE-IPC02D-i7, ACE-IPC01R-4U-i7 products / ACE-IPC"
+              ]
             },
             {
               "month": "Jun.",
-              "entries": ["Released ACE-BoxIPC product series / ACE-IPC"]
+              "entries": [
+                "Released ACE-BoxIPC product series / ACE-IPC"
+              ]
             },
             {
               "month": "Apr.",
-              "entries": ["Manufacturing OKTAL-SE modelling data for flight operation simulator / LIGNex1"]
+              "entries": [
+                "Manufacturing OKTAL-SE modelling data for flight operation simulator / LIGNex1"
+              ]
             }
           ]
         }
@@ -1223,15 +1284,22 @@
             },
             {
               "month": "Nov.",
-              "entries": ["Certified reassignment of INNO-Biz", "Made Cambridge Pixel_Distribution Agreement"]
+              "entries": [
+                "Certified reassignment of INNO-Biz",
+                "Made Cambridge Pixel_Distribution Agreement"
+              ]
             },
             {
               "month": "May.",
-              "entries": ["Made Distributor Agreement with Real-Time Innovations"]
+              "entries": [
+                "Made Distributor Agreement with Real-Time Innovations"
+              ]
             },
             {
               "month": "Mar.",
-              "entries": ["Made a contract for KHP with DODDAM SYSTEMS"]
+              "entries": [
+                "Made a contract for KHP with DODDAM SYSTEMS"
+              ]
             }
           ]
         },
@@ -1240,15 +1308,21 @@
           "months": [
             {
               "month": "May.",
-              "entries": ["Delivered ACE-IPC / ACE-IPC01D, ACE-IPC02D, ACE-IPC01R to Posco Pohang"]
+              "entries": [
+                "Delivered ACE-IPC / ACE-IPC01D, ACE-IPC02D, ACE-IPC01R to Posco Pohang"
+              ]
             },
             {
               "month": "Apr.",
-              "entries": ["Made a contract for KNTDS-2 with SsangYong I&C"]
+              "entries": [
+                "Made a contract for KNTDS-2 with SsangYong I&C"
+              ]
             },
             {
               "month": "Feb.",
-              "entries": ["Made Third Party sales representative agreement with Emerson Network Power"]
+              "entries": [
+                "Made Third Party sales representative agreement with Emerson Network Power"
+              ]
             }
           ]
         },
@@ -1257,11 +1331,17 @@
           "months": [
             {
               "month": "Nov.",
-              "entries": ["FFX / STX", "FFX / STC", "FFX-ICU / STC"]
+              "entries": [
+                "FFX / STX",
+                "FFX / STC",
+                "FFX-ICU / STC"
+              ]
             },
             {
               "month": "May.",
-              "entries": ["Developed general purpose industrial HMI computer strong to dust and vibration / ACE-IPC"]
+              "entries": [
+                "Developed general purpose industrial HMI computer strong to dust and vibration / ACE-IPC"
+              ]
             }
           ]
         }
@@ -1276,19 +1356,27 @@
           "months": [
             {
               "month": "Nov.",
-              "entries": ["Acquired ISO-9001:2008 certificate"]
+              "entries": [
+                "Acquired ISO-9001:2008 certificate"
+              ]
             },
             {
               "month": "Aug.",
-              "entries": ["C4I / SsangYong I&C"]
+              "entries": [
+                "C4I / SsangYong I&C"
+              ]
             },
             {
               "month": "Jul.",
-              "entries": ["Navy RBOC / S&T"]
+              "entries": [
+                "Navy RBOC / S&T"
+              ]
             },
             {
               "month": "Apr.",
-              "entries": ["PKX-MFCC / STX"]
+              "entries": [
+                "PKX-MFCC / STX"
+              ]
             }
           ]
         },
@@ -1297,15 +1385,22 @@
           "months": [
             {
               "month": "Dec.",
-              "entries": ["Made Sales Agent Agreement for Synthetic Environment"]
+              "entries": [
+                "Made Sales Agent Agreement for Synthetic Environment"
+              ]
             },
             {
               "month": "Mar.",
-              "entries": ["Made Distributor Agreement for ICS Triple ISaGRAF", "PKX-ICU / STC & ADD"]
+              "entries": [
+                "Made Distributor Agreement for ICS Triple ISaGRAF",
+                "PKX-ICU / STC & ADD"
+              ]
             },
             {
               "month": "Feb.",
-              "entries": ["Real Time Data Processing System / ADD"]
+              "entries": [
+                "Real Time Data Processing System / ADD"
+              ]
             }
           ]
         },
@@ -1329,7 +1424,9 @@
             },
             {
               "month": "Feb.",
-              "entries": ["Radar / STC"]
+              "entries": [
+                "Radar / STC"
+              ]
             }
           ]
         }
@@ -1344,7 +1441,9 @@
           "months": [
             {
               "month": "11",
-              "entries": ["ADD / FCS"]
+              "entries": [
+                "ADD / FCS"
+              ]
             }
           ]
         },
@@ -1353,11 +1452,15 @@
           "months": [
             {
               "month": "Dec.",
-              "entries": ["Established Telecom & Networking R&D center and automation R&D center"]
+              "entries": [
+                "Established Telecom & Networking R&D center and automation R&D center"
+              ]
             },
             {
               "month": "Apr.",
-              "entries": ["Mil Test Equip SZ / FIRSTEC"]
+              "entries": [
+                "Mil Test Equip SZ / FIRSTEC"
+              ]
             },
             {
               "month": "Mar.",
@@ -1372,7 +1475,9 @@
           "months": [
             {
               "month": "08",
-              "entries": ["KAI / Mil KTS Simulator SI"]
+              "entries": [
+                "KAI / Mil KTS Simulator SI"
+              ]
             }
           ]
         }
@@ -1387,23 +1492,33 @@
           "months": [
             {
               "month": "Oct.",
-              "entries": ["Mil Tank related SI / Hyundai Electronics"]
+              "entries": [
+                "Mil Tank related SI / Hyundai Electronics"
+              ]
             },
             {
               "month": "Jul.",
-              "entries": ["Approved Institute of Technology Affiliated to Enterprise"]
+              "entries": [
+                "Approved Institute of Technology Affiliated to Enterprise"
+              ]
             },
             {
               "month": "May.",
-              "entries": ["Made Distributor Agreement with Emerson Network Power (Old Motorola Computing Group)"]
+              "entries": [
+                "Made Distributor Agreement with Emerson Network Power (Old Motorola Computing Group)"
+              ]
             },
             {
               "month": "Feb.",
-              "entries": ["Incorporation as AceTronix Co., Ltd. (President & CEO: Young-Sool Jang)"]
+              "entries": [
+                "Incorporation as AceTronix Co., Ltd. (President & CEO: Young-Sool Jang)"
+              ]
             },
             {
               "month": "Jan.",
-              "entries": ["Mil imaging processing SI / ADD"]
+              "entries": [
+                "Mil imaging processing SI / ADD"
+              ]
             }
           ]
         },
@@ -1412,7 +1527,9 @@
           "months": [
             {
               "month": "Jul.",
-              "entries": ["LG Precision / Mil.Fire Control system SI)"]
+              "entries": [
+                "LG Precision / Mil.Fire Control system SI)"
+              ]
             }
           ]
         },
@@ -1421,7 +1538,9 @@
           "months": [
             {
               "month": "Sep.",
-              "entries": ["Daewoo Telecom / Sonar/Radar"]
+              "entries": [
+                "Daewoo Telecom / Sonar/Radar"
+              ]
             }
           ]
         }
@@ -1436,7 +1555,9 @@
           "months": [
             {
               "month": "Nov.",
-              "entries": ["Made Distributor Agreement with PENTEK, Inc."]
+              "entries": [
+                "Made Distributor Agreement with PENTEK, Inc."
+              ]
             }
           ]
         },
@@ -1445,7 +1566,9 @@
           "months": [
             {
               "month": "Oct.",
-              "entries": ["Established Unitop Electronics"]
+              "entries": [
+                "Established Unitop Electronics"
+              ]
             }
           ]
         }
