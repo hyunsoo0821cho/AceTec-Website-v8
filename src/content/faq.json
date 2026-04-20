@@ -1,0 +1,77 @@
+[
+  {
+    "question": "요즘 어떤 제품이 잘 나가? 인기 제품이 뭐야? 어떤 분야가 주목받고 있어?",
+    "answer": "AceTec의 9개 솔루션 분야 모두 고객 프로젝트에 활발히 적용되고 있습니다.\n\n- **군수/항공** — VPX 3U/6U 보드, DDS 미들웨어\n- **철도** — HIMA SIL4 안전 시스템\n- **산업자동화** — Wind River VxWorks, Helix 가상화\n- **정보통신** — 네트워크 어플라이언스, NIC 어댑터\n- **센서 시뮬레이션** — OKTAL-SE EO/IR/RF\n- **슈퍼컴퓨팅** — GPU 서버, PCIe 확장\n- **산업용 컴퓨터** — 팬리스 IPC, 랙마운트\n- **레이더** — Cambridge Pixel SPx/HPx\n- **인터커넥트** — PCIe 패브릭 스위치\n\n각 분야별 상세 제품은 해당 페이지에서 확인하실 수 있습니다. 구체적인 프로젝트 상담은 acetec@acetec-korea.co.kr (+82-2-420-2343)로 문의해 주세요.",
+    "tags": ["인기", "잘나가", "주목", "트렌드", "추천", "popular", "trending", "best seller"]
+  },
+  {
+    "question": "에이스텍이 뭐하는 회사야? AceTec은 어떤 회사인가요?",
+    "answer": "AceTec(에이스텍)은 1994년 설립된 한국 B2B 임베디드 컴퓨팅 전문 기업입니다.\n\n30년 이상 국방/항공우주, 철도 안전, 산업 자동화, 통신, 센서 시뮬레이션, 슈퍼컴퓨팅, 산업용 PC, 레이더, 초고속 인터커넥트 분야에서 미션 크리티컬 솔루션을 제공하고 있습니다.\n\nAbaco Systems, HIMA, Wind River, RTI, OKTAL-SE, Cambridge Pixel, One Stop Systems 등 글로벌 파트너와의 전략적 제휴를 통해 검증된 기술을 한국 시장에 공급합니다.\n\n문의: acetec@acetec-korea.co.kr | +82-2-420-2343",
+    "tags": ["회사", "소개", "뭐하는", "어떤", "about", "company", "who"]
+  },
+  {
+    "question": "군수 항공 방산 국방 분야 제품이 뭐가 있어?",
+    "answer": "AceTec의 군수/항공(Military & Aerospace) 분야 주요 제품:\n\n**보드 & 플랫폼**\n- VPX 3U/6U 보드 (Abaco Systems) — 러기드 임베디드 컴퓨팅\n- VME, CompactPCI, PMC/XMC/FMC 보드\n- Jade, Cobalt, Onyx, Talon, Flexor, Spark 시리즈\n\n**미들웨어**\n- RTI Connext DDS Professional/Secure/Micro/Cert\n- 실시간 데이터 분배 미들웨어\n\n용도: 정밀 타격, 지휘통제(C2), 감시정찰, 무인 시스템 등\n\n상세 정보는 회원 로그인 후 /products/military 페이지에서 확인하실 수 있습니다.\n문의: acetec@acetec-korea.co.kr (+82-2-420-2343)",
+    "tags": ["군수", "항공", "방산", "국방", "military", "aerospace", "defense", "VPX", "VME", "DDS"]
+  },
+  {
+    "question": "철도 분야 제품이 뭐가 있어?",
+    "answer": "AceTec의 철도(Railway) 분야 주요 제품:\n\n**HIMA SIL4 안전 시스템**\n- HiMax — 대규모 철도 신호 시스템용\n- HiMatrix — 중소규모 안전 제어용\n- ControlSafe 플랫폼 — TÜV SÜD SIL4 인증\n\n용도: CBTC(통신기반열차제어), 연동장치, 열차제어 시스템\n\n모든 제품은 최고 수준의 안전 무결성 등급(SIL4)을 보장합니다.\n\n상세 정보는 회원 로그인 후 /products/railway 페이지에서 확인하실 수 있습니다.\n문의: acetec@acetec-korea.co.kr (+82-2-420-2343)",
+    "tags": ["철도", "기차", "전철", "railway", "SIL4", "HIMA", "ControlSafe", "안전"]
+  },
+  {
+    "question": "산업자동화 자동화 분야 제품이 뭐가 있어?",
+    "answer": "AceTec의 산업자동화(Industrial Automation) 분야 주요 제품:\n\n**Wind River 플랫폼**\n- VxWorks — 실시간 운영체제(RTOS)\n- Wind River Linux — 임베디드 리눅스\n- VxWorks 653 — DO-178C 인증 항공용 RTOS\n- Helix Virtualization — 산업용 가상화\n- Simics — 가상 시뮬레이션\n\n**IoT & PLC**\n- ISaGRAF SoftPLC — 산업용 프로그래밍\n- Device Cloud — IoT 디바이스 관리\n\n용도: 공장 자동화, 프로세스 제어, 반도체 제조, 품질 검사\n\n상세 정보는 /products/industrial 페이지에서 확인 가능합니다.\n문의: acetec@acetec-korea.co.kr (+82-2-420-2343)",
+    "tags": ["자동화", "산업", "industrial", "automation", "VxWorks", "Wind River", "RTOS", "IoT"]
+  },
+  {
+    "question": "정보통신 통신 네트워크 분야 제품이 뭐가 있어?",
+    "answer": "AceTec의 정보통신(Telecom & Networking) 분야 주요 제품:\n\n**네트워크 어플라이언스**\n- Intel/AMD 기반 방화벽, VPN, UTM, 로드밸런서 플랫폼\n- 커스텀 네트워크 장비\n\n**NIC 어댑터**\n- 고성능 서버용 네트워크 인터페이스 카드\n- 데이터센터 및 통신 인프라용\n\n용도: 방화벽, VPN, UTM, 로드 밸런싱, 데이터센터 네트워크\n\n상세 정보는 /products/telecom 페이지에서 확인 가능합니다.\n문의: acetec@acetec-korea.co.kr (+82-2-420-2343)",
+    "tags": ["정보통신", "통신", "네트워크", "telecom", "NIC", "방화벽", "VPN"]
+  },
+  {
+    "question": "센서 시뮬레이션 모델링 분야 제품이 뭐가 있어?",
+    "answer": "AceTec의 모델링 & 시뮬레이션(Sensor Simulation) 분야 주요 제품:\n\n**OKTAL-SE 솔루션**\n- EO/IR 센서 시뮬레이션\n- RF 센서 시뮬레이션\n- Active EO 시뮬레이션\n- GNSS 센서 시뮬레이션\n- 3D Terrain 생성\n- Building Generation\n- APIs & Integration Tools\n\n용도: Hardware-In-the-Loop(HITL), Man-In-the-Loop(MITL), 훈련 시뮬레이션\n\n국방 및 항공우주 프로그램에서 고충실도 센서 시뮬레이션을 제공합니다.\n\n상세 정보는 /products/sensor 페이지에서 확인 가능합니다.\n문의: acetec@acetec-korea.co.kr (+82-2-420-2343)",
+    "tags": ["센서", "시뮬레이션", "모델링", "OKTAL", "EO", "IR", "RF", "simulation"]
+  },
+  {
+    "question": "슈퍼컴퓨팅 HPC GPU 서버 제품이 뭐가 있어?",
+    "answer": "AceTec의 슈퍼컴퓨팅(HPC) 분야 주요 제품:\n\n**GPU 어플라이언스**\n- 고밀도 GPU 서버\n- GPU 확장 시스템\n\n**비디오 가속**\n- VIDEO Acceleration 솔루션\n\n**데스크톱 컴퓨팅**\n- Desktop Computing Appliances\n\n용도: AI/ML, 금융 분석, 군사 시뮬레이션, 의료 영상, 과학 연구\n\nPCIe 확장 시스템을 통해 여러 노드를 하나의 통합 시스템으로 운영할 수 있습니다.\n\n상세 정보는 /products/hpc 페이지에서 확인 가능합니다.\n문의: acetec@acetec-korea.co.kr (+82-2-420-2343)",
+    "tags": ["슈퍼컴퓨팅", "HPC", "GPU", "서버", "고성능", "supercomputing", "AI", "ML"]
+  },
+  {
+    "question": "산업용 컴퓨터 IPC 팬리스 PC 제품이 뭐가 있어?",
+    "answer": "AceTec의 산업용 컴퓨터(IPC) 분야 주요 제품:\n\n**ACE-IPC 시리즈**\n- Boxtype PC — 팬리스 산업용 소형 PC\n- Rackmount PC — 랙마운트 서버\n- Desktop PC — 산업용 데스크톱\n- Wallmount PC — 벽면 장착형\n- Panel PC — 터치스크린 내장 패널 PC\n- Server — 산업용 서버\n\n특징: 팬리스 설계, 넓은 온도 범위, 24/7 연속 운전, KC/ISO 인증\n\n용도: 정부 워크스테이션, 국방 시스템, 산업 HMI, 반도체 품질검사\n\n상세 정보는 /products/ipc 페이지에서 확인 가능합니다.\n문의: acetec@acetec-korea.co.kr (+82-2-420-2343)",
+    "tags": ["산업용컴퓨터", "IPC", "팬리스", "fanless", "랙마운트", "패널PC", "산업용PC"]
+  },
+  {
+    "question": "레이더 제품이 뭐가 있어?",
+    "answer": "AceTec의 레이더(Radar) 분야 주요 제품:\n\n**Cambridge Pixel 솔루션**\n- SPx Software — 레이더 스캔 변환, 타겟 추적, 디스플레이 소프트웨어\n- HPx Hardware — 레이더 신호 획득 카드\n- 통합 레이더 시각화 시스템\n\n용도: 레이더 데이터 처리, 신호 생성/획득, 정밀 분석, 타겟 추적, 멀티채널 레코딩, 상황 시각화\n\n상세 정보는 /products/radar 페이지에서 확인 가능합니다.\n문의: acetec@acetec-korea.co.kr (+82-2-420-2343)",
+    "tags": ["레이더", "radar", "Cambridge Pixel", "SPx", "HPx", "추적", "디스플레이"]
+  },
+  {
+    "question": "인터커넥트 PCIe 제품이 뭐가 있어?",
+    "answer": "AceTec의 초고속 데이터 인터커넥트(Interconnect) 분야 주요 제품:\n\n**One Stop Systems 솔루션**\n- PCIe Network Adapter — PCIe 네트워크 어댑터\n- Superfast Interconnect Switch — 초고속 PCIe 스위치\n- PCIe 패브릭 기반 저지연 네트워킹\n\n특징: 독자적 PCIe 기반 통신 프로토콜로 서버, GPU, 스토리지 간 데이터 전송 지연 최소화. 여러 노드를 하나의 통합 시스템으로 운영.\n\n상세 정보는 /products/interconnect 페이지에서 확인 가능합니다.\n문의: acetec@acetec-korea.co.kr (+82-2-420-2343)",
+    "tags": ["인터커넥트", "interconnect", "PCIe", "패브릭", "스위치", "저지연"]
+  },
+  {
+    "question": "연락처가 어떻게 돼? 전화번호 이메일 주소 알려줘",
+    "answer": "AceTec 연락처:\n\n**서울 본사**\n- 이메일: acetec@acetec-korea.co.kr\n- 전화: +82-2-420-2343\n- FAX: +82-2-420-2757\n\n**대전 지사**\n- 주소: 대전시 유성구 테크노2로 199 미건테크노월드 205호\n- 전화: +82-42-471-2343\n- FAX: +82-42-933-2642\n\n웹사이트: https://www.acetronix.co.kr\n문의 페이지: /contact",
+    "tags": ["연락처", "전화", "이메일", "주소", "contact", "phone", "email", "address"]
+  },
+  {
+    "question": "파트너사가 어디야? 어떤 회사랑 협력해?",
+    "answer": "AceTec의 주요 글로벌 기술 파트너:\n\n- **Abaco Systems** — 러기드 임베디드 컴퓨팅 (VME/VPX 보드)\n- **HIMA** — SIL4 인증 철도 안전 시스템\n- **Wind River** — VxWorks RTOS, Linux, Helix 가상화\n- **RTI** — Connext DDS 실시간 미들웨어\n- **OKTAL-SE** — EO/IR/RF 센서 시뮬레이션\n- **One Stop Systems** — PCIe 확장, GPU 서버\n- **Cambridge Pixel** — 레이더 프로세싱 & 디스플레이\n- **SMART Embedded Computing** — AdvancedMC, ATCA, MicroTCA\n- **Pentek** — 디지털 신호처리 보드\n\n문의: acetec@acetec-korea.co.kr (+82-2-420-2343)",
+    "tags": ["파트너", "협력", "partner", "Abaco", "HIMA", "Wind River", "RTI", "OKTAL"]
+  },
+  {
+    "question": "견적 요청하고 싶어 가격이 얼마야?",
+    "answer": "AceTec 제품의 가격은 프로젝트 요구사항, 수량, 구성에 따라 달라지므로 별도 견적이 필요합니다.\n\n**견적 요청 방법:**\n1. 웹사이트 문의 페이지: /contact\n2. 이메일: acetec@acetec-korea.co.kr\n3. 전화: +82-2-420-2343\n\n프로젝트 요구사항(분야, 수량, 일정 등)을 함께 알려주시면 빠른 견적을 받으실 수 있습니다.",
+    "tags": ["견적", "가격", "얼마", "비용", "price", "cost", "quote", "구매"]
+  },
+  {
+    "question": "제품 상세 스펙을 보고 싶어 설명을 보려면 어떻게 해?",
+    "answer": "제품 상세 사양(메모리, CPU, 치수 등)은 회원 전용 콘텐츠입니다.\n\n**열람 절차:**\n1. /register 에서 회원가입\n2. /login 에서 로그인\n3. 원하는 제품 페이지로 이동 (예: /products/military)\n4. 페이지 상단의 '설명 보기 요청' 버튼 클릭\n5. 관리자 승인 후 해당 페이지 상세 설명 열람 가능\n\n각 제품 페이지별로 개별 권한 요청이 필요합니다.\n\n빠른 안내가 필요하시면 acetec@acetec-korea.co.kr (+82-2-420-2343)로 문의해 주세요.",
+    "tags": ["스펙", "사양", "상세", "설명", "열람", "권한", "spec", "detail", "access"]
+  }
+]

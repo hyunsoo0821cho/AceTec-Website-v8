@@ -135,6 +135,29 @@ export async function generateChatResponse(
 
   const docs = await retrieveRelevantDocs(message);
 
+  // ===== FAQ 직접 매칭 — 고유사도 큐레이션 답변은 LLM 환각 없이 직접 반환 =====
+  const FAQ_THRESHOLD = 0.55;
+  const topDoc = docs[0];
+  if (topDoc && topDoc.similarity >= FAQ_THRESHOLD && (topDoc.metadata?.type as string) === 'faq') {
+    const faqAnswer = topDoc.metadata?.faq_answer as string;
+    if (faqAnswer) {
+      const safeFaq = sanitizeOutput(faqAnswer);
+      // 네비게이션 감지 (FAQ 답변에는 보통 없지만 일관성 유지)
+      let reply = safeFaq;
+      if (!/\[NAVIGATE:/.test(reply)) {
+        const navPath = detectNavPath(message);
+        if (navPath) reply = `${reply.trim()}\n\n[NAVIGATE:${navPath}]`;
+      }
+      return {
+        reply,
+        sources: docs.slice(0, 3).map((d) => ({
+          title: d.title,
+          category: (d.metadata?.category as string) ?? 'general',
+        })),
+      };
+    }
+  }
+
   // Qdrant 외부 노출 (P0 잔존) 대비: 검색된 문서에 지시형 injection 이 섞여 있을 수 있으므로
   // title / content 모두 sanitizeRagContext 로 필터링 후 프롬프트에 투입.
   const contextBlock =

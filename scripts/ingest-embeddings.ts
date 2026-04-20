@@ -146,6 +146,21 @@ function buildChunks(): DocumentChunk[] {
     metadata: { type: 'guide' },
   });
 
+  // FAQ 큐레이션 답변 (할루시네이션 방지)
+  const faqPath = path.resolve(import.meta.dirname, '..', 'src', 'content', 'faq.json');
+  if (fs.existsSync(faqPath)) {
+    const faqs: Array<{ question: string; answer: string; tags: string[] }> = JSON.parse(fs.readFileSync(faqPath, 'utf-8'));
+    for (let i = 0; i < faqs.length; i++) {
+      const faq = faqs[i];
+      chunks.push({
+        id: `faq-${i}`,
+        title: faq.question,
+        content: `Q: ${faq.question}\nA: ${faq.answer}`,
+        metadata: { type: 'faq', tags: faq.tags.join(','), faq_answer: faq.answer },
+      });
+    }
+  }
+
   return chunks;
 }
 
@@ -207,6 +222,7 @@ async function ingest() {
         content: doc.content,
         category: doc.metadata?.category ?? null,
         type: doc.metadata?.type ?? null,
+        faq_answer: doc.metadata?.faq_answer ?? null,
       },
     }));
 
