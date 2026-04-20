@@ -18,9 +18,12 @@ function loadFaqWithEmbeddings(): FaqEntry[] {
   const faqs: FaqEntry[] = JSON.parse(fs.readFileSync(faqPath, 'utf-8'));
   if (fs.existsSync(vsPath)) {
     const vs = JSON.parse(fs.readFileSync(vsPath, 'utf-8'));
-    const faqVecs = vs.filter((d: any) => d.id?.startsWith('faq-'));
-    for (let i = 0; i < faqs.length && i < faqVecs.length; i++) {
-      faqs[i].embedding = faqVecs[i].embedding;
+    const faqMap = new Map<string, number[]>();
+    for (const d of vs) {
+      if (d.id?.startsWith('faq-')) faqMap.set(d.id, d.embedding);
+    }
+    for (let i = 0; i < faqs.length; i++) {
+      faqs[i].embedding = faqMap.get(`faq-${i}`) ?? undefined;
     }
   }
   _faqCache = faqs;
