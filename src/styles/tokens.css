@@ -1,6 +1,12 @@
 /* ===== DESIGN TOKENS ===== */
 /* Extracted from AceTec-Website-v7 base.css :root */
 :root {
+  /* Brand */
+  --color-primary: #0055FF;
+  --color-primary-dark: #0040CC;
+  --color-primary-light: #E8F0FF;
+  --color-accent: #00C896;
+
   /* Colors */
   --color-black: #000;
   --color-white: #fff;
