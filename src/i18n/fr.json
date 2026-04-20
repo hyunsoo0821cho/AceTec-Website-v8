@@ -405,7 +405,7 @@
       "s0p0f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>Prise en charge de 4 ports RS232/422/485</li><li>Prise en charge de 1 x DIO 8 bits via le port DB-9</li><li>Prise en charge des applications WIFI, 3G/4G et GPRS</li><li>Aluminium + métal aluminium</li><li>Support mural (VESA, rail DIN en option)</li>",
       "s0p1n": "ACE-BoxIPC-73L2D",
       "s0p1f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>DDR3L SO-DIMM 4 Go de mémoire jusqu'à 16 Go</li><li>Prise en charge du montage mural</li><li>Prise en charge de RAID 0/1/5/10</li><li>Prise en charge de 3 écrans indépendants</li><li>Prise en charge d'Intel iAMT 8.0</li>",
-      "s0p2n": "ACE-BoxIPC-7110L2D",
+      "s0p2n": "ACE-BoxIPC-710L2D",
       "s0p2f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>DDR3L SO-DIMM 4 Go de mémoire jusqu'à 16 Go</li><li>Prise en charge du montage mural</li><li>Prise en charge de RAID 0/1/5/10</li><li>Prise en charge de 3 écrans indépendants</li><li>Prise en charge d'Intel iAMT 8.0</li>",
       "s0p3n": "ACE-BoxIPC-74L2D",
       "s0p3f": "<li>Prise en charge de 2 ports LAN Gigabit</li><li>DDR4 SO-DIMM 8 Go de mémoire jusqu'à 32 Go</li><li>Prise en charge du montage mural</li><li>Prise en charge de RAID 0/1</li><li>Prise en charge de 3 écrans indépendants</li><li>Prise en charge de la protection ESD</li>",

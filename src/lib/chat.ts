@@ -1,41 +1,22 @@
 import { retrieveRelevantDocs } from './rag';
-import { generateEmbedding } from './embeddings';
 import { isBlockedInput, refusalMessage, sanitizeOutput, sanitizeRagContext, SCOPE_RESTRICTION } from './chatbot-guard';
 import fs from 'fs';
 import path from 'path';
 
-// ===== FAQ 로컬 매칭 (벡터 DB/리랭커 우회, 코사인 유사도 직접 비교) =====
-interface FaqEntry { question: string; answer: string; tags: string[]; embedding?: number[] }
+// ===== FAQ 키워드 매칭 (벡터 DB/리랭커 우회) =====
+interface FaqEntry { question: string; answer: string; tags: string[] }
 let _faqCache: FaqEntry[] | null = null;
 
-function loadFaqWithEmbeddings(): FaqEntry[] {
-  // 매 요청마다 로드하지 않도록 캐시하되, 서버 시작 시 최초 1회 로드
-  if (_faqCache && _faqCache.length > 0 && _faqCache[0].embedding) return _faqCache;
-  const vsPath = path.join(process.cwd(), 'data', 'vector-store.json');
-  // faq.json 경로: src/content 또는 data/ fallback
+function loadFaq(): FaqEntry[] {
+  if (_faqCache) return _faqCache;
   let faqPath = path.join(process.cwd(), 'src', 'content', 'faq.json');
   if (!fs.existsSync(faqPath)) faqPath = path.join(process.cwd(), 'data', 'faq.json');
   if (!fs.existsSync(faqPath)) { _faqCache = []; return _faqCache; }
-  const faqs: FaqEntry[] = JSON.parse(fs.readFileSync(faqPath, 'utf-8'));
-  if (fs.existsSync(vsPath)) {
-    const vs = JSON.parse(fs.readFileSync(vsPath, 'utf-8'));
-    const faqMap = new Map<string, number[]>();
-    for (const d of vs) {
-      if (d.id?.startsWith('faq-')) faqMap.set(d.id, d.embedding);
-    }
-    for (let i = 0; i < faqs.length; i++) {
-      faqs[i].embedding = faqMap.get(`faq-${i}`) ?? undefined;
-    }
-  }
-  _faqCache = faqs;
-  return _faqCache;
+  _faqCache = JSON.parse(fs.readFileSync(faqPath, 'utf-8'));
+  return _faqCache!;
 }
 
-function cosSim(a: number[], b: number[]): number {
-  let dot = 0, na = 0, nb = 0;
-  for (let i = 0; i < a.length; i++) { dot += a[i] * b[i]; na += a[i] * a[i]; nb += b[i] * b[i]; }
-  return dot / (Math.sqrt(na) * Math.sqrt(nb));
-}
+
 
 const OLLAMA_URL = 'http://localhost:11434';
 const CHAT_MODEL = 'ministral-3:14b';
@@ -172,7 +153,7 @@ export async function generateChatResponse(
   const docs = await retrieveRelevantDocs(message);
 
   // ===== FAQ 키워드 매칭 — 태그 기반으로 LLM 우회, 환각 방지 =====
-  const faqs = loadFaqWithEmbeddings();
+  const faqs = loadFaq();
   if (faqs.length > 0) {
     try {
       const msgLower = message.toLowerCase();
