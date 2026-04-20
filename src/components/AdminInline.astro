@@ -89,6 +89,15 @@ const { page, isAdmin } = Astro.props;
         });
         el.addEventListener('blur', () => {
           el.contentEditable = 'false'; el.style.outline = 'none'; el.style.background = '';
+          // p-features(ul) 설명 영역이 비어있으면 플레이스홀더 자동 복원
+          // — 빈 상태로 blur 되면 li 가 사라져 다시 클릭할 타겟이 없어지는 UX 버그 방어.
+          if (el.classList.contains('p-features')) {
+            const text = (el.textContent || '').replace(/\s+/g, '');
+            if (text === '') {
+              el.innerHTML = '<li style="color:#94a3b8;font-style:italic;">클릭하여 설명 추가 (여러 줄은 Enter)</li>';
+              el.classList.add('p-features--empty');
+            }
+          }
           // 편집 종료 후 현재 언어로 재번역 (다시 보기용)
           if (typeof window.__retranslateElement === 'function') window.__retranslateElement(el);
         });
