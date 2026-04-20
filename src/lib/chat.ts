@@ -175,11 +175,13 @@ export async function generateChatResponse(
         }
         if (score > bestScore) { bestScore = score; bestFaq = faq; }
       }
-      // 디버그: faq-0의 태그별 매칭 결과
-      if (faqs[0]) {
-        const f0tags = faqs[0].tags.map(t => `${t}=${msgLower.includes(t.toLowerCase()) || msgNoSpace.includes(t.toLowerCase().replace(/\s+/g,''))}`);
-        console.log(`[FAQ] faq0 tags: ${f0tags.join(', ')}`);
-      }
+      // 디버그: 바이트 레벨 비교
+      const tag0 = faqs[0]?.tags?.[2] || ''; // "잘 나가"
+      const msgBuf = Buffer.from(msgLower, 'utf-8');
+      const tagBuf = Buffer.from(tag0.toLowerCase(), 'utf-8');
+      console.log(`[FAQ] msg bytes[0:20]: ${Array.from(msgBuf.slice(0,20)).map(b=>b.toString(16)).join(' ')}`);
+      console.log(`[FAQ] tag "${tag0}" bytes: ${Array.from(tagBuf).map(b=>b.toString(16)).join(' ')}`);
+      console.log(`[FAQ] includes test: ${msgLower.includes(tag0.toLowerCase())}`);
       console.log(`[FAQ] tagMatch best=${bestScore.toFixed(1)} match=${bestFaq?.question?.substring(0,30)}`);
       if (bestFaq && bestScore >= 1.0) {
         const safeFaq = sanitizeOutput(bestFaq.answer);
