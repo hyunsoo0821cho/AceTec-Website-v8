@@ -1,5 +1,36 @@
 import { retrieveRelevantDocs } from './rag';
+import { generateEmbedding } from './embeddings';
 import { isBlockedInput, refusalMessage, sanitizeOutput, sanitizeRagContext, SCOPE_RESTRICTION } from './chatbot-guard';
+import fs from 'fs';
+import path from 'path';
+
+// ===== FAQ 로컬 매칭 (벡터 DB/리랭커 우회, 코사인 유사도 직접 비교) =====
+interface FaqEntry { question: string; answer: string; tags: string[]; embedding?: number[] }
+let _faqCache: FaqEntry[] | null = null;
+
+function loadFaqWithEmbeddings(): FaqEntry[] {
+  if (_faqCache) return _faqCache;
+  // vector-store.json에서 faq 타입 문서의 임베딩을 가져옴
+  const vsPath = path.join(process.cwd(), 'data', 'vector-store.json');
+  const faqPath = path.join(process.cwd(), 'src', 'content', 'faq.json');
+  if (!fs.existsSync(faqPath)) { _faqCache = []; return _faqCache; }
+  const faqs: FaqEntry[] = JSON.parse(fs.readFileSync(faqPath, 'utf-8'));
+  if (fs.existsSync(vsPath)) {
+    const vs = JSON.parse(fs.readFileSync(vsPath, 'utf-8'));
+    const faqVecs = vs.filter((d: any) => d.id?.startsWith('faq-'));
+    for (let i = 0; i < faqs.length && i < faqVecs.length; i++) {
+      faqs[i].embedding = faqVecs[i].embedding;
+    }
+  }
+  _faqCache = faqs;
+  return _faqCache;
+}
+
+function cosSim(a: number[], b: number[]): number {
+  let dot = 0, na = 0, nb = 0;
+  for (let i = 0; i < a.length; i++) { dot += a[i] * b[i]; na += a[i] * a[i]; nb += b[i] * b[i]; }
+  return dot / (Math.sqrt(na) * Math.sqrt(nb));
+}
 
 const OLLAMA_URL = 'http://localhost:11434';
 const CHAT_MODEL = 'ministral-3:14b';
@@ -135,28 +166,36 @@ export async function generateChatResponse(
 
   const docs = await retrieveRelevantDocs(message);
 
-  // ===== FAQ 직접 매칭 — 고유사도 큐레이션 답변은 LLM 환각 없이 직접 반환 =====
-  const FAQ_THRESHOLD = 0.45;
-  const faqDoc = docs.find((d) => (d.metadata?.type as string) === 'faq' && d.similarity >= FAQ_THRESHOLD);
-  if (faqDoc) {
-    const faqAnswer = faqDoc.metadata?.faq_answer as string;
-    if (faqAnswer) {
-      const topDoc = faqDoc;
-      const safeFaq = sanitizeOutput(faqAnswer);
-      // 네비게이션 감지 (FAQ 답변에는 보통 없지만 일관성 유지)
-      let reply = safeFaq;
-      if (!/\[NAVIGATE:/.test(reply)) {
-        const navPath = detectNavPath(message);
-        if (navPath) reply = `${reply.trim()}\n\n[NAVIGATE:${navPath}]`;
+  // ===== FAQ 직접 매칭 — 임베딩 코사인 유사도로 LLM 우회, 환각 방지 =====
+  const FAQ_THRESHOLD = 0.52;
+  const faqs = loadFaqWithEmbeddings();
+  if (faqs.length > 0) {
+    // 메시지 임베딩은 RAG에서 이미 생성했지만 여기선 별도로 생성 (RAG 내부 임베딩에 접근 불가)
+    try {
+      const qEmb = await generateEmbedding(message);
+      let bestFaq: FaqEntry | null = null;
+      let bestSim = 0;
+      for (const faq of faqs) {
+        if (!faq.embedding) continue;
+        const sim = cosSim(qEmb, faq.embedding);
+        if (sim > bestSim) { bestSim = sim; bestFaq = faq; }
       }
-      return {
-        reply,
-        sources: docs.slice(0, 3).map((d) => ({
-          title: d.title,
-          category: (d.metadata?.category as string) ?? 'general',
-        })),
-      };
-    }
+      if (bestFaq && bestSim >= FAQ_THRESHOLD) {
+        const safeFaq = sanitizeOutput(bestFaq.answer);
+        let reply = safeFaq;
+        if (!/\[NAVIGATE:/.test(reply)) {
+          const navPath = detectNavPath(message);
+          if (navPath) reply = `${reply.trim()}\n\n[NAVIGATE:${navPath}]`;
+        }
+        return {
+          reply,
+          sources: docs.slice(0, 3).map((d) => ({
+            title: d.title,
+            category: (d.metadata?.category as string) ?? 'general',
+          })),
+        };
+      }
+    } catch { /* 임베딩 실패 시 LLM fallback */ }
   }
 
   // Qdrant 외부 노출 (P0 잔존) 대비: 검색된 문서에 지시형 injection 이 섞여 있을 수 있으므로

@@ -49,6 +49,40 @@ const { page, isAdmin } = Astro.props;
     [data-admin-sort] > [data-sort-id].sort-over-bottom { box-shadow: 0  4px 0 0 #2563eb; }
   </style>
 
+  <!-- 글로벌: 빈 p-features ul 의 플레이스홀더 + 편집 편의 규칙.
+       Astro scoped CSS가 ProductGrid / catalog 등 외부 컴포넌트의 .p-features 에 매치되지 않아
+       반드시 is:global 로 선언해야 관리자 설명 영역이 정상 동작. -->
+  <style is:global>
+    .p-features--empty {
+      min-height: 44px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      cursor: text;
+      list-style: none;
+    }
+    .p-features--empty::before {
+      content: "클릭하여 설명 추가 (여러 줄은 Enter)";
+      color: #94a3b8;
+      font-style: italic;
+      font-size: 14px;
+      line-height: 1.4;
+      pointer-events: none;
+    }
+    /* 편집 상태로 진입하면 ul 자체가 충분한 높이를 확보해 클릭/붙여넣기 타겟이 되도록 */
+    .p-features[contenteditable="true"] {
+      min-height: 44px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      outline-offset: 3px;
+    }
+    .p-features[contenteditable="true"]:empty::before {
+      content: "설명을 입력하세요...";
+      color: #cbd5e1;
+      font-style: italic;
+      pointer-events: none;
+    }
+  </style>
+
   <script define:vars={{ page }}>
     document.addEventListener('DOMContentLoaded', () => {
       const bar = document.getElementById('adminBar');
