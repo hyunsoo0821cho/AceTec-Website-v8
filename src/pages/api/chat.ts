@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { z } from 'zod';
-import { generateChatResponse } from '../../lib/chat';
+import { generateChatResponse, matchFaq } from '../../lib/chat';
 import { checkRateLimit } from '../../lib/rate-limiter';
 import { sanitizeChatMessage } from '../../lib/sanitize';
 import { sanitizeOutput } from '../../lib/chatbot-guard';
@@ -35,8 +35,9 @@ export const POST: APIRoute = async ({ request }) => {
 
   // JSON 파싱: text()로 읽어 UTF-8 보존 (request.json()의 한글 깨짐 방지)
   let body: unknown;
+  let rawText = '';
   try {
-    const rawText = await request.text();
+    rawText = await request.text();
     body = JSON.parse(rawText);
   } catch {
     return new Response(JSON.stringify({ error: '요청 본문이 올바른 JSON이 아닙니다' }), {
@@ -57,10 +58,31 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    // rawMessage: body에서 직접 추출 (Zod/sanitize 우회) — FAQ 키워드 매칭용
-    const rawMsg = typeof body === 'object' && body !== null ? (body as any).message || '' : '';
+    // FAQ 매칭: rawText에서 직접 추출한 원본 메시지로 매칭 (Astro 인코딩 문제 우회)
+    const rawMsgMatch = rawText.match(/"message"\s*:\s*"((?:[^"\\]|\\.)*)"/);
+    const rawMsg = rawMsgMatch ? rawMsgMatch[1].replace(/\\"/g, '"').replace(/\\n/g, '\n') : '';
+    const faqResult = matchFaq(rawMsg);
+    if (faqResult) {
+      const safeReply = sanitizeOutput(faqResult.reply);
+      // 대화 저장 (FAQ도 기록)
+      const visitorId = parsed.data.visitorId || 'anonymous';
+      const now = Date.now();
+      let conversationId = parsed.data.conversationId;
+      const db = getDb();
+      if (!conversationId) {
+        conversationId = now.toString(36) + Math.random().toString(36).slice(2);
+        const title = rawMsg.length > 30 ? rawMsg.slice(0, 30) + '...' : rawMsg;
+        db.prepare('INSERT INTO conversations (id, visitor_id, title, created_at, updated_at) VALUES (?, ?, ?, ?, ?)').run(conversationId, visitorId, title, now, now);
+      } else {
+        db.prepare('UPDATE conversations SET updated_at = ? WHERE id = ?').run(now, conversationId);
+      }
+      db.prepare('INSERT INTO messages (conversation_id, role, content, sources, created_at) VALUES (?, ?, ?, ?, ?)').run(conversationId, 'user', rawMsg, null, now);
+      db.prepare('INSERT INTO messages (conversation_id, role, content, sources, created_at) VALUES (?, ?, ?, ?, ?)').run(conversationId, 'assistant', safeReply, null, now + 1);
+      return new Response(JSON.stringify({ reply: safeReply, sources: [], conversationId }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    }
+
     const message = sanitizeChatMessage(parsed.data.message);
-    const { reply, sources } = await generateChatResponse(message, parsed.data.history, rawMsg);
+    const { reply, sources } = await generateChatResponse(message, parsed.data.history);
     const safeReply = sanitizeOutput(reply);
 
     // 대화 저장

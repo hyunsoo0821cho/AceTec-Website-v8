@@ -140,43 +140,40 @@ function detectNavPath(userMsg: string): string | null {
   return null;
 }
 
+/** FAQ 키워드 매칭 — rawText에서 추출한 원본 메시지로 매칭 (API 레이어에서 호출) */
+export function matchFaq(rawMsg: string): { reply: string } | null {
+  if (!rawMsg) return null;
+  const faqs = loadFaq();
+  if (!faqs.length) return null;
+  const msgLower = rawMsg.toLowerCase();
+  const msgNoSpace = msgLower.replace(/\s+/g, '');
+  let bestFaq: FaqEntry | null = null;
+  let bestScore = 0;
+  for (const faq of faqs) {
+    let score = 0;
+    for (const tag of faq.tags) {
+      const tl = tag.toLowerCase();
+      if (msgLower.includes(tl) || msgNoSpace.includes(tl.replace(/\s+/g, ''))) score++;
+    }
+    const qWords = faq.question.replace(/[?？]/g, '').split(/[\s,]+/).filter(w => w.length >= 2);
+    for (const w of qWords) {
+      if (msgLower.includes(w.toLowerCase())) score += 0.5;
+    }
+    if (score > bestScore) { bestScore = score; bestFaq = faq; }
+  }
+  if (!bestFaq || bestScore < 1.0) return null;
+  let reply = bestFaq.answer;
+  if (!/\[NAVIGATE:/.test(reply)) {
+    const navPath = detectNavPath(rawMsg);
+    if (navPath) reply = `${reply.trim()}\n\n[NAVIGATE:${navPath}]`;
+  }
+  return { reply };
+}
+
 export async function generateChatResponse(
   message: string,
   history: Array<{ role: 'user' | 'assistant'; content: string }> = [],
-  rawMessage?: string,
 ): Promise<ChatResponse> {
-  // ===== FAQ 키워드 매칭 — Input Guardrail보다 먼저 실행 (분야별 제품 질문이 차단되지 않도록) =====
-  const faqs = loadFaq();
-  if (faqs.length > 0) {
-    try {
-      const msgLower = (rawMessage || message).toLowerCase();
-      const msgNoSpace = msgLower.replace(/\s+/g, '');
-      let bestFaq: FaqEntry | null = null;
-      let bestScore = 0;
-      for (const faq of faqs) {
-        let score = 0;
-        for (const tag of faq.tags) {
-          const tl = tag.toLowerCase();
-          if (msgLower.includes(tl) || msgNoSpace.includes(tl.replace(/\s+/g, ''))) score++;
-        }
-        const qWords = faq.question.replace(/[?？]/g, '').split(/[\s,]+/).filter(w => w.length >= 2);
-        for (const w of qWords) {
-          if (msgLower.includes(w.toLowerCase())) score += 0.5;
-        }
-        if (score > bestScore) { bestScore = score; bestFaq = faq; }
-      }
-      if (bestFaq && bestScore >= 1.0) {
-        const safeFaq = sanitizeOutput(bestFaq.answer);
-        let reply = safeFaq;
-        if (!/\[NAVIGATE:/.test(reply)) {
-          const navPath = detectNavPath(message);
-          if (navPath) reply = `${reply.trim()}\n\n[NAVIGATE:${navPath}]`;
-        }
-        return { reply, sources: [] };
-      }
-    } catch (faqErr) { console.error('[FAQ] match error:', faqErr); }
-  }
-
   // ===== Input Guardrail =====
   const guard = isBlockedInput(message);
   if (guard.blocked) {
