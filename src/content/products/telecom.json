@@ -87,17 +87,35 @@
         {
           "name": "ACE-N-C246",
           "image": "/uploads/products/network/ACE-N-C246.png",
-          "features": []
+          "features": [
+            "• Support 19’ Rack mounting",
+            "• Support 8Port Intel Gigabit LAN",
+            "• Support RJ45 Console Port",
+            "• Support Socket type CPU configuration",
+            "• Firewall/UTM 전용Appliance"
+          ]
         },
         {
           "name": "ACE-N-C621",
           "image": "/uploads/products/network/ACE-N-C621.png",
-          "features": []
+          "features": [
+            "• Support 19’ Rack mounting",
+            "• Support 3Port Intel Gigabit LAN",
+            "• Support RJ45 Console Port",
+            "• Support Socket type CPU configuration",
+            "• Firewall/UTM 전용Appliance"
+          ]
         },
         {
           "name": "ACE-N-C741",
           "image": "/uploads/products/network/ACE-N-C741.png",
-          "features": []
+          "features": [
+            "• Support 19’ Rack mounting",
+            "• Support 2Port Intel Gigabit LAN",
+            "• Support RJ45 Console Port",
+            "• Support Socket type CPU configuration",
+            "• Firewall/UTM 전용Appliance"
+          ]
         }
       ]
     },
@@ -107,17 +125,35 @@
         {
           "name": "ACE-N-1UXEON",
           "image": "/uploads/products/network/ACE-N-1UXEON.png",
-          "features": []
+          "features": [
+            "• Support 19’ Rack mounting",
+            "• Support Tool less Rail kit",
+            "• Support 4Bay Hot-swap Bay",
+            "• Support 2Port Intel Gigabit LAN",
+            "• Support Socket type CPU configuration"
+          ]
         },
         {
           "name": "ACE-N-2UXEON",
           "image": "/uploads/products/network/ACE-N-2UXEON.png",
-          "features": []
+          "features": [
+            "• Support 19’ Rack mounting",
+            "• Support Tool less Rail kit",
+            "• Support 8Bay Hot-swap Bay",
+            "• Support 3Port Intel 2.5G LAN",
+            "• Support Socket type CPU configuration"
+          ]
         },
         {
           "name": "ACE-N-4UGPU",
           "image": "/uploads/products/network/ACE-N-4UGPU.png",
-          "features": []
+          "features": [
+            "• Support 19’ Rack mounting",
+            "• Support Tool less Rail kit",
+            "• Support 12Bay Hot-swap Bay",
+            "• Support 6Port Intel 1G LAN",
+            "• Support Socket type GPU configuration"
+          ]
         }
       ]
     },
