@@ -191,18 +191,29 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
     margin: 20px 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 18px;
+    gap: 10px;
     align-items: center;
     font-size: 16px;
   }
+  /* 카테고리 링크를 박스 버튼 스타일로 — 구조/기능/다른 CSS 변경 없이 시각만 박스화 */
   .cat-toc-link {
+    display: inline-block;
+    padding: 8px 14px;
+    background: #fff;
+    border: 1px solid var(--color-gray-300);
+    border-radius: 8px;
     color: var(--color-black);
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s, transform 0.15s;
   }
   .cat-toc-link:hover {
-    text-decoration: underline;
+    background: var(--color-gray-200);
+    border-color: var(--color-gray-500, #94a3b8);
+    text-decoration: none;
+    transform: translateY(-1px);
   }
   .cat-group {
     margin-bottom: 32px;
