@@ -91,9 +91,11 @@
           ]
         },
         {
-          "name": "New Product",
+          "name": "ACE-IPC02R-4U-i7-12",
           "image": "/uploads/products/1776659609604-ace-ipc02r-2u-i7-4-f.webp",
-          "features": []
+          "features": [
+            ". Intel® Core™ i7-12700T (12M Cache, 8 Core 2.0GHz up to 4.3GHz)"
+          ]
         }
       ]
     },

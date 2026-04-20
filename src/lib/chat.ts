@@ -176,13 +176,15 @@ export async function generateChatResponse(
   if (faqs.length > 0) {
     try {
       const msgLower = message.toLowerCase();
+      const msgNoSpace = msgLower.replace(/\s+/g, '');
       let bestFaq: FaqEntry | null = null;
       let bestScore = 0;
       for (const faq of faqs) {
-        // 태그 매칭 점수: 일치하는 태그 수
         let score = 0;
+        // 태그 매칭: 원문 + 공백 제거 비교
         for (const tag of faq.tags) {
-          if (msgLower.includes(tag.toLowerCase())) score++;
+          const tl = tag.toLowerCase();
+          if (msgLower.includes(tl) || msgNoSpace.includes(tl.replace(/\s+/g, ''))) score++;
         }
         // 질문 키워드 매칭 보조 점수
         const qWords = faq.question.replace(/[?？]/g, '').split(/[\s,]+/).filter(w => w.length >= 2);

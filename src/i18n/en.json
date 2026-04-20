@@ -458,7 +458,8 @@
       "s5p7f": "<li>Support 1920 x 1080 dots</li><li>DDR3L SO-DIMM 4GB Memory up to 8GB</li><li>Support VESA Mounting</li><li>Support Touch Screen</li>",
       "s0p5n": "ACE-OWS-712-S4",
       "s3p5n": "ACE-IPC02D-i7-12",
-      "s1p4n": "ACE-IPC02R-4U-I7-9-F"
+      "s1p4n": "ACE-IPC02R-4U-I7-9-F",
+      "s1p5n": "ACE-IPC02R-4U-i7-12"
     },
     "military": {
       "s0": "Form Factor Abaco Systems",
