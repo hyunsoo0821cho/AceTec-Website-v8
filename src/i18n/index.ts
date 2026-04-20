@@ -41,6 +41,7 @@ import arData from './ar.json';
 import frData from './fr.json';
 import deData from './de.json';
 import esData from './es.json';
+import { applyManualOverrides } from './overrides';
 
 const translations: Record<string, Record<string, unknown>> = {
   en: enData as Record<string, unknown>,
@@ -398,6 +399,10 @@ export async function applyTranslations(code?: LangCode) {
   document.querySelectorAll<HTMLElement>('.current-lang-label').forEach((el) => {
     el.textContent = lang.toUpperCase();
   });
+
+  // 카테고리/기술 용어 수동 번역 적용 (Google Translate 문맥 오역 교정)
+  // — autoTranslatePage 전에 실행해 사전에 등록된 용어를 먼저 확정
+  applyManualOverrides(lang);
 
   // 자동 번역: data-i18n이 없는 한국어 콘텐츠 자동 번역
   await autoTranslatePage(lang);
