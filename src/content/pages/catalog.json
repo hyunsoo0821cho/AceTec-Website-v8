@@ -877,7 +877,7 @@
     {
       "id": "cs18",
       "icon": "",
-      "title": "엔트리 네트워크 어플라이언스",
+      "title": "Entry Network Appliance",
       "products": [
         {
           "name": "ACE-N-J4125(Mini)",
@@ -905,7 +905,7 @@
     {
       "id": "cs19",
       "icon": "",
-      "title": "중간 네트워크 기기",
+      "title": "Middle Network Appliance",
       "products": [
         {
           "name": "ACE-N-H170",
@@ -933,7 +933,7 @@
     {
       "id": "cs20",
       "icon": "",
-      "title": "고급 네트워크 어플라이언스",
+      "title": "High-end Network Appliance",
       "products": [
         {
           "name": "ACE-N-C246",
@@ -961,7 +961,7 @@
     {
       "id": "cs21",
       "icon": "",
-      "title": "서버 네트워크 어플라이언스",
+      "title": "Server Network Appliance",
       "products": [
         {
           "name": "ACE-N-1UXEON",
