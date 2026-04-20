@@ -887,10 +887,10 @@ const accI18nKeys = [
       max-width: 500px;
       margin: 0 auto;
     }
+    /* 3 → 2 → 1 점진적 축소: 1024px 이하에서는 2컬럼 (기존 1fr 점프 버그 수정).
+       더 작은 화면(768px 이하)은 아래 미디어쿼리에서 1fr 로 이미 정의되어 있음. */
     .svc-cards {
-      grid-template-columns: 1fr;
-      max-width: 500px;
-      margin: 0 auto;
+      grid-template-columns: repeat(2, 1fr);
     }
     .consult-inner h2 {
       font-size: 36px;

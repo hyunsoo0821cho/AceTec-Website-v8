@@ -33,10 +33,11 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 
-  // JSON 파싱 실패는 500이 아니라 400으로 반환
+  // JSON 파싱: text()로 읽어 UTF-8 보존 (request.json()의 한글 깨짐 방지)
   let body: unknown;
   try {
-    body = await request.json();
+    const rawText = await request.text();
+    body = JSON.parse(rawText);
   } catch {
     return new Response(JSON.stringify({ error: '요청 본문이 올바른 JSON이 아닙니다' }), {
       status: 400,
