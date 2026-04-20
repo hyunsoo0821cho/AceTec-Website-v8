@@ -152,10 +152,12 @@ function buildChunks(): DocumentChunk[] {
     const faqs: Array<{ question: string; answer: string; tags: string[] }> = JSON.parse(fs.readFileSync(faqPath, 'utf-8'));
     for (let i = 0; i < faqs.length; i++) {
       const faq = faqs[i];
+      // FAQ 임베딩은 질문만으로 생성 (사용자 쿼리와 유사도 매칭을 위해)
+      // 답변은 metadata.faq_answer에 보관
       chunks.push({
         id: `faq-${i}`,
         title: faq.question,
-        content: `Q: ${faq.question}\nA: ${faq.answer}`,
+        content: faq.question,
         metadata: { type: 'faq', tags: faq.tags.join(','), faq_answer: faq.answer },
       });
     }
