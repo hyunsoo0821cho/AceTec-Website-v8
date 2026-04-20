@@ -19,7 +19,7 @@
           "name": "ACE-BoxIPC-79L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
-            ".Intel® Core™ i7-9700T (12M Cache, 8 Core 2.0GHz up to 4.3GHz)"
+            ".Intel® Core™ i7-9700T (12M Cache, 8 Core 2.0GHz up to 4.3GHz)"
           ]
         },
         {
@@ -30,7 +30,7 @@
           ]
         },
         {
-          "name": "ACE-BoxIPC-74L2D",
+          "name": "ACE-BoxIPC-712L2D",
           "image": "/images/catalog/ACE-BoxIPC-73L2D.png",
           "features": [
             "2x Gigabit LAN ports, DDR4 SO-DIMM 8GB memory, supports wall mounting up to 32GB, supports RAID 0/1, supports 3 independent displays, supports ESD protection"
