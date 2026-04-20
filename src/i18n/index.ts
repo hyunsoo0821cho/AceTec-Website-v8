@@ -394,9 +394,10 @@ export async function applyTranslations(code?: LangCode) {
   document.documentElement.dir = langInfo?.dir || 'ltr';
   document.documentElement.lang = lang;
 
-  // Update lang selector display
-  const langDisplay = document.getElementById('currentLangLabel');
-  if (langDisplay) langDisplay.textContent = lang.toUpperCase();
+  // Update lang selector display (모든 LangSwitcher 인스턴스)
+  document.querySelectorAll<HTMLElement>('.current-lang-label').forEach((el) => {
+    el.textContent = lang.toUpperCase();
+  });
 
   // 자동 번역: data-i18n이 없는 한국어 콘텐츠 자동 번역
   await autoTranslatePage(lang);

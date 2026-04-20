@@ -4,6 +4,8 @@
  * v7 index.html mobile-menu 섹션에서 추출
  * ARIA, 포커스 트랩, Escape 닫기 지원
  */
+import LangSwitcher from './LangSwitcher.astro';
+
 interface Props {
   currentPath?: string;
 }
@@ -11,7 +13,7 @@ interface Props {
 const { currentPath = '/' } = Astro.props;
 
 const navLinks = [
-  { href: '/', label: '홈', i18nKey: '' },
+  { href: '/', label: '홈', i18nKey: 'nav.home' },
   { href: '/solutions', label: '솔루션', i18nKey: 'nav.solutions' },
   { href: '/products-intro', label: '제품소개', i18nKey: 'nav.productsIntro' },
   { href: '/applications', label: '응용분야', i18nKey: 'nav.applications' },
@@ -32,6 +34,7 @@ const navLinks = [
     ))
   }
   <a class="btn-book" href="/contact" data-i18n="nav.inquiry">문의하기</a>
+  <LangSwitcher />
 </div>
 
 <style>
