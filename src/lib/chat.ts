@@ -11,9 +11,8 @@ function loadFaq(): FaqEntry[] {
   if (_faqCache) return _faqCache;
   let faqPath = path.join(process.cwd(), 'src', 'content', 'faq.json');
   if (!fs.existsSync(faqPath)) faqPath = path.join(process.cwd(), 'data', 'faq.json');
-  if (!fs.existsSync(faqPath)) { console.log('[FAQ] file not found:', faqPath); _faqCache = []; return _faqCache; }
+  if (!fs.existsSync(faqPath)) { _faqCache = []; return _faqCache; }
   _faqCache = JSON.parse(fs.readFileSync(faqPath, 'utf-8'));
-  console.log(`[FAQ] loaded ${_faqCache!.length} entries from ${faqPath}, tags[0]=${JSON.stringify(_faqCache![0]?.tags?.slice(0,3))}`);
   return _faqCache!;
 }
 
@@ -176,12 +175,7 @@ export async function generateChatResponse(
         }
         if (score > bestScore) { bestScore = score; bestFaq = faq; }
       }
-      // 디버그
-      const tag0 = faqs[0]?.tags?.[2] || '';
-      console.log(`[FAQ] msgCodes[0:5]: ${Array.from(msgLower).slice(0,5).map(c=>c.charCodeAt(0).toString(16)).join(' ')}`);
-      console.log(`[FAQ] tagCodes: ${Array.from(tag0).map(c=>c.charCodeAt(0).toString(16)).join(' ')}`);
-      console.log(`[FAQ] includes "${tag0}": ${msgLower.includes(tag0.toLowerCase())}`);
-      console.log(`[FAQ] tagMatch best=${bestScore.toFixed(1)} match=${bestFaq?.question?.substring(0,30)}`);
+      if (bestFaq && bestScore >= 1.0) console.log(`[FAQ] matched: score=${bestScore.toFixed(1)} q="${bestFaq.question.substring(0,40)}"`);
       if (bestFaq && bestScore >= 1.0) {
         const safeFaq = sanitizeOutput(bestFaq.answer);
         let reply = safeFaq;
