@@ -128,7 +128,7 @@ const hasSections = sections && sections.length > 0;
       <button
         class="admin-add-btn"
         data-admin-add={`sections[${si}].products`}
-        data-admin-template='{"name":"New Product","image":"","features":["Feature 1"]}'
+        data-admin-template='{"name":"New Product","image":"","features":[]}'
         style="margin-top:12px;"
       >
         + Add Product
@@ -525,15 +525,6 @@ const hasSections = sections && sections.length > 0;
     display: block;
     animation: slideDown 0.2s ease-out;
   }
-
-  /* 관리자 모드: AdminBar(#adminBar)가 DOM에 존재 → Details 토글을 숨기고
-     설명 영역을 항상 표시해 인라인 편집 가능 상태를 유지.
-     일반 사용자 화면에는 영향 없음. */
-  body:has(#adminBar) .p-detail-toggle { display: none; }
-  body:has(#adminBar) .p-features--collapsed,
-  body:has(#adminBar) .p-price.p-features--collapsed {
-    display: block !important;
-  }
   @keyframes slideDown {
     from { opacity: 0; transform: translateY(-4px); }
     to { opacity: 1; transform: translateY(0); }
@@ -586,28 +577,11 @@ const hasSections = sections && sections.length > 0;
 </div>
 
 <script is:inline>
-  // Detail toggle for product cards
-  // 관리자 모드(#adminBar 존재)에서는 편집을 방해하지 않도록:
-  //  1) Details 토글 버튼을 DOM에서 숨김
-  //  2) 접힘 상태의 설명을 모두 펼침 상태로 강제 변환
-  //  3) 버튼 클릭 이벤트도 무력화 (안전장치)
-  // Astro scoped CSS가 body-level 셀렉터와 혼합될 때 매치 실패 사례가 있어
-  // JS로 직접 처리하는 것이 가장 신뢰성 높음.
-  const isAdminMode = !!document.getElementById('adminBar');
-  if (isAdminMode) {
-    document.querySelectorAll('.p-detail-toggle').forEach(btn => {
-      /** @type {HTMLElement} */ (btn).style.display = 'none';
-    });
-    document.querySelectorAll('.p-features--collapsed').forEach(el => {
-      el.classList.remove('p-features--collapsed');
-      el.classList.add('p-features--expanded');
-    });
-  }
+  // Detail toggle for product cards — 접기/펼치기 기본 동작 (관리자 포함 모두 적용)
   document.querySelectorAll('.p-detail-toggle').forEach(btn => {
     btn.addEventListener('click', (ev) => {
       ev.preventDefault();
       ev.stopPropagation();
-      if (isAdminMode) return; // 편집 모드: 접힘 동작 스킵
       const wrap = btn.parentElement;
       if (!wrap) return;
       const content = wrap.querySelector('.p-features--collapsed, .p-features--expanded');
