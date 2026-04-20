@@ -525,6 +525,15 @@ const hasSections = sections && sections.length > 0;
     display: block;
     animation: slideDown 0.2s ease-out;
   }
+
+  /* 관리자 모드: AdminBar(#adminBar)가 DOM에 존재 → Details 토글을 숨기고
+     설명 영역을 항상 표시해 인라인 편집 가능 상태를 유지.
+     일반 사용자 화면에는 영향 없음. */
+  body:has(#adminBar) .p-detail-toggle { display: none; }
+  body:has(#adminBar) .p-features--collapsed,
+  body:has(#adminBar) .p-price.p-features--collapsed {
+    display: block !important;
+  }
   @keyframes slideDown {
     from { opacity: 0; transform: translateY(-4px); }
     to { opacity: 1; transform: translateY(0); }
@@ -578,10 +587,14 @@ const hasSections = sections && sections.length > 0;
 
 <script is:inline>
   // Detail toggle for product cards
+  // 관리자 모드(#adminBar 존재)에서는 토글 자체를 비활성화 — CSS가 설명을 항상 보이게 하므로
+  // 토글이 동작하면 오히려 편집 영역이 사라지는 버그 발생.
+  const isAdminMode = !!document.getElementById('adminBar');
   document.querySelectorAll('.p-detail-toggle').forEach(btn => {
     btn.addEventListener('click', (ev) => {
       ev.preventDefault();
       ev.stopPropagation();
+      if (isAdminMode) return; // 편집 모드: 접힘 동작 스킵
       const wrap = btn.parentElement;
       if (!wrap) return;
       const content = wrap.querySelector('.p-features--collapsed, .p-features--expanded');
