@@ -722,37 +722,37 @@ Start-Process "ollama" -ArgumentList "serve"
 
 ---
 
-## 16. 알려진 이슈 (2026-04-17 ECC 재감사)
+## 16. 알려진 이슈 (2026-04-20 보안 패치)
 
 ### CRITICAL (즉시 조치)
 
 | # | 이슈 | 파일 | 상태 |
 |---|------|------|------|
-| 1 | i18n `setNestedValue()` Prototype Pollution — `__proto__` 키 미필터링 | `i18n/update.ts`, `translate-save.ts` | 미해결 |
-| 2 | CMS/i18n/이미지 API에 admin role 체크 없음 — 일반 사용자가 콘텐츠 변조 가능 | `pages/[page].ts`, `i18n/update.ts`, `images/upload.ts` | 미해결 |
+| 1 | i18n `setNestedValue()` Prototype Pollution | `i18n/update.ts`, `translate-save.ts` | 미해결 |
+| 2 | CMS/i18n/이미지 API에 admin role 체크 없음 | `pages/[page].ts`, `i18n/update.ts`, `images/upload.ts` | 미해결 |
 | 3 | 인증 코드가 API 응답에 평문 반환 (`devCode`) | `send-code.ts:53,56` | 미해결 |
 | 4 | 인증 관련 3개 엔드포인트에 rate limit 없음 | `send-code.ts`, `register.ts`, `reset-password.ts` | 미해결 |
-| 5 | conversations/messages API 무인증 — 타인 대화 열람·삭제 | `conversations.ts`, `messages.ts` | 미해결 |
-| 6 | DB 인덱스 0개 + 만료 데이터 cleanup 없음 | `db.ts` | 미해결 |
+| ~~5~~ | ~~conversations/messages API 무인증~~ | `conversations.ts`, `messages.ts` | **해결** — visitor_id 소유권 검증 |
+| ~~6~~ | ~~DB 인덱스 0개~~ | `db.ts` | **해결** — 6개 인덱스 + busy_timeout |
 
 ### HIGH (단기 조치)
 
 | # | 이슈 | 파일 | 상태 |
 |---|------|------|------|
-| 7 | Ollama URL 하드코딩 4곳 (환경변수 미사용) | `chat.ts`, `embeddings.ts`, `health.ts`, `middleware.ts` | 미해결 |
-| 8 | `logout.ts` 서버 측 세션 미삭제 (쿠키만 제거) | `logout.ts` | 미해결 |
-| 9 | `users.ts` role 값 검증 없음 + 비밀번호 변경 시 정책 미검증 | `admin/users.ts` | 미해결 |
-| 10 | 이미지 업로드 magic-byte 검증 없음 (`file.type`만 확인) | `images/upload.ts` | 미해결 |
-| 11 | `dashboard.astro` avatar_url/data-edit-user XSS 취약점 | `dashboard.astro:276,280` | 미해결 |
-| 12 | ChatWidget source title innerHTML XSS | `ChatWidget.astro:924-926` | 미해결 |
-| 13 | `Math.random()` 인증 코드 — `crypto.randomInt()` 필요 | `email.ts:41` | 미해결 |
+| ~~7~~ | ~~Ollama URL 하드코딩~~ | `chat.ts`, `embeddings.ts` | **해결** — `process.env.OLLAMA_URL` fallback |
+| ~~8~~ | ~~`logout.ts` 서버 측 세션 미삭제~~ | `logout.ts` | **해결** — `deleteSession(sid)` 추가 |
+| ~~9~~ | ~~`users.ts` role/비밀번호 검증 없음~~ | `admin/users.ts` | **해결** — Zod + role 화이트리스트 + validatePassword |
+| 10 | 이미지 업로드 magic-byte 검증 없음 | `images/upload.ts` | 미해결 |
+| 11 | `dashboard.astro` avatar_url/data-edit-user XSS | `dashboard.astro:276,280` | 미해결 |
+| ~~12~~ | ~~ChatWidget source title innerHTML XSS~~ | `ChatWidget.astro` | **해결** — `escapeHtml(s.title)` |
+| 13 | `Math.random()` 인증 코드 | `email.ts:41` | 미해결 |
 | 14 | npm audit: vite 3건 CVE + defu prototype pollution | `package.json` | 미해결 |
 | 15 | SQLite 장애 시 미들웨어 admin 경로 크래시 | `middleware.ts:47-51` | 미해결 |
-| 16 | `embeddings.ts` fetch timeout 없음 | `embeddings.ts:5` | 미해결 |
-| 17 | sessions FK CASCADE 누락 + `PRAGMA busy_timeout` 미설정 | `db.ts` | 미해결 |
-| 18 | `admins.email` UNIQUE 제약 없음 | `db.ts` | 미해결 |
+| ~~16~~ | ~~`embeddings.ts` fetch timeout 없음~~ | `embeddings.ts` | **해결** — 30초 타임아웃 |
+| ~~17~~ | ~~`PRAGMA busy_timeout` 미설정~~ | `db.ts` | **해결** — 5초 |
+| ~~18~~ | ~~`admins.email` UNIQUE 제약 없음~~ | `db.ts` | **해결** — UNIQUE INDEX |
 | 19 | Dockerfile DB 파일을 이미지에 포함 | `Dockerfile:14` | 미해결 |
-| 20 | Supabase 미설정 시 문의 데이터 소실하면서 성공 응답 | `contact.ts:48-57` | 미해결 |
+| 20 | Supabase 미설정 시 문의 소실 | `contact.ts:48-57` | 미해결 |
 | 21 | 정기 백업 자동화 없음 | — | 미해결 |
 | 22 | 6개 카테고리 제품 `items[]` 비어있음 | products JSON | 데이터 입력 필요 |
 
@@ -760,15 +760,39 @@ Start-Process "ollama" -ArgumentList "serve"
 
 | # | 이슈 | 상태 |
 |---|------|------|
-| 23 | CSP `unsafe-inline` 유지 (nonce 전환 시 .astro 전면 개편 필요) | 미해결 |
-| 24 | Rate limiter 인메모리 (서버 재시작 시 초기화) | 의도된 동작 |
-| 25 | CSRF Origin 체크만 (SameSite=Strict로 완화 중) | 미해결 |
-| 26 | `login.ts` 119줄 / `chat.ts` API 110줄 — 100줄 한도 초과 | 미해결 |
-| 27 | `chatbot-guard.ts` 234줄 — lib 200줄 한도 초과 | 미해결 |
-| 28 | `.env.example` 없음 / `500.astro` 없음 | 미해결 |
-| 29 | `email.ts` .env 수동 파서 / console.log 디버그 코드 잔존 | 미해결 |
-| 30 | 15개 API가 lib/ 무시하고 inline SQL 직접 실행 | 미해결 |
-| 31 | `index.astro` 1051줄 / `ChatWidget.astro` 1280줄 — 800줄 한도 초과 | 미해결 |
+| 23 | CSP `unsafe-inline` 유지 | 미해결 |
+| 24 | Rate limiter 인메모리 | 의도된 동작 |
+| 25 | CSRF Origin 체크만 | 미해결 |
+| 26 | `login.ts` 119줄 / `chat.ts` API 110줄 | 미해결 |
+| 27 | `chatbot-guard.ts` 234줄 | 미해결 |
+| ~~28~~ | ~~`.env.example` 없음~~ / `500.astro` 없음 | **부분 해결** — `.env.example` 생성 |
+| 29 | `email.ts` .env 수동 파서 / console.log 잔존 | 미해결 |
+| 30 | 15개 API가 inline SQL 직접 실행 | 미해결 |
+| 31 | `index.astro` 1051줄 / `ChatWidget.astro` 1280줄 | 미해결 |
+
+### 2026-04-20 보안 패치 요약 (19건)
+
+| # | 수정 내용 | 파일 |
+|---|----------|------|
+| 1 | logout 시 서버 측 세션 DB 삭제 | `logout.ts` |
+| 2 | admins.email UNIQUE 인덱스 추가 | `db.ts` |
+| 3 | 성능 인덱스 6개 추가 (sessions, visitor_logs, verification_codes, conversations, messages) | `db.ts` |
+| 4 | PRAGMA busy_timeout 5초 설정 | `db.ts` |
+| 5 | sanitize.ts HTML entity 디코딩 순서 수정 + javascript:/data: URL 차단 | `sanitize.ts` |
+| 6 | users.ts POST/PUT Zod 입력 검증 추가 | `admin/users.ts` |
+| 7 | users.ts role 화이트리스트 (admin/sales/customer/person/pending) | `admin/users.ts` |
+| 8 | users.ts PUT 비밀번호 변경 시 validatePassword + 기존 세션 삭제 | `admin/users.ts` |
+| 9 | 사용자 삭제 시 트랜잭션 래핑 (sessions + access_requests + admins) | `admin/users.ts` |
+| 10 | me.ts PUT displayName/phone/bio sanitizeString 적용 | `me.ts` |
+| 11 | conversations DELETE 소유권 검증 (visitor_id 필수) | `conversations.ts` |
+| 12 | messages GET 소유권 검증 (visitor_id 필수) | `messages.ts` |
+| 13 | ChatWidget source title escapeHtml 적용 | `ChatWidget.astro` |
+| 14 | ChatWidget DELETE/messages 호출에 visitor_id 추가 | `ChatWidget.astro` |
+| 15 | register.ts username 충돌 시 숫자 접미사 자동 추가 | `register.ts` |
+| 16 | register.ts try/catch + UNIQUE 에러 처리 | `register.ts` |
+| 17 | reset-password.ts try/catch + 에러 메시지 | `reset-password.ts` |
+| 18 | Ollama URL 환경변수화 (`process.env.OLLAMA_URL`) | `chat.ts` |
+| 19 | .env.example 파일 생성 (12개 환경변수) | `.env.example` |
 
 ---
 
