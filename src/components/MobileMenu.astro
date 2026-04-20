@@ -95,4 +95,16 @@ const navLinks = [
       font-size: var(--font-size-2xl);
     }
   }
+
+  /* 모바일 메뉴 안에서는 LangSwitcher를 상단 좌측 고정 위치로 띄움 — centered flex에 밀려 잘리지 않도록 */
+  .mobile-menu :global(.lang-switcher) {
+    position: absolute;
+    top: max(20px, env(safe-area-inset-top));
+    left: 20px;
+    z-index: 10;
+  }
+  .mobile-menu :global(.lang-dropdown) {
+    left: 0;
+    right: auto;
+  }
 </style>
