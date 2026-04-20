@@ -1,94 +1,94 @@
 {
   "hero": {
-    "title": "Mission-Critical Embedded Computing & Industrial olutions",
-    "description": "Over 30 years of expertise delivering embedded computing, industrial PCs, and safety-critical systems for defense, aerospace, railway, and industrial applications.",
+    "title": "미션 크리티컬 임베디드 컴퓨팅 & 산업용 솔루션",
+    "description": "30년 이상의 전문성으로 국방, 항공우주, 철도, 산업 분야에 임베디드 컴퓨팅, 산업용 PC, 안전 필수 시스템을 공급합니다.",
     "image": "/uploads/hero/1775698202846-hero-main.webp",
     "btnPrimary": "솔루션 살펴보기",
-    "btnSecondary": "견적 요청"
+    "btnSecondary": "견적 요청하기"
   },
   "solutions": {
     "title": "주요 응용분야",
-    "description": "Backed by our in-house R&D center and decades of domain expertise, AceTec delivers tailored technology solutions for defense, aerospace, railway, and industrial automation — all KC certified and ISO 9001 compliant.",
+    "description": "자체 R&D 센터와 수십 년의 도메인 전문성을 바탕으로, 에이스텍은 국방·항공우주·철도·산업 자동화 분야에 맞춤형 기술 솔루션을 제공합니다 — 전 제품 KC 인증 및 ISO 9001 준수.",
     "items": [
       {
         "title": "임베디드 컴퓨팅",
-        "description": "Board-level signal processing systems — including Jade, Cobalt, Onyx, Talon, Flexor, and Spark platforms — engineered for demanding defense and aerospace environments."
+        "description": "Jade, Cobalt, Onyx, Talon, Flexor, Spark 플랫폼을 포함한 보드 레벨 신호 처리 시스템 — 국방·항공우주 분야의 혹독한 환경에 최적화."
       },
       {
-        "title": "Industrial & Networking",
-        "description": "KC certified, ISO 9001 compliant fanless PCs, rackmount servers, and network appliances built for continuous 24/7 operation in demanding industrial environments."
+        "title": "산업용 & 네트워킹",
+        "description": "KC 인증·ISO 9001 준수 팬리스 PC, 랙마운트 서버, 네트워크 어플라이언스 — 가혹한 산업 환경에서 24시간 연속 운전 지원."
       },
       {
-        "title": "Safety-Critical Systems",
-        "description": "TÜV SÜD SIL4 certified HIMA ControlSafe™ platforms for railway signaling and train control — fail-safe, fault-tolerant architecture ensuring the highest level of operational safety."
+        "title": "안전 필수 시스템",
+        "description": "TÜV SÜD SIL4 인증 HIMA ControlSafe™ 플랫폼 — 철도 신호 및 열차 제어를 위한 페일세이프·내결함성 아키텍처로 최고 수준의 운영 안전성 보장."
       },
       {
-        "title": "Telecom & Networking",
-        "description": "Intel/AMD-based network appliances for firewall, VPN, UTM, and load balancing — paired with high-performance NICs for data center and telecom infrastructure."
+        "title": "통신 & 네트워킹",
+        "description": "방화벽, VPN, UTM, 로드밸런싱용 Intel/AMD 기반 네트워크 어플라이언스 — 데이터센터·통신 인프라용 고성능 NIC와 함께 제공."
       },
       {
-        "title": "Sensor Modeling & Simulation",
-        "description": "OKTAL-SE high-fidelity EO/IR/RF sensor simulation for Hardware-In-the-Loop, Man-In-the-Loop, and training simulation environments."
+        "title": "센서 모델링 & 시뮬레이션",
+        "description": "OKTAL-SE 고충실도 EO/IR/RF 센서 시뮬레이션 — Hardware-In-the-Loop, Man-In-the-Loop, 훈련 시뮬레이션 환경 지원."
       },
       {
         "title": "슈퍼컴퓨팅 시스템",
-        "description": "As Big Data, UHD/FHD, and Simulation demands grow, HPC requirements are increasing across government, academia, and research labs. High Density Compute Accelerators deliver differentiated HPC through GPU-based processing."
+        "description": "Big Data, UHD/FHD, 시뮬레이션 수요 증가에 따라 정부기관·대학·연구소에서 HPC 요구가 높아지고 있습니다. 고밀도 컴퓨팅 가속기가 GPU 기반 처리로 차별화된 HPC를 실현합니다."
       },
       {
         "title": "산업용 컴퓨터",
-        "description": "Comprehensive technology solutions from government workstations to special-purpose computing, defense systems, industrial HMI, and semiconductor quality inspection equipment."
+        "description": "정부용 워크스테이션부터 특수 목적 컴퓨팅, 국방 시스템, 산업용 HMI, 반도체 품질 검사 장비까지 — 종합 기술 솔루션 제공."
       },
       {
         "title": "레이더",
-        "description": "End-to-end radar data processing — from signal generation and acquisition to precision analysis, target tracking, multi-channel recording, and integrated situational visualization."
+        "description": "신호 생성·수집부터 정밀 분석, 목표 추적, 다채널 녹화, 통합 상황 시각화까지 — 레이더 데이터 처리 전 과정 솔루션."
       },
       {
-        "title": "High-Speed Data Interconnect",
-        "description": "Build ultra-fast computing clusters using proprietary PCIe-based communication protocols that minimize data transfer latency between servers, GPUs, and storage, operating multiple nodes as a single unified system."
+        "title": "초고속 데이터 인터커넥트",
+        "description": "PCIe 기반 독자적 통신 프로토콜로 서버·GPU·스토리지 간 데이터 전송 지연을 최소화하고, 여러 노드를 하나의 단일 시스템으로 운영하는 초고속 연산 클러스터를 구축합니다."
       }
     ],
     "image": "/uploads/services/1775709991803--------2.webp"
   },
   "consult": {
-    "title": "Need a customized solution?",
-    "description": "Our engineers provide end-to-end consulting — from platform selection and system design to deployment and ongoing support — for your mission-critical applications.",
+    "title": "맞춤형 솔루션이 필요하신가요?",
+    "description": "당사 엔지니어가 플랫폼 선정과 시스템 설계부터 구축 및 지속 지원까지 — 미션 크리티컬 프로젝트 전 과정을 원스톱으로 컨설팅해 드립니다.",
     "image": "/images/misc/consult-bg.png"
   },
   "servicePlan": {
     "title": "토탈 서비스 솔루션",
-    "subtitle": "We support every stage of your project — from initial system consulting through to final delivery.",
+    "subtitle": "초기 시스템 컨설팅부터 최종 납품까지 프로젝트의 모든 단계를 지원합니다.",
     "steps": [
       {
-        "title": "Consulting & Design",
+        "title": "컨설팅 & 설계",
         "step": "Step 1–2",
-        "period": "Customer Consulting · Design Consulting",
-        "description": "We assess your project requirements and architect a tailored system design — ensuring the optimal hardware, software, and integration approach from day one.",
+        "period": "고객 컨설팅 · 설계 컨설팅",
+        "description": "프로젝트 요구사항을 분석하고 맞춤형 시스템 설계를 수립합니다 — 첫날부터 최적의 하드웨어·소프트웨어·통합 방안을 보장합니다.",
         "image": "/images/plans/plan-standard.png"
       },
       {
-        "title": "Construction & Support",
+        "title": "구축 & 지원",
         "step": "Step 3–4",
-        "period": "System Construction · Technical Support",
-        "description": "We guide procurement and system build-out, then provide hands-on technical support for the deployed solution throughout your project lifecycle.",
+        "period": "시스템 구축 · 기술 지원",
+        "description": "조달 및 시스템 구축을 안내하고, 프로젝트 수명 주기 전반에 걸쳐 구축된 솔루션에 대한 현장 기술 지원을 제공합니다.",
         "image": "/images/plans/plan-premium.png"
       },
       {
-        "title": "Verification & Inspection",
+        "title": "검증 & 검수",
         "step": "Step 5",
-        "period": "Product Evaluation · Quality Assurance",
-        "description": "Rigorous testing and evaluation to verify that every delivered system meets your project specifications, industry standards, and performance benchmarks.",
+        "period": "제품 평가 · 품질 보증",
+        "description": "납품된 모든 시스템이 프로젝트 사양·업계 표준·성능 벤치마크를 충족하는지 엄격한 시험 및 평가를 통해 검증합니다.",
         "image": "/images/plans/plan-enterprise.png"
       }
     ]
   },
   "about": {
     "title": "에이스텍 소개",
-    "description": "AceTec has been a trusted partner in embedded computing and industrial technology solutions since 1994.\nFor over three decades, AceTec has stood at the intersection of global embedded technology and Korea's most demanding industries. What began as a specialized distributor has evolved into a full-spectrum technology partner — one that not only supplies world-class hardware and software through our own R&D center, but engineers custom solutions from the ground up.\n\nWe pioneered Korea's first desktop-type fanless industrial PC, setting an industry benchmark that still defines our approach today. Our platforms currently operate inside naval combat systems, railway interlocking networks, steel mill production lines, and defense simulation environments.\n\nBacked by strategic partnerships with Abaco Systems, HIMA, Wind River, RTI, OKTAL-SE, Cambridge Pixel, OneStopSystems, Pentek, and SMART Embedded Computing, we deliver proven global technology with deep local engineering expertise. Our clients — from the Agency for Defense Development to POSCO, Hyundai, and Hanwha Systems — trust us because we deliver outcomes, not just products.",
+    "description": "1994년부터 에이스텍은 임베디드 컴퓨팅 및 산업 기술 솔루션 분야의 신뢰받는 파트너입니다.\n30년 이상 에이스텍은 글로벌 임베디드 기술과 한국의 가장 까다로운 산업의 접점에 서 있었습니다. 전문 유통업체로 시작하여, 자체 R&D 센터를 통해 세계적 수준의 하드웨어와 소프트웨어를 공급할 뿐만 아니라 처음부터 맞춤형 솔루션을 설계하는 풀스펙트럼 기술 파트너로 진화했습니다.\n\n한국 최초의 데스크톱형 팬리스 산업용 PC를 개발하여 오늘날에도 우리의 접근 방식을 정의하는 업계 벤치마크를 수립했습니다. 현재 당사의 플랫폼은 해군 전투 시스템, 철도 연동 네트워크, 제철소 생산 라인, 국방 시뮬레이션 환경에서 운영되고 있습니다.\n\nAbaco Systems, HIMA, Wind River, RTI, OKTAL-SE, Cambridge Pixel, OneStopSystems, Pentek, SMART Embedded Computing과의 전략적 파트너십을 바탕으로 검증된 글로벌 기술과 깊은 현지 엔지니어링 전문성을 제공합니다. 국방과학연구소부터 포스코, 현대, 한화시스템즈에 이르는 고객들이 제품이 아닌 성과를 제공하기에 저희를 신뢰합니다.",
     "image": "/uploads/about/1775629504150------------.webp"
   },
   "featuredProducts": [
     {
-      "name": "DDR4 RAM Module 16GB",
+      "name": "DDR4 RAM 모듈 16GB",
       "specs": "₩150,000",
       "image": "/images/products/ram-module.png",
       "href": "/products/industrial"
@@ -100,7 +100,7 @@
       "href": "/products/hpc"
     },
     {
-      "name": "4U Rackmount Server",
+      "name": "4U 랙마운트 서버",
       "specs": "₩8,500,000",
       "image": "/images/products/ipc/rack-4u.png",
       "href": "/products/ipc"
@@ -118,19 +118,19 @@
       "href": "/products/ipc"
     },
     {
-      "name": "Enterprise HDD 2TB",
+      "name": "기업용 HDD 2TB",
       "specs": "₩280,000",
       "image": "/images/products/hdd-2tb.png",
       "href": "/products/industrial"
     },
     {
-      "name": "Industrial Panel PC 15\"",
+      "name": "산업용 패널 PC 15\"",
       "specs": "₩4,500,000",
       "image": "/images/products/ipc/ppc-15at.png",
       "href": "/products/ipc"
     },
     {
-      "name": "2U Rackmount PC",
+      "name": "2U 랙마운트 PC",
       "specs": "₩6,800,000",
       "image": "/images/products/ipc/rack-2u.png",
       "href": "/products/ipc"
@@ -138,7 +138,7 @@
   ],
   "contact": {
     "title": "문의하기",
-    "description": "Whether you need a product quote, technical consultation, or want to explore a partnership, our engineering team is ready to help."
+    "description": "제품 견적, 기술 상담, 파트너십 문의 등 어떤 사항이든 당사 엔지니어링 팀이 도와드립니다."
   },
   "solutionCards": [
     {

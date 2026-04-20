@@ -40,27 +40,31 @@
   ],
   "companyLinks": [
     {
-      "label": "solution",
+      "label": "솔루션",
       "href": "/solutions"
     },
     {
-      "label": "Application field",
+      "label": "제품소개",
+      "href": "/"
+    },
+    {
+      "label": "응용분야",
       "href": "/applications"
     },
     {
-      "label": "Company Introduction",
+      "label": "회사소개",
       "href": "/about"
     },
     {
-      "label": "History",
+      "label": "연혁",
       "href": "/history"
     },
     {
-      "label": "Contact us",
+      "label": "문의하기",
       "href": "/contact"
     },
     {
-      "label": "New Link",
+      "label": "로그인",
       "href": "/"
     }
   ],
@@ -106,11 +110,11 @@
     "seoulLabel": "Seoul Headquarters",
     "seoulEmail": "acetec@acetec-korea.co.kr",
     "seoulPhone": "+82-2-420-2343",
-    "seoulFax": "Fax: 02-420-2757",
+    "seoulFax": "팩스 : 02-420-2757",
     "daejeonLabel": "Daejeon Branch",
     "daejeonAddress": "Rm. 205, Migeon Techno World, 199, Techno 2-ro, Yuseong-gu, Daejeon",
     "daejeonPhone": "+82-42-471-2343",
-    "daejeonFax": "Fax: 042-933-2642"
+    "daejeonFax": "팩스 : 042-933-2642"
   },
   "copyright": {
     "company": "Acetech Co., Ltd.",
