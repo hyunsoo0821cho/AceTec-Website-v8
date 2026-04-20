@@ -145,15 +145,7 @@ export async function generateChatResponse(
   history: Array<{ role: 'user' | 'assistant'; content: string }> = [],
   rawMessage?: string,
 ): Promise<ChatResponse> {
-  // ===== Input Guardrail =====
-  const guard = isBlockedInput(message);
-  if (guard.blocked) {
-    return { reply: refusalMessage(), sources: [] };
-  }
-
-  const docs = await retrieveRelevantDocs(message);
-
-  // ===== FAQ 키워드 매칭 — 태그 기반으로 LLM 우회, 환각 방지 =====
+  // ===== FAQ 키워드 매칭 — Input Guardrail보다 먼저 실행 (분야별 제품 질문이 차단되지 않도록) =====
   const faqs = loadFaq();
   if (faqs.length > 0) {
     try {
@@ -163,19 +155,16 @@ export async function generateChatResponse(
       let bestScore = 0;
       for (const faq of faqs) {
         let score = 0;
-        // 태그 매칭: 원문 + 공백 제거 비교
         for (const tag of faq.tags) {
           const tl = tag.toLowerCase();
           if (msgLower.includes(tl) || msgNoSpace.includes(tl.replace(/\s+/g, ''))) score++;
         }
-        // 질문 키워드 매칭 보조 점수
         const qWords = faq.question.replace(/[?？]/g, '').split(/[\s,]+/).filter(w => w.length >= 2);
         for (const w of qWords) {
           if (msgLower.includes(w.toLowerCase())) score += 0.5;
         }
         if (score > bestScore) { bestScore = score; bestFaq = faq; }
       }
-      if (bestFaq && bestScore >= 1.0) console.log(`[FAQ] matched: score=${bestScore.toFixed(1)} q="${bestFaq.question.substring(0,40)}"`);
       if (bestFaq && bestScore >= 1.0) {
         const safeFaq = sanitizeOutput(bestFaq.answer);
         let reply = safeFaq;
@@ -183,16 +172,18 @@ export async function generateChatResponse(
           const navPath = detectNavPath(message);
           if (navPath) reply = `${reply.trim()}\n\n[NAVIGATE:${navPath}]`;
         }
-        return {
-          reply,
-          sources: docs.slice(0, 3).map((d) => ({
-            title: d.title,
-            category: (d.metadata?.category as string) ?? 'general',
-          })),
-        };
+        return { reply, sources: [] };
       }
     } catch (faqErr) { console.error('[FAQ] match error:', faqErr); }
   }
+
+  // ===== Input Guardrail =====
+  const guard = isBlockedInput(message);
+  if (guard.blocked) {
+    return { reply: refusalMessage(), sources: [] };
+  }
+
+  const docs = await retrieveRelevantDocs(message);
 
   // Qdrant 외부 노출 (P0 잔존) 대비: 검색된 문서에 지시형 injection 이 섞여 있을 수 있으므로
   // title / content 모두 sanitizeRagContext 로 필터링 후 프롬프트에 투입.
