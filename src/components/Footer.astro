@@ -68,12 +68,14 @@ const compI18n: Record<string, string> = {
       {
         d?.solutionLinks ? (
           <>
-            {d.solutionLinks.map((link: any, i: number) => (
-              <div class="footer-link-row">
-                <a href={link.href} {...e(`solutionLinks[${i}].label`)} {...(solI18n[link.href] ? {'data-i18n': solI18n[link.href]} : {})}>{link.label}</a>
-                {isAdmin && <button class="footer-del-btn" data-admin-delete={`solutionLinks[${i}]`} data-edit-page="footer">&times;</button>}
-              </div>
-            ))}
+            <div class="footer-sort" {...(isAdmin ? { 'data-admin-sort': 'solutionLinks', 'data-edit-page': 'footer' } : {})}>
+              {d.solutionLinks.map((link: any, i: number) => (
+                <div class="footer-link-row" {...(isAdmin ? { 'data-sort-id': String(i), draggable: 'true' as const } : {})}>
+                  <a href={link.href} {...e(`solutionLinks[${i}].label`)} {...(solI18n[link.href] ? {'data-i18n': solI18n[link.href]} : {})}>{link.label}</a>
+                  {isAdmin && <button class="footer-del-btn" data-admin-delete={`solutionLinks[${i}]`} data-edit-page="footer">&times;</button>}
+                </div>
+              ))}
+            </div>
             {isAdmin && (
               <button
                 class="admin-add-btn footer-add-btn"
@@ -103,12 +105,14 @@ const compI18n: Record<string, string> = {
       {
         d?.companyLinks ? (
           <>
-            {d.companyLinks.map((link: any, i: number) => (
-              <div class="footer-link-row">
-                <a href={link.href} {...e(`companyLinks[${i}].label`)} {...(compI18n[link.href] ? {'data-i18n': compI18n[link.href]} : {})}>{link.label}</a>
-                {isAdmin && <button class="footer-del-btn" data-admin-delete={`companyLinks[${i}]`} data-edit-page="footer">&times;</button>}
-              </div>
-            ))}
+            <div class="footer-sort" {...(isAdmin ? { 'data-admin-sort': 'companyLinks', 'data-edit-page': 'footer' } : {})}>
+              {d.companyLinks.map((link: any, i: number) => (
+                <div class="footer-link-row" {...(isAdmin ? { 'data-sort-id': String(i), draggable: 'true' as const } : {})}>
+                  <a href={link.href} {...e(`companyLinks[${i}].label`)} {...(compI18n[link.href] ? {'data-i18n': compI18n[link.href]} : {})}>{link.label}</a>
+                  {isAdmin && <button class="footer-del-btn" data-admin-delete={`companyLinks[${i}]`} data-edit-page="footer">&times;</button>}
+                </div>
+              ))}
+            </div>
             {isAdmin && (
               <button
                 class="admin-add-btn footer-add-btn"
@@ -134,12 +138,14 @@ const compI18n: Record<string, string> = {
       {
         d?.partners ? (
           <>
-            {d.partners.map((p: any, i: number) => (
-              <div class="footer-link-row">
-                <a href={p.url} target="_blank" rel="noopener" translate="no" {...e(`partners[${i}].name`)}>{p.name}</a>
-                {isAdmin && <button class="footer-del-btn" data-admin-delete={`partners[${i}]`} data-edit-page="footer">&times;</button>}
-              </div>
-            ))}
+            <div class="footer-sort" {...(isAdmin ? { 'data-admin-sort': 'partners', 'data-edit-page': 'footer' } : {})}>
+              {d.partners.map((p: any, i: number) => (
+                <div class="footer-link-row" {...(isAdmin ? { 'data-sort-id': String(i), draggable: 'true' as const } : {})}>
+                  <a href={p.url} target="_blank" rel="noopener" translate="no" {...e(`partners[${i}].name`)}>{p.name}</a>
+                  {isAdmin && <button class="footer-del-btn" data-admin-delete={`partners[${i}]`} data-edit-page="footer">&times;</button>}
+                </div>
+              ))}
+            </div>
             {isAdmin && (
               <button
                 class="admin-add-btn footer-add-btn"
@@ -275,6 +281,18 @@ const compI18n: Record<string, string> = {
     color: #3b82f6;
   }
 
+  /* 드래그 정렬 래퍼 — 기존 footer-col 레이아웃에 영향 주지 않도록 display:contents.
+     관리자 모드일 때만 AdminInline 이 data-admin-sort 속성을 보고 드래그를 활성화. */
+  .footer-sort {
+    display: contents;
+  }
+  /* 관리자 모드에서 드래그 가능한 상태 표시 (draggable=true 인 경우에만) */
+  .footer-link-row[draggable="true"] {
+    cursor: grab;
+  }
+  .footer-link-row[draggable="true"]:active {
+    cursor: grabbing;
+  }
   .footer-link-row {
     display: flex;
     align-items: center;
