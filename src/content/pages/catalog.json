@@ -122,9 +122,12 @@
           ]
         },
         {
-          "name": "New Product",
+          "name": "ACE-IPC02R-4U-I7-9-F",
           "image": "/images/catalog/Rack2.png",
-          "features": []
+          "features": [
+            "Intel® Core™ i7-9700",
+            "(12M Cache, 8 Core 3.0GHz up to 4.7GHz)"
+          ]
         }
       ]
     },
