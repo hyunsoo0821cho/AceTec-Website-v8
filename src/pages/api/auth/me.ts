@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { verifySession, getSessionIdFromCookie, getUserInfo } from '../../../lib/auth';
+import { sanitizeString } from '../../../lib/sanitize';
 import getDb from '../../../lib/db';
 
 export const prerender = false;
@@ -39,9 +40,9 @@ export const PUT: APIRoute = async ({ request }) => {
   if (!userInfo) return Response.json({ error: 'User not found' }, { status: 404 });
 
   const body = await request.json();
-  const displayName = (body.displayName || '').trim().substring(0, 50);
-  const phone = (body.phone || '').trim().substring(0, 30);
-  const bio = (body.bio || '').trim().substring(0, 300);
+  const displayName = sanitizeString((body.displayName || '').trim(), 50);
+  const phone = sanitizeString((body.phone || '').trim(), 30);
+  const bio = sanitizeString((body.bio || '').trim(), 300);
 
   const db = getDb();
   db.prepare('UPDATE admins SET display_name = ?, phone = ?, bio = ? WHERE id = ?').run(

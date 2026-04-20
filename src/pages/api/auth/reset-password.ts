@@ -6,7 +6,8 @@ import { validatePassword } from '../../../lib/password-policy';
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
-  const body = await request.json();
+  let body: any;
+  try { body = await request.json(); } catch { return Response.json({ error: 'Invalid request' }, { status: 400 }); }
   const { email, code, newPassword } = body;
 
   if (!email || !code || !newPassword) {
@@ -37,16 +38,15 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   // 비밀번호 변경
-  const hash = bcrypt.hashSync(newPassword, 10);
-  getDb().prepare('UPDATE admins SET password_hash = ? WHERE id = ?').run(hash, user.id);
-
-  // 기존 세션 모두 삭제
-  getDb().prepare('DELETE FROM sessions WHERE admin_id = ?').run(user.id);
-
-  // 감사 로그
-  getDb().prepare('INSERT INTO audit_logs (action, detail, created_at) VALUES (?, ?, ?)').run(
-    'password_reset', `Password reset: ${user.username}`, Date.now()
-  );
-
-  return Response.json({ ok: true, message: '비밀번호가 변경되었습니다' });
+  try {
+    const hash = bcrypt.hashSync(newPassword, 10);
+    getDb().prepare('UPDATE admins SET password_hash = ? WHERE id = ?').run(hash, user.id);
+    getDb().prepare('DELETE FROM sessions WHERE admin_id = ?').run(user.id);
+    getDb().prepare('INSERT INTO audit_logs (action, detail, created_at) VALUES (?, ?, ?)').run(
+      'password_reset', `Password reset: ${user.username}`, Date.now()
+    );
+    return Response.json({ ok: true, message: '비밀번호가 변경되었습니다' });
+  } catch {
+    return Response.json({ error: '비밀번호 변경 중 오류가 발생했습니다' }, { status: 500 });
+  }
 };

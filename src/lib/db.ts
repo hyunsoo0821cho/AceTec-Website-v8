@@ -18,6 +18,7 @@ function getDb(): InstanceType<typeof Database> {
   _db = new Database(dbPath);
   _db.pragma('journal_mode = WAL');
   _db.pragma('foreign_keys = ON');
+  _db.pragma('busy_timeout = 5000');
 
   _db.exec(`
     CREATE TABLE IF NOT EXISTS admins (
@@ -116,6 +117,17 @@ function getDb(): InstanceType<typeof Database> {
   // 로그인 잠금 (무차별 대입 방어)
   try { _db.exec(`ALTER TABLE admins ADD COLUMN failed_attempts INTEGER NOT NULL DEFAULT 0`); } catch {}
   try { _db.exec(`ALTER TABLE admins ADD COLUMN lock_until INTEGER NOT NULL DEFAULT 0`); } catch {}
+
+  // email 유니크 인덱스 (중복 이메일 방지, NULL/빈값 제외)
+  try { _db.exec(`CREATE UNIQUE INDEX IF NOT EXISTS idx_admins_email ON admins(email) WHERE email IS NOT NULL AND email != ''`); } catch {}
+
+  // 성능 인덱스
+  try { _db.exec(`CREATE INDEX IF NOT EXISTS idx_sessions_admin ON sessions(admin_id)`); } catch {}
+  try { _db.exec(`CREATE INDEX IF NOT EXISTS idx_sessions_expires ON sessions(expires_at)`); } catch {}
+  try { _db.exec(`CREATE INDEX IF NOT EXISTS idx_visitor_logs_created ON visitor_logs(created_at)`); } catch {}
+  try { _db.exec(`CREATE INDEX IF NOT EXISTS idx_verify_email ON verification_codes(email, purpose, used)`); } catch {}
+  try { _db.exec(`CREATE INDEX IF NOT EXISTS idx_conversations_visitor ON conversations(visitor_id)`); } catch {}
+  try { _db.exec(`CREATE INDEX IF NOT EXISTS idx_messages_conv ON messages(conversation_id)`); } catch {}
 
   return _db;
 }

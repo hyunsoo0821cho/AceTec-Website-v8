@@ -30,25 +30,36 @@ export const POST: APIRoute = async ({ request }) => {
   // 코드 사용 처리
   getDb().prepare('UPDATE verification_codes SET used = 1 WHERE id = ?').run(record.id);
 
-  // 중복 체크
-  const username = email.split('@')[0];
-  const existing = getDb().prepare('SELECT id FROM admins WHERE email = ? OR username = ?').get(email, username);
+  // 중복 체크 — username은 email @ 앞 사용, 충돌 시 숫자 접미사 추가
+  let username = email.split('@')[0];
+  const existing = getDb().prepare('SELECT id FROM admins WHERE email = ?').get(email);
   if (existing) {
     return Response.json({ error: '이미 등록된 계정입니다' }, { status: 409 });
   }
+  // username 충돌 시 숫자 접미사
+  const baseUsername = username;
+  let suffix = 1;
+  while (getDb().prepare('SELECT id FROM admins WHERE username = ?').get(username)) {
+    username = `${baseUsername}${suffix}`;
+    suffix++;
+  }
 
   // 계정 생성 — 모든 신규 가입은 pending 상태 (관리자 승인 후 활성화)
-  const hash = bcrypt.hashSync(password, 10);
-  const role = 'pending';
+  try {
+    const hash = bcrypt.hashSync(password, 10);
+    const role = 'pending';
 
-  getDb().prepare(
-    'INSERT INTO admins (username, password_hash, role, display_name, email, phone) VALUES (?, ?, ?, ?, ?, ?)'
-  ).run(username, hash, role, displayName || username, email, phone || '');
+    getDb().prepare(
+      'INSERT INTO admins (username, password_hash, role, display_name, email, phone) VALUES (?, ?, ?, ?, ?, ?)'
+    ).run(username, hash, role, displayName || username, email, phone || '');
 
-  // 감사 로그
-  getDb().prepare('INSERT INTO audit_logs (action, detail, created_at) VALUES (?, ?, ?)').run(
-    'user_register', `Self-registered: ${username} (${role})`, Date.now()
-  );
+    getDb().prepare('INSERT INTO audit_logs (action, detail, created_at) VALUES (?, ?, ?)').run(
+      'user_register', `Self-registered: ${username} (${role})`, Date.now()
+    );
 
-  return Response.json({ ok: true, message: '회원가입이 완료되었습니다' });
+    return Response.json({ ok: true, message: '회원가입이 완료되었습니다' });
+  } catch (e: any) {
+    if (e.message?.includes('UNIQUE')) return Response.json({ error: '이미 등록된 계정입니다' }, { status: 409 });
+    return Response.json({ error: '회원가입 처리 중 오류가 발생했습니다' }, { status: 500 });
+  }
 };

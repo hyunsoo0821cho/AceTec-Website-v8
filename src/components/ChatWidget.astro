@@ -828,7 +828,7 @@
   // 서버에서 대화 메시지 로드
   async function loadMessages(convId: string): Promise<Array<{ role: string; content: string; sources: any }>> {
     try {
-      const res = await fetch('/api/messages?conversation_id=' + convId);
+      const res = await fetch('/api/messages?conversation_id=' + convId + '&visitor_id=' + encodeURIComponent(visitorId));
       if (!res.ok) return [];
       return await res.json();
     } catch { return []; }
@@ -881,7 +881,7 @@
 
   // 대화 삭제
   async function deleteConversation(id: string) {
-    await fetch('/api/conversations?id=' + id, { method: 'DELETE' });
+    await fetch('/api/conversations?id=' + id + '&visitor_id=' + encodeURIComponent(visitorId), { method: 'DELETE' });
     if (currentConvId === id) await newConversation();
     else await renderHistory();
   }
@@ -922,7 +922,7 @@
 
     let html = `<div class="chat-msg-content">${escapeHtml(content)}</div>`;
     if (sources && sources.length > 0) {
-      html += `<div class="chat-sources">Sources: ${sources.map((s) => s.title).join(', ')}</div>`;
+      html += `<div class="chat-sources">Sources: ${sources.map((s) => escapeHtml(s.title)).join(', ')}</div>`;
     }
 
     msg.innerHTML = html;

@@ -18,7 +18,7 @@ function loadFaq(): FaqEntry[] {
 
 
 
-const OLLAMA_URL = 'http://localhost:11434';
+const OLLAMA_URL = process.env.OLLAMA_URL ?? 'http://localhost:11434';
 const CHAT_MODEL = 'ministral-3:14b';
 
 const SYSTEM_PROMPT = `You are AceTec's AI product assistant. AceTec (acetronix.co.kr) is a Korean B2B embedded computing company founded in 1994, specializing in military/aerospace, railway safety, industrial automation, telecom, sensor simulation, and HPC solutions.

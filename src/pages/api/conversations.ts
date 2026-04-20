@@ -36,11 +36,17 @@ export const POST: APIRoute = async ({ request }) => {
   return Response.json({ id, title: parsed.data.title || 'New Chat', created_at: now, updated_at: now });
 };
 
-// DELETE: 대화 삭제
+// DELETE: 대화 삭제 (소유권 검증: visitor_id 필수)
 export const DELETE: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
   const id = url.searchParams.get('id');
+  const visitorId = url.searchParams.get('visitor_id');
   if (!id) return Response.json({ error: 'id required' }, { status: 400 });
+  if (!visitorId) return Response.json({ error: 'visitor_id required' }, { status: 400 });
+
+  // 소유권 확인: 해당 대화가 요청자의 visitor_id와 일치하는지 검증
+  const conv = getDb().prepare('SELECT id FROM conversations WHERE id = ? AND visitor_id = ?').get(id, visitorId);
+  if (!conv) return Response.json({ error: 'Not found or not owned' }, { status: 404 });
 
   getDb().prepare('DELETE FROM messages WHERE conversation_id = ?').run(id);
   getDb().prepare('DELETE FROM conversations WHERE id = ?').run(id);
