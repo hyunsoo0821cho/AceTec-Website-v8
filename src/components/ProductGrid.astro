@@ -116,9 +116,7 @@ const hasSections = sections && sections.length > 0;
                 <span class="p-detail-toggle-text" data-i18n="products.detailsToggle">Details</span>
                 <svg class="p-detail-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="2,4 6,8 10,4"></polyline></svg>
               </button>
-              <ul class="p-features p-features--expanded p-features--empty" {...e(`sections[${si}].products[${pi}].featuresHtml`)}>
-                <li style="color:#94a3b8;font-style:italic;">클릭하여 설명 추가 (여러 줄은 Enter)</li>
-              </ul>
+              <ul class="p-features p-features--expanded p-features--empty" {...e(`sections[${si}].products[${pi}].featuresHtml`)}></ul>
             </div>
           )}
         </div>

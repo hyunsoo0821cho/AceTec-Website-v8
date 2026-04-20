@@ -1,4 +1,6 @@
 import { QdrantClient } from '@qdrant/js-client-rest';
+import fs from 'fs';
+import path from 'path';
 
 const QDRANT_URL = 'http://localhost:6333';
 const COLLECTION = 'acetec_knowledge';
@@ -9,6 +11,34 @@ let client: QdrantClient | null = null;
 function getClient(): QdrantClient {
   if (!client) client = new QdrantClient({ url: QDRANT_URL });
   return client;
+}
+
+// JSON fallback: Qdrant 미실행 시 로컬 vector-store.json에서 cosine similarity 검색
+let _jsonCache: Array<{ id: string; title: string; content: string; metadata: Record<string, unknown>; embedding: number[] }> | null = null;
+
+function loadJsonStore(): typeof _jsonCache {
+  if (_jsonCache) return _jsonCache;
+  const fp = path.join(process.cwd(), 'data', 'vector-store.json');
+  if (!fs.existsSync(fp)) return null;
+  _jsonCache = JSON.parse(fs.readFileSync(fp, 'utf-8'));
+  return _jsonCache;
+}
+
+function jsonFallbackSearch(
+  queryEmbedding: number[],
+  topK: number,
+  threshold: number,
+): Array<StoredDocument & { similarity: number }> {
+  const docs = loadJsonStore();
+  if (!docs) return [];
+  const scored = docs.map((d) => ({
+    ...d,
+    similarity: cosineSimilarity(queryEmbedding, d.embedding),
+  }));
+  return scored
+    .filter((d) => d.similarity >= threshold)
+    .sort((a, b) => b.similarity - a.similarity)
+    .slice(0, topK);
 }
 
 export interface StoredDocument {
@@ -75,8 +105,8 @@ export async function searchSimilar(
       similarity: r.score,
     }));
   } catch (err) {
-    console.error('Qdrant search error:', err);
-    return [];
+    // Qdrant 미실행 시 JSON fallback
+    return jsonFallbackSearch(queryEmbedding, topK, threshold);
   }
 }
 

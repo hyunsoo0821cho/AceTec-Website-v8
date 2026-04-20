@@ -136,11 +136,12 @@ export async function generateChatResponse(
   const docs = await retrieveRelevantDocs(message);
 
   // ===== FAQ 직접 매칭 — 고유사도 큐레이션 답변은 LLM 환각 없이 직접 반환 =====
-  const FAQ_THRESHOLD = 0.55;
-  const topDoc = docs[0];
-  if (topDoc && topDoc.similarity >= FAQ_THRESHOLD && (topDoc.metadata?.type as string) === 'faq') {
-    const faqAnswer = topDoc.metadata?.faq_answer as string;
+  const FAQ_THRESHOLD = 0.45;
+  const faqDoc = docs.find((d) => (d.metadata?.type as string) === 'faq' && d.similarity >= FAQ_THRESHOLD);
+  if (faqDoc) {
+    const faqAnswer = faqDoc.metadata?.faq_answer as string;
     if (faqAnswer) {
+      const topDoc = faqDoc;
       const safeFaq = sanitizeOutput(faqAnswer);
       // 네비게이션 감지 (FAQ 답변에는 보통 없지만 일관성 유지)
       let reply = safeFaq;

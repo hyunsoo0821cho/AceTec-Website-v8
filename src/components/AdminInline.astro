@@ -77,9 +77,11 @@ const { page, isAdmin } = Astro.props;
           // i18n 번역 중이었다면 편집은 원문(한국어)으로 — 번역된 텍스트가 저장되는 사고 방지
           const original = el.getAttribute('data-i18n-original');
           if (original && el.textContent !== original) { el.textContent = original; }
-          // 빈 features placeholder 자동 제거
+          // 빈 features placeholder 진입 — 내용은 비워두고 클래스만 제거.
+          // CSS .p-features--empty::before 가 플레이스홀더 문구 표시,
+          // 클래스 제거 시점에 placeholder 즉시 사라지고 ul 영역이 편집 가능.
           if (el.classList.contains('p-features--empty')) {
-            el.innerHTML = '<li></li>';
+            el.innerHTML = '';
             el.classList.remove('p-features--empty');
           }
           el.contentEditable = 'true';
@@ -89,12 +91,11 @@ const { page, isAdmin } = Astro.props;
         });
         el.addEventListener('blur', () => {
           el.contentEditable = 'false'; el.style.outline = 'none'; el.style.background = '';
-          // p-features(ul) 설명 영역이 비어있으면 플레이스홀더 자동 복원
-          // — 빈 상태로 blur 되면 li 가 사라져 다시 클릭할 타겟이 없어지는 UX 버그 방어.
+          // p-features(ul) 설명 영역이 비어있으면 플레이스홀더 자동 복원 — CSS가 플레이스홀더를 그려주도록 클래스만 재부여
           if (el.classList.contains('p-features')) {
             const text = (el.textContent || '').replace(/\s+/g, '');
             if (text === '') {
-              el.innerHTML = '<li style="color:#94a3b8;font-style:italic;">클릭하여 설명 추가 (여러 줄은 Enter)</li>';
+              el.innerHTML = '';
               el.classList.add('p-features--empty');
             }
           }

@@ -127,9 +127,7 @@ const totalProducts = catalog.categories.reduce((sum: number, cat: any) => sum +
                     {prod.features.map((f: string) => <li>{f}</li>)}
                   </ul>
                 ) : isAdmin && (
-                  <ul class="p-features p-features--empty" {...e(`categories[${ci}].products[${pi}].featuresHtml`)}>
-                    <li style="color:#94a3b8;font-style:italic;">클릭하여 설명 추가 (여러 줄은 Enter)</li>
-                  </ul>
+                  <ul class="p-features p-features--empty" {...e(`categories[${ci}].products[${pi}].featuresHtml`)}></ul>
                 )}
               </div>
             ))}
