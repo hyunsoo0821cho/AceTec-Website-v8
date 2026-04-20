@@ -1,10 +1,10 @@
 {
   "nav": {
-    "solutions": "solution",
-    "applications": "Application field",
-    "about": "Company Introduction",
-    "history": "History",
-    "contact": "Contact us",
+    "solutions": "솔루션",
+    "applications": "응용분야",
+    "about": "회사소개",
+    "history": "연혁",
+    "contact": "문의하기",
     "login": "로그인",
     "inquiry": "문의하기",
     "productsIntro": "제품소개",
