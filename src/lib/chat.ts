@@ -180,6 +180,7 @@ export async function generateChatResponse(
         const sim = cosSim(qEmb, faq.embedding);
         if (sim > bestSim) { bestSim = sim; bestFaq = faq; }
       }
+      console.log(`[FAQ] best=${bestSim.toFixed(4)} threshold=${FAQ_THRESHOLD} match=${bestFaq?.question?.substring(0,30)} embLen=${qEmb?.length} faqCount=${faqs.length} faqHasEmb=${faqs.filter(f=>f.embedding).length}`);
       if (bestFaq && bestSim >= FAQ_THRESHOLD) {
         const safeFaq = sanitizeOutput(bestFaq.answer);
         let reply = safeFaq;
