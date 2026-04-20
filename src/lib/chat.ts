@@ -178,7 +178,7 @@ export async function generateChatResponse(
     try {
       const cachedEmb = (docs as any)._queryEmbedding as number[] | undefined;
       const qEmb = cachedEmb || await generateEmbedding(message);
-      console.log(`[FAQ] embSource=${cachedEmb ? 'cached' : 'fresh'} embLen=${qEmb?.length}`);
+      console.log(`[FAQ] embSource=${cachedEmb ? 'cached' : 'fresh'} embLen=${qEmb?.length} emb5=${qEmb?.slice(0,5).map(v=>v.toFixed(4)).join(',')} faq0emb5=${faqs[0]?.embedding?.slice(0,5).map(v=>v.toFixed(4)).join(',')}`);
       let bestFaq: FaqEntry | null = null;
       let bestSim = 0;
       for (const faq of faqs) {
