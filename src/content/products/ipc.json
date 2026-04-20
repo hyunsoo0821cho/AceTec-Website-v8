@@ -56,14 +56,14 @@
       "title": "Rackmount PC",
       "products": [
         {
-          "name": "ACE-IPC02R-4U-i7-6",
+          "name": "ACE-IPC02R-4U-i7-6-F",
           "image": "/images/catalog/Rack1.png",
           "features": [
             "Supports two Gigabit LAN ports Supports up to 64GB system memory Supports standard rack mounting Supports RAID 0/1/5/10 Easy installation Supports HDD rack Supports Intel iAMT 11.0"
           ]
         },
         {
-          "name": "ACE-IPC02R-4U-Xeon-E3",
+          "name": "ACE-IPC02R-4U-Xeon-E5",
           "image": "/images/catalog/Rack2.png",
           "features": [
             "Supports two Gigabit LAN ports Supports up to 64GB system memory Supports standard rack mounting Supports RAID 0/1/5/10 Easy installation Supports HDD rack Supports Intel iAMT 11.0"
@@ -77,11 +77,16 @@
           ]
         },
         {
-          "name": "ACE-IPC02R-4U-i7-9",
-          "image": "/images/catalog/Rack3.png",
+          "name": "ACE-IPC02R-4U-i7-9-F",
+          "image": "/uploads/products/1776659462280-ace-ipc02r-2u-i7-4-f.webp",
           "features": [
             "Supports two Gigabit LAN ports Supports up to 64GB system memory Supports standard rack mounting Supports RAID 0/1/5/10 Easy installation Supports HDD rack Supports Intel iAMT 11.0"
           ]
+        },
+        {
+          "name": "New Product",
+          "image": "/images/catalog/Rack1.png",
+          "features": []
         }
       ]
     },
