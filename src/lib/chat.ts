@@ -170,9 +170,9 @@ export async function generateChatResponse(
   const FAQ_THRESHOLD = 0.52;
   const faqs = loadFaqWithEmbeddings();
   if (faqs.length > 0) {
-    // 메시지 임베딩은 RAG에서 이미 생성했지만 여기선 별도로 생성 (RAG 내부 임베딩에 접근 불가)
     try {
-      const qEmb = await generateEmbedding(message);
+      const qEmb = (docs as any)._queryEmbedding as number[] | undefined
+        || await generateEmbedding(message);
       let bestFaq: FaqEntry | null = null;
       let bestSim = 0;
       for (const faq of faqs) {

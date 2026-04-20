@@ -16,7 +16,7 @@ const RERANK_CANDIDATES = Number(process.env.RERANKER_CANDIDATES) || 20;
 // 리랭킹용 낮은 threshold (더 넓은 후보 확보)
 const RERANK_THRESHOLD = 0.15;
 
-export async function retrieveRelevantDocs(query: string, topK = 5): Promise<RetrievedDocument[]> {
+export async function retrieveRelevantDocs(query: string, topK = 5): Promise<RetrievedDocument[] & { _queryEmbedding?: number[] }> {
   try {
     // 1. 메시지 임베딩 생성
     const embedding = await generateEmbedding(query);
@@ -34,7 +34,10 @@ export async function retrieveRelevantDocs(query: string, topK = 5): Promise<Ret
 
     // 3. 로컬 리랭킹 (Jina Reranker v2-Base) → 상위 5개만 최종 선별
     //    리랭커 서버 미가동 시 Qdrant 벡터 순서 유지 (graceful fallback)
-    return await rerankDocuments(query, docs, topK);
+    const reranked = await rerankDocuments(query, docs, topK);
+    // 임베딩 재사용을 위해 결과 배열에 첨부
+    (reranked as any)._queryEmbedding = embedding;
+    return reranked;
   } catch (err) {
     console.error('RAG retrieval error:', err);
     return [];
