@@ -88,49 +88,49 @@
   },
   "featuredProducts": [
     {
-      "name": "DDR4 RAM 모듈 16GB",
+      "name": "DDR4 RAM Module 16GB",
       "specs": "₩150,000",
       "image": "/images/products/ram-module.png",
       "href": "/products/industrial"
     },
     {
-      "name": "GPU 가속 카드",
+      "name": "GPU Accelerator Card",
       "specs": "₩2,500,000",
       "image": "/images/products/cpu-processor.png",
       "href": "/products/hpc"
     },
     {
-      "name": "4U 랙마운트 서버",
+      "name": "4U Rackmount Server",
       "specs": "₩8,500,000",
       "image": "/images/products/ipc/rack-4u.png",
       "href": "/products/ipc"
     },
     {
-      "name": "서버 메인보드",
+      "name": "Server Motherboard",
       "specs": "₩850,000",
       "image": "/images/products/motherboard.png",
       "href": "/products/industrial"
     },
     {
-      "name": "팬리스 박스 PC",
+      "name": "Fanless Box PC",
       "specs": "₩3,200,000",
       "image": "/images/products/ipc/boxipc-c4l3.png",
       "href": "/products/ipc"
     },
     {
-      "name": "기업용 HDD 2TB",
+      "name": "Enterprise HDD 2TB",
       "specs": "₩280,000",
       "image": "/images/products/hdd-2tb.png",
       "href": "/products/industrial"
     },
     {
-      "name": "산업용 패널 PC 15\"",
+      "name": "Industrial Panel PC 15\"",
       "specs": "₩4,500,000",
       "image": "/images/products/ipc/ppc-15at.png",
       "href": "/products/ipc"
     },
     {
-      "name": "2U 랙마운트 PC",
+      "name": "2U Rackmount PC",
       "specs": "₩6,800,000",
       "image": "/images/products/ipc/rack-2u.png",
       "href": "/products/ipc"
