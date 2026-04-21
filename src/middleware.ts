@@ -134,7 +134,12 @@ export const onRequest = defineMiddleware(async (_context, next) => {
     // 송신 자체를 삭제하여 DevTools 콘솔 노이즈를 제거.
     response.headers.delete('Cross-Origin-Opener-Policy');
   }
-  response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  // 임시: 2026-04-21 18:23 KST 까지 HSTS 헤더 비활성화 (사용자 요청, 2시간)
+  // 해당 시각 이후에는 자동으로 다시 헤더가 송신됨. 복구 시점 경과 후 이 블록 삭제해도 무방.
+  const HSTS_RESTORE_TS = 1776763439175;
+  if (Date.now() >= HSTS_RESTORE_TS) {
+    response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  }
   // Content Security Policy — 기존 디렉티브(default/script/style/img/connect/font)는 그대로 유지하고
   // 방어 강화용 디렉티브 4개만 추가함 (script-src 'unsafe-inline'는 Astro 인라인 호환성을 위해 유지).
   //   • object-src 'none'        : Flash / plugin 실행 원천 차단
