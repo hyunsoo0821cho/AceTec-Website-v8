@@ -1,6 +1,57 @@
 {
   "periods": [
     {
+      "id": "tab-2034-2036",
+      "label": "2034 — 2036",
+      "years": [
+        {
+          "year": 2034,
+          "months": [
+            {
+              "month": "Jan.",
+              "entries": [
+                "New entry"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-2031-2033",
+      "label": "2031 — 2033",
+      "years": [
+        {
+          "year": 2031,
+          "months": [
+            {
+              "month": "Jan.",
+              "entries": [
+                "New entry"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tab-2028-2030",
+      "label": "2028 — 2030",
+      "years": [
+        {
+          "year": 2028,
+          "months": [
+            {
+              "month": "Jan.",
+              "entries": [
+                "New entry"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "tab-2025-2027",
       "label": "2025 — 2027",
       "years": [
