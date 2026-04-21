@@ -6,29 +6,34 @@
   "items": [],
   "sections": [
     {
-      "title": "GPU Appliances",
+      "title": "Servers",
       "products": [
         {
-          "name": "FlashCUBE",
+          "name": "1U 5500/5600-Series Server",
           "image": "/images/catalog/FlashCUBE.png",
           "features": [
             "CUBE desktop enclosure supports one double-wide or two single-wide full-height I/O cards up to 13.25 inch longIncludes PCIe cable adapter/cable or Thunderbolt cable and 180W power supply"
           ]
         },
         {
-          "name": "Flash-µCUBE",
+          "name": "Expansion Optimized Server",
           "image": "/images/catalog/Flash-µCUBE.png",
           "features": [
             "uCUBE desktop enclosure supports one full-height I/O card up to 9.55 inch longIncludes PCIe cable adapter/cable and 84W external power supply"
           ]
+        },
+        {
+          "name": "New Product",
+          "image": "/images/catalog/FlashCUBE.png",
+          "features": []
         }
       ]
     },
     {
-      "title": "GPU",
+      "title": "GPU Appliances",
       "products": [
         {
-          "name": "GPU CUBE",
+          "name": "FlashCUBE",
           "image": "/images/catalog/GPU CUBE.png",
           "features": [
             "CUBE desktop enclosure supports one double-wide or two single-wide full-height I/O cards up to 13.25 inch long with PCIe cable adapter/cable or Thunderbolt cable and 180W power supply"
