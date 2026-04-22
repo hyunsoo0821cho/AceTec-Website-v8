@@ -2,39 +2,39 @@
   "companyDescription": "Trusted for over 30 years in embedded computing, industrial PCs, and safety-critical systems — serving defense, aerospace, railway, and industrial markets.",
   "solutionLinks": [
     {
-      "label": "military aviation",
+      "label": "군수항공분야",
       "href": "/products/military"
     },
     {
-      "label": "rail transportation",
+      "label": "철도분야",
       "href": "/products/railway"
     },
     {
-      "label": "industrial automation",
+      "label": "산업 자동화분야",
       "href": "/products/industrial"
     },
     {
-      "label": "Telecommunications/Networking",
+      "label": "정보통신분야",
       "href": "/products/telecom"
     },
     {
-      "label": "Sensor Modeling & Simulation",
+      "label": "센서 모델링 & 시뮬레이션",
       "href": "/products/sensor"
     },
     {
-      "label": "supercomputing system",
+      "label": "슈퍼컴퓨팅시스템분야",
       "href": "/products/hpc"
     },
     {
-      "label": "industrial pc",
+      "label": "산업용 PC",
       "href": "/products/ipc"
     },
     {
-      "label": "Radar Processing & Display",
+      "label": "레이더 처리 & 디스플레이",
       "href": "/products/radar"
     },
     {
-      "label": "high-speed interconnect",
+      "label": "초고속 데이터 인터커넥트",
       "href": "/products/interconnect"
     }
   ],
@@ -42,10 +42,6 @@
     {
       "label": "솔루션",
       "href": "/solutions"
-    },
-    {
-      "label": "제품소개",
-      "href": "/"
     },
     {
       "label": "응용분야",
