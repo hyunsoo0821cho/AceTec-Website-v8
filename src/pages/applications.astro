@@ -21,6 +21,16 @@ function e(p: string) {
 <Base title="Applications - AceTec" description={d.description}>
   <AdminInline page="applications" isAdmin={isAdmin} />
 
+  <section class="app-hero">
+    <img
+      src={d.image || '/images/hero/hero-main.png'}
+      alt={d.title}
+      fetchpriority="high"
+      {...(isAdmin ? { 'data-img': 'image', 'data-preset': 'hero' } : {})}
+    />
+    <div class="app-hero-gradient"></div>
+  </section>
+
   <div class="course-main">
     <h1 {...e('title')} data-i18n="applications.title">{d.title}</h1>
     <p {...e('description')} data-i18n="applications.desc">{d.description}</p>
@@ -166,6 +176,40 @@ function e(p: string) {
 </Base>
 
 <style>
+  /* Hero Banner (applications 전용, 이 페이지에만 적용) */
+  .app-hero {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    max-height: 600px;
+    overflow: hidden;
+    margin-top: -80px;
+  }
+  .app-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .app-hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.25) 0%,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    pointer-events: none;
+  }
+  @media (max-width: 768px) {
+    .app-hero {
+      height: 40vh;
+      min-height: 260px;
+    }
+  }
+
   /* Course Main */
   .course-main {
     text-align: center;
